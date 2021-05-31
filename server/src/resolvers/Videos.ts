@@ -16,7 +16,7 @@ import { Videos } from '../entities/index'
 @Resolver(Videos)
 export class VideoResolver {
   @Query(() => [Videos], { nullable: true })
-  users() {
+  videos() {
     const videos = Videos.find()
     if (!videos) return null
 

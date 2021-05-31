@@ -44,7 +44,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     }));
     const apolloServer = new apollo_server_express_1.ApolloServer({
         schema: yield type_graphql_1.buildSchema({
-            resolvers: [index_2.UserResolver],
+            resolvers: [index_2.UserResolver, index_2.VideoResolver],
             validate: false,
         }),
         context: ({ req, res }) => ({

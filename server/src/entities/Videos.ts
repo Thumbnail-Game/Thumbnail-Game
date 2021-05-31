@@ -20,16 +20,12 @@ export class Videos extends BaseEntity {
   title!: string
 
   @Field()
-  @Column({ unique: true })
+  @Column()
   thumbnail!: string
 
   @Field()
-  @Column()
+  @Column({ type: 'bigint' })
   views!: number
-
-  @Field()
-  @Column({ unique: true })
-  url: string
 
   @Field()
   @Column()
@@ -38,4 +34,8 @@ export class Videos extends BaseEntity {
   @Field()
   @Column()
   channel_id: String
+
+  @Field()
+  @Column()
+  url: string
 }

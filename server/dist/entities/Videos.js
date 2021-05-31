@@ -26,19 +26,14 @@ __decorate([
 ], Videos.prototype, "title", void 0);
 __decorate([
     type_graphql_1.Field(),
-    typeorm_1.Column({ unique: true }),
+    typeorm_1.Column(),
     __metadata("design:type", String)
 ], Videos.prototype, "thumbnail", void 0);
 __decorate([
     type_graphql_1.Field(),
-    typeorm_1.Column(),
+    typeorm_1.Column({ type: 'bigint' }),
     __metadata("design:type", Number)
 ], Videos.prototype, "views", void 0);
-__decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ unique: true }),
-    __metadata("design:type", String)
-], Videos.prototype, "url", void 0);
 __decorate([
     type_graphql_1.Field(),
     typeorm_1.Column(),
@@ -49,6 +44,11 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
 ], Videos.prototype, "channel_id", void 0);
+__decorate([
+    type_graphql_1.Field(),
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Videos.prototype, "url", void 0);
 Videos = __decorate([
     type_graphql_1.ObjectType(),
     typeorm_1.Entity()
