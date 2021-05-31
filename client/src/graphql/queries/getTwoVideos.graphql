@@ -1,0 +1,11 @@
+query getTwoVideos {
+  twoVideos {
+    id
+    title
+    thumbnail
+    views
+    date_published
+    channel_id
+    url
+  }
+}

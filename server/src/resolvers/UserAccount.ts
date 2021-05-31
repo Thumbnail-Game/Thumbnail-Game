@@ -47,7 +47,6 @@ export class UserResolver {
 
   @Query(() => [UserAccount], { nullable: true })
   users() {
-    console.log('users query reached')
     const users = UserAccount.find()
     if (!users) return null
 

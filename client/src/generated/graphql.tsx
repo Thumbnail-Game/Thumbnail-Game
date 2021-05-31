@@ -32,8 +32,10 @@ export type MutationCreateUserArgs = {
 
 export type Query = {
   __typename?: 'Query';
-  user?: Maybe<User>;
-  users?: Maybe<Array<User>>;
+  user?: Maybe<UserAccount>;
+  users?: Maybe<Array<UserAccount>>;
+  videos?: Maybe<Array<Videos>>;
+  twoVideos?: Maybe<Array<Videos>>;
 };
 
 
@@ -41,8 +43,8 @@ export type QueryUserArgs = {
   id: Scalars['String'];
 };
 
-export type User = {
-  __typename?: 'User';
+export type UserAccount = {
+  __typename?: 'UserAccount';
   id: Scalars['Float'];
   username: Scalars['String'];
   email: Scalars['String'];
@@ -59,7 +61,18 @@ export type UserInput = {
 export type UserResponse = {
   __typename?: 'UserResponse';
   errors?: Maybe<Array<FieldError>>;
-  user?: Maybe<User>;
+  user?: Maybe<UserAccount>;
+};
+
+export type Videos = {
+  __typename?: 'Videos';
+  id: Scalars['Float'];
+  title: Scalars['String'];
+  thumbnail: Scalars['String'];
+  views: Scalars['Float'];
+  date_published: Scalars['String'];
+  channel_id: Scalars['String'];
+  url: Scalars['String'];
 };
 
 export type CreateUserMutationVariables = Exact<{
@@ -77,10 +90,21 @@ export type CreateUserMutation = (
       { __typename?: 'FieldError' }
       & Pick<FieldError, 'field' | 'message'>
     )>>, user?: Maybe<(
-      { __typename?: 'User' }
-      & Pick<User, 'id' | 'username'>
+      { __typename?: 'UserAccount' }
+      & Pick<UserAccount, 'id' | 'username'>
     )> }
   ) }
+);
+
+export type GetTwoVideosQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetTwoVideosQuery = (
+  { __typename?: 'Query' }
+  & { twoVideos?: Maybe<Array<(
+    { __typename?: 'Videos' }
+    & Pick<Videos, 'id' | 'title' | 'thumbnail' | 'views' | 'date_published' | 'channel_id' | 'url'>
+  )>> }
 );
 
 export type GetUserQueryVariables = Exact<{
@@ -91,8 +115,8 @@ export type GetUserQueryVariables = Exact<{
 export type GetUserQuery = (
   { __typename?: 'Query' }
   & { user?: Maybe<(
-    { __typename?: 'User' }
-    & Pick<User, 'id' | 'username' | 'email'>
+    { __typename?: 'UserAccount' }
+    & Pick<UserAccount, 'id' | 'username' | 'email'>
   )> }
 );
 
@@ -102,8 +126,19 @@ export type GetUsersQueryVariables = Exact<{ [key: string]: never; }>;
 export type GetUsersQuery = (
   { __typename?: 'Query' }
   & { users?: Maybe<Array<(
-    { __typename?: 'User' }
-    & Pick<User, 'id' | 'username' | 'email'>
+    { __typename?: 'UserAccount' }
+    & Pick<UserAccount, 'id' | 'username' | 'email'>
+  )>> }
+);
+
+export type GetVideosQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetVideosQuery = (
+  { __typename?: 'Query' }
+  & { videos?: Maybe<Array<(
+    { __typename?: 'Videos' }
+    & Pick<Videos, 'id' | 'title' | 'url' | 'thumbnail' | 'views' | 'date_published' | 'channel_id'>
   )>> }
 );
 
@@ -125,6 +160,23 @@ export const CreateUserDocument = gql`
 
 export function useCreateUserMutation() {
   return Urql.useMutation<CreateUserMutation, CreateUserMutationVariables>(CreateUserDocument);
+};
+export const GetTwoVideosDocument = gql`
+    query getTwoVideos {
+  twoVideos {
+    id
+    title
+    thumbnail
+    views
+    date_published
+    channel_id
+    url
+  }
+}
+    `;
+
+export function useGetTwoVideosQuery(options: Omit<Urql.UseQueryArgs<GetTwoVideosQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetTwoVideosQuery>({ query: GetTwoVideosDocument, ...options });
 };
 export const GetUserDocument = gql`
     query getUser($id: String!) {
@@ -151,4 +203,21 @@ export const GetUsersDocument = gql`
 
 export function useGetUsersQuery(options: Omit<Urql.UseQueryArgs<GetUsersQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<GetUsersQuery>({ query: GetUsersDocument, ...options });
+};
+export const GetVideosDocument = gql`
+    query getVideos {
+  videos {
+    id
+    title
+    url
+    thumbnail
+    views
+    date_published
+    channel_id
+  }
+}
+    `;
+
+export function useGetVideosQuery(options: Omit<Urql.UseQueryArgs<GetVideosQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetVideosQuery>({ query: GetVideosDocument, ...options });
 };

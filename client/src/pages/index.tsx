@@ -2,7 +2,7 @@ import { withUrqlClient } from 'next-urql'
 import styled from 'styled-components'
 
 import { /*useGetUserQuery*/ useGetUsersQuery } from '../generated/graphql'
-import { Nav, ThemeToggle } from '../components/elements/index'
+import { Nav, ThemeToggle, Thumbnail } from '../components/elements/index'
 import { createUrqlClient } from '../util/createURQLClient'
 import {
   CenterContainer,
@@ -24,6 +24,7 @@ const Home: React.FC = () => {
     <>
       <ThemeToggle />
       <Nav />
+      <Thumbnail />
       {data &&
         data.users?.map((user, i: number) => {
           return (

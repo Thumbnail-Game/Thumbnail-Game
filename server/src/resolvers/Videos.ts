@@ -9,6 +9,7 @@ import {
   // FieldResolver,
   // Root,
 } from 'type-graphql'
+import { getConnection } from 'typeorm'
 // import { MyContext } from '../types'
 
 import { Videos } from '../entities/index'
@@ -18,6 +19,21 @@ export class VideoResolver {
   @Query(() => [Videos], { nullable: true })
   videos() {
     const videos = Videos.find()
+    if (!videos) return null
+
+    return videos
+  }
+
+  @Query(() => [Videos], { nullable: true })
+  async twoVideos() {
+    const videos = await getConnection()
+      .createQueryBuilder()
+      .select('videos')
+      .from(Videos, 'videos')
+      .orderBy('RANDOM()')
+      .limit(2)
+      .getMany()
+
     if (!videos) return null
 
     return videos

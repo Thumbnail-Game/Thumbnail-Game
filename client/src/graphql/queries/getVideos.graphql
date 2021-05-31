@@ -1,0 +1,11 @@
+query getVideos {
+  videos {
+    id
+    title
+    url
+    thumbnail
+    views
+    date_published
+    channel_id
+  }
+}
