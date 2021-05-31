@@ -34,7 +34,9 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({}) => {
       <Button
         variant="contained"
         color="primary"
-        onClick={() => console.log('clicked')}
+        onClick={() => {
+          console.log('test')
+        }}
       >
         Generate Random
       </Button>
