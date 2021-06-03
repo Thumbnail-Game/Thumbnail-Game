@@ -23,6 +23,7 @@ export type FieldError = {
 export type Mutation = {
   __typename?: 'Mutation';
   createUser: UserResponse;
+  invalidateVideos?: Maybe<Array<Videos>>;
 };
 
 
@@ -84,20 +85,27 @@ export type CreateUserMutationVariables = Exact<{
 
 export type CreateUserMutation = (
   { __typename?: 'Mutation' }
-  & {
-    createUser: (
-      { __typename?: 'UserResponse' }
-      & {
-        errors?: Maybe<Array<(
-          { __typename?: 'FieldError' }
-          & Pick<FieldError, 'field' | 'message'>
-        )>>, user?: Maybe<(
-          { __typename?: 'UserAccount' }
-          & Pick<UserAccount, 'id' | 'username'>
-        )>
-      }
-    )
-  }
+  & { createUser: (
+    { __typename?: 'UserResponse' }
+    & { errors?: Maybe<Array<(
+      { __typename?: 'FieldError' }
+      & Pick<FieldError, 'field' | 'message'>
+    )>>, user?: Maybe<(
+      { __typename?: 'UserAccount' }
+      & Pick<UserAccount, 'id' | 'username'>
+    )> }
+  ) }
+);
+
+export type InvalidateMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type InvalidateMutation = (
+  { __typename?: 'Mutation' }
+  & { invalidateVideos?: Maybe<Array<(
+    { __typename?: 'Videos' }
+    & Pick<Videos, 'id'>
+  )>> }
 );
 
 export type GetTwoVideosQueryVariables = Exact<{ [key: string]: never; }>;
@@ -105,12 +113,10 @@ export type GetTwoVideosQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetTwoVideosQuery = (
   { __typename?: 'Query' }
-  & {
-    twoVideos?: Maybe<Array<(
-      { __typename?: 'Videos' }
-      & Pick<Videos, 'id' | 'title' | 'thumbnail' | 'views' | 'date_published' | 'channel_id' | 'url'>
-    )>>
-  }
+  & { twoVideos?: Maybe<Array<(
+    { __typename?: 'Videos' }
+    & Pick<Videos, 'id' | 'title' | 'thumbnail' | 'views' | 'date_published' | 'channel_id' | 'url'>
+  )>> }
 );
 
 export type GetUserQueryVariables = Exact<{
@@ -120,12 +126,10 @@ export type GetUserQueryVariables = Exact<{
 
 export type GetUserQuery = (
   { __typename?: 'Query' }
-  & {
-    user?: Maybe<(
-      { __typename?: 'UserAccount' }
-      & Pick<UserAccount, 'id' | 'username' | 'email'>
-    )>
-  }
+  & { user?: Maybe<(
+    { __typename?: 'UserAccount' }
+    & Pick<UserAccount, 'id' | 'username' | 'email'>
+  )> }
 );
 
 export type GetUsersQueryVariables = Exact<{ [key: string]: never; }>;
@@ -133,12 +137,10 @@ export type GetUsersQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetUsersQuery = (
   { __typename?: 'Query' }
-  & {
-    users?: Maybe<Array<(
-      { __typename?: 'UserAccount' }
-      & Pick<UserAccount, 'id' | 'username' | 'email'>
-    )>>
-  }
+  & { users?: Maybe<Array<(
+    { __typename?: 'UserAccount' }
+    & Pick<UserAccount, 'id' | 'username' | 'email'>
+  )>> }
 );
 
 export type GetVideosQueryVariables = Exact<{ [key: string]: never; }>;
@@ -146,12 +148,10 @@ export type GetVideosQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetVideosQuery = (
   { __typename?: 'Query' }
-  & {
-    videos?: Maybe<Array<(
-      { __typename?: 'Videos' }
-      & Pick<Videos, 'id' | 'title' | 'url' | 'thumbnail' | 'views' | 'date_published' | 'channel_id'>
-    )>>
-  }
+  & { videos?: Maybe<Array<(
+    { __typename?: 'Videos' }
+    & Pick<Videos, 'id' | 'title' | 'url' | 'thumbnail' | 'views' | 'date_published' | 'channel_id'>
+  )>> }
 );
 
 
@@ -173,7 +173,17 @@ export const CreateUserDocument = gql`
 export function useCreateUserMutation() {
   return Urql.useMutation<CreateUserMutation, CreateUserMutationVariables>(CreateUserDocument);
 };
+export const InvalidateDocument = gql`
+    mutation invalidate {
+  invalidateVideos {
+    id
+  }
+}
+    `;
 
+export function useInvalidateMutation() {
+  return Urql.useMutation<InvalidateMutation, InvalidateMutationVariables>(InvalidateDocument);
+};
 export const GetTwoVideosDocument = gql`
     query getTwoVideos {
   twoVideos {
@@ -191,7 +201,6 @@ export const GetTwoVideosDocument = gql`
 export function useGetTwoVideosQuery(options: Omit<Urql.UseQueryArgs<GetTwoVideosQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<GetTwoVideosQuery>({ query: GetTwoVideosDocument, ...options });
 };
-
 export const GetUserDocument = gql`
     query getUser($id: String!) {
   user(id: $id) {

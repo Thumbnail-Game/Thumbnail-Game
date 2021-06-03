@@ -1,6 +1,6 @@
 import {
   Resolver,
-  //   Mutation,
+  Mutation,
   //   Arg,
   //   Field,
   // Ctx,
@@ -37,5 +37,10 @@ export class VideoResolver {
     if (!videos) return null
 
     return videos
+  }
+
+  @Mutation(() => [Videos], { nullable: true })
+  invalidateVideos() {
+    return null
   }
 }

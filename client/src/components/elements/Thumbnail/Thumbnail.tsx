@@ -3,23 +3,29 @@ import { Button } from '@material-ui/core'
 import Image from 'next/image'
 
 import {
-  GetTwoVideosQuery,
   useGetTwoVideosQuery,
-  Videos,
+  useInvalidateMutation,
 } from '../../../generated/graphql'
-import * as Styled from "./Thumbnail.styles"
+import * as Styled from './Thumbnail.styles'
 
-interface ThumbnailProps { }
+interface ThumbnailProps {}
 
-export const Thumbnail: React.FC<ThumbnailProps> = ({ }) => {
+export const Thumbnail: React.FC<ThumbnailProps> = ({}) => {
   const [hiddenViews, setHiddenViews] = useState<boolean>(true)
 
   const [videos] = useGetTwoVideosQuery()
+  //  this mutation will invalidate the cache and cause useGetTwoVideosQuery to refetch
+  const [, invalidateVideos] = useInvalidateMutation()
 
   const videoData = videos && videos.data
 
   if (videos.fetching) return <p>Loading...</p>
   if (videos.error) return <p>There was an error</p>
+
+  const handleNewThumbnailClick = async () => {
+    await invalidateVideos()
+    setHiddenViews((oldHiddenViews) => !oldHiddenViews)
+  }
 
   return (
     <>
@@ -34,18 +40,20 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ }) => {
             onClick={() => setHiddenViews(false)}
           />
           <Styled.VideoText>{video.title}</Styled.VideoText>
-          {!hiddenViews && <Styled.VideoText>{video.views.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</Styled.VideoText>}
+          {!hiddenViews && (
+            <Styled.VideoText>
+              {video.views.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+            </Styled.VideoText>
+          )}
         </Styled.VideoContainer>
       ))}
-      {/* <Button
+      <Button
         variant="contained"
         color="primary"
-        onClick={() => {
-          console.log('test')
-        }}
+        onClick={handleNewThumbnailClick}
       >
         Generate Random
-      </Button> */}
+      </Button>
     </>
   )
 }
