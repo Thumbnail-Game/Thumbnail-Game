@@ -21,7 +21,7 @@ const getData = async () => {
 
     const vidIds = []
     //  words 2 are words that should have more thumbnails in the database, use 10 items instead of 2
-    for (const item of data.items.splice(0, 3)) {
+    for (const item of data.items.splice(0, 4)) {
       vidIds.push(item.id)
     }
 
@@ -54,7 +54,7 @@ const getData = async () => {
         }
       }
 
-      queryString += `insert into Videos (title, thumbnail, views, url, date_published, channel_id) values ('${data.title}', '${data.thumbnailUrl}', ${data.views}, '${data.datePublished}', '${data.channelId}', '${data.url}');\n`
+      queryString += `insert into Videos (title, thumbnail, views, date_published, channel_id, url) values ('${data.title}', '${data.thumbnailUrl}', ${data.views}, '${data.datePublished}', '${data.channelId}', '${data.url}');\n`
     }
   }
   console.log('running query runner')

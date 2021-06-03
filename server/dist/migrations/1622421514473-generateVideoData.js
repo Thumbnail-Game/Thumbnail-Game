@@ -1,8 +1,19 @@
-import { MigrationInterface, QueryRunner } from 'typeorm'
-
-export class generateVideoData1622421514473 implements MigrationInterface {
-  public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.generateVideoData1622421514473 = void 0;
+class generateVideoData1622421514473 {
+    up(queryRunner) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield queryRunner.query(`
     insert into Videos (title, thumbnail, views, date_published, channel_id,url) values ('Landon Austin-Armor[Lyrics]', 'https://i.ytimg.com/vi/nuL00Sd-ffo/maxresdefault.jpg', 2338244, '2015-12-28', 'UC17DUe-8nOZktPfw-3Jv-yA', 'https://www.youtube.com/watch?v=nuL00Sd-ffo');
     insert into Videos (title, thumbnail, views, date_published, channel_id,url) values ('Armour++Armour++Full Album', 'https://i.ytimg.com/vi/SL1hx6xRCZg/maxresdefault.jpg', 31247, '2013-01-05', 'UCCQ-wJwenqARi8cerD3jo2w', 'https://www.youtube.com/watch?v=SL1hx6xRCZg');
     insert into Videos (title, thumbnail, views, date_published, channel_id,url) values ('Bryce Vine - Drew Barrymore [Official Music Video]', 'https://i.ytimg.com/vi/kudi8OtMu9s/maxresdefault.jpg', 70818976, '2018-02-15', 'UCHQE-c1JX7Io3zcXgXBQKlw', 'https://www.youtube.com/watch?v=kudi8OtMu9s');
@@ -2679,8 +2690,12 @@ export class generateVideoData1622421514473 implements MigrationInterface {
     insert into Videos (title, thumbnail, views, date_published, channel_id, url) values ('Tauren Wells, Kirk Franklin - Millionaire (Good Like That) [Official Music Video]', 'https://i.ytimg.com/vi/axwb8w79kFU/maxresdefault.jpg', 2966812, '2020-08-12', 'UC-g0dPSCRZIgK2SUkMNKbUw', 'https://www.youtube.com/watch?v=axwb8w79kFU');
     insert into Videos (title, thumbnail, views, date_published, channel_id, url) values ('Travie McCoy: Billionaire ft. Bruno Mars [OFFICIAL VIDEO]', 'https://i.ytimg.com/vi/8aRor905cCw/maxresdefault.jpg', 482350993, '2010-05-06', 'UClVrJwcIy7saPcGc1nct80A', 'https://www.youtube.com/watch?v=8aRor905cCw');
     insert into Videos (title, thumbnail, views, date_published, channel_id, url) values ('Chris Stapleton - Millionaire', 'https://i.ytimg.com/vi/CaqzeE41XcA/hqdefault.jpg', 5905443, '2018-02-21', 'UCyemoTZ7dw6jgzsFjy2oq-A', 'https://www.youtube.com/watch?v=CaqzeE41XcA');
-     `)
-  }
-
-  public async down(_: QueryRunner): Promise<void> {}
+     `);
+        });
+    }
+    down(_) {
+        return __awaiter(this, void 0, void 0, function* () { });
+    }
 }
+exports.generateVideoData1622421514473 = generateVideoData1622421514473;
+//# sourceMappingURL=1622421514473-generateVideoData.js.map
