@@ -8,9 +8,9 @@ import {
 } from '../../../generated/graphql'
 import * as Styled from './Thumbnail.styles'
 
-interface ThumbnailProps {}
+interface ThumbnailProps { }
 
-export const Thumbnail: React.FC<ThumbnailProps> = ({}) => {
+export const Thumbnail: React.FC<ThumbnailProps> = ({ }) => {
   const [hiddenViews, setHiddenViews] = useState<boolean>(true)
 
   const [videos] = useGetTwoVideosQuery()
@@ -37,6 +37,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({}) => {
             layout="fixed"
             width={672}
             height={378}
+            onError={() => handleNewThumbnailClick()}
             onClick={() => setHiddenViews(false)}
           />
           <Styled.VideoText>{video.title}</Styled.VideoText>

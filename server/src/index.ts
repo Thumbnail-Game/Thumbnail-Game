@@ -13,11 +13,7 @@ import { UserResolver, VideoResolver } from './resolvers/index'
 
 const main = async () => {
   console.log(process.env.DATABASE_URL)
-<<<<<<< HEAD
-  const conn = await createConnection({
-=======
-  /*const conn = */ await createConnection({
->>>>>>> 872dc4a07fad13d74c3ba0c55843afe40df24522
+  /*const conn = */await createConnection({
     type: 'postgres',
     url: process.env.DATABASE_URL,
     logging: true,
@@ -30,11 +26,7 @@ const main = async () => {
       rejectUnauthorized: false,
     },
   })
-<<<<<<< HEAD
-  await conn.runMigrations()
-=======
-  //  await conn.runMigrations()
->>>>>>> 872dc4a07fad13d74c3ba0c55843afe40df24522
+  // await conn.runMigrations()
 
   const app = express()
 

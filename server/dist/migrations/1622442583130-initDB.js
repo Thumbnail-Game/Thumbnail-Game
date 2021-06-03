@@ -14,14 +14,6 @@ class initDB1622442583130 {
     constructor() {
         this.name = 'initDB1622442583130';
     }
-<<<<<<< HEAD
-    up(_) {
-        return __awaiter(this, void 0, void 0, function* () {
-        });
-    }
-    down(_) {
-        return __awaiter(this, void 0, void 0, function* () {
-=======
     up(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
             yield queryRunner.query(`CREATE TABLE "videos" ("id" SERIAL NOT NULL, "title" character varying NOT NULL, "thumbnail" character varying NOT NULL, "views" bigint NOT NULL, "date_published" character varying NOT NULL, "channel_id" character varying NOT NULL, "url" character varying NOT NULL, CONSTRAINT "PK_e4c86c0cf95aff16e9fb8220f6b" PRIMARY KEY ("id"))`);
@@ -32,7 +24,6 @@ class initDB1622442583130 {
         return __awaiter(this, void 0, void 0, function* () {
             yield queryRunner.query(`DROP TABLE "user_account"`);
             yield queryRunner.query(`DROP TABLE "videos"`);
->>>>>>> 872dc4a07fad13d74c3ba0c55843afe40df24522
         });
     }
 }
