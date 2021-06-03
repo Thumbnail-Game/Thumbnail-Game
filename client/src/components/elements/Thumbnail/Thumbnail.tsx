@@ -29,32 +29,35 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ }) => {
 
   return (
     <>
-      {videoData?.twoVideos!.map((video, i) => (
-        <Styled.VideoContainer key={i}>
-          <Image
-            src={video.thumbnail}
-            alt={`thumbnail-image-${i}`}
-            layout="fixed"
-            width={672}
-            height={378}
-            onError={() => handleNewThumbnailClick()}
-            onClick={() => setHiddenViews(false)}
-          />
-          <Styled.VideoText>{video.title}</Styled.VideoText>
-          {!hiddenViews && (
-            <Styled.VideoText>
-              {video.views.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-            </Styled.VideoText>
-          )}
-        </Styled.VideoContainer>
-      ))}
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={handleNewThumbnailClick}
-      >
-        Generate Random
-      </Button>
+      <Styled.Container>
+        {videoData?.twoVideos!.map((video, i) => (
+          <Styled.VideoContainer key={i}>
+            <Image
+              src={video.thumbnail}
+              alt={`thumbnail-image-${i}`}
+              layout="fixed"
+              width={672}
+              height={378}
+              onError={() => handleNewThumbnailClick()}
+              onClick={() => setHiddenViews(false)}
+            />
+            <Styled.VideoText>{video.title}</Styled.VideoText>
+            {!hiddenViews && (
+              <Styled.VideoText>
+                {video.views.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              </Styled.VideoText>
+            )}
+          </Styled.VideoContainer>
+        ))}
+      </Styled.Container>
+      <div style={{ textAlign: "center" }}>
+        <Styled.Button
+          color="primary"
+          onClick={handleNewThumbnailClick}
+        >
+          Generate Random
+      </Styled.Button>
+      </div>
     </>
   )
 }

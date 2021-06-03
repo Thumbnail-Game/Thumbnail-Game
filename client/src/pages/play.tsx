@@ -23,9 +23,8 @@ const Play: React.FC = () => {
             <ViewText>
                 <Styled.HeaderText>Which Video Has More Views?</Styled.HeaderText>
             </ViewText>
-            <Styled.CenterContainer style={{ width: '1500px' }}>
-                <Thumbnail />
-            </Styled.CenterContainer>
+            <Thumbnail></Thumbnail>
+
         </>
     )
 }
