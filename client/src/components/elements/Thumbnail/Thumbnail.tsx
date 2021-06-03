@@ -24,7 +24,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({}) => {
 
   const handleNewThumbnailClick = async () => {
     await invalidateVideos()
-    setHiddenViews((oldHiddenViews) => !oldHiddenViews)
+    if (!hiddenViews) setHiddenViews(true)
   }
 
   return (

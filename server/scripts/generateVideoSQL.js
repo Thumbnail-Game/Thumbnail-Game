@@ -3,14 +3,14 @@ const fs = require('fs')
 const youtubesearchapi = require('youtube-search-api')
 const fetchVideoInfo = require('updated-youtube-info')
 
-const words = require('./words')
+const { words2 } = require('./words')
 
 let queryString = ''
 const getData = async () => {
   //  store titles in case of duplicate
   const urls = []
 
-  for (const word of words) {
+  for (const word of words2) {
     let data
     try {
       data = await youtubesearchapi.GetListByKeyword(word, false)
@@ -20,7 +20,8 @@ const getData = async () => {
     }
 
     const vidIds = []
-    for (const item of data.items.splice(0, 2)) {
+    //  words 2 are words that should have more thumbnails in the database, use 10 items instead of 2
+    for (const item of data.items.splice(0, 3)) {
       vidIds.push(item.id)
     }
 
@@ -57,7 +58,7 @@ const getData = async () => {
     }
   }
   console.log('running query runner')
-  fs.writeFile('sql.txt', queryString, (err) => console.log(err))
+  fs.writeFile('sql2.txt', queryString, (err) => console.log(err))
 }
 
 getData()
