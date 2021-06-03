@@ -2,22 +2,23 @@ export type ThemeType = typeof theme['light']
 
 const theme = {
   light: {
-    background: '#ACDDDE',
-    secondary: '#CAF1DE',
-    secondaryDark: '#E1F8DC',
-    primaryText: 'black',
-    subText: 'gray',
+    background: 'white',
+    navBackground: 'white',
+    divider: '#FF0000',
+    primaryText: '#282828',
+    footer: '#282828'
   },
   dark: {
-    background: '#444444',
-    secondary: '#1E2328',
-    secondaryDark: '#878683',
+    background: '#282828',
+    navBackground: '#282828',
+    divider: '#FF0000',
     primaryText: 'white',
-    subText: 'gray',
+    footer: '#595959'
   },
 }
 
 export const commonColors = {
   red: '#C6493A',
 }
+
 export default theme

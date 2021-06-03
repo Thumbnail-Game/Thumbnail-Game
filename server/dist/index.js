@@ -24,7 +24,7 @@ const index_1 = require("./entities/index");
 const index_2 = require("./resolvers/index");
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     console.log(process.env.DATABASE_URL);
-    const conn = yield typeorm_1.createConnection({
+    yield typeorm_1.createConnection({
         type: 'postgres',
         url: process.env.DATABASE_URL,
         logging: true,
@@ -35,7 +35,6 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
             rejectUnauthorized: false,
         },
     });
-    yield conn.runMigrations();
     const app = express_1.default();
     app.set('trust proxy', 1);
     app.use(cors_1.default({

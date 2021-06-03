@@ -3,9 +3,11 @@ import { Grid } from '@material-ui/core'
 
 export const CenterContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
+  margin: auto;
+  margin-top: 200px;
 `
 
 export const StyledGridContainer = styled(Grid)`
@@ -15,11 +17,10 @@ export const StyledGridContainer = styled(Grid)`
   width: 100%;
 `
 
-export const StyledHeaderText = styled.div`
-  font-size: 20px;
+export const HeaderText = styled.div`
+  font-size: 50px;
 `
 
-export const StyledSubText = styled.div`
+export const SubText = styled.div`
   font-size: 15px;
-  color: ${(props) => props.theme.subText};
 `

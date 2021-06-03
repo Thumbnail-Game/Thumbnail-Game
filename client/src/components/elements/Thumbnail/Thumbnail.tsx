@@ -7,11 +7,13 @@ import {
   useGetTwoVideosQuery,
   Videos,
 } from '../../../generated/graphql'
-import './Thumbnail.styles'
+import * as Styled from "./Thumbnail.styles"
 
-interface ThumbnailProps {}
+interface ThumbnailProps { }
 
-export const Thumbnail: React.FC<ThumbnailProps> = ({}) => {
+export const Thumbnail: React.FC<ThumbnailProps> = ({ }) => {
+  const [hiddenViews, setHiddenViews] = useState<boolean>(true)
+
   const [videos] = useGetTwoVideosQuery()
 
   const videoData = videos && videos.data
@@ -22,16 +24,20 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({}) => {
   return (
     <>
       {videoData?.twoVideos!.map((video, i) => (
-        <Image
-          key={i}
-          src={video.thumbnail}
-          alt={`thumbnail-image-${i}`}
-          layout="fixed"
-          width={200}
-          height={200}
-        />
+        <Styled.VideoContainer key={i}>
+          <Image
+            src={video.thumbnail}
+            alt={`thumbnail-image-${i}`}
+            layout="fixed"
+            width={672}
+            height={378}
+            onClick={() => setHiddenViews(false)}
+          />
+          <Styled.VideoText>{video.title}</Styled.VideoText>
+          {!hiddenViews && <Styled.VideoText>{video.views.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</Styled.VideoText>}
+        </Styled.VideoContainer>
       ))}
-      <Button
+      {/* <Button
         variant="contained"
         color="primary"
         onClick={() => {
@@ -39,7 +45,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({}) => {
         }}
       >
         Generate Random
-      </Button>
+      </Button> */}
     </>
   )
 }

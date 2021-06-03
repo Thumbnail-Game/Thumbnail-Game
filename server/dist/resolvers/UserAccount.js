@@ -81,7 +81,6 @@ let UserResolver = class UserResolver {
         return user;
     }
     users() {
-        console.log('users query reached');
         const users = index_1.UserAccount.find();
         if (!users)
             return null;
