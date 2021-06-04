@@ -25,14 +25,10 @@ export const VideoContainer = styled.div`
 `
 
 export const VideoImage = styled(Image)`
-<<<<<<< HEAD
   border-radius:10px;
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
-=======
-  border-radius: 10px;
->>>>>>> ac89b4044ec47c4214144dd3f994a0e4689b9577
 `
 
 const hoverThumbnail = keyframes`
@@ -63,7 +59,6 @@ const hoverThumbnailOut = keyframes`
 `
 
 export const Thumbnail = styled.div`
-<<<<<<< HEAD
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
@@ -71,9 +66,6 @@ export const Thumbnail = styled.div`
   animation-name: ${hoverThumbnailOut};
   animation-duration: 300ms;
   &:hover{
-=======
-  &:hover {
->>>>>>> ac89b4044ec47c4214144dd3f994a0e4689b9577
     transform: scale(1.034);
     animation-name: ${hoverThumbnail};
     animation-duration: 300ms;
