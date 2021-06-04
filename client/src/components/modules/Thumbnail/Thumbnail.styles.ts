@@ -26,11 +26,14 @@ export const VideoContainer = styled.div`
 
 export const VideoImage = styled(Image)`
   border-radius:10px;
-  
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 `
 
 const hoverThumbnail = keyframes`
- 0% {
+ 100% {
+   transform: scale(1);
  }
  70%{
   
@@ -44,7 +47,24 @@ const hoverThumbnail = keyframes`
  }
 `
 
+const hoverThumbnailOut = keyframes`
+ 100% {
+  transform: scale(1);
+ }
+ 0% {
+  transform: scale(1.034);
+  box-shadow: 9px 9px 11px #1b1b1b;
+  border-radius:10px;
+ }
+`
+
 export const Thumbnail = styled.div`
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  transform: scale(1);
+  animation-name: ${hoverThumbnailOut};
+  animation-duration: 300ms;
   &:hover{
     transform: scale(1.034);
     animation-name: ${hoverThumbnail};

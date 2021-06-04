@@ -107,7 +107,7 @@ const fillSetting = keyframes`
   width:45px;
   height:45px;
   top:-8.4px;
-  left:-8.8px;
+  top:-8.7px;
   border-radius:50%;
   position:absolute;
   z-index:0;
@@ -132,7 +132,7 @@ export const SettingsHover = styled.div`
   ${SettingsIconWrapper}:hover & {
     width:45px;
     height:45px;
-    top:-8.4px;
+    top:-8.7px;
     left:-8.8px;
     border-radius:50%;
     background-color:${(props) => props.theme.button};
