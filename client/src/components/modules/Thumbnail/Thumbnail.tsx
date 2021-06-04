@@ -9,6 +9,7 @@ import {
 } from '../../../generated/graphql'
 import { AnimatedViewText } from '../../elements/index'
 import * as Styled from './Thumbnail.styles'
+import { green } from '@material-ui/core/colors'
 
 export const Thumbnail: React.FC = () => {
   const [hiddenViews, setHiddenViews] = useState<boolean>(true)
@@ -37,29 +38,45 @@ export const Thumbnail: React.FC = () => {
                 <AnimatedViewText animatedNum={video.views} />
               </Styled.ViewCount>
             )}
-            <Image
-              src={video.thumbnail}
-              alt={`thumbnail-image-${i}`}
-              layout="fixed"
-              width={672}
-              height={378}
-              onError={() => handleNewThumbnailClick()}
-              onClick={() => setHiddenViews(false)}
-            />
-            <Styled.Bar></Styled.Bar>
+            {hiddenViews && (
+              <div style={{ height: "67px", marginBottom: "18px" }}></div>
+            )}
+            <Styled.Thumbnail>
+              <Styled.VideoImage
+                src={video.thumbnail}
+                alt={`thumbnail-image-${i}`}
+                width={672}
+                height={378}
+                onError={() => handleNewThumbnailClick()}
+                onClick={() => setHiddenViews(false)}
+              />
+              <Styled.Bar></Styled.Bar>
+            </Styled.Thumbnail>
             <Styled.VideoText>{video.title}</Styled.VideoText>
           </Styled.VideoContainer>
         ))}
       </Styled.Container>
       <div style={{ textAlign: 'center' }}>
         <Styled.Button color="primary" onClick={handleNewThumbnailClick}>
-          <BiRightArrowAlt
-            size={70}
-            style={{
-              marginTop: '4px',
-              marginLeft: '-2px',
-            }}
-          ></BiRightArrowAlt>
+          <div style={{
+            display: "flex",
+            width: "90px",
+            height: "90px",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginLeft: "-5.5px",
+            marginTop: "-1px"
+          }}
+          >
+            <BiRightArrowAlt
+              size={70}
+              style={{
+                marginLeft: "8px",
+                position: "relative",
+                zIndex: 1
+              }}
+            ></BiRightArrowAlt>
+          </div>
           <Styled.Filler></Styled.Filler>
         </Styled.Button>
       </div>

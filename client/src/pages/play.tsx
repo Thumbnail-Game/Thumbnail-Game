@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { ThemeToggle } from '../components/elements/index'
 import { Thumbnail } from '../components/modules/index'
-import { Nav } from '../components/elements/index'
+import { Nav } from '../components/modules/index'
 import { createUrqlClient } from '../util/createURQLClient'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 
@@ -17,7 +17,6 @@ const Play: React.FC = () => {
                 <HeaderText style={{ fontSize: '45px' }}>Which Video Has More Views?</HeaderText>
             </ViewText>
             <Thumbnail />
-
         </>
     )
 }

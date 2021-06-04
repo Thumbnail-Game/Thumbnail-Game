@@ -3,7 +3,8 @@ import { animated } from 'react-spring'
 
 export const AnimatedDiv = styled(animated.span)`
   font-family: 'Gothic Bold';
-  font-size: 45px;
+  font-size: 50px;
+  margin:auto;
 `
 
 export const ViewCounterContainer = styled.div`
