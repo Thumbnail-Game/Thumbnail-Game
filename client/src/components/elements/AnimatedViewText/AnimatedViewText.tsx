@@ -12,16 +12,12 @@ export const AnimatedViewText: React.FC<AnimatedViewTextProps> = ({
   const props = useSpring({ val: animatedNum, from: { val: 0 } })
 
   return (
-    <>
-      <Styled.ViewCounterContainer>
-        <>
-          <Styled.AnimatedDiv>
-            {props.val.interpolate((val: number) => {
-              return Intl.NumberFormat().format(Math.round(val))
-            })}
-          </Styled.AnimatedDiv>
-        </>
-      </Styled.ViewCounterContainer>
-    </>
+    <Styled.ViewCounterContainer>
+      <Styled.AnimatedDiv>
+        {props.val.interpolate((val: number) => {
+          return Intl.NumberFormat().format(Math.round(val))
+        })}
+      </Styled.AnimatedDiv>
+    </Styled.ViewCounterContainer>
   )
 }
