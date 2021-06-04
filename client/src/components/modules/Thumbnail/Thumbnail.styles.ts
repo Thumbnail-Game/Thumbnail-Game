@@ -10,7 +10,7 @@ export const VideoText = styled.div`
   overflow: hidden;
   line-height: 1.6;
   margin-top: 11px;
-  -webkit-user-select: none; /* Safari */        
+  -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
@@ -19,16 +19,20 @@ export const VideoText = styled.div`
 export const VideoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content:space-around;
+  justify-content: space-around;
   height: 540px;
-  margin-top:-10px;
+  margin-top: -10px;
 `
 
 export const VideoImage = styled(Image)`
+<<<<<<< HEAD
   border-radius:10px;
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
+=======
+  border-radius: 10px;
+>>>>>>> ac89b4044ec47c4214144dd3f994a0e4689b9577
 `
 
 const hoverThumbnail = keyframes`
@@ -59,6 +63,7 @@ const hoverThumbnailOut = keyframes`
 `
 
 export const Thumbnail = styled.div`
+<<<<<<< HEAD
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
@@ -66,22 +71,24 @@ export const Thumbnail = styled.div`
   animation-name: ${hoverThumbnailOut};
   animation-duration: 300ms;
   &:hover{
+=======
+  &:hover {
+>>>>>>> ac89b4044ec47c4214144dd3f994a0e4689b9577
     transform: scale(1.034);
     animation-name: ${hoverThumbnail};
     animation-duration: 300ms;
     box-shadow: 9px 9px 11px #1b1b1b;
-    border-radius:10px;
+    border-radius: 10px;
   }
-  
 `
 
 export const Bar = styled.div`
   width: 670.5px;
   height: 7.5px;
-  margin-left:0.8px;
+  margin-left: 0.8px;
   margin-top: -11px;
   position: relative;
-  border-radius:0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
   z-index: 1;
   background-color: ${(props) => props.theme.divider};
 `
@@ -97,7 +104,7 @@ export const Container = styled.div`
 export const ViewCount = styled.div`
   text-align: center;
   background-color: none;
-  margin-bottom:15px;
+  margin-bottom: 15px;
   height: 67px;
 `
 const fillButton = keyframes`
@@ -134,7 +141,7 @@ export const Button = styled.button`
   outline: none;
   border: none;
   background-color: white;
-  position:relative;
+  position: relative;
   margin-top: 30px;
 `
 
@@ -143,7 +150,7 @@ export const Filler = styled.div`
   height: 91px;
   border-radius: 50%;
   position: absolute;
-  top:-0.5px;
+  top: -0.5px;
   left: -0.5px;
   right: 0;
   bottom: 0;
@@ -151,6 +158,6 @@ export const Filler = styled.div`
   ${Button}:hover & {
     animation-name: ${fillButton};
     animation-duration: 400ms;
-    background-color: #6EDBA3;
+    background-color: #6edba3;
   }
 `
