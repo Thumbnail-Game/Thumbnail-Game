@@ -41,7 +41,7 @@ export const ViewCount = styled.div`
 `
 const fillButton = keyframes`
  0% {width: 0px; height: 0px;}
- 100% { width: 90px; height: 90px;     background-color: #393939;}
+ 100% { width: 90px; height: 90px;     background-color: #666666;}
 `
 
 export const Button = styled.button`
@@ -61,6 +61,6 @@ export const Filler = styled.div`
   ${Button}:hover & {
     animation-name: fillButton;
     animation-duration: 500ms;
-    background-color: #393939;
+    background-color: #666666;
   }
 `
