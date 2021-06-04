@@ -7,14 +7,16 @@ const theme = {
     navBackground: 'white',
     divider: '#FF0000',
     primaryText: '#282828',
-    footer: '#282828'
+    footer: '#282828',
+    button: '#4A4A4A'
   },
   dark: {
     background: '#282828',
     navBackground: '#282828',
     divider: '#FF0000',
     primaryText: 'white',
-    footer: '#595959'
+    footer: '#595959',
+    button: '#4A4A4A'
   },
 }
 

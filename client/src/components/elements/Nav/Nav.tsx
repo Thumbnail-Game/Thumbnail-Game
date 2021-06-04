@@ -18,6 +18,9 @@ export const Nav: React.FC = () => {
             height={51.4}
             onClick={() => router.push('/')}
           ></Styled.Logo>
+          <Styled.SignIn>Sign In
+            <Styled.SignInHover></Styled.SignInHover>
+          </Styled.SignIn>
         </Styled.Flex>
         <Styled.Divider></Styled.Divider>
       </Styled.Nav>

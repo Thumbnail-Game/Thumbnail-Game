@@ -1,6 +1,14 @@
 import { createGlobalStyle, css } from 'styled-components'
 
 export default createGlobalStyle`
+@font-face {
+  font-family: 'Gothic Bold';
+  src: url("/fonts/gothicb.ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 ${({ theme }) => css`
   html {
     height: 100%;

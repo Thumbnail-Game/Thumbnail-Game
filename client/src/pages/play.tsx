@@ -1,29 +1,22 @@
 import { withUrqlClient } from 'next-urql'
 import styled from 'styled-components'
 
-import { /*useGetUserQuery*/ useGetUsersQuery } from '../generated/graphql'
-import { ThemeToggle, Thumbnail } from '../components/elements/index'
+import { ThemeToggle } from '../components/elements/index'
+import { Thumbnail } from '../components/modules/index'
 import { Nav } from '../components/elements/index'
 import { createUrqlClient } from '../util/createURQLClient'
 import { useMediaQuery } from '../hooks/useMediaQuery'
-import * as Styled from '../styles/constantStyles'
 
 const Play: React.FC = () => {
-
-    //  example query with id parameter
-    // const [user] = useGetUserQuery({ variables: { id: '1' } })
-
-
     const largerThan500px = useMediaQuery('(min-width: 775px)')
-
     return (
         <>
             <Nav />
             <ThemeToggle />
             <ViewText>
-                <Styled.HeaderText>Which Video Has More Views?</Styled.HeaderText>
+                <HeaderText style={{ fontSize: '45px' }}>Which Video Has More Views?</HeaderText>
             </ViewText>
-            <Thumbnail></Thumbnail>
+            <Thumbnail />
 
         </>
     )
@@ -43,8 +36,12 @@ const StyledUserContainer = styled.div<StyledUserContainerProps>`
 `
 
 const ViewText = styled.div`
-    margin-top: 50px;
+    margin-top: 60px;
     text-align: center;
+`
+
+const HeaderText = styled.div`
+    font-family: "Gothic Bold";
 `
 
 //  creates client with server side rendering enabled
