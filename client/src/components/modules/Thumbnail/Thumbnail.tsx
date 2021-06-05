@@ -11,6 +11,7 @@ import * as Styled from './Thumbnail.styles'
 export interface SeenVideos {
   [index: number]: {
     title: string
+    views: number
     thumbnail: string
     url: string
   }
@@ -28,6 +29,8 @@ export const Thumbnail: React.FC = () => {
   //  keep track of videos already seen, do not want repeat, necessary for game end screen
   const [seenVideos, setSeenVideos] = useState<SeenVideos>([])
 
+  const [isLoseAnimation, setIsLoseAnimation] = useState<boolean>(false)
+
   const [videos] = useGetTwoVideosQuery()
   const videoData = videos && videos.data
   //  this mutation will invalidate the cache and cause useGetTwoVideosQuery to refetch
@@ -43,13 +46,15 @@ export const Thumbnail: React.FC = () => {
         if (videoData.twoVideos && Array.isArray(oldSeenVideos)) {
           const tempVideos = [...oldSeenVideos]
           tempVideos.push({
-            title: videoData!.twoVideos[0].thumbnail,
+            title: videoData!.twoVideos[0].title,
             thumbnail: videoData?.twoVideos[0].thumbnail,
+            views: videoData?.twoVideos[0].views,
             url: videoData?.twoVideos[0].url,
           })
           tempVideos.push({
-            title: videoData?.twoVideos[1].thumbnail,
+            title: videoData?.twoVideos[1].title,
             thumbnail: videoData?.twoVideos[1].thumbnail,
+            views: videoData?.twoVideos[1].views,
             url: videoData?.twoVideos[1].url,
           })
           return tempVideos
@@ -80,17 +85,24 @@ export const Thumbnail: React.FC = () => {
     if (!hiddenViews) setHiddenViews(true)
   }
 
+  //  need to know how long the animation is playing before rendering other components
+  const handleLoseAnimation = () => {
+    setIsLoseAnimation(true)
+    setTimeout(() => {
+      setIsPlaying(false)
+      setIsLoseAnimation(false)
+    }, 5000)
+  }
+
   const handleThumbnailClick = async (index: number) => {
     if (index === 0 && mostViewed === 'video1') {
       setScore((oldScore) => oldScore + 1)
     } else if (index === 0 && mostViewed !== 'video1') {
-      // setScore((oldScore) => oldScore - 1)
-      setIsPlaying(false)
+      handleLoseAnimation()
     } else if (index === 1 && mostViewed === 'video2') {
       setScore((oldScore) => oldScore + 1)
     } else {
-      // setScore((oldScore) => oldScore - 1)
-      setIsPlaying(false)
+      handleLoseAnimation()
     }
 
     setHasPicked(true)
@@ -103,7 +115,7 @@ export const Thumbnail: React.FC = () => {
         <>
           <Styled.Container>
             <Score isPlaying={isPlaying} score={score} />
-            {updatedVideos?.twoVideos?.map((video, i: number) => (
+            {updatedVideos?.twoVideos?.map((video, i) => (
               <Styled.VideoContainer key={i}>
                 {!hiddenViews && (
                   <Styled.ViewCount>
@@ -129,20 +141,26 @@ export const Thumbnail: React.FC = () => {
             ))}
           </Styled.Container>
           {hasPicked && (
-            <div style={{ textAlign: 'center' }}>
-              <Styled.Button
-                color="primary"
-                onClick={() => {
-                  invalidateAndFetch()
-                  setHasPicked(false)
-                }}
-              >
-                <Styled.ArrowHover>
-                  <Styled.RightArrow size={70} />
-                </Styled.ArrowHover>
-                <Styled.Filler />
-              </Styled.Button>
-            </div>
+            <>
+              {!isLoseAnimation ? (
+                <div style={{ textAlign: 'center' }}>
+                  <Styled.Button
+                    color="primary"
+                    onClick={() => {
+                      invalidateAndFetch()
+                      setHasPicked(false)
+                    }}
+                  >
+                    <Styled.ArrowHover>
+                      <Styled.RightArrow size={70} />
+                    </Styled.ArrowHover>
+                    <Styled.Filler />
+                  </Styled.Button>
+                </div>
+              ) : (
+                <div>Lose Animation playing</div>
+              )}
+            </>
           )}
         </>
       ) : (

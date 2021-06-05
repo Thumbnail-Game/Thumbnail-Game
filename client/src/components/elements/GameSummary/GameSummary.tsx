@@ -9,7 +9,16 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos }) => {
   console.log(videos)
   return (
     <>
-      <div></div>
+      {Array.isArray(videos) &&
+        videos.map((video, i: number) => (
+          <>
+            <div>Title: {video.title}</div>
+            <div>
+              Views: {Intl.NumberFormat().format(Math.round(video.views))}
+            </div>
+            <div>URL: {video.url}</div>
+          </>
+        ))}
     </>
   )
 }
