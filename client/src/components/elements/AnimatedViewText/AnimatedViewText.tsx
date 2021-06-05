@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import { useSpring, useSprings } from 'react-spring'
+import { useSpring } from 'react-spring'
 import * as Styled from './AnimatedViewText.styled'
 
 interface AnimatedViewTextProps {
