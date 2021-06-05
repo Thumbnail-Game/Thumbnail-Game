@@ -1,14 +1,16 @@
-import { useContext } from 'react'
+import { useState, useContext } from 'react'
 import { useRouter } from 'next/router'
-import { MdSettings } from 'react-icons/md'
 
-import * as Styled from './Nav.styled'
 import { ThemeContext } from '../../../providers/AppProvider'
+import { SettingsPopup } from '../../modules/index'
+import * as Styled from './Nav.styled'
 
 export const Nav: React.FC = () => {
+  const [showingSettings, setShowingSettings] = useState<boolean>(false)
+
   const { themeMode } = useContext(ThemeContext)
 
-  const router = useRouter();
+  const router = useRouter()
 
   return (
     <Styled.Nav>
@@ -18,25 +20,32 @@ export const Nav: React.FC = () => {
           width={187.2}
           height={53.456}
           onClick={() => router.push('/')}
-        ></Styled.Logo>
-        <Styled.SettingsContainer>
-          <Styled.SettingsIconWrapper>
-            <Styled.SettingsIcon
-              fontSize={27}
-              color={themeMode === 'light' ? 'grey' : 'white'}
+        />
+        <Styled.SettingsPopUpRow>
+          <Styled.SettingsContainer>
+            <Styled.SettingsIconWrapper
+              onClick={() => setShowingSettings((oldSetting) => !oldSetting)}
             >
-            </Styled.SettingsIcon>
-            <Styled.SettingsHover></Styled.SettingsHover>
-          </Styled.SettingsIconWrapper>
-          <Styled.SignIn>Sign In
-              <Styled.SignInHover></Styled.SignInHover>
-          </Styled.SignIn>
-        </Styled.SettingsContainer>
+              <Styled.SettingsIcon
+                fontSize={27}
+                color={themeMode === 'light' ? 'grey' : 'white'}
+              />
+              <Styled.SettingsHover />
+            </Styled.SettingsIconWrapper>
+            <Styled.SignInUp onClick={() => router.push('login')}>
+              Log In
+              <Styled.SignInUpHover />
+            </Styled.SignInUp>
+            <Styled.SignInUp onClick={() => router.push('register')}>
+              Sign Up
+              <Styled.SignInUpHover />
+            </Styled.SignInUp>
+          </Styled.SettingsContainer>
+          {showingSettings && <SettingsPopup />}
+        </Styled.SettingsPopUpRow>
       </Styled.Flex>
-      <Styled.Divider></Styled.Divider>
+      <Styled.Divider />
     </Styled.Nav>
   )
 }
 //  MdSettings
-
-

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { keyframes } from 'styled-components'
 import Image from 'next/image'
+import { BiRightArrowAlt } from 'react-icons/bi'
 
 export const VideoText = styled.div`
   font-size: 26px;
@@ -25,7 +26,7 @@ export const VideoContainer = styled.div`
 `
 
 export const VideoImage = styled(Image)`
-  border-radius:10px;
+  border-radius: 10px;
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
@@ -65,7 +66,7 @@ export const Thumbnail = styled.div`
   transform: scale(1);
   animation-name: ${hoverThumbnailOut};
   animation-duration: 300ms;
-  &:hover{
+  &:hover {
     transform: scale(1.034);
     animation-name: ${hoverThumbnail};
     animation-duration: 300ms;
@@ -99,6 +100,12 @@ export const ViewCount = styled.div`
   margin-bottom: 15px;
   height: 67px;
 `
+
+export const HiddenDiv = styled.div`
+  height: 88px;
+  marginbottom: 18px;
+`
+
 const fillButton = keyframes`
  0% {
   width: 0px;
@@ -125,7 +132,6 @@ const fillButton = keyframes`
   border-radius: 50%;
  }
 `
-
 export const Button = styled.button`
   width: 90px;
   height: 90px;
@@ -136,7 +142,6 @@ export const Button = styled.button`
   position: relative;
   margin-top: 30px;
 `
-
 export const Filler = styled.div`
   width: 91px;
   height: 91px;
@@ -152,4 +157,18 @@ export const Filler = styled.div`
     animation-duration: 400ms;
     background-color: #6edba3;
   }
+`
+
+export const RightArrow = styled(BiRightArrowAlt)``
+
+export const ArrowHover = styled.div`
+  display: 'flex';
+  width: '90px';
+  height: '90px';
+  justifycontent: 'space-between';
+  alignitems: 'center';
+  marginleft: '-5.5px';
+  margintop: '-1px';
+  position: relative;
+  z-index: 1;
 `
