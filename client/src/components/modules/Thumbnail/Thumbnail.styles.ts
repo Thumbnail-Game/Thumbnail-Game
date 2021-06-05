@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { keyframes } from 'styled-components'
 import Image from 'next/image'
 import { BiRightArrowAlt } from 'react-icons/bi'
+import { MdCancel } from 'react-icons/md'
 
 export const VideoText = styled.div`
   font-size: 26px;
@@ -160,6 +161,11 @@ export const Filler = styled.div`
 `
 
 export const RightArrow = styled(BiRightArrowAlt)``
+
+export const LoseIcon = styled(MdCancel)`
+  color: ${(props) => props.theme.divider};
+  margin: auto;
+`
 
 export const ArrowHover = styled.div`
   display: 'flex';

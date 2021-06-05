@@ -6,10 +6,12 @@ import {
   useInvalidateMutation,
 } from '../../../generated/graphql'
 import { AnimatedViewText, Score, GameSummary } from '../../elements/index'
+import { LoseWinAnimation } from '../../elements/LoseWinAnimation/LoseWinAnimation'
 import * as Styled from './Thumbnail.styles'
 
 export interface SeenVideos {
   [index: number]: {
+    id: number
     title: string
     views: number
     thumbnail: string
@@ -45,17 +47,27 @@ export const Thumbnail: React.FC = () => {
       setSeenVideos((oldSeenVideos): any => {
         if (videoData.twoVideos && Array.isArray(oldSeenVideos)) {
           const tempVideos = [...oldSeenVideos]
+          const firstVideo = videoData.twoVideos[0]
+          const secondVideo = videoData.twoVideos[1]
+
+          //  do not add if duplicate
+          for (const vid of tempVideos) {
+            if (vid.id === firstVideo.id) return oldSeenVideos
+          }
+
           tempVideos.push({
-            title: videoData!.twoVideos[0].title,
-            thumbnail: videoData?.twoVideos[0].thumbnail,
-            views: videoData?.twoVideos[0].views,
-            url: videoData?.twoVideos[0].url,
+            id: firstVideo.id,
+            title: firstVideo.title,
+            thumbnail: firstVideo.thumbnail,
+            views: firstVideo.views,
+            url: firstVideo.url,
           })
           tempVideos.push({
-            title: videoData?.twoVideos[1].title,
-            thumbnail: videoData?.twoVideos[1].thumbnail,
-            views: videoData?.twoVideos[1].views,
-            url: videoData?.twoVideos[1].url,
+            id: secondVideo.id,
+            title: secondVideo.title,
+            thumbnail: secondVideo.thumbnail,
+            views: secondVideo.views,
+            url: secondVideo.url,
           })
           return tempVideos
         }
@@ -131,7 +143,7 @@ export const Thumbnail: React.FC = () => {
                     height={378}
                     onError={() => invalidateAndFetch()}
                     onClick={() => {
-                      handleThumbnailClick(i)
+                      if (!hasPicked) handleThumbnailClick(i)
                     }}
                   />
                   <Styled.Bar />
@@ -158,7 +170,7 @@ export const Thumbnail: React.FC = () => {
                   </Styled.Button>
                 </div>
               ) : (
-                <div>Lose Animation playing</div>
+                <LoseWinAnimation />
               )}
             </>
           )}
