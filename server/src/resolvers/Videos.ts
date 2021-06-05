@@ -1,16 +1,5 @@
-import {
-  Resolver,
-  Mutation,
-  //   Arg,
-  //   Field,
-  // Ctx,
-  //   ObjectType,
-  Query,
-  // FieldResolver,
-  // Root,
-} from 'type-graphql'
+import { Resolver, Mutation, Query } from 'type-graphql'
 import { getConnection } from 'typeorm'
-// import { MyContext } from '../types'
 
 import { Videos } from '../entities/index'
 
