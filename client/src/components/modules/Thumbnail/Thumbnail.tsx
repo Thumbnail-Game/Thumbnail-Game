@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-
 import {
   GetTwoVideosQuery,
   useGetTwoVideosQuery,
@@ -143,37 +142,69 @@ export const Thumbnail: React.FC = () => {
     <>
       {isPlaying ? (
         <>
-          <Styled.Container>
-            <Score isPlaying={isPlaying} score={score} />
-            {updatedVideos?.twoVideos?.map((video, i) => (
-              <Styled.VideoContainer key={i}>
-                {!hiddenViews && (
-                  <Styled.ViewCount>
-                    <AnimatedViewText animatedNum={video.views} />
-                  </Styled.ViewCount>
-                )}
-                {hiddenViews && <Styled.HiddenDiv></Styled.HiddenDiv>}
-                <Styled.Thumbnail>
-                  <Styled.VideoImage
-                    src={video.thumbnail}
-                    alt={`thumbnail-image-${i}`}
-                    width={672}
-                    height={378}
-                    onError={() => invalidateAndFetch()}
-                    onClick={() => {
-                      if (!hasPicked) handleThumbnailClick(i)
-                    }}
-                  />
-                  <Styled.Bar />
-                </Styled.Thumbnail>
-                <Styled.VideoText>{video.title}</Styled.VideoText>
-              </Styled.VideoContainer>
-            ))}
-          </Styled.Container>
+          <Score isPlaying={isPlaying} score={score} />
+          {hasPicked ? (
+            <Styled.Container2>
+              {updatedVideos?.twoVideos?.map((video, i) => (
+                <Styled.VideoContainer key={i}>
+                  {!hiddenViews && (
+                    <Styled.ViewCount>
+                      <AnimatedViewText animatedNum={video.views} />
+                    </Styled.ViewCount>
+                  )}
+                  {hiddenViews && <Styled.HiddenDiv></Styled.HiddenDiv>}
+                  <Styled.Thumbnail>
+                    <a href={video.url} target="_blank">
+                      <Styled.VideoImage
+                        src={video.thumbnail}
+                        alt={`thumbnail-image-${i}`}
+                        width={739.2}
+                        height={415.8}
+                        onError={() => invalidateAndFetch()}
+                        onClick={() => {
+                          if (!hasPicked) handleThumbnailClick(i)
+                        }}
+                      ></Styled.VideoImage>
+                    </a>
+                    <Styled.Bar />
+                  </Styled.Thumbnail>
+                  <Styled.VideoText>{video.title}</Styled.VideoText>
+                </Styled.VideoContainer>
+              ))}
+            </Styled.Container2>
+          ) : (
+            <Styled.Container>
+              {updatedVideos?.twoVideos?.map((video, i) => (
+                <Styled.VideoContainer key={i}>
+                  {!hiddenViews && (
+                    <Styled.ViewCount>
+                      <AnimatedViewText animatedNum={video.views} />
+                    </Styled.ViewCount>
+                  )}
+                  {hiddenViews && <Styled.HiddenDiv></Styled.HiddenDiv>}
+                  <Styled.Thumbnail>
+                    <Styled.VideoImage
+                      src={video.thumbnail}
+                      alt={`thumbnail-image-${i}`}
+                      width={672}
+                      height={378}
+                      onError={() => invalidateAndFetch()}
+                      onClick={() => {
+                        if (!hasPicked) handleThumbnailClick(i)
+                      }}
+                    />
+                    <Styled.Bar />
+                  </Styled.Thumbnail>
+                  <Styled.VideoText>{video.title}</Styled.VideoText>
+                </Styled.VideoContainer>
+              ))}
+            </Styled.Container>
+          )}
           {hasPicked && (
             <>
               {!isLoseAnimation ? (
                 <div style={{ textAlign: 'center' }}>
+                  <LoseWinAnimation result={isLoseAnimation} />
                   <Styled.Button
                     color="primary"
                     onClick={() => {
@@ -189,13 +220,30 @@ export const Thumbnail: React.FC = () => {
                   </Styled.Button>
                 </div>
               ) : (
-                <LoseWinAnimation />
+                <LoseWinAnimation result={isLoseAnimation} />
               )}
             </>
           )}
         </>
       ) : (
         <GameSummary videos={seenVideos} />
+      )}
+      {hasPicked ? (
+        <>
+          {!isLoseAnimation ? (
+            <Styled.Shade2></Styled.Shade2>
+          ) : (
+            <Styled.Shade></Styled.Shade>
+          )}
+        </>
+      ) : (
+        <>
+          {!isLoseAnimation ? (
+            <Styled.ShadeOut></Styled.ShadeOut>
+          ) : (
+            <Styled.ShadeOut2></Styled.ShadeOut2>
+          )}
+        </>
       )}
     </>
   )
