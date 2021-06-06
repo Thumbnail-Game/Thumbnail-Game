@@ -24,8 +24,8 @@ export const VideoContainer = styled.div`
   justify-content: space-around;
   height: 540px;
   margin-top: -10px;
-  position:relative;
-  z-index:1;
+  position: relative;
+  z-index: 1;
 `
 
 export const VideoImage = styled(Image)`
@@ -36,7 +36,7 @@ export const VideoImage = styled(Image)`
 `
 
 export const VideoImage2 = styled(Image)`
-border-radius: 10px;
+  border-radius: 10px;
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
@@ -73,7 +73,7 @@ export const Thumbnail = styled.div`
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
-  
+
   transform: scale(1);
   animation-name: ${hoverThumbnailOut};
   animation-duration: 300ms;
@@ -86,7 +86,6 @@ export const Thumbnail = styled.div`
   }
 `
 
-
 export const Bar = styled.div`
   width: 99.85%;
   height: 7.5px;
@@ -97,7 +96,6 @@ export const Bar = styled.div`
   z-index: 1;
   background-color: ${(props) => props.theme.divider};
 `
-
 
 export const Container = styled.div`
   display: flex;
@@ -263,37 +261,37 @@ const fillShadeOut2 = keyframes`
 `
 
 export const Shade = styled.div`
-  position:absolute;
+  position: absolute;
   height: 100000px;
-  margin-top:-5000px;
-  width:100%;
-  background-color:#EEC4C4;
+  margin-top: -5000px;
+  width: 100%;
+  background-color: #eec4c4;
   opacity: 0.2;
   animation: ${fillShade} 1000ms;
 `
 
 export const Shade2 = styled.div`
-  position:absolute;
+  position: absolute;
   height: 100000px;
-  margin-top:-5000px;
-  width:100%;
-  background-color:#C2EEC4;
+  margin-top: -5000px;
+  width: 100%;
+  background-color: #c2eec4;
   opacity: 0.2;
   animation: ${fillShade} 1000ms;
 `
 
 export const ShadeOut = styled.div`
-  position:absolute;
+  position: absolute;
   height: 100000px;
-  margin-top:-5000px;
-  width:100%;
+  margin-top: -5000px;
+  width: 100%;
   animation: ${fillShadeOut} 700ms;
 `
 
 export const ShadeOut2 = styled.div`
-  position:absolute;
+  position: absolute;
   height: 100000px;
-  margin-top:-5000px;
-  width:100%;
+  margin-top: -5000px;
+  width: 100%;
   animation: ${fillShadeOut2} 700ms;
 `

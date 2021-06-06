@@ -1,3 +1,4 @@
+import { useMediaQuery } from '@material-ui/core'
 import { useState, useEffect } from 'react'
 import {
   GetTwoVideosQuery,
@@ -96,6 +97,17 @@ export const Thumbnail: React.FC = () => {
     })
   }
 
+  //  pass as a prop to GameSummary, can be called to Play Again
+  const handleResetGameFromChild = async () => {
+    await invalidateAndFetch()
+
+    setIsPlaying(true)
+    setScore(0)
+    setSeenVideos([])
+    setSeenVideoIds([])
+    setHasPicked(false)
+  }
+
   //  invalidates the cache causing new video to be re-fetched
   const invalidateAndFetch = async () => {
     await invalidateVideos()
@@ -145,6 +157,8 @@ export const Thumbnail: React.FC = () => {
     setHasPicked(true)
     setHiddenViews(false)
   }
+
+  // const smallerThan1600px = useMediaQuery('(min-width: 1600px)')
 
   return (
     <>
@@ -233,7 +247,7 @@ export const Thumbnail: React.FC = () => {
           )}
         </>
       ) : (
-        <GameSummary videos={seenVideos} />
+        <GameSummary videos={seenVideos} reset={handleResetGameFromChild} />
       )}
       {hasPicked ? (
         <>{!isLoseAnimation ? <Styled.Shade2 /> : <Styled.Shade />}</>

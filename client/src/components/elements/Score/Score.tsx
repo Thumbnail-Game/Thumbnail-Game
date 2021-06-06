@@ -9,7 +9,6 @@ interface ScoreProps {
 export const Score: React.FC<ScoreProps> = ({ isPlaying, score }) => {
   const [highScore, setHighScore] = useState(getCookie('highscore'))
   useEffect(() => {
-    console.log(highScore)
     if (!highScore) setCookie('highscore', '0')
     else if (highScore && score > highScore) {
       setCookie('highscore', `${score}`)
