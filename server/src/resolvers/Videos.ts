@@ -1,4 +1,4 @@
-import { Resolver, Mutation, Query } from 'type-graphql'
+import { Arg, Int, Resolver, Mutation, Query } from 'type-graphql'
 import { getConnection } from 'typeorm'
 
 import { Videos } from '../entities/index'
@@ -14,14 +14,29 @@ export class VideoResolver {
   }
 
   @Query(() => [Videos], { nullable: true })
-  async twoVideos() {
-    const videos = await getConnection()
-      .createQueryBuilder()
-      .select('videos')
-      .from(Videos, 'videos')
-      .orderBy('RANDOM()')
-      .limit(2)
-      .getMany()
+  async twoVideos(@Arg('videoIds', () => [Int]) videoIds: number[]) {
+    //  return videos that do not match videoIds (do not want repeats)
+    let tempSql = ''
+    for (let i = 0; i < videoIds.length; i++) {
+      tempSql += ` id !=${videoIds[i]} `
+      if (i !== videoIds.length - 1) tempSql += 'and'
+    }
+
+    let videos
+    try {
+      if (videoIds.length > 0) {
+        videos = await getConnection().query(
+          `select * from videos where ${tempSql} order by random() limit 2;`
+        )
+      } else {
+        videos = await getConnection().query(
+          `select * from videos order by random() limit 2;`
+        )
+      }
+    } catch (err) {
+      //  TODO: return field error instead
+      return null
+    }
 
     if (!videos) return null
 

@@ -1,18 +1,7 @@
-import {
-  Resolver,
-  Mutation,
-  Arg,
-  Field,
-  // Ctx,
-  ObjectType,
-  Query,
-  // FieldResolver,
-  // Root,
-} from 'type-graphql'
+import { Resolver, Mutation, Arg, Field, ObjectType, Query } from 'type-graphql'
 import { getConnection } from 'typeorm'
 import * as argon2 from 'argon2'
 
-// import { MyContext } from '../types'
 import { validateRegister } from '../utils/validateRegister'
 import { UserAccount } from '../entities/index'
 import { UserInput } from './userInput'

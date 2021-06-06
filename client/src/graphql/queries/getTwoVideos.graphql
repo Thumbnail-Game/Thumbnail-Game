@@ -1,5 +1,5 @@
-query getTwoVideos {
-  twoVideos {
+query getTwoVideos($videoIds: [Int]) {
+  twoVideos(videoIds: $videoIds) {
     id
     title
     thumbnail

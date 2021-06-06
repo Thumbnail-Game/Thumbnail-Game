@@ -44,6 +44,11 @@ export type QueryUserArgs = {
   id: Scalars['String'];
 };
 
+
+export type QueryTwoVideosArgs = {
+  videoIds: Array<Scalars['Int']>;
+};
+
 export type UserAccount = {
   __typename?: 'UserAccount';
   id: Scalars['Float'];
@@ -108,7 +113,9 @@ export type InvalidateMutation = (
   )>> }
 );
 
-export type GetTwoVideosQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetTwoVideosQueryVariables = Exact<{
+  videoIds: Array<Scalars['Int']> | Scalars['Int'];
+}>;
 
 
 export type GetTwoVideosQuery = (
@@ -185,8 +192,8 @@ export function useInvalidateMutation() {
   return Urql.useMutation<InvalidateMutation, InvalidateMutationVariables>(InvalidateDocument);
 };
 export const GetTwoVideosDocument = gql`
-    query getTwoVideos {
-  twoVideos {
+    query getTwoVideos($videoIds: [Int!]!) {
+  twoVideos(videoIds: $videoIds) {
     id
     title
     thumbnail

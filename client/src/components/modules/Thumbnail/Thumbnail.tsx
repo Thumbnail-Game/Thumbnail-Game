@@ -30,16 +30,56 @@ export const Thumbnail: React.FC = () => {
   const [mostViewed, setMostViewed] = useState<string>()
   //  keep track of videos already seen, do not want repeat, necessary for game end screen
   const [seenVideos, setSeenVideos] = useState<SeenVideos>([])
+  const [seenVideoIds, setSeenVideoIds] = useState<number[]>([])
 
   const [isLoseAnimation, setIsLoseAnimation] = useState<boolean>(false)
 
-  const [videos] = useGetTwoVideosQuery()
+  const [videos] = useGetTwoVideosQuery({
+    variables: {
+      videoIds: seenVideoIds as number[],
+    },
+  })
   const videoData = videos && videos.data
   //  this mutation will invalidate the cache and cause useGetTwoVideosQuery to refetch
   const [, invalidateVideos] = useInvalidateMutation()
 
   useEffect(() => {
-    //  logic to differentiate which video has more views
+    invalidateAndFetch()
+  }, [])
+
+  if (videos.fetching) return <p>Loading...</p>
+  if (videos.error) {
+    console.log(videos.error.message)
+    return <p>There was an error</p>
+  }
+
+  const handleFirstMostViewed = () => {
+    if (videoData?.twoVideos) {
+      const isFirstMostViewed =
+        videoData.twoVideos[0].views > videoData.twoVideos[1].views
+
+      setMostViewed(isFirstMostViewed ? 'video1' : 'video2')
+    }
+  }
+
+  //  invalidates the cache causing new video to be re-fetched
+  const invalidateAndFetch = async () => {
+    setSeenVideoIds((oldSeenVideosIds): any => {
+      if (videoData?.twoVideos && Array.isArray(oldSeenVideosIds)) {
+        const tempIds = [...oldSeenVideosIds]
+        const firstVideo = videoData.twoVideos[0]
+        const secondVideo = videoData.twoVideos[1]
+
+        tempIds.push(firstVideo.id)
+        tempIds.push(secondVideo.id)
+
+        return tempIds
+      }
+    })
+
+    await invalidateVideos()
+    if (!hiddenViews) setHiddenViews(true)
+
     if (videoData) {
       handleFirstMostViewed()
       setUpdatedVideos(videoData)
@@ -73,28 +113,6 @@ export const Thumbnail: React.FC = () => {
         }
       })
     }
-    console.log(seenVideos)
-  }, [videos])
-
-  if (videos.fetching) return <p>Loading...</p>
-  if (videos.error) return <p>There was an error</p>
-
-  const handleFirstMostViewed = () => {
-    if (videoData?.twoVideos) {
-      const isFirstMostViewed =
-        videoData.twoVideos[0].views > videoData.twoVideos[1].views
-
-      setMostViewed(isFirstMostViewed ? 'video1' : 'video2')
-    }
-  }
-
-  //  invalidates the cache causing new video to be re-fetched
-  const invalidateAndFetch = async () => {
-    //  fetching new videos, have to recalculate which has more views
-    handleFirstMostViewed()
-
-    await invalidateVideos()
-    if (!hiddenViews) setHiddenViews(true)
   }
 
   //  need to know how long the animation is playing before rendering other components
@@ -103,7 +121,7 @@ export const Thumbnail: React.FC = () => {
     setTimeout(() => {
       setIsPlaying(false)
       setIsLoseAnimation(false)
-    }, 5000)
+    }, 1500)
   }
 
   const handleThumbnailClick = async (index: number) => {
@@ -159,6 +177,7 @@ export const Thumbnail: React.FC = () => {
                   <Styled.Button
                     color="primary"
                     onClick={() => {
+                      console.log('reached calling')
                       invalidateAndFetch()
                       setHasPicked(false)
                     }}
