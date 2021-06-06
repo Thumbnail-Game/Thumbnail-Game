@@ -33,9 +33,10 @@ export const Thumbnail: React.FC = () => {
 
   const [isLoseAnimation, setIsLoseAnimation] = useState<boolean>(false)
 
+  console.log(seenVideoIds ? seenVideoIds : [])
   const [videos] = useGetTwoVideosQuery({
     variables: {
-      videoIds: seenVideoIds as number[],
+      videoIds: seenVideoIds ? seenVideoIds : [],
     },
   })
   const videoData = videos && videos.data
@@ -43,8 +44,13 @@ export const Thumbnail: React.FC = () => {
   const [, invalidateVideos] = useInvalidateMutation()
 
   useEffect(() => {
-    invalidateAndFetch()
-  }, [])
+    setUpdatedVideos(videoData)
+    if (videos.data && typeof handleFirstMostViewed === 'function') {
+      console.log(videos.data)
+      handleFirstMostViewed()
+      handleUpdateSeenVideos()
+    }
+  }, [videos])
 
   if (videos.fetching) return <p>Loading...</p>
   if (videos.error) {
@@ -61,8 +67,43 @@ export const Thumbnail: React.FC = () => {
     }
   }
 
+  const handleUpdateSeenVideos = () => {
+    setSeenVideos((oldSeenVideos): any => {
+      if (videoData?.twoVideos && Array.isArray(oldSeenVideos)) {
+        const tempVideos = [...oldSeenVideos]
+        const firstVideo = videoData.twoVideos[0]
+        const secondVideo = videoData.twoVideos[1]
+
+        //  do not add if duplicate
+        for (const vid of tempVideos) {
+          if (vid.id === firstVideo.id) return oldSeenVideos
+        }
+
+        tempVideos.push({
+          id: firstVideo.id,
+          title: firstVideo.title,
+          thumbnail: firstVideo.thumbnail,
+          views: firstVideo.views,
+          url: firstVideo.url,
+        })
+        tempVideos.push({
+          id: secondVideo.id,
+          title: secondVideo.title,
+          thumbnail: secondVideo.thumbnail,
+          views: secondVideo.views,
+          url: secondVideo.url,
+        })
+        return tempVideos
+      }
+    })
+  }
+
   //  invalidates the cache causing new video to be re-fetched
   const invalidateAndFetch = async () => {
+    console.log('reached invalidate')
+    await invalidateVideos()
+    if (!hiddenViews) setHiddenViews(true)
+
     setSeenVideoIds((oldSeenVideosIds): any => {
       if (videoData?.twoVideos && Array.isArray(oldSeenVideosIds)) {
         const tempIds = [...oldSeenVideosIds]
@@ -76,41 +117,11 @@ export const Thumbnail: React.FC = () => {
       }
     })
 
-    await invalidateVideos()
-    if (!hiddenViews) setHiddenViews(true)
-
     if (videoData) {
       handleFirstMostViewed()
       setUpdatedVideos(videoData)
 
-      setSeenVideos((oldSeenVideos): any => {
-        if (videoData.twoVideos && Array.isArray(oldSeenVideos)) {
-          const tempVideos = [...oldSeenVideos]
-          const firstVideo = videoData.twoVideos[0]
-          const secondVideo = videoData.twoVideos[1]
-
-          //  do not add if duplicate
-          for (const vid of tempVideos) {
-            if (vid.id === firstVideo.id) return oldSeenVideos
-          }
-
-          tempVideos.push({
-            id: firstVideo.id,
-            title: firstVideo.title,
-            thumbnail: firstVideo.thumbnail,
-            views: firstVideo.views,
-            url: firstVideo.url,
-          })
-          tempVideos.push({
-            id: secondVideo.id,
-            title: secondVideo.title,
-            thumbnail: secondVideo.thumbnail,
-            views: secondVideo.views,
-            url: secondVideo.url,
-          })
-          return tempVideos
-        }
-      })
+      handleUpdateSeenVideos()
     }
   }
 
@@ -229,21 +240,9 @@ export const Thumbnail: React.FC = () => {
         <GameSummary videos={seenVideos} />
       )}
       {hasPicked ? (
-        <>
-          {!isLoseAnimation ? (
-            <Styled.Shade2></Styled.Shade2>
-          ) : (
-            <Styled.Shade></Styled.Shade>
-          )}
-        </>
+        <>{!isLoseAnimation ? <Styled.Shade2 /> : <Styled.Shade />}</>
       ) : (
-        <>
-          {!isLoseAnimation ? (
-            <Styled.ShadeOut></Styled.ShadeOut>
-          ) : (
-            <Styled.ShadeOut2></Styled.ShadeOut2>
-          )}
-        </>
+        <>{!isLoseAnimation ? <Styled.ShadeOut /> : <Styled.ShadeOut2 />}</>
       )}
     </>
   )
