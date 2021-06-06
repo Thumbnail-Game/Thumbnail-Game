@@ -1,4 +1,6 @@
-const login: React.FC = () => {
+import { NextPage } from 'next'
+
+const login: NextPage = () => {
   return <div>Login Page</div>
 }
 

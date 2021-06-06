@@ -1,7 +1,8 @@
+import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { Button } from '@material-ui/core'
 
-const Home: React.FC = () => {
+const Home: NextPage = () => {
   const router = useRouter()
 
   return (

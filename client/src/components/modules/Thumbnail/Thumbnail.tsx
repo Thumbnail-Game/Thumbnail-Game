@@ -33,7 +33,6 @@ export const Thumbnail: React.FC = () => {
 
   const [isLoseAnimation, setIsLoseAnimation] = useState<boolean>(false)
 
-  console.log(seenVideoIds ? seenVideoIds : [])
   const [videos] = useGetTwoVideosQuery({
     variables: {
       videoIds: seenVideoIds ? seenVideoIds : [],
@@ -46,7 +45,6 @@ export const Thumbnail: React.FC = () => {
   useEffect(() => {
     setUpdatedVideos(videoData)
     if (videos.data && typeof handleFirstMostViewed === 'function') {
-      console.log(videos.data)
       handleFirstMostViewed()
       handleUpdateSeenVideos()
     }
@@ -100,7 +98,6 @@ export const Thumbnail: React.FC = () => {
 
   //  invalidates the cache causing new video to be re-fetched
   const invalidateAndFetch = async () => {
-    console.log('reached invalidate')
     await invalidateVideos()
     if (!hiddenViews) setHiddenViews(true)
 
@@ -219,7 +216,6 @@ export const Thumbnail: React.FC = () => {
                   <Styled.Button
                     color="primary"
                     onClick={() => {
-                      console.log('reached calling')
                       invalidateAndFetch()
                       setHasPicked(false)
                     }}

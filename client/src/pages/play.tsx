@@ -1,13 +1,17 @@
-import { useState } from 'react'
+import { NextPage } from 'next'
 import { withUrqlClient } from 'next-urql'
 import styled from 'styled-components'
 
-import { ThemeToggle } from '../components/elements/index'
 import { Thumbnail } from '../components/modules/index'
 import { Nav } from '../components/modules/index'
-import { createUrqlClient } from '../util/createURQLClient'
+import { createUrqlClient } from '../util/index'
 
-const Play: React.FC = () => {
+interface PlayProps {
+  initialHighScore?: string
+}
+
+const Play: NextPage<PlayProps> = ({ initialHighScore }) => {
+  console.log(initialHighScore)
   return (
     <>
       <Nav />

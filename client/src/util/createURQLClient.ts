@@ -6,14 +6,6 @@ import { GetTwoVideosDocument } from '../generated/graphql'
 import { serverURL } from '../config/config'
 // import { isServer } from './isServer'
 
-// function invalidateThumbnails(cache: Cache) {
-//   const allFields = cache.inspectFields('Query')
-//   const fieldInfos = allFields.filter((info) => info.fieldName === '')
-//   fieldInfos.forEach((fi) => {
-//     cache.invalidate('Query', '', fi.arguments || {})
-//   })
-// }
-
 export const createUrqlClient = (ssrExchange: any, ctx: any) => {
   //  uncomment if necessary to send cookie to the server. Useful for authentification
   // let cookie = ''
