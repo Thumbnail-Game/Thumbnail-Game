@@ -167,6 +167,7 @@ export const Thumbnail: React.FC = () => {
           <Score isPlaying={isPlaying} score={score} />
           {hasPicked ? (
             <Styled.Container2>
+              <LoseWinAnimation result={isLoseAnimation} />
               {updatedVideos?.twoVideos?.map((video, i) => (
                 <Styled.VideoContainer key={i}>
                   {!hiddenViews && (
@@ -224,9 +225,8 @@ export const Thumbnail: React.FC = () => {
           )}
           {hasPicked && (
             <>
-              {!isLoseAnimation ? (
+              {!isLoseAnimation && (
                 <div style={{ textAlign: 'center' }}>
-                  <LoseWinAnimation result={isLoseAnimation} />
                   <Styled.Button
                     color="primary"
                     onClick={() => {
@@ -240,8 +240,6 @@ export const Thumbnail: React.FC = () => {
                     <Styled.Filler />
                   </Styled.Button>
                 </div>
-              ) : (
-                <LoseWinAnimation result={isLoseAnimation} />
               )}
             </>
           )}

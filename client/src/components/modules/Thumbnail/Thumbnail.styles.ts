@@ -118,6 +118,7 @@ export const Container2 = styled.div`
   display: flex;
   width: 1790px;
   margin: auto;
+  position:relative;
   justify-content: space-around;
   margin-top: 65px;
   animation-name: ${container2Animation};
@@ -165,15 +166,15 @@ const fillButton = keyframes`
 
 const moveButton = keyframes`
   0%{
-    margin-top: 250px;
-
+    margin-top: 270px;
+    opacity:0;
   }
   70%{
     margin-top: 250px;
-
+    opacity:0.7;
   }
   100%{
-
+    opacity:1;
     margin-top: 30px;
   }
 `
@@ -261,37 +262,39 @@ const fillShadeOut2 = keyframes`
 `
 
 export const Shade = styled.div`
-  position: absolute;
-  height: 100000px;
-  margin-top: -5000px;
+  height: 100%;
   width: 100%;
-  background-color: #eec4c4;
+  position:absolute;
+  top:0;
   opacity: 0.2;
+  background-color: #eec4c4;
   animation: ${fillShade} 1000ms;
 `
 
-export const Shade2 = styled.div`
-  position: absolute;
-  height: 100000px;
-  margin-top: -5000px;
+export const Shade2 = styled.div` 
+  height: 100%;
   width: 100%;
   background-color: #c2eec4;
+  position:absolute;
+  top:0;
   opacity: 0.2;
   animation: ${fillShade} 1000ms;
 `
 
 export const ShadeOut = styled.div`
-  position: absolute;
-  height: 100000px;
-  margin-top: -5000px;
+  height: 100%;
   width: 100%;
+  position:absolute;
+  top:0;
+  opacity: 0.2;
   animation: ${fillShadeOut} 700ms;
 `
 
 export const ShadeOut2 = styled.div`
-  position: absolute;
-  height: 100000px;
-  margin-top: -5000px;
+  height: 100%;
   width: 100%;
+  position:absolute;
+  top:0;
+  opacity: 0.2;
   animation: ${fillShadeOut2} 700ms;
 `

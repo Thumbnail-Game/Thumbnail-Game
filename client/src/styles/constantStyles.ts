@@ -22,5 +22,5 @@ export const HeaderText = styled.div`
 `
 
 export const SubText = styled.div`
-  font-size: 15px;
+  font-size: 25px;
 `

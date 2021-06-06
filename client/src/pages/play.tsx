@@ -20,7 +20,7 @@ const Play: NextPage<PlayProps> = ({ initialHighScore }) => {
           Which Video Has More Views?
         </HeaderText>
       </ViewText>
-      <Thumbnail />
+      <Thumbnail></Thumbnail>
     </>
   )
 }

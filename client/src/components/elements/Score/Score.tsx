@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import { getCookie, setCookie } from '../../../util/cookies'
 
+import * as Styled from './Score.styled'
+import { SubText } from '../../../styles/constantStyles'
+
 interface ScoreProps {
   isPlaying: boolean
   score: number
@@ -18,12 +21,12 @@ export const Score: React.FC<ScoreProps> = ({ isPlaying, score }) => {
 
   if (isPlaying)
     return (
-      <div>
-        <div>Score: {score}</div>
-        <div suppressHydrationWarning>
+      <Styled.ScoreWrapper>
+        <SubText>Score: {score}</SubText>
+        <SubText suppressHydrationWarning>
           Highscore: {highScore ? highScore : 0}
-        </div>
-      </div>
+        </SubText>
+      </Styled.ScoreWrapper>
     )
   else {
     return (

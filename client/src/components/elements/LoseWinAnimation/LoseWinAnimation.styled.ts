@@ -5,7 +5,7 @@ import { IoIosCheckmarkCircle } from 'react-icons/io'
 
 export const LoseIcon = styled(MdCancel)`
   color: #ff6961;
-  filter: drop-shadow(9px 9px 9px #222222);
+  filter: drop-shadow(9px 9px px #222222);
 `
 
 export const WinIcon = styled(IoIosCheckmarkCircle)`
@@ -35,9 +35,9 @@ export const IconWrapper = styled.div`
   animation-name: ${buttonAnimation};
   animation-duration: 1000ms;
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-  z-index:1;
+  z-index:2;
 `
