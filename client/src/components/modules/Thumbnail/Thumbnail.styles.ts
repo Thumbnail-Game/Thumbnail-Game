@@ -24,6 +24,8 @@ export const VideoContainer = styled.div`
   justify-content: space-around;
   height: 540px;
   margin-top: -10px;
+  position:relative;
+  z-index:1;
 `
 
 export const VideoImage = styled(Image)`
@@ -33,8 +35,15 @@ export const VideoImage = styled(Image)`
   user-select: none;
 `
 
+export const VideoImage2 = styled(Image)`
+border-radius: 10px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+`
+
 const hoverThumbnail = keyframes`
- 100% {
+ 0% {
    transform: scale(1);
  }
  70%{
@@ -64,6 +73,7 @@ export const Thumbnail = styled.div`
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
+  
   transform: scale(1);
   animation-name: ${hoverThumbnailOut};
   animation-duration: 300ms;
@@ -76,8 +86,9 @@ export const Thumbnail = styled.div`
   }
 `
 
+
 export const Bar = styled.div`
-  width: 670.5px;
+  width: 99.85%;
   height: 7.5px;
   margin-left: 0.8px;
   margin-top: -11px;
@@ -87,12 +98,32 @@ export const Bar = styled.div`
   background-color: ${(props) => props.theme.divider};
 `
 
+
 export const Container = styled.div`
   display: flex;
   width: 1525px;
   margin: auto;
   justify-content: space-around;
   margin-top: 65px;
+`
+
+const container2Animation = keyframes`
+ 0% {
+  width: 1525px;
+ }
+ 100% {
+  width: 1790px;
+ }
+`
+
+export const Container2 = styled.div`
+  display: flex;
+  width: 1790px;
+  margin: auto;
+  justify-content: space-around;
+  margin-top: 65px;
+  animation-name: ${container2Animation};
+  animation-duration: 700ms;
 `
 
 export const ViewCount = styled.div`
@@ -133,6 +164,22 @@ const fillButton = keyframes`
   border-radius: 50%;
  }
 `
+
+const moveButton = keyframes`
+  0%{
+    margin-top: 250px;
+
+  }
+  70%{
+    margin-top: 250px;
+
+  }
+  100%{
+
+    margin-top: 30px;
+  }
+`
+
 export const Button = styled.button`
   width: 90px;
   height: 90px;
@@ -142,6 +189,8 @@ export const Button = styled.button`
   background-color: white;
   position: relative;
   margin-top: 30px;
+  animation-name: ${moveButton};
+  animation-duration: 1300ms;
 `
 export const Filler = styled.div`
   width: 91px;
@@ -177,4 +226,74 @@ export const ArrowHover = styled.div`
   margintop: '-1px';
   position: relative;
   z-index: 1;
+`
+
+const fillShade = keyframes`
+ 0% {
+   opacity:0;
+   width:0%;
+ }
+ 100% {
+  opacity:0.2;
+  width:100%;
+ }
+`
+
+const fillShadeOut = keyframes`
+ 100% {
+   opacity:0;
+   width:0%;
+ }
+ 0% {
+  opacity:0.2;
+  width:100%;
+  background-color:#C2EEC4;
+ }
+`
+const fillShadeOut2 = keyframes`
+ 100% {
+   opacity:0;
+   width:0%;
+ }
+ 0% {
+  opacity:0.2;
+  width:100%;
+  background-color:#C2EEC4;
+ }
+`
+
+export const Shade = styled.div`
+  position:absolute;
+  height: 100000px;
+  margin-top:-5000px;
+  width:100%;
+  background-color:#EEC4C4;
+  opacity: 0.2;
+  animation: ${fillShade} 1000ms;
+`
+
+export const Shade2 = styled.div`
+  position:absolute;
+  height: 100000px;
+  margin-top:-5000px;
+  width:100%;
+  background-color:#C2EEC4;
+  opacity: 0.2;
+  animation: ${fillShade} 1000ms;
+`
+
+export const ShadeOut = styled.div`
+  position:absolute;
+  height: 100000px;
+  margin-top:-5000px;
+  width:100%;
+  animation: ${fillShadeOut} 700ms;
+`
+
+export const ShadeOut2 = styled.div`
+  position:absolute;
+  height: 100000px;
+  margin-top:-5000px;
+  width:100%;
+  animation: ${fillShadeOut2} 700ms;
 `

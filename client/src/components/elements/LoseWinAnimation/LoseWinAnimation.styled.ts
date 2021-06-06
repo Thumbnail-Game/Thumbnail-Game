@@ -1,9 +1,15 @@
 import styled from 'styled-components'
 import { keyframes } from 'styled-components'
 import { MdCancel } from 'react-icons/md'
+import { IoIosCheckmarkCircle } from 'react-icons/io'
 
 export const LoseIcon = styled(MdCancel)`
   color: #ff6961;
+  filter: drop-shadow(9px 9px 9px #222222);
+`
+
+export const WinIcon = styled(IoIosCheckmarkCircle)`
+  color: #6EDBA3;
 `
 
 const buttonAnimation = keyframes`
@@ -12,21 +18,26 @@ const buttonAnimation = keyframes`
   height:0px;
  }
  40% {
-  width:230px;
-  height:230px;
+  width:350px;
+  height:350px;
  }
  100% {
-  width:200px;
-  height:200px;
+  width:300px;
+  height:300px;
  }
 `
 
 export const IconWrapper = styled.div`
   margin: auto;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   animation-name: ${buttonAnimation};
-  animation-duration: 2000ms;
-  position: relative;
+  animation-duration: 1000ms;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  z-index:1;
 `

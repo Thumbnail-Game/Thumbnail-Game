@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-
+import Image from 'next/image'
 import {
   GetTwoVideosQuery,
   useGetTwoVideosQuery,
@@ -30,6 +30,7 @@ export const Thumbnail: React.FC = () => {
   const [mostViewed, setMostViewed] = useState<string>()
   //  keep track of videos already seen, do not want repeat, necessary for game end screen
   const [seenVideos, setSeenVideos] = useState<SeenVideos>([])
+  const [seenVideoIds, setSeenVideoIds] = useState<number[]>([])
 
   const [isLoseAnimation, setIsLoseAnimation] = useState<boolean>(false)
 
@@ -39,7 +40,39 @@ export const Thumbnail: React.FC = () => {
   const [, invalidateVideos] = useInvalidateMutation()
 
   useEffect(() => {
-    //  logic to differentiate which video has more views
+    invalidateAndFetch()
+  }, [])
+
+  if (videos.fetching) return <p>Loading...</p>
+  if (videos.error) return <p>There was an error</p>
+
+  const handleFirstMostViewed = () => {
+    if (videoData?.twoVideos) {
+      const isFirstMostViewed =
+        videoData.twoVideos[0].views > videoData.twoVideos[1].views
+
+      setMostViewed(isFirstMostViewed ? 'video1' : 'video2')
+    }
+  }
+
+  //  invalidates the cache causing new video to be re-fetched
+  const invalidateAndFetch = async () => {
+    setSeenVideoIds((oldSeenVideosIds): any => {
+      if (videoData?.twoVideos && Array.isArray(oldSeenVideosIds)) {
+        const tempIds = [...oldSeenVideosIds]
+        const firstVideo = videoData.twoVideos[0]
+        const secondVideo = videoData.twoVideos[1]
+
+        tempIds.push(firstVideo.id)
+        tempIds.push(secondVideo.id)
+
+        return tempIds
+      }
+    })
+
+    await invalidateVideos()
+    if (!hiddenViews) setHiddenViews(true)
+
     if (videoData) {
       handleFirstMostViewed()
       setUpdatedVideos(videoData)
@@ -73,28 +106,6 @@ export const Thumbnail: React.FC = () => {
         }
       })
     }
-    console.log(seenVideos)
-  }, [videos])
-
-  if (videos.fetching) return <p>Loading...</p>
-  if (videos.error) return <p>There was an error</p>
-
-  const handleFirstMostViewed = () => {
-    if (videoData?.twoVideos) {
-      const isFirstMostViewed =
-        videoData.twoVideos[0].views > videoData.twoVideos[1].views
-
-      setMostViewed(isFirstMostViewed ? 'video1' : 'video2')
-    }
-  }
-
-  //  invalidates the cache causing new video to be re-fetched
-  const invalidateAndFetch = async () => {
-    //  fetching new videos, have to recalculate which has more views
-    handleFirstMostViewed()
-
-    await invalidateVideos()
-    if (!hiddenViews) setHiddenViews(true)
   }
 
   //  need to know how long the animation is playing before rendering other components
@@ -103,7 +114,7 @@ export const Thumbnail: React.FC = () => {
     setTimeout(() => {
       setIsPlaying(false)
       setIsLoseAnimation(false)
-    }, 5000)
+    }, 2500)
   }
 
   const handleThumbnailClick = async (index: number) => {
@@ -125,37 +136,71 @@ export const Thumbnail: React.FC = () => {
     <>
       {isPlaying ? (
         <>
-          <Styled.Container>
-            <Score isPlaying={isPlaying} score={score} />
-            {updatedVideos?.twoVideos?.map((video, i) => (
-              <Styled.VideoContainer key={i}>
-                {!hiddenViews && (
-                  <Styled.ViewCount>
-                    <AnimatedViewText animatedNum={video.views} />
-                  </Styled.ViewCount>
-                )}
-                {hiddenViews && <Styled.HiddenDiv></Styled.HiddenDiv>}
-                <Styled.Thumbnail>
-                  <Styled.VideoImage
-                    src={video.thumbnail}
-                    alt={`thumbnail-image-${i}`}
-                    width={672}
-                    height={378}
-                    onError={() => invalidateAndFetch()}
-                    onClick={() => {
-                      if (!hasPicked) handleThumbnailClick(i)
-                    }}
-                  />
-                  <Styled.Bar />
-                </Styled.Thumbnail>
-                <Styled.VideoText>{video.title}</Styled.VideoText>
-              </Styled.VideoContainer>
-            ))}
-          </Styled.Container>
+
+          <Score isPlaying={isPlaying} score={score} />
+          {hasPicked ? (
+            <Styled.Container2>
+              {updatedVideos?.twoVideos?.map((video, i) => (
+                <Styled.VideoContainer key={i}>
+                  {!hiddenViews && (
+                    <Styled.ViewCount>
+                      <AnimatedViewText animatedNum={video.views} />
+                    </Styled.ViewCount>
+                  )}
+                  {hiddenViews && <Styled.HiddenDiv></Styled.HiddenDiv>}
+                  <Styled.Thumbnail>
+                    <a href={video.url} target="_blank">
+                      <Styled.VideoImage
+                        src={video.thumbnail}
+                        alt={`thumbnail-image-${i}`}
+                        width={739.2}
+                        height={415.8}
+                        onError={() => invalidateAndFetch()}
+                        onClick={() => {
+                          if (!hasPicked) handleThumbnailClick(i)
+                        }}
+                      >
+                      </Styled.VideoImage>
+                    </a>
+                    <Styled.Bar />
+                  </Styled.Thumbnail>
+                  <Styled.VideoText>{video.title}</Styled.VideoText>
+                </Styled.VideoContainer>
+              ))}
+            </Styled.Container2>
+          ) : (
+            <Styled.Container>
+              {updatedVideos?.twoVideos?.map((video, i) => (
+                <Styled.VideoContainer key={i}>
+                  {!hiddenViews && (
+                    <Styled.ViewCount>
+                      <AnimatedViewText animatedNum={video.views} />
+                    </Styled.ViewCount>
+                  )}
+                  {hiddenViews && <Styled.HiddenDiv></Styled.HiddenDiv>}
+                  <Styled.Thumbnail>
+                    <Styled.VideoImage
+                      src={video.thumbnail}
+                      alt={`thumbnail-image-${i}`}
+                      width={672}
+                      height={378}
+                      onError={() => invalidateAndFetch()}
+                      onClick={() => {
+                        if (!hasPicked) handleThumbnailClick(i)
+                      }}
+                    />
+                    <Styled.Bar />
+                  </Styled.Thumbnail>
+                  <Styled.VideoText>{video.title}</Styled.VideoText>
+                </Styled.VideoContainer>
+              ))}
+            </Styled.Container>
+          )}
           {hasPicked && (
             <>
               {!isLoseAnimation ? (
                 <div style={{ textAlign: 'center' }}>
+                  <LoseWinAnimation result={isLoseAnimation} />
                   <Styled.Button
                     color="primary"
                     onClick={() => {
@@ -170,13 +215,32 @@ export const Thumbnail: React.FC = () => {
                   </Styled.Button>
                 </div>
               ) : (
-                <LoseWinAnimation />
+                <LoseWinAnimation result={isLoseAnimation} />
               )}
             </>
           )}
         </>
       ) : (
         <GameSummary videos={seenVideos} />
+      )}
+      {hasPicked ? (
+        <>
+          {!isLoseAnimation ? (
+            <Styled.Shade2></Styled.Shade2>
+          ) : (
+            <Styled.Shade></Styled.Shade>
+          )
+          }
+        </>
+      ) : (
+        <>
+          {!isLoseAnimation ? (
+            <Styled.ShadeOut></Styled.ShadeOut>
+          ) : (
+            <Styled.ShadeOut2></Styled.ShadeOut2>
+          )
+          }
+        </>
       )}
     </>
   )
