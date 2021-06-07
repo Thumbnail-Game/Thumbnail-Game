@@ -21,67 +21,44 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VideoResolver = void 0;
+exports.GamesResolver = void 0;
 const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
 const index_1 = require("../entities/index");
-let VideoResolver = class VideoResolver {
+let GamesResolver = class GamesResolver {
     videos() {
-        const videos = index_1.Videos.find();
-        if (!videos)
+        const games = index_1.Games.find();
+        if (!games)
             return null;
-        return videos;
+        return games;
     }
-    twoVideos(videoIds) {
+    addGame(userId, score) {
         return __awaiter(this, void 0, void 0, function* () {
-            let tempSql = '';
-            for (let i = 0; i < videoIds.length; i++) {
-                tempSql += ` id !=${videoIds[i]} `;
-                if (i !== videoIds.length - 1)
-                    tempSql += 'and';
-            }
-            let videos;
-            try {
-                if (videoIds.length > 0) {
-                    videos = yield typeorm_1.getConnection().query(`select * from videos where ${tempSql} order by random() limit 2;`);
-                }
-                else {
-                    videos = yield typeorm_1.getConnection().query(`select * from videos order by random() limit 2;`);
-                }
-            }
-            catch (err) {
-                return null;
-            }
-            if (!videos)
-                return null;
-            return videos;
+            yield typeorm_1.getConnection().createQueryBuilder().insert().into(index_1.Games).values([
+                {
+                    userId,
+                    score,
+                },
+            ]);
+            return 'Success';
         });
-    }
-    invalidateVideos() {
-        return null;
     }
 };
 __decorate([
-    type_graphql_1.Query(() => [index_1.Videos], { nullable: true }),
+    type_graphql_1.Query(() => [index_1.Games], { nullable: true }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], VideoResolver.prototype, "videos", null);
+], GamesResolver.prototype, "videos", null);
 __decorate([
-    type_graphql_1.Query(() => [index_1.Videos], { nullable: true }),
-    __param(0, type_graphql_1.Arg('videoIds', () => [type_graphql_1.Int])),
+    type_graphql_1.Mutation(() => index_1.Games, { nullable: true }),
+    __param(0, type_graphql_1.Arg('userId')), __param(1, type_graphql_1.Arg('score')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Array]),
+    __metadata("design:paramtypes", [Number, Number]),
     __metadata("design:returntype", Promise)
-], VideoResolver.prototype, "twoVideos", null);
-__decorate([
-    type_graphql_1.Mutation(() => [index_1.Videos], { nullable: true }),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], VideoResolver.prototype, "invalidateVideos", null);
-VideoResolver = __decorate([
-    type_graphql_1.Resolver(index_1.Videos)
-], VideoResolver);
-exports.VideoResolver = VideoResolver;
-//# sourceMappingURL=Videos.js.map
+], GamesResolver.prototype, "addGame", null);
+GamesResolver = __decorate([
+    type_graphql_1.Resolver(index_1.Games)
+], GamesResolver);
+exports.GamesResolver = GamesResolver;
+//# sourceMappingURL=Games.js.map
