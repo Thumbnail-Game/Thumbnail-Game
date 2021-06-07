@@ -105,22 +105,22 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
             <Styled.VideoContainer>
               <Styled.VideoColumnContainer>
                 <Styled.VideoThumbnail
-                  width={672}
-                  height={378}
+                  width={604.8}
+                  height={340.2}
                   src={videoObj?.video1?.thumbnail}
                 />
-                <AnimatedViewText animatedNum={videoObj?.video1?.views} />
                 <Styled.VideoTitle>{videoObj?.video1?.title}</Styled.VideoTitle>
+                <Styled.VideoViews>{videoObj?.video1?.views.toLocaleString()} <Styled.ViewSpan>views</Styled.ViewSpan></Styled.VideoViews>
               </Styled.VideoColumnContainer>
               <p style={{ marginTop: '500px' }} className=".control-dots"></p>
               <Styled.VideoColumnContainer>
                 <Styled.VideoThumbnail
-                  width={672}
-                  height={378}
+                  width={604.8}
+                  height={340.2}
                   src={videoObj?.video2?.thumbnail}
                 />
-                <AnimatedViewText animatedNum={videoObj?.video2?.views} />
                 <Styled.VideoTitle>{videoObj?.video2?.title}</Styled.VideoTitle>
+                <Styled.VideoViews>{videoObj?.video2?.views.toLocaleString()} <Styled.ViewSpan>views</Styled.ViewSpan></Styled.VideoViews>
               </Styled.VideoColumnContainer>
             </Styled.VideoContainer>
           ))}

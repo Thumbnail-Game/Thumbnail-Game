@@ -166,7 +166,9 @@ export const Thumbnail: React.FC = () => {
   return (
     <>
       {(!isPlaying || isLoseAnimation) && (
-        <GameSummary videos={seenVideos} reset={handleResetGameFromChild} />
+        <>
+          <GameSummary videos={seenVideos} reset={handleResetGameFromChild} />
+        </>
       )}
       {isPlaying && (
         <Styled.TotalWrapper isLosingAnimation={isLoseAnimation}>
@@ -256,17 +258,17 @@ export const Thumbnail: React.FC = () => {
       {hasPicked ? (
         <>
           {!isLoseAnimation ? (
-            isPlaying ? (
+            isPlaying && (
               <Styled.Shade2 />
-            ) : (
-              <Styled.ShadeOut />
             )
           ) : (
-            <Styled.Shade />
+            <>
+              <Styled.Shade />
+            </>
           )}
         </>
       ) : (
-        <>{!isLoseAnimation ? <Styled.ShadeOut /> : <Styled.ShadeOut2 />}</>
+        <>{isPlaying && (!isLoseAnimation ? <Styled.ShadeOut /> : <Styled.ShadeOut2 />)}</>
       )}
     </>
   )

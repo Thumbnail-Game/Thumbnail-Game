@@ -32,26 +32,43 @@ export const CarouselContainer = styled.div`
 
 export const VideoContainer = styled.div`
   display: flex;
-  width: 1500px;
-  justify-content: center;
-  align-items: center;
+  width: 1300px;
+  justify-content: space-around;
   margin: auto;
-  height: 100%;
 `
 
 export const VideoColumnContainer = styled.div`
   display: flex;
+  overflow:hidden;
   flex-direction: column;
+  width:604.8px;
 `
 
-export const VideoThumbnail = styled.img`
-  margin: 0px 30px 0px 30px;
+export const VideoThumbnail = styled(Image)`
   border-radius: 10px;
   width: 50%;
 `
 
 export const VideoTitle = styled.div`
-  font-size: 20px;
+  margin-top: 12px;
+  text-align:left;
+  font-family:"Gothic Bold";
+  font-size: 27px;
+`
+
+export const VideoViews = styled.div`
+margin-top: 12px;
+text-align:left;
+font-family:"Gothic Bold";
+font-size: 33px;
+`
+
+export const ViewSpan = styled.span`
+margin-top: 12px;
+text-align:left;
+font-family:"Gothic Bold";
+font-size: 28px;
+font-weight:300;
 `
 
 export const RightArrow = styled.button`
