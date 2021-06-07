@@ -1,11 +1,12 @@
 import { useState, useEffect, useContext } from 'react'
 import { Button } from '@material-ui/core'
-import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import { Carousel } from 'react-responsive-carousel'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 import { ThemeContext } from '../../../providers/AppProvider'
-import { SeenVideos } from '../../modules/Thumbnail/Thumbnail'
+import { AnimatedViewText } from '../index'
+// import { SeenVideos } from '../../modules/Thumbnail/Thumbnail'
 import * as Styled from './GameSummary.styled'
 
 interface GameSummaryProps {
@@ -18,7 +19,7 @@ interface GameSummaryProps {
 export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
   const [indexArr, setIndexArr] = useState<any>([])
 
-  const { toggleTheme, themeMode } = useContext(ThemeContext)
+  const { themeMode } = useContext(ThemeContext)
 
   useEffect(() => {
     const tempArr = []
@@ -28,7 +29,6 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
     }
 
     setIndexArr(tempArr)
-    console.log(tempArr)
   }, [videos])
 
   return (
@@ -103,17 +103,25 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
         >
           {indexArr.map((videoObj: any, i: number): any => (
             <Styled.VideoContainer>
-              <Styled.VideoThumbnail
-                width={672}
-                height={378}
-                src={videoObj?.video1?.thumbnail}
-              />
+              <Styled.VideoColumnContainer>
+                <Styled.VideoThumbnail
+                  width={672}
+                  height={378}
+                  src={videoObj?.video1?.thumbnail}
+                />
+                <AnimatedViewText animatedNum={videoObj?.video1?.views} />
+                <Styled.VideoTitle>{videoObj?.video1?.title}</Styled.VideoTitle>
+              </Styled.VideoColumnContainer>
               <p style={{ marginTop: '500px' }} className=".control-dots"></p>
-              <Styled.VideoThumbnail
-                width={672}
-                height={378}
-                src={videoObj?.video2?.thumbnail}
-              />
+              <Styled.VideoColumnContainer>
+                <Styled.VideoThumbnail
+                  width={672}
+                  height={378}
+                  src={videoObj?.video2?.thumbnail}
+                />
+                <AnimatedViewText animatedNum={videoObj?.video2?.views} />
+                <Styled.VideoTitle>{videoObj?.video2?.title}</Styled.VideoTitle>
+              </Styled.VideoColumnContainer>
             </Styled.VideoContainer>
           ))}
         </Carousel>

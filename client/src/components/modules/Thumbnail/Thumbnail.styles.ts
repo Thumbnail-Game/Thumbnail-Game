@@ -22,13 +22,15 @@ const OutroAnimation = keyframes`
 `
 
 export const TotalWrapper = styled.div<TotalWrapperProps>`
-    animation: ${props => props.isLosingAnimation &&
+  animation: ${(props) =>
+    props.isLosingAnimation &&
     css`
       ${OutroAnimation} 1s linear
     `};
-    animation-duration: 1500ms;
+  animation-delay: 2s;
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
 `
-
 
 export const VideoText = styled.div`
   font-size: 26px;
@@ -144,7 +146,7 @@ export const Container2 = styled.div`
   display: flex;
   width: 1790px;
   margin: auto;
-  position:relative;
+  position: relative;
   justify-content: space-around;
   margin-top: 65px;
   animation-name: ${container2Animation};
@@ -293,19 +295,19 @@ const fillShadeOut2 = keyframes`
 export const Shade = styled.div`
   height: 100%;
   width: 100%;
-  position:absolute;
-  top:0;
+  position: absolute;
+  top: 0;
   opacity: 0.2;
   background-color: #eec4c4;
   animation: ${fillShade} 1000ms;
 `
 
-export const Shade2 = styled.div` 
+export const Shade2 = styled.div`
   height: 100%;
   width: 100%;
   background-color: #c2eec4;
-  position:absolute;
-  top:0;
+  position: absolute;
+  top: 0;
   opacity: 0.2;
   animation: ${fillShade} 1000ms;
 `
@@ -313,8 +315,8 @@ export const Shade2 = styled.div`
 export const ShadeOut = styled.div`
   height: 100%;
   width: 100%;
-  position:absolute;
-  top:0;
+  position: absolute;
+  top: 0;
   opacity: 0.2;
   animation: ${fillShadeOut} 700ms;
 `
@@ -322,8 +324,8 @@ export const ShadeOut = styled.div`
 export const ShadeOut2 = styled.div`
   height: 100%;
   width: 100%;
-  position:absolute;
-  top:0;
+  position: absolute;
+  top: 0;
   opacity: 0.2;
   animation: ${fillShadeOut2} 700ms;
 `
