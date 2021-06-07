@@ -1,8 +1,34 @@
-import styled from 'styled-components'
-import { keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import Image from 'next/image'
 import { BiRightArrowAlt } from 'react-icons/bi'
 import { MdCancel } from 'react-icons/md'
+
+interface TotalWrapperProps {
+  isLosingAnimation: boolean
+}
+
+const OutroAnimation = keyframes`
+  0% {
+    margin-left:0;
+    width:100%;
+    display:block;
+  }
+
+  100% {
+    margin-left: 200%;
+    width:100%;
+    display:block;
+  }
+`
+
+export const TotalWrapper = styled.div<TotalWrapperProps>`
+    animation: ${props => props.isLosingAnimation &&
+    css`
+      ${OutroAnimation} 1s linear
+    `};
+    animation-duration: 1500ms;
+`
+
 
 export const VideoText = styled.div`
   font-size: 26px;
@@ -206,6 +232,9 @@ export const Filler = styled.div`
     animation-duration: 400ms;
     background-color: #6edba3;
   }
+`
+export const HeaderText = styled.div`
+  font-family: 'Gothic Bold';
 `
 
 export const RightArrow = styled(BiRightArrowAlt)``

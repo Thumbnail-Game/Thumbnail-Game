@@ -21,7 +21,7 @@ __decorate([
 ], Games.prototype, "id", void 0);
 __decorate([
     type_graphql_1.Field(),
-    typeorm_1.Column(),
+    typeorm_1.Column({ nullable: true }),
     __metadata("design:type", Number)
 ], Games.prototype, "userId", void 0);
 __decorate([

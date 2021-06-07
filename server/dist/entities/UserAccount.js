@@ -34,6 +34,16 @@ __decorate([
     __metadata("design:type", String)
 ], UserAccount.prototype, "password", void 0);
 __decorate([
+    type_graphql_1.Field(),
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], UserAccount.prototype, "gamesPlayed", void 0);
+__decorate([
+    type_graphql_1.Field(),
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], UserAccount.prototype, "highScore", void 0);
+__decorate([
     type_graphql_1.Field(() => String),
     typeorm_1.CreateDateColumn(),
     __metadata("design:type", Date)

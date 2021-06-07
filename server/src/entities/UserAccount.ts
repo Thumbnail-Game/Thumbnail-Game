@@ -26,6 +26,15 @@ export class UserAccount extends BaseEntity {
   @Column()
   password!: string
 
+
+  @Field()
+  @Column()
+  gamesPlayed: string
+
+  @Field()
+  @Column()
+  highScore: string
+
   @Field(() => String)
   @CreateDateColumn()
   createdAt: Date
