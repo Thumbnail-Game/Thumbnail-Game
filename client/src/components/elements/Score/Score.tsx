@@ -19,20 +19,12 @@ export const Score: React.FC<ScoreProps> = ({ isPlaying, score }) => {
     }
   }, [score])
 
-  if (isPlaying)
-    return (
-      <Styled.ScoreWrapper>
-        <SubText>Score: {score}</SubText>
-        <SubText suppressHydrationWarning>
-          Highscore: {highScore ? highScore : 0}
-        </SubText>
-      </Styled.ScoreWrapper>
-    )
-  else {
-    return (
-      <>
-        <div>Not currently Playing</div>
-      </>
-    )
-  }
+  return (
+    <Styled.ScoreWrapper>
+      <SubText>Score: {score}</SubText>
+      <SubText suppressHydrationWarning>
+        Highscore: {highScore ? highScore : 0}
+      </SubText>
+    </Styled.ScoreWrapper>
+  )
 }

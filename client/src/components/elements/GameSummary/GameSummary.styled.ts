@@ -47,6 +47,7 @@ export const VideoColumnContainer = styled.div`
 export const VideoThumbnail = styled.img`
   margin: 0px 30px 0px 30px;
   border-radius: 10px;
+  width: 50%;
 `
 
 export const VideoTitle = styled.div`
