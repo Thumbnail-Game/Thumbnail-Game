@@ -285,10 +285,10 @@ const fillShadeOut2 = keyframes`
    opacity:0;
    width:0%;
  }
- 0% {
+ 50% {
   opacity:0.2;
   width:100%;
-  background-color:#C2EEC4;
+  background-color:#eec4c4;
  }
 `
 
