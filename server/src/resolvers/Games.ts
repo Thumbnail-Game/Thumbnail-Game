@@ -27,6 +27,6 @@ export class GamesResolver {
                 score
             }])
 
-        return 'Sucess'
+        return 'Success'
     }
 }
