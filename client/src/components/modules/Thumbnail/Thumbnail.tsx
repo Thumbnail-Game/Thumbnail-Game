@@ -256,17 +256,16 @@ export const Thumbnail: React.FC = () => {
       {hasPicked ? (
         <>
           {!isLoseAnimation ? (
-            isPlaying ? (
+            isPlaying && (
               <Styled.Shade2 />
-            ) : (
-              <Styled.ShadeOut />
             )
           ) : (
             <Styled.Shade />
           )}
         </>
       ) : (
-        <>{!isLoseAnimation ? <Styled.ShadeOut /> : <Styled.ShadeOut2 />}</>
+
+        <>{isPlaying && (!isLoseAnimation ? <Styled.ShadeOut /> : <Styled.ShadeOut2 />)}</>
       )}
     </>
   )
