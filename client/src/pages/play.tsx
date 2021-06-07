@@ -15,24 +15,10 @@ const Play: NextPage<PlayProps> = ({ initialHighScore }) => {
   return (
     <>
       <Nav />
-      <ViewText>
-        <HeaderText style={{ fontSize: '45px' }}>
-          Which Video Has More Views?
-        </HeaderText>
-      </ViewText>
-      <Thumbnail></Thumbnail>
+      <Thumbnail />
     </>
   )
 }
-
-const ViewText = styled.div`
-  margin-top: 60px;
-  text-align: center;
-`
-
-const HeaderText = styled.div`
-  font-family: 'Gothic Bold';
-`
 
 //  creates client with server side rendering enabled
 export default withUrqlClient(createUrqlClient, { ssr: true })(Play)

@@ -1,5 +1,6 @@
 import { useMediaQuery } from '@material-ui/core'
 import { useState, useEffect } from 'react'
+
 import {
   GetTwoVideosQuery,
   useGetTwoVideosQuery,
@@ -7,6 +8,7 @@ import {
 } from '../../../generated/graphql'
 import { AnimatedViewText, Score, GameSummary } from '../../elements/index'
 import { LoseWinAnimation } from '../../elements/LoseWinAnimation/LoseWinAnimation'
+import { HeaderText } from '../../../styles/constantStyles'
 import * as Styled from './Thumbnail.styles'
 
 export interface SeenVideos {
@@ -102,6 +104,7 @@ export const Thumbnail: React.FC = () => {
     await invalidateAndFetch()
 
     setIsPlaying(true)
+    setIsLoseAnimation(false);
     setScore(0)
     setSeenVideos([])
     setSeenVideoIds([])
@@ -140,7 +143,7 @@ export const Thumbnail: React.FC = () => {
     setTimeout(() => {
       setIsPlaying(false)
       setIsLoseAnimation(false)
-    }, 1500)
+    }, 1500) // 1500
   }
 
   const handleThumbnailClick = async (index: number) => {
@@ -162,8 +165,16 @@ export const Thumbnail: React.FC = () => {
 
   return (
     <>
-      {isPlaying ? (
-        <>
+      {
+        (!isPlaying || isLoseAnimation) && (
+          <GameSummary videos={seenVideos} reset={handleResetGameFromChild} />
+        )
+      }
+      {isPlaying && (
+        <Styled.TotalWrapper isLosingAnimation={isLoseAnimation}>
+          <HeaderText >
+            Which Video Has More Views?
+          </HeaderText>
           <Score isPlaying={isPlaying} score={score} />
           {hasPicked ? (
             <Styled.Container2>
@@ -175,7 +186,7 @@ export const Thumbnail: React.FC = () => {
                       <AnimatedViewText animatedNum={video.views} />
                     </Styled.ViewCount>
                   )}
-                  {hiddenViews && <Styled.HiddenDiv></Styled.HiddenDiv>}
+                  {hiddenViews && <Styled.HiddenDiv />}
                   <Styled.Thumbnail>
                     <a href={video.url} target="_blank">
                       <Styled.VideoImage
@@ -243,12 +254,11 @@ export const Thumbnail: React.FC = () => {
               )}
             </>
           )}
-        </>
-      ) : (
-        <GameSummary videos={seenVideos} reset={handleResetGameFromChild} />
+        </Styled.TotalWrapper>
       )}
+
       {hasPicked ? (
-        <>{!isLoseAnimation ? <Styled.Shade2 /> : <Styled.Shade />}</>
+        <>{!isLoseAnimation ? (isPlaying ? (<Styled.Shade2 />) : (<Styled.ShadeOut />)) : <Styled.Shade />}</>
       ) : (
         <>{!isLoseAnimation ? <Styled.ShadeOut /> : <Styled.ShadeOut2 />}</>
       )}

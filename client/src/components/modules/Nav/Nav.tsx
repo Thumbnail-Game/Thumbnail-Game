@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { ThemeContext } from '../../../providers/AppProvider'
 import { SettingsPopup } from '../../modules/index'
 import * as Styled from './Nav.styled'
+import { green } from '@material-ui/core/colors'
 
 export const Nav: React.FC = () => {
   const [showingSettings, setShowingSettings] = useState<boolean>(false)

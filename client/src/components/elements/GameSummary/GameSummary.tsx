@@ -10,7 +10,7 @@ interface GameSummaryProps {
 
 export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
   return (
-    <>
+    <Styled.GameSummaryWrapper>
       {Array.isArray(videos) &&
         videos.map((video, i: number) => (
           <div style={{ marginTop: '30px' }} key={i}>
@@ -31,6 +31,6 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
       >
         Play Again
       </Button>
-    </>
+    </Styled.GameSummaryWrapper>
   )
 }
