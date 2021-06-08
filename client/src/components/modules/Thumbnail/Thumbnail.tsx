@@ -1,4 +1,3 @@
-import { useMediaQuery } from '@material-ui/core'
 import { useState, useEffect } from 'react'
 
 import {
@@ -6,7 +5,7 @@ import {
   useGetTwoVideosQuery,
   useInvalidateMutation,
 } from '../../../generated/graphql'
-import { AnimatedViewText, Score, GameSummary } from '../../elements/index'
+import { AnimatedViewText, GameSummary } from '../../elements/index'
 import { LoseWinAnimation } from '../../elements/LoseWinAnimation/LoseWinAnimation'
 import { HeaderText } from '../../../styles/constantStyles'
 import * as Styled from './Thumbnail.styles'
@@ -18,12 +17,16 @@ export interface SeenVideos {
     views: number
     thumbnail: string
     url: string
+    isLoss?: boolean
   }
 }
 
-export const Thumbnail: React.FC = () => {
+interface ThumbnailProps {
+  updateScore: (updateType: string) => void
+}
+
+export const Thumbnail: React.FC<ThumbnailProps> = ({ updateScore }) => {
   const [isPlaying, setIsPlaying] = useState<boolean>(true)
-  const [score, setScore] = useState<number>(0)
   const [hasPicked, setHasPicked] = useState<boolean>(false)
 
   const [hiddenViews, setHiddenViews] = useState<boolean>(true)
@@ -105,7 +108,7 @@ export const Thumbnail: React.FC = () => {
 
     setIsPlaying(true)
     setIsLoseAnimation(false)
-    setScore(0)
+    updateScore('reset')
     setSeenVideos([])
     setSeenVideoIds([])
     setHasPicked(false)
@@ -143,17 +146,23 @@ export const Thumbnail: React.FC = () => {
     setTimeout(() => {
       setIsPlaying(false)
       setIsLoseAnimation(false)
-    }, 3500) // 1500
+    }, 1500) // 1500
   }
 
   const handleThumbnailClick = async (index: number) => {
     if (index === 0 && mostViewed === 'video1') {
-      setScore((oldScore) => oldScore + 1)
+      updateScore('increment')
     } else if (index === 0 && mostViewed !== 'video1') {
+      if (Array.isArray(seenVideos)) {
+        seenVideos[seenVideos.length - 1].isLoss = true
+      }
       handleLoseAnimation()
     } else if (index === 1 && mostViewed === 'video2') {
-      setScore((oldScore) => oldScore + 1)
+      updateScore('increment')
     } else {
+      if (Array.isArray(seenVideos)) {
+        seenVideos[seenVideos.length - 1].isLoss = true
+      }
       handleLoseAnimation()
     }
 
@@ -161,99 +170,66 @@ export const Thumbnail: React.FC = () => {
     setHiddenViews(false)
   }
 
-  // const smallerThan1600px = useMediaQuery('(min-width: 1600px)')
-
   return (
     <>
       {(!isPlaying || isLoseAnimation) && (
-        <>
-          <GameSummary videos={seenVideos} reset={handleResetGameFromChild} />
-        </>
+        <GameSummary videos={seenVideos} reset={handleResetGameFromChild} />
       )}
       {isPlaying && (
         <Styled.TotalWrapper isLosingAnimation={isLoseAnimation}>
           <HeaderText>Which Video Has More Views?</HeaderText>
-          <Score isPlaying={isPlaying} score={score} />
-          {hasPicked ? (
-            <Styled.Container2>
-              <LoseWinAnimation result={isLoseAnimation} />
-              {updatedVideos?.twoVideos?.map((video, i) => (
-                <Styled.VideoContainer key={i}>
-                  {!hiddenViews && (
-                    <Styled.ViewCount>
-                      <AnimatedViewText animatedNum={video.views} />
-                    </Styled.ViewCount>
-                  )}
-                  {hiddenViews && <Styled.HiddenDiv />}
-                  <Styled.Thumbnail>
-                    <a href={video.url} target="_blank">
-                      <Styled.VideoImage
-                        src={video.thumbnail}
-                        alt={`thumbnail-image-${i}`}
-                        width={739.2}
-                        height={415.8}
-                        onError={() => invalidateAndFetch()}
-                        onClick={() => {
-                          if (!hasPicked) handleThumbnailClick(i)
-                        }}
-                      ></Styled.VideoImage>
-                    </a>
-                    <Styled.Bar />
-                  </Styled.Thumbnail>
-                  <Styled.VideoText>{video.title}</Styled.VideoText>
-                </Styled.VideoContainer>
-              ))}
-            </Styled.Container2>
-          ) : (
-            <Styled.Container>
-              {updatedVideos?.twoVideos?.map((video, i) => (
-                <Styled.VideoContainer key={i}>
-                  {!hiddenViews && (
-                    <Styled.ViewCount>
-                      <AnimatedViewText animatedNum={video.views} />
-                    </Styled.ViewCount>
-                  )}
-                  {hiddenViews && <Styled.HiddenDiv></Styled.HiddenDiv>}
-                  <Styled.Thumbnail>
-                    <Styled.VideoImage
-                      src={video.thumbnail}
-                      alt={`thumbnail-image-${i}`}
-                      width={672}
-                      height={378}
-                      onError={() => invalidateAndFetch()}
-                      onClick={() => {
-                        if (!hasPicked) handleThumbnailClick(i)
-                      }}
-                    />
-                    <Styled.Bar />
-                  </Styled.Thumbnail>
-                  <Styled.VideoText>{video.title}</Styled.VideoText>
-                </Styled.VideoContainer>
-              ))}
-            </Styled.Container>
-          )}
-          {hasPicked && (
-            <>
-              {!isLoseAnimation && (
-                <div style={{ textAlign: 'center' }}>
-                  <Styled.Button
-                    color="primary"
+          <Styled.Container hasPicked={hasPicked}>
+            {hasPicked && <LoseWinAnimation result={isLoseAnimation} />}
+            {updatedVideos?.twoVideos?.map((video, i) => (
+              <Styled.VideoContainer key={i} hasPicked={hasPicked}>
+                {!hiddenViews ? (
+                  <Styled.ViewCount>
+                    <AnimatedViewText animatedNum={video.views} />
+                  </Styled.ViewCount>
+                ) : <Styled.HiddenDiv />}
+                <Styled.Thumbnail>
+                  {hasPicked && <a style={{
+                    position: "absolute",
+                    backgroundColor: "transparent",
+                    width: "672px",
+                    height: "378px",
+                    zIndex: 2
+                  }} href={video.url} target="_blank"></a>}
+                  <Styled.VideoImage
+                    src={video.thumbnail}
+                    alt={`thumbnail-image-${i}`}
+                    width={672}
+                    height={378}
+                    onError={() => invalidateAndFetch()}
                     onClick={() => {
-                      invalidateAndFetch()
-                      setHasPicked(false)
+                      if (!hasPicked) handleThumbnailClick(i)
                     }}
-                  >
-                    <Styled.ArrowHover>
-                      <Styled.RightArrow size={70} />
-                    </Styled.ArrowHover>
-                    <Styled.Filler />
-                  </Styled.Button>
-                </div>
-              )}
-            </>
+                  />
+                  <Styled.Bar />
+                </Styled.Thumbnail>
+                <Styled.VideoText>{video.title}</Styled.VideoText>
+              </Styled.VideoContainer>
+            ))}
+          </Styled.Container>
+          {hasPicked && !isLoseAnimation && (
+            <div style={{ textAlign: 'center' }}>
+              <Styled.Button
+                color="primary"
+                onClick={() => {
+                  invalidateAndFetch()
+                  setHasPicked(false)
+                }}
+              >
+                <Styled.ArrowHover>
+                  <Styled.RightArrow size={70} />
+                </Styled.ArrowHover>
+                <Styled.Filler />
+              </Styled.Button>
+            </div>
           )}
         </Styled.TotalWrapper>
-      )}
+      )
+      }
 
       {hasPicked ? (
         <>
@@ -262,14 +238,13 @@ export const Thumbnail: React.FC = () => {
               <Styled.Shade2 />
             )
           ) : (
-            <>
-              <Styled.Shade />
-            </>
+            <Styled.Shade />
           )}
         </>
       ) : (
         <>{isPlaying && (!isLoseAnimation ? <Styled.ShadeOut /> : <Styled.ShadeOut2 />)}</>
-      )}
+      )
+      }
     </>
   )
 }

@@ -5,12 +5,12 @@ import * as Styled from './Score.styled'
 import { SubText } from '../../../styles/constantStyles'
 
 interface ScoreProps {
-  isPlaying: boolean
   score: number
 }
 
-export const Score: React.FC<ScoreProps> = ({ isPlaying, score }) => {
+export const Score: React.FC<ScoreProps> = ({ score }) => {
   const [highScore, setHighScore] = useState(getCookie('highscore'))
+
   useEffect(() => {
     if (!highScore) setCookie('highscore', '0')
     else if (highScore && score > highScore) {
@@ -19,20 +19,12 @@ export const Score: React.FC<ScoreProps> = ({ isPlaying, score }) => {
     }
   }, [score])
 
-  if (isPlaying) {
-    return (
-      <Styled.ScoreWrapper>
-        <SubText>Score: {score}</SubText>
-        <SubText suppressHydrationWarning>
-          Highscore: {highScore ? highScore : 0}
-        </SubText>
-      </Styled.ScoreWrapper>
-    )
-  } else {
-    return (
-      <>
-        <div>Not currently Playing</div>
-      </>
-    )
-  }
+  return (
+    <Styled.ScoreWrapper>
+      <Styled.CurrentScore>Score: {score}</Styled.CurrentScore>
+      <Styled.HighScore suppressHydrationWarning>
+        Highscore: {highScore ? highScore : 0}
+      </Styled.HighScore>
+    </Styled.ScoreWrapper>
+  )
 }

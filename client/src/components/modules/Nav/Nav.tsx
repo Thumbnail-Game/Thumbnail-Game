@@ -49,4 +49,3 @@ export const Nav: React.FC = () => {
     </Styled.Nav>
   )
 }
-//  MdSettings

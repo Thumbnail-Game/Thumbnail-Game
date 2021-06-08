@@ -9,6 +9,14 @@ export default createGlobalStyle`
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Gothic Regular';
+  src: url("/fonts/GOTHIC.ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 ${({ theme }) => css`
   html {
     height: 100%;

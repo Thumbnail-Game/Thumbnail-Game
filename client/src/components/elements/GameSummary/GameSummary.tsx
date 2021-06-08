@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
+import { useRouter } from 'next/router'
 import { Button } from '@material-ui/core'
 import { Carousel } from 'react-responsive-carousel'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
@@ -7,6 +8,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { ThemeContext } from '../../../providers/AppProvider'
 import { AnimatedViewText } from '../index'
 // import { SeenVideos } from '../../modules/Thumbnail/Thumbnail'
+import { HeaderText } from '../../../styles/constantStyles'
 import * as Styled from './GameSummary.styled'
 
 interface GameSummaryProps {
@@ -19,7 +21,10 @@ interface GameSummaryProps {
 export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
   const [indexArr, setIndexArr] = useState<any>([])
 
+  const router = useRouter()
+
   const { themeMode } = useContext(ThemeContext)
+
 
   useEffect(() => {
     const tempArr = []
@@ -33,11 +38,27 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
 
   return (
     <Styled.GameSummaryWrapper>
+      <HeaderText>Game Summary</HeaderText>
       <Styled.CarouselContainer>
         <Carousel
           showStatus={false}
           autoFocus={true}
           useKeyboardArrows={true}
+          infiniteLoop={true}
+          showThumbs={false}
+          selectedItem={indexArr.length - 1}
+          renderIndicator={(onClickHandler, isSelected, index, label) =>
+            <div style={{
+              backgroundColor: `${isSelected ? '#FF0000' : '#C4C4C4'}`,
+              width: "12px",
+              height: "12px",
+              marginRight: "5px",
+              marginLeft: "5px",
+              borderRadius: "50%",
+              display: "inline-block"
+            }}>
+            </div>
+          }
           renderArrowPrev={(onClickHandler, hasPrev, label) =>
             hasPrev && (
               <button
@@ -46,11 +67,12 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                 title={label}
                 style={{
                   position: 'absolute',
-                  top: '.7em',
-                  bottom: 'auto',
-                  padding: '.4em',
+                  marginTop: "auto",
+                  marginBottom: "auto",
+                  top: '0px',
+                  bottom: '180px',
                   zIndex: 2,
-                  left: '0px',
+                  left: '70px',
                   backgroundColor: 'Transparent',
                   backgroundRepeat: 'no-repeat',
                   border: 'none',
@@ -64,6 +86,7 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                   style={{
                     height: '100%',
                     fontSize: 98,
+                    color: '#B7B7B7'
                   }}
                 />
               </button>
@@ -77,11 +100,12 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                 title={label}
                 style={{
                   position: 'absolute',
-                  top: '.7em',
-                  bottom: 'auto',
-                  padding: '.4em',
+                  marginTop: "auto",
+                  marginBottom: "auto",
+                  top: '0px',
+                  bottom: '180px',
+                  right: '70px',
                   zIndex: 2,
-                  right: '0px',
                   backgroundColor: 'Transparent',
                   backgroundRepeat: 'noRepeat',
                   border: 'none',
@@ -95,6 +119,7 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                   style={{
                     height: '100%',
                     fontSize: 98,
+                    color: '#B7B7B7'
                   }}
                 />
               </button>
@@ -102,7 +127,13 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
           }
         >
           {indexArr.map((videoObj: any, i: number): any => (
-            <Styled.VideoContainer>
+            <Styled.VideoContainer key={i}>
+              {videoObj?.video1.isLoss || videoObj?.video2.isLoss && (
+                <>
+                  <Styled.LoseIcon size={160}></Styled.LoseIcon>
+                  <Styled.IconDiv></Styled.IconDiv>
+                </>
+              )}
               <Styled.VideoColumnContainer>
                 <Styled.VideoThumbnail
                   width={604.8}
@@ -115,7 +146,7 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                   <Styled.ViewSpan>views</Styled.ViewSpan>
                 </Styled.VideoViews>
               </Styled.VideoColumnContainer>
-              <p style={{ marginTop: '500px' }} className=".control-dots"></p>
+              <p style={{ marginTop: '520px' }} className=".control-dots"></p>
               <Styled.VideoColumnContainer>
                 <Styled.VideoThumbnail
                   width={604.8}
@@ -131,17 +162,21 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
             </Styled.VideoContainer>
           ))}
         </Carousel>
-      </Styled.CarouselContainer>
-      <Button
-        variant="contained"
-        color="primary"
-        style={{ zIndex: 4 }}
-        onClick={() => {
-          reset()
-        }}
-      >
-        Play Again
-      </Button>
-    </Styled.GameSummaryWrapper>
+      </Styled.CarouselContainer >
+      <Styled.ButtonContainer>
+        <Styled.PlayAgainButton
+          onClick={() => router.push('/')}
+        >
+          Back to menu
+        </Styled.PlayAgainButton>
+        <Styled.PlayAgainButton
+          onClick={() => {
+            reset()
+          }}
+        >
+          Play again
+      </Styled.PlayAgainButton>
+      </Styled.ButtonContainer>
+    </Styled.GameSummaryWrapper >
   )
 }

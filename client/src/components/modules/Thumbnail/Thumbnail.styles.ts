@@ -2,6 +2,7 @@ import styled, { css, keyframes } from 'styled-components'
 import Image from 'next/image'
 import { BiRightArrowAlt } from 'react-icons/bi'
 import { MdCancel } from 'react-icons/md'
+import { printIntrospectionSchema } from 'graphql'
 
 interface TotalWrapperProps {
   isLosingAnimation: boolean
@@ -13,7 +14,6 @@ const OutroAnimation = keyframes`
     width:100%;
     display:block;
   }
-
   100% {
     margin-left: 200%;
     width:100%;
@@ -27,7 +27,7 @@ export const TotalWrapper = styled.div<TotalWrapperProps>`
     css`
       ${OutroAnimation} 1s linear
     `};
-  animation-delay: 2s;
+  animation-delay: 1s;
   animation-duration: 1000ms;
   animation-fill-mode: forwards;
 `
@@ -46,7 +46,21 @@ export const VideoText = styled.div`
   user-select: none; /* Standard */
 `
 
-export const VideoContainer = styled.div`
+export const VideoContainerAnimation = keyframes`
+    0% {
+      
+      margin-top: 1600px;
+    }
+    100% {
+      margin-top: -10px;
+    }
+`
+
+interface VideoContainerProps {
+  hasPicked: boolean
+}
+
+export const VideoContainer = styled.div<VideoContainerProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -54,6 +68,14 @@ export const VideoContainer = styled.div`
   margin-top: -10px;
   position: relative;
   z-index: 1;
+  
+  ${(props) => !props.hasPicked && css`
+    margin-top:-1000px;
+
+    animation-name: ${VideoContainerAnimation};
+    animation-duration:500ms;
+    animation-fill-mode: forwards; 
+  `}
 `
 
 export const VideoImage = styled(Image)`
@@ -124,16 +146,12 @@ export const Bar = styled.div`
   z-index: 1;
   background-color: ${(props) => props.theme.divider};
 `
+interface ContainerProps {
+  hasPicked: boolean
+}
 
-export const Container = styled.div`
-  display: flex;
-  width: 1525px;
-  margin: auto;
-  justify-content: space-around;
-  margin-top: 65px;
-`
 
-const container2Animation = keyframes`
+const containerAnimation = keyframes`
  0% {
   width: 1525px;
  }
@@ -142,15 +160,22 @@ const container2Animation = keyframes`
  }
 `
 
-export const Container2 = styled.div`
+export const Container = styled.div<ContainerProps>`
   display: flex;
-  width: 1790px;
+  width: 1525px;
   margin: auto;
-  position: relative;
   justify-content: space-around;
   margin-top: 65px;
-  animation-name: ${container2Animation};
-  animation-duration: 700ms;
+  ${(props) => props.hasPicked && css`
+    display: flex;
+    width: 1790px;
+    margin: auto;
+    position: relative;
+    justify-content: space-around;
+    margin-top: 65px;
+    animation-name: ${containerAnimation};
+    animation-duration: 700ms;
+  `}
 `
 
 export const ViewCount = styled.div`
@@ -285,7 +310,7 @@ const fillShadeOut2 = keyframes`
    opacity:0;
    width:0%;
  }
- 50% {
+ 0% {
   opacity:0.2;
   width:100%;
   background-color:#eec4c4;
