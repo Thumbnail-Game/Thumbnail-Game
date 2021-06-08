@@ -179,83 +179,47 @@ export const Thumbnail: React.FC = () => {
         <Styled.TotalWrapper isLosingAnimation={isLoseAnimation}>
           <HeaderText>Which Video Has More Views?</HeaderText>
           <Score isPlaying={isPlaying} score={score} />
-          {hasPicked ? (
-            <Styled.Container2>
-              <LoseWinAnimation result={isLoseAnimation} />
-              {updatedVideos?.twoVideos?.map((video, i) => (
-                <Styled.VideoContainer key={i}>
-                  {!hiddenViews && (
-                    <Styled.ViewCount>
-                      <AnimatedViewText animatedNum={video.views} />
-                    </Styled.ViewCount>
-                  )}
-                  {hiddenViews && <Styled.HiddenDiv />}
-                  <Styled.Thumbnail>
-                    <a href={video.url} target="_blank">
-                      <Styled.VideoImage
-                        src={video.thumbnail}
-                        alt={`thumbnail-image-${i}`}
-                        width={739.2}
-                        height={415.8}
-                        onError={() => invalidateAndFetch()}
-                        onClick={() => {
-                          if (!hasPicked) handleThumbnailClick(i)
-                        }}
-                      ></Styled.VideoImage>
-                    </a>
-                    <Styled.Bar />
-                  </Styled.Thumbnail>
-                  <Styled.VideoText>{video.title}</Styled.VideoText>
-                </Styled.VideoContainer>
-              ))}
-            </Styled.Container2>
-          ) : (
-            <Styled.Container>
-              {updatedVideos?.twoVideos?.map((video, i) => (
-                <Styled.VideoContainer key={i}>
-                  {!hiddenViews && (
-                    <Styled.ViewCount>
-                      <AnimatedViewText animatedNum={video.views} />
-                    </Styled.ViewCount>
-                  )}
-                  {hiddenViews && <Styled.HiddenDiv></Styled.HiddenDiv>}
-                  <Styled.Thumbnail>
-                    <Styled.VideoImage
-                      src={video.thumbnail}
-                      alt={`thumbnail-image-${i}`}
-                      width={672}
-                      height={378}
-                      onError={() => invalidateAndFetch()}
-                      onClick={() => {
-                        if (!hasPicked) handleThumbnailClick(i)
-                      }}
-                    />
-                    <Styled.Bar />
-                  </Styled.Thumbnail>
-                  <Styled.VideoText>{video.title}</Styled.VideoText>
-                </Styled.VideoContainer>
-              ))}
-            </Styled.Container>
-          )}
-          {hasPicked && (
-            <>
-              {!isLoseAnimation && (
-                <div style={{ textAlign: 'center' }}>
-                  <Styled.Button
-                    color="primary"
+          <Styled.Container hasPicked={hasPicked}>
+            {hasPicked && <LoseWinAnimation result={isLoseAnimation} />}
+            {updatedVideos?.twoVideos?.map((video, i) => (
+              <Styled.VideoContainer key={i} hasPicked={hasPicked}>
+                {!hiddenViews ? (
+                  <Styled.ViewCount>
+                    <AnimatedViewText animatedNum={video.views} />
+                  </Styled.ViewCount>
+                ) : <Styled.HiddenDiv />}
+                <Styled.Thumbnail>
+                  <Styled.VideoImage
+                    src={video.thumbnail}
+                    alt={`thumbnail-image-${i}`}
+                    width={672}
+                    height={378}
+                    onError={() => invalidateAndFetch()}
                     onClick={() => {
-                      invalidateAndFetch()
-                      setHasPicked(false)
+                      if (!hasPicked) handleThumbnailClick(i)
                     }}
-                  >
-                    <Styled.ArrowHover>
-                      <Styled.RightArrow size={70} />
-                    </Styled.ArrowHover>
-                    <Styled.Filler />
-                  </Styled.Button>
-                </div>
-              )}
-            </>
+                  />
+                  <Styled.Bar />
+                </Styled.Thumbnail>
+                <Styled.VideoText>{video.title}</Styled.VideoText>
+              </Styled.VideoContainer>
+            ))}
+          </Styled.Container>
+          {hasPicked && !isLoseAnimation && (
+            <div style={{ textAlign: 'center' }}>
+              <Styled.Button
+                color="primary"
+                onClick={() => {
+                  invalidateAndFetch()
+                  setHasPicked(false)
+                }}
+              >
+                <Styled.ArrowHover>
+                  <Styled.RightArrow size={70} />
+                </Styled.ArrowHover>
+                <Styled.Filler />
+              </Styled.Button>
+            </div>
           )}
         </Styled.TotalWrapper>
       )}

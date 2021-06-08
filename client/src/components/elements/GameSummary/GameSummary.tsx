@@ -46,6 +46,19 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
           useKeyboardArrows={true}
           infiniteLoop={true}
           showThumbs={false}
+          selectedItem={indexArr.length - 1}
+          renderIndicator={(onClickHandler, isSelected, index, label) =>
+            <div style={{
+              backgroundColor: `${isSelected ? '#FF0000' : '#C4C4C4'}`,
+              width: "12px",
+              height: "12px",
+              marginRight: "5px",
+              marginLeft: "5px",
+              borderRadius: "50%",
+              display: "inline-block"
+            }}>
+            </div>
+          }
           renderArrowPrev={(onClickHandler, hasPrev, label) =>
             hasPrev && (
               <button
@@ -130,7 +143,7 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                 <Styled.VideoTitle>{videoObj?.video1?.title}</Styled.VideoTitle>
                 <Styled.VideoViews>{videoObj?.video1?.views.toLocaleString()} <Styled.ViewSpan>views</Styled.ViewSpan></Styled.VideoViews>
               </Styled.VideoColumnContainer>
-              <p style={{ marginTop: '500px' }} className=".control-dots"></p>
+              <p style={{ marginTop: '520px' }} className=".control-dots"></p>
               <Styled.VideoColumnContainer>
                 <Styled.VideoThumbnail
                   width={604.8}

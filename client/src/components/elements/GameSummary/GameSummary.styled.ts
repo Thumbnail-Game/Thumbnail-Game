@@ -22,7 +22,7 @@ export const GameSummaryWrapper = styled.div`
   left: -100%;
   animation-name: ${SummaryAnimation};
   animation-duration: 1000ms;
-  animation-delay: 2s;
+  animation-delay: 1s;
   animation-fill-mode: forwards;
 `
 
