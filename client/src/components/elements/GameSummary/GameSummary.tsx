@@ -110,7 +110,10 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                   src={videoObj?.video1?.thumbnail}
                 />
                 <Styled.VideoTitle>{videoObj?.video1?.title}</Styled.VideoTitle>
-                <Styled.VideoViews>{videoObj?.video1?.views.toLocaleString()} <Styled.ViewSpan>views</Styled.ViewSpan></Styled.VideoViews>
+                <Styled.VideoViews>
+                  {videoObj?.video1?.views.toLocaleString()}{' '}
+                  <Styled.ViewSpan>views</Styled.ViewSpan>
+                </Styled.VideoViews>
               </Styled.VideoColumnContainer>
               <p style={{ marginTop: '500px' }} className=".control-dots"></p>
               <Styled.VideoColumnContainer>
@@ -120,7 +123,10 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                   src={videoObj?.video2?.thumbnail}
                 />
                 <Styled.VideoTitle>{videoObj?.video2?.title}</Styled.VideoTitle>
-                <Styled.VideoViews>{videoObj?.video2?.views.toLocaleString()} <Styled.ViewSpan>views</Styled.ViewSpan></Styled.VideoViews>
+                <Styled.VideoViews>
+                  {videoObj?.video2?.views.toLocaleString()}{' '}
+                  <Styled.ViewSpan>views</Styled.ViewSpan>
+                </Styled.VideoViews>
               </Styled.VideoColumnContainer>
             </Styled.VideoContainer>
           ))}
