@@ -13,7 +13,6 @@ const OutroAnimation = keyframes`
     width:100%;
     display:block;
   }
-
   100% {
     margin-left: 200%;
     width:100%;
@@ -285,7 +284,7 @@ const fillShadeOut2 = keyframes`
    opacity:0;
    width:0%;
  }
- 50% {
+ 0% {
   opacity:0.2;
   width:100%;
   background-color:#eec4c4;

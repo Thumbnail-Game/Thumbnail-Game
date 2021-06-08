@@ -18,10 +18,10 @@ export const StyledGridContainer = styled(Grid)`
 `
 
 export const HeaderText = styled.div`
-  font-size: 45px;
+  font-size: 50px;
   text-align: center;
   font-family: Gothic Bold;
-  margin-top: 60px
+  margin-top: 40px
 `
 
 export const SubText = styled.div`

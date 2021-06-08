@@ -18,6 +18,7 @@ export interface SeenVideos {
     views: number
     thumbnail: string
     url: string
+    isLoss?: boolean
   }
 }
 
@@ -150,10 +151,16 @@ export const Thumbnail: React.FC = () => {
     if (index === 0 && mostViewed === 'video1') {
       setScore((oldScore) => oldScore + 1)
     } else if (index === 0 && mostViewed !== 'video1') {
+      if (Array.isArray(seenVideos)) {
+        seenVideos[seenVideos.length - 1].isLoss = true
+      }
       handleLoseAnimation()
     } else if (index === 1 && mostViewed === 'video2') {
       setScore((oldScore) => oldScore + 1)
     } else {
+      if (Array.isArray(seenVideos)) {
+        seenVideos[seenVideos.length - 1].isLoss = true
+      }
       handleLoseAnimation()
     }
 
@@ -166,9 +173,7 @@ export const Thumbnail: React.FC = () => {
   return (
     <>
       {(!isPlaying || isLoseAnimation) && (
-        <>
-          <GameSummary videos={seenVideos} reset={handleResetGameFromChild} />
-        </>
+        <GameSummary videos={seenVideos} reset={handleResetGameFromChild} />
       )}
       {isPlaying && (
         <Styled.TotalWrapper isLosingAnimation={isLoseAnimation}>
@@ -262,9 +267,7 @@ export const Thumbnail: React.FC = () => {
               <Styled.Shade2 />
             )
           ) : (
-            <>
-              <Styled.Shade />
-            </>
+            <Styled.Shade />
           )}
         </>
       ) : (
