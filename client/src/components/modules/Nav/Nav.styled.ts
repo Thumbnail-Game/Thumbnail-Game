@@ -14,6 +14,8 @@ export const Flex = styled.div`
 
 export const Logo = styled(Image)`
   cursor: pointer;
+  position:relative;
+  z-index: 1;
 `
 
 export const SignInUp = styled.div`
@@ -40,8 +42,13 @@ export const SettingsContainer = styled.div`
 `
 
 const fillButton = keyframes`
- 0% { height: 0px; width: 0px; top:10px; left:20px;}
- 70%{
+ 0% {
+   height: 0px;
+   width: 0px;
+   top:10px;
+   left:20px;
+ }
+ 70% {
   width:100px;
   height:44px;
   top:-8px;
@@ -58,7 +65,7 @@ const fillButton = keyframes`
   border-radius:20px;
   position:absolute;
   z-index:-1;
-  }
+ }
 `
 
 export const SignInUpHover = styled.div`
@@ -86,7 +93,7 @@ export const Nav = styled.div`
 
 export const Divider = styled.div`
   width: 100%;
-  height: 10px;
+  height: 8px;
   background-color: ${(props) => props.theme.divider};
   position: absolute;
   bottom: 0;

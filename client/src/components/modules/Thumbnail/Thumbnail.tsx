@@ -1,4 +1,3 @@
-import { useMediaQuery } from '@material-ui/core'
 import { useState, useEffect } from 'react'
 
 import {
@@ -6,7 +5,7 @@ import {
   useGetTwoVideosQuery,
   useInvalidateMutation,
 } from '../../../generated/graphql'
-import { AnimatedViewText, Score, GameSummary } from '../../elements/index'
+import { AnimatedViewText, GameSummary } from '../../elements/index'
 import { LoseWinAnimation } from '../../elements/LoseWinAnimation/LoseWinAnimation'
 import { HeaderText } from '../../../styles/constantStyles'
 import * as Styled from './Thumbnail.styles'
@@ -22,9 +21,12 @@ export interface SeenVideos {
   }
 }
 
-export const Thumbnail: React.FC = () => {
+interface ThumbnailProps {
+  updateScore: (updateType: string) => void
+}
+
+export const Thumbnail: React.FC<ThumbnailProps> = ({ updateScore }) => {
   const [isPlaying, setIsPlaying] = useState<boolean>(true)
-  const [score, setScore] = useState<number>(0)
   const [hasPicked, setHasPicked] = useState<boolean>(false)
 
   const [hiddenViews, setHiddenViews] = useState<boolean>(true)
@@ -106,7 +108,7 @@ export const Thumbnail: React.FC = () => {
 
     setIsPlaying(true)
     setIsLoseAnimation(false)
-    setScore(0)
+    updateScore('reset')
     setSeenVideos([])
     setSeenVideoIds([])
     setHasPicked(false)
@@ -144,19 +146,19 @@ export const Thumbnail: React.FC = () => {
     setTimeout(() => {
       setIsPlaying(false)
       setIsLoseAnimation(false)
-    }, 3500) // 1500
+    }, 1500) // 1500
   }
 
   const handleThumbnailClick = async (index: number) => {
     if (index === 0 && mostViewed === 'video1') {
-      setScore((oldScore) => oldScore + 1)
+      updateScore('increment')
     } else if (index === 0 && mostViewed !== 'video1') {
       if (Array.isArray(seenVideos)) {
         seenVideos[seenVideos.length - 1].isLoss = true
       }
       handleLoseAnimation()
     } else if (index === 1 && mostViewed === 'video2') {
-      setScore((oldScore) => oldScore + 1)
+      updateScore('increment')
     } else {
       if (Array.isArray(seenVideos)) {
         seenVideos[seenVideos.length - 1].isLoss = true
@@ -168,8 +170,6 @@ export const Thumbnail: React.FC = () => {
     setHiddenViews(false)
   }
 
-  // const smallerThan1600px = useMediaQuery('(min-width: 1600px)')
-
   return (
     <>
       {(!isPlaying || isLoseAnimation) && (
@@ -178,7 +178,6 @@ export const Thumbnail: React.FC = () => {
       {isPlaying && (
         <Styled.TotalWrapper isLosingAnimation={isLoseAnimation}>
           <HeaderText>Which Video Has More Views?</HeaderText>
-          <Score isPlaying={isPlaying} score={score} />
           <Styled.Container hasPicked={hasPicked}>
             {hasPicked && <LoseWinAnimation result={isLoseAnimation} />}
             {updatedVideos?.twoVideos?.map((video, i) => (
@@ -189,6 +188,13 @@ export const Thumbnail: React.FC = () => {
                   </Styled.ViewCount>
                 ) : <Styled.HiddenDiv />}
                 <Styled.Thumbnail>
+                  {hasPicked && <a style={{
+                    position: "absolute",
+                    backgroundColor: "transparent",
+                    width: "672px",
+                    height: "378px",
+                    zIndex: 2
+                  }} href={video.url} target="_blank"></a>}
                   <Styled.VideoImage
                     src={video.thumbnail}
                     alt={`thumbnail-image-${i}`}
@@ -222,7 +228,8 @@ export const Thumbnail: React.FC = () => {
             </div>
           )}
         </Styled.TotalWrapper>
-      )}
+      )
+      }
 
       {hasPicked ? (
         <>
@@ -236,7 +243,8 @@ export const Thumbnail: React.FC = () => {
         </>
       ) : (
         <>{isPlaying && (!isLoseAnimation ? <Styled.ShadeOut /> : <Styled.ShadeOut2 />)}</>
-      )}
+      )
+      }
     </>
   )
 }
