@@ -59,7 +59,7 @@ const main = async () => {
     console.log(`server started on localhost:${process.env.PORT!}`)
   })
 
-  //  updateAllVideoViews after x amount of time
+  //  updateAllVideoViews after every midnight
   cron.schedule('0 0 0 * * *', () => {
     updateAllVideoViews()
   })
