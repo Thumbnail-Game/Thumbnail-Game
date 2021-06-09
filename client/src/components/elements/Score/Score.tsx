@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { getCookie, setCookie } from '../../../util/cookies'
 
 import * as Styled from './Score.styled'
-import { SubText } from '../../../styles/constantStyles'
 
 interface ScoreProps {
   score: number

@@ -3,7 +3,13 @@ import { getConnection } from 'typeorm'
 
 import { Games } from '../entities/index'
 
-@Resolver(Games)
+// ObjectType()
+// class Score {
+//   @Field()
+//   score: number
+// }
+
+@Resolver()
 export class GamesResolver {
   @Query(() => [Games], { nullable: true })
   videos() {
@@ -15,13 +21,19 @@ export class GamesResolver {
 
   @Mutation(() => Games, { nullable: true })
   async addGame(@Arg('userId') userId: number, @Arg('score') score: number) {
-    await getConnection().createQueryBuilder().insert().into(Games).values([
-      {
-        userId,
-        score,
-      },
-    ])
+    console.log('18')
+    try {
+      console.log('reached')
+      await getConnection().createQueryBuilder().insert().into(Games).values([
+        {
+          userId,
+          score,
+        },
+      ])
+    } catch (err) {
+      return null
+    }
 
-    return 'Success'
+    return score
   }
 }
