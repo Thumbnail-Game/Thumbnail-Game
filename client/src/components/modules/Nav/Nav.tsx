@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { ThemeContext } from '../../../providers/AppProvider'
 import { SettingsPopup } from '../../modules/index'
 import * as Styled from './Nav.styled'
+import { auth } from '../../../config/firebaseConfig'
 
 interface NavProps {
   signedIn: boolean
@@ -38,17 +39,38 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
               />
               <Styled.SettingsHover />
             </Styled.SettingsIconWrapper>
-            <Styled.SignInUp onClick={() => router.push('login')}>
-              Log In
-              <Styled.SignInUpHover />
-            </Styled.SignInUp>
-            <Styled.SignInUp
-              style={{ color: 'white' }}
-              onClick={() => router.push('register')}
-            >
-              Sign Up
-              <Styled.SignInUpHover2 />
-            </Styled.SignInUp>
+            {!signedIn ? (
+              <>
+                <Styled.SignInUp onClick={() => router.push('login')}>
+                  Log In
+                  <Styled.SignInUpHover />
+                </Styled.SignInUp>
+                <Styled.SignInUp
+                  style={{ color: 'white' }}
+                  onClick={() => router.push('register')}
+                >
+                  Sign Up
+                  <Styled.SignInUpHover2 />
+                </Styled.SignInUp>
+              </>
+            ) : (
+              <button
+                style={{ zIndex: 2 }}
+                onClick={() => {
+                  console.log('reached sign out button click')
+                  auth
+                    .signOut()
+                    .then(() => {
+                      console.log('sucessfully signed out')
+                    })
+                    .catch((error) => {
+                      console.log(error)
+                    })
+                }}
+              >
+                Sign Out
+              </button>
+            )}
           </Styled.SettingsContainer>
           {showingSettings && <SettingsPopup />}
         </Styled.SettingsPopUpRow>

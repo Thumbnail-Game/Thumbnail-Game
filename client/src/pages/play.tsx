@@ -13,11 +13,10 @@ const Play: NextPage = () => {
   const [score, setScore] = useState<number>(0)
 
   useEffect(() => {
-    if (auth.currentUser) {
-      console.log('current user signed in')
-      console.log(auth.currentUser)
-      setSignedIn(true)
-    }
+    auth.onAuthStateChanged((user) => {
+      if (user) setSignedIn(true)
+      else setSignedIn(false)
+    })
   }, [])
 
   const updateScore = (updateType: string) => {
