@@ -1,5 +1,8 @@
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { Formik, Form } from 'formik'
+import { Snackbar } from '@material-ui/core'
+import { Alert, AlertTitle } from '@material-ui/lab'
 
 import { auth } from '../../../config/firebaseConfig'
 import { CustomTextField } from '../../elements/index'
@@ -15,6 +18,8 @@ interface FormSubmitData {
 type errorResponse = { error: string }
 
 export const LoginForm: React.FC = () => {
+  const [showResendEmail, setShowResendEmail] = useState<boolean>(false)
+
   const router = useRouter()
 
   //  create a user and send a verification email
@@ -25,6 +30,20 @@ export const LoginForm: React.FC = () => {
 
     await auth
       .signInWithEmailAndPassword(data.email, data.password)
+      .then(() => {
+        if (!auth.currentUser?.emailVerified) {
+          response = {
+            error: 'You must verify your email before signing in!',
+          }
+          setShowResendEmail(true)
+
+          auth.currentUser?.sendEmailVerification().catch((error: any) => {
+            console.log(error)
+          })
+
+          auth.signOut()
+        }
+      })
       .catch((error) => {
         response = { error: error.message }
       })
@@ -48,11 +67,10 @@ export const LoginForm: React.FC = () => {
         //  if there is an error such as email already exists, display it
         if (res?.error) {
           setFieldError('password', res.error)
+          setSubmitting(false)
         } else {
           router.push('/play')
         }
-
-        setSubmitting(false)
       }}
     >
       {({ isSubmitting }) => (
@@ -75,6 +93,16 @@ export const LoginForm: React.FC = () => {
                 LOGIN
               </Styled.LoginButton>
             </div>
+            <Snackbar
+              open={showResendEmail}
+              onClose={() => setShowResendEmail(false)}
+              autoHideDuration={6000}
+            >
+              <Alert severity="warning">
+                <AlertTitle>You must verify your email!</AlertTitle>
+                <strong>Resending a verification email</strong>
+              </Alert>
+            </Snackbar>
           </FormContainer>
         </Form>
       )}
