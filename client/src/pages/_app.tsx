@@ -1,9 +1,27 @@
+import { useEffect } from 'react'
 import Head from 'next/head'
 import type { AppProps } from 'next/app'
 
 import { AppProvider } from '../providers/AppProvider'
+import { analytics } from '../config/firebaseConfig'
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      const logEvent = () => {
+        analytics().logEvent('screen_view')
+      }
+
+      logEvent()
+    }
+
+    // Remove the server-side injected CSS.
+    const jssStyles: Element | null = document.querySelector('#jss-server-side')
+    if (jssStyles) {
+      jssStyles.parentElement?.removeChild(jssStyles)
+    }
+  }, [])
+
   return (
     <>
       <Head>

@@ -1,6 +1,7 @@
 import { NextPage } from 'next'
 
-import { LoginForm } from '../components/elements/index'
+// import { Nav } from '../components/modules/index'
+import { LoginForm } from '../components/modules/index'
 
 const login: NextPage = () => {
   return (
