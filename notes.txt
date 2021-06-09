@@ -5,3 +5,5 @@ seen videos variable
 - filter settings ex: no music videos, etc.
 
 - look into font-family change when toggling theme mode
+
+-use a snackbar for confirmation

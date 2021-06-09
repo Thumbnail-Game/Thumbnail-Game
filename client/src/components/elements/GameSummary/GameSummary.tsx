@@ -8,8 +8,8 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 import { ThemeContext } from '../../../providers/AppProvider'
 import { AnimatedViewText } from '../index'
-// import { SeenVideos } from '../../modules/Thumbnail/Thumbnail'
 import { HeaderText } from '../../../styles/constantStyles'
+import { PlayIcon } from '../PlayIcon/PlayIcon'
 import * as Styled from './GameSummary.styled'
 
 interface GameSummaryProps {
@@ -17,15 +17,12 @@ interface GameSummaryProps {
   reset: () => void
 }
 
-//Views: {Intl.NumberFormat().format(Math.round(video.views))}
-
 export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
   const [indexArr, setIndexArr] = useState<any>([])
 
   const router = useRouter()
 
   const { themeMode } = useContext(ThemeContext)
-
 
   useEffect(() => {
     const tempArr = []
@@ -140,12 +137,12 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
               {videoObj?.video1.isLoss || videoObj?.video2.isLoss ? (
                 <>
                   <Styled.LoseIcon size={160}></Styled.LoseIcon>
-                  <Styled.IconDiv></Styled.IconDiv>
+                  <Styled.IconDiv />
                 </>
               ) : (
                 <>
                   <Styled.WinIcon size={160}></Styled.WinIcon>
-                  <Styled.IconDiv></Styled.IconDiv>
+                  <Styled.IconDiv />
                 </>
               )
               }
@@ -160,9 +157,7 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                           src={videoObj?.video1?.thumbnail}
                         />
                       </a>
-                      <Styled.PlayIcon
-                        size={80}
-                      ></Styled.PlayIcon>
+                      <PlayIcon />
                     </>
                   </Link>
                 </Styled.Videos>
@@ -184,9 +179,7 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                           src={videoObj?.video2?.thumbnail}
                         />
                       </a>
-                      <Styled.PlayIcon
-                        size={80}
-                      ></Styled.PlayIcon>
+                      <PlayIcon />
                     </>
                   </Link>
                 </Styled.Videos>

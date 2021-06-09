@@ -1,7 +1,13 @@
 import { NextPage } from 'next'
 
+import { LoginForm } from '../components/elements/index'
+
 const login: NextPage = () => {
-  return <div>Login Page</div>
+  return (
+    <>
+      <LoginForm />
+    </>
+  )
 }
 
 export default login

@@ -13,8 +13,12 @@ export const Flex = styled.div`
 `
 
 export const Logo = styled(Image)`
+`
+
+export const LogoContainer = styled.div`
   cursor: pointer;
-  position:relative;
+  height:49px;
+  overflow:hidden;
   z-index: 1;
 `
 
@@ -23,7 +27,10 @@ export const SignInUp = styled.div`
   font-size: 19.5px;
   cursor: pointer;
   position: relative;
+
   z-index: 1;
+  margin-left:10px;
+  margin-right:10px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -37,7 +44,7 @@ export const SettingsContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  width: 220px;
+  width: 270px;
   height: 50px;
 `
 
@@ -52,7 +59,7 @@ const fillButton = keyframes`
   width:100px;
   height:44px;
   top:-8px;
-  left:-19px;
+  left:-21px;
   border-radius:25px;
   position:absolute;
   z-index:-1;
@@ -61,10 +68,28 @@ const fillButton = keyframes`
   width:87px;
   height:38px;
   top:-5.75px;
-  left:-13px;
+  left: -16px;
   border-radius:20px;
   position:absolute;
   z-index:-1;
+ }
+`
+
+const DarkfillButton2 = keyframes`
+ 0% {
+    background-color:red;
+ }
+ 100% {
+   background-color: #9F1313;
+ }
+`
+
+const LightfillButton2 = keyframes`
+ 0% {
+    background-color:red;
+ }
+ 100% {
+   background-color: #E94D4D;
  }
 `
 
@@ -73,7 +98,7 @@ export const SignInUpHover = styled.div`
     width: 87px;
     height: 38px;
     top: -5.75px;
-    left: -13px;
+    left: -16px;
     border-radius: 20px;
     background-color: ${(props) => props.theme.button};
     position: absolute;
@@ -82,6 +107,24 @@ export const SignInUpHover = styled.div`
     animation-duration: 300ms;
     animation-iteration-count: 1;
   }
+`
+
+export const SignInUpHover2 = styled.div`
+    width: 87px;
+    height: 38px;
+    top: -5px;
+    left: -8.5px;
+    border-radius: 8px;
+    background-color: #FF0000;
+    position: absolute;
+    z-index: -1;
+    ${SignInUp}:hover &{
+      animation-name:${props =>
+    props.theme.theme === 'dark' ? DarkfillButton2 : LightfillButton2};
+      animation-duration: 200ms;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
 `
 
 export const Nav = styled.div`

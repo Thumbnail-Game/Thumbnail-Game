@@ -5,6 +5,8 @@ import { MdCancel } from 'react-icons/md'
 import { IoIosCheckmarkCircle } from 'react-icons/io'
 import { FaPlay } from 'react-icons/fa'
 
+import { PlayIcon, PlayIconAnimation } from '../PlayIcon/PlayIcon.styled'
+
 export const SummaryAnimation = keyframes`
     0% {
         width:100%;
@@ -86,6 +88,13 @@ export const Videos = styled.div`
     animation-duration:300ms;
     animation-fill-mode: forwards;  
   }
+
+  &:hover ${PlayIcon}{
+    color: white;
+    animation-name:${PlayIconAnimation};
+    animation-duration:500ms;
+    animation-fill-mode: fowards;
+  }
 `
 
 export const VideoTitle = styled.div`
@@ -112,28 +121,42 @@ font-family:"Gothic Bold";
 font-size: 28px;
 `
 
-export const PlayButtonHover = keyframes`
-    0% {
+export const PlayButtonHoverOut = keyframes`
+    0%{
       background-color:transparent;
-      color:white;
+      color: white;
       transform:scale(1);
-    }
-    100% {
-      background-color:white;
-      color:black;
-      transform: scale(1.07);
+    } 
+    100%{
+      background-color: white;
+      color: #282828;
+      transform:scale(1.07);
     }
 `
-export const PlayButtonOut = keyframes`
-    100% {
+export const DarkPlayButtonOut = keyframes`
+    0%{
       background-color:transparent;
-      color:white;
+      color: white;
       transform:scale(1);
+    } 
+    100%{
+      background-color: white;
+      color: #282828;
+      transform:scale(1.07);
     }
-    0% {
-      background-color:white;
-      color:black;
-      transform: scale(1.07);
+`
+
+export const LightPlayButtonOut = keyframes`
+    0%{
+      background-color:transparent;
+      color: #282828;
+      transform:scale(1);
+    } 
+
+    100%{
+      background-color:#282828;
+      color: white;
+      transform:scale(1.07);
     }
 `
 
@@ -143,24 +166,24 @@ export const PlayAgainButton = styled.button`
     width: 200px;
     height:60px;
     border-radius: 10px;
-    border: 3.5px solid white;
-    background-color:transparent;
-    color:white;
+    border: 3.5px solid ${props => props.theme.primaryText};
+    background-color: transparent;
+    color:${props => props.theme.primaryText};
     font-size:25px;
     font-family:"Gothic Bold";
     padding-bottom: 4px;
-    animation-name:${PlayButtonOut};
-    animation-duration: 200ms;
-    animation-fill-mode: forwards;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
     -khtml-user-select: none; /* Konqueror HTML */
       -moz-user-select: none; /* Old versions of Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none;
+            
     &:hover{
-      animation-name: ${PlayButtonHover};
+      animation-name: ${props =>
+    props.theme.theme === 'dark' ? DarkPlayButtonOut : LightPlayButtonOut};
       animation-duration: 300ms;
+      animation-fill-mode: forwards;
       animation-iteration-count: 1;
     }
 `
@@ -172,38 +195,6 @@ export const ButtonContainer = styled.div`
     width: 450px;
     margin:auto;
     margin-top: 50px;
-`
-
-export const RightArrow = styled.button`
-  position: absolute;
-  top: 0.7em;
-  bottom: auto;
-  padding: 0.4em;
-  zindex: 2;
-  top: 200px;
-  right: 0px;
-  backgroundcolor: Transparent;
-  backgroundrepeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  outline: none;
-`
-
-export const LeftArrow = styled.button`
-    position: absolute;
-    top: .7em;
-    bottom: auto;
-    padding: .4em;
-    zIndex: 2;
-    top: 200px;
-    left: 0px;
-    backgroundColor: Transparent:
-    backgroundRepeat: no-repeat;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    outline: none;
 `
 
 export const IconHover = keyframes`
@@ -240,18 +231,6 @@ export const WinIcon = styled(IoIosCheckmarkCircle)`
     position:absolute;
     z-index: 5;
     top:80px;
-`
-
-export const PlayIcon = styled(FaPlay)`
-    color: white;
-    position:absolute;
-    margin:auto;
-    text-align:center;
-    top:0;
-    bottom:0;
-    right:0;
-    left:0;
-    filter: drop-shadow(5px 5px 10px #121212);
 `
 
 export const IconDiv = styled.div`

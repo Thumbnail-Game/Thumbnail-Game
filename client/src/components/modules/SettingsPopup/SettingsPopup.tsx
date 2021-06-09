@@ -11,10 +11,10 @@ export const SettingsPopup: React.FC = () => {
     <>
       <Styled.TriangleIcon
         size={50}
-        color={themeMode === 'light' ? '#3d3d3d' : '#3d3d3d'}
       />
       <Styled.SettingsContainer>
         <ThemeToggle />
+        <Styled.ThemeLabel>Dark Mode</Styled.ThemeLabel>
       </Styled.SettingsContainer>
     </>
   )

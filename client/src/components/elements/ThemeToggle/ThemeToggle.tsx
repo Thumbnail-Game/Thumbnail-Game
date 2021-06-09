@@ -19,8 +19,8 @@ export const ThemeToggle: React.FC = () => {
         height={25}
         width={60}
         handleDiameter={10}
-        onColor={'#FF5733'}
-        offColor={'#124EAA'}
+        onColor={'#222222'}
+        offColor={'#222222'}
         checkedIcon={
           <FaSun
             style={{
@@ -31,7 +31,7 @@ export const ThemeToggle: React.FC = () => {
               fontSize: 18,
               paddingLeft: 5,
             }}
-            color={themeMode === 'light' ? 'white' : 'grey'}
+            color={themeMode === 'light' ? '#ef8e38' : 'grey'}
           />
         }
         uncheckedIcon={
@@ -44,7 +44,7 @@ export const ThemeToggle: React.FC = () => {
               fontSize: 18,
               paddingLeft: 14,
             }}
-            color={themeMode === 'dark' ? 'blue' : 'blue'}
+            color={themeMode === 'dark' ? 'yellow' : 'blue'}
           />
         }
         onChange={handleThemeChange}

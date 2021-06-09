@@ -16,12 +16,14 @@ export const Nav: React.FC = () => {
   return (
     <Styled.Nav>
       <Styled.Flex>
-        <Styled.Logo
-          src={`/images/thumbnail-${themeMode}.png`}
-          width={187.2}
-          height={53.456}
-          onClick={() => router.push('/')}
-        />
+        <Styled.LogoContainer>
+          <Styled.Logo
+            src={`/images/thumbnail-${themeMode}.png`}
+            width={187.2}
+            height={53.456}
+            onClick={() => router.push('/')}
+          />
+        </ Styled.LogoContainer>
         <Styled.SettingsPopUpRow>
           <Styled.SettingsContainer>
             <Styled.SettingsIconWrapper
@@ -37,9 +39,9 @@ export const Nav: React.FC = () => {
               Log In
               <Styled.SignInUpHover />
             </Styled.SignInUp>
-            <Styled.SignInUp onClick={() => router.push('register')}>
+            <Styled.SignInUp style={{ color: "white" }} onClick={() => router.push('register')}>
               Sign Up
-              <Styled.SignInUpHover />
+              <Styled.SignInUpHover2 />
             </Styled.SignInUp>
           </Styled.SettingsContainer>
           {showingSettings && <SettingsPopup />}

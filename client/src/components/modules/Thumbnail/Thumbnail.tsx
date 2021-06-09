@@ -8,6 +8,7 @@ import {
 import { AnimatedViewText, GameSummary } from '../../elements/index'
 import { LoseWinAnimation } from '../../elements/LoseWinAnimation/LoseWinAnimation'
 import { HeaderText } from '../../../styles/constantStyles'
+import { PlayIcon } from '../../elements/PlayIcon/PlayIcon'
 import * as Styled from './Thumbnail.styles'
 
 export interface SeenVideos {
@@ -188,13 +189,19 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ updateScore }) => {
                   </Styled.ViewCount>
                 ) : <Styled.HiddenDiv />}
                 <Styled.Thumbnail>
-                  {hasPicked && <a style={{
-                    position: "absolute",
-                    backgroundColor: "transparent",
-                    width: "672px",
-                    height: "378px",
-                    zIndex: 2
-                  }} href={video.url} target="_blank"></a>}
+                  {hasPicked &&
+                    <>
+                      <a style={{
+                        position: "absolute",
+                        backgroundColor: "transparent",
+                        width: "672px",
+                        height: "378px",
+                        zIndex: 2
+                      }}
+                        href={video.url} target="_blank" />
+                      <PlayIcon />
+                    </>
+                  }
                   <Styled.VideoImage
                     src={video.thumbnail}
                     alt={`thumbnail-image-${i}`}

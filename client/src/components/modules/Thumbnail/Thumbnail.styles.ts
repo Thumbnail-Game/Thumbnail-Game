@@ -2,7 +2,8 @@ import styled, { css, keyframes } from 'styled-components'
 import Image from 'next/image'
 import { BiRightArrowAlt } from 'react-icons/bi'
 import { MdCancel } from 'react-icons/md'
-import { printIntrospectionSchema } from 'graphql'
+
+import { PlayIcon, PlayIconAnimation } from '../../elements/PlayIcon/PlayIcon.styled'
 
 interface TotalWrapperProps {
   isLosingAnimation: boolean
@@ -36,7 +37,7 @@ export const VideoText = styled.div`
   font-size: 26px;
   font-family: 'Gothic Bold';
   width: 672px;
-  height: 84px;
+  height: 93px;
   overflow: hidden;
   line-height: 1.6;
   margin-top: 11px;
@@ -103,7 +104,7 @@ const hoverThumbnail = keyframes`
  }
  100% {
   transform: scale(1.034);
-  box-shadow: 9px 9px 11px #1b1b1b;
+  box-shadow: 6px 6px 11px #1b1b1b;
   border-radius:10px;
  }
 `
@@ -111,6 +112,7 @@ const hoverThumbnail = keyframes`
 const hoverThumbnailOut = keyframes`
  100% {
   transform: scale(1);
+  border-radius:10px;
  }
  0% {
   transform: scale(1.034);
@@ -133,6 +135,12 @@ export const Thumbnail = styled.div`
     animation-duration: 300ms;
     box-shadow: 9px 9px 11px #1b1b1b;
     border-radius: 10px;
+  }
+
+  &:hover ${PlayIcon}{
+    animation-name:${PlayIconAnimation};
+    animation-duration:500ms;
+    animation-fill-mode: forwards;
   }
 `
 
@@ -238,9 +246,11 @@ export const Button = styled.button`
   border-radius: 50%;
   outline: none;
   border: none;
-  background-color: white;
+  color: ${props => props.theme.background};
+  background-color: ${props => props.theme.nextArrow};
   position: relative;
   margin-top: 30px;
+  z-index:1;
   animation-name: ${moveButton};
   animation-duration: 1300ms;
 `
@@ -264,7 +274,10 @@ export const HeaderText = styled.div`
   font-family: 'Gothic Bold';
 `
 
-export const RightArrow = styled(BiRightArrowAlt)``
+export const RightArrow = styled(BiRightArrowAlt)`
+  margin-top:2px;  
+  margin-left:-1.5px;
+`
 
 export const LoseIcon = styled(MdCancel)`
   color: ${(props) => props.theme.divider};
