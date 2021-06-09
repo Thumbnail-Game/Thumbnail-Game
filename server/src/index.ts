@@ -3,13 +3,15 @@ import 'dotenv-safe/config'
 import express from 'express'
 import path from 'path'
 import cors from 'cors'
+import cron from 'node-cron'
 import { ApolloServer } from 'apollo-server-express'
 import { buildSchema } from 'type-graphql'
 import { createConnection } from 'typeorm'
 
 import { __prod__ } from './config'
-import { UserAccount, Videos } from './entities/index'
-import { UserResolver, VideoResolver } from './resolvers/index'
+import { Games, UserAccount, Videos } from './entities/index'
+import { GamesResolver, UserResolver, VideoResolver } from './resolvers/index'
+import { updateAllVideoViews } from './utils/updateAllVideoViews'
 
 const main = async () => {
   console.log(process.env.DATABASE_URL)
@@ -17,11 +19,9 @@ const main = async () => {
     type: 'postgres',
     url: process.env.DATABASE_URL,
     logging: true,
-    //  do not want synchronize true in production, possiblility of losing data
     synchronize: false,
-    entities: [UserAccount, Videos],
+    entities: [UserAccount, Videos, Games],
     migrations: [path.join(__dirname, './migrations/*')],
-    //  need this to use postgres heroku plugin
     ssl: {
       rejectUnauthorized: false,
     },
@@ -40,7 +40,7 @@ const main = async () => {
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [UserResolver, VideoResolver],
+      resolvers: [UserResolver, VideoResolver, GamesResolver],
       validate: false,
     }),
     context: ({ req, res }) => ({
@@ -57,6 +57,11 @@ const main = async () => {
 
   app.listen(parseInt(process.env.PORT!), () => {
     console.log(`server started on localhost:${process.env.PORT!}`)
+  })
+
+  //  updateAllVideoViews after x amount of time
+  cron.schedule('0 0 0 * * *', () => {
+    updateAllVideoViews()
   })
 }
 
