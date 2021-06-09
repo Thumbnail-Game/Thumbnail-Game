@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { Button } from '@material-ui/core'
 import { Carousel } from 'react-responsive-carousel'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
@@ -81,19 +82,24 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                   outline: 'none',
                 }}
               >
-                <FiChevronLeft
-                  color={themeMode === 'light' ? 'white' : 'grey'}
-                  style={{
-                    height: '100%',
-                    fontSize: 98,
-                    color: '#B7B7B7'
-                  }}
-                />
+
+                <Styled.IconHoverDiv>
+                  <FiChevronLeft
+                    color={themeMode === 'light' ? 'white' : 'grey'}
+                    style={{
+                      height: '100%',
+                      fontSize: 70,
+                      color: '#B7B7B7',
+                      marginLeft: "-3px"
+                    }}
+                  />
+                </Styled.IconHoverDiv>
               </button>
             )
           }
           renderArrowNext={(onClickHandler, hasPrev, label) =>
             hasPrev && (
+
               <button
                 type="button"
                 onClick={onClickHandler}
@@ -114,42 +120,73 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                   outline: 'none',
                 }}
               >
-                <FiChevronRight
-                  color={themeMode === 'light' ? 'white' : 'grey'}
-                  style={{
-                    height: '100%',
-                    fontSize: 98,
-                    color: '#B7B7B7'
-                  }}
-                />
+                <Styled.IconHoverDiv>
+                  <FiChevronRight
+                    color={themeMode === 'light' ? 'white' : 'grey'}
+                    style={{
+                      height: '100%',
+                      fontSize: 70,
+                      color: '#B7B7B7',
+                      marginLeft: "6px"
+                    }}
+                  />
+                </Styled.IconHoverDiv>
               </button>
             )
           }
         >
           {indexArr.map((videoObj: any, i: number): any => (
             <Styled.VideoContainer key={i}>
-              {videoObj?.video1.isLoss || videoObj?.video2.isLoss && (
+              {videoObj?.video1.isLoss || videoObj?.video2.isLoss ? (
                 <>
                   <Styled.LoseIcon size={160}></Styled.LoseIcon>
                   <Styled.IconDiv></Styled.IconDiv>
                 </>
-              )}
-              <Styled.VideoColumnContainer>
-                <Styled.VideoThumbnail
-                  width={604.8}
-                  height={340.2}
-                  src={videoObj?.video1?.thumbnail}
-                />
+              ) : (
+                <>
+                  <Styled.WinIcon size={160}></Styled.WinIcon>
+                  <Styled.IconDiv></Styled.IconDiv>
+                </>
+              )
+              }
+              <Styled.VideoColumnContainer >
+                <Styled.Videos>
+                  <Link href={videoObj?.video1?.url}>
+                    <>
+                      <a target="_blank">
+                        <Styled.VideoThumbnail
+                          width={604.8}
+                          height={340.2}
+                          src={videoObj?.video1?.thumbnail}
+                        />
+                      </a>
+                      <Styled.PlayIcon
+                        size={80}
+                      ></Styled.PlayIcon>
+                    </>
+                  </Link>
+                </Styled.Videos>
                 <Styled.VideoTitle>{videoObj?.video1?.title}</Styled.VideoTitle>
                 <Styled.VideoViews>{videoObj?.video1?.views.toLocaleString()} <Styled.ViewSpan>views</Styled.ViewSpan></Styled.VideoViews>
               </Styled.VideoColumnContainer>
               <p style={{ marginTop: '520px' }} className=".control-dots"></p>
               <Styled.VideoColumnContainer>
-                <Styled.VideoThumbnail
-                  width={604.8}
-                  height={340.2}
-                  src={videoObj?.video2?.thumbnail}
-                />
+                <Styled.Videos>
+                  <Link href={videoObj?.video2?.url}>
+                    <>
+                      <a target="_blank">
+                        <Styled.VideoThumbnail
+                          width={604.8}
+                          height={340.2}
+                          src={videoObj?.video2?.thumbnail}
+                        />
+                      </a>
+                      <Styled.PlayIcon
+                        size={80}
+                      ></Styled.PlayIcon>
+                    </>
+                  </Link>
+                </Styled.Videos>
                 <Styled.VideoTitle>{videoObj?.video2?.title}</Styled.VideoTitle>
                 <Styled.VideoViews>{videoObj?.video2?.views.toLocaleString()} <Styled.ViewSpan>views</Styled.ViewSpan></Styled.VideoViews>
               </Styled.VideoColumnContainer>

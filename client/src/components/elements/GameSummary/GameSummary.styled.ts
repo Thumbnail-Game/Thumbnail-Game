@@ -2,6 +2,8 @@ import Image from 'next/image'
 import { Button } from '@material-ui/core'
 import styled, { keyframes } from 'styled-components'
 import { MdCancel } from 'react-icons/md'
+import { IoIosCheckmarkCircle } from 'react-icons/io'
+import { FaPlay } from 'react-icons/fa'
 
 export const SummaryAnimation = keyframes`
     0% {
@@ -42,17 +44,48 @@ export const VideoContainer = styled.div`
   width: 1300px;
   justify-content: space-around;
   margin: auto;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none;
 `
 
 export const VideoColumnContainer = styled.div`
   display: flex;
-  overflow:hidden;
   flex-direction: column;
   width:604.8px;
+  padding-top:10px;
+`
+
+export const VideoHover = keyframes`
+    0% {
+      transform:scale(1);
+    }
+    60% {
+      transform:scale(1.025);
+    }
+    100% {
+      transform:scale(1.02);
+      box-shadow:5px 5px 10px #121212;
+    }
 `
 
 export const VideoThumbnail = styled(Image)`
   border-radius: 10px;
+  
+`
+
+export const Videos = styled.div`
+    border-radius:10px;
+    height:340.2px;
+    position:relative;
+  &:hover{
+    animation-name:${VideoHover};
+    animation-duration:300ms;
+    animation-fill-mode: forwards;  
+  }
 `
 
 export const VideoTitle = styled.div`
@@ -62,6 +95,7 @@ export const VideoTitle = styled.div`
   font-size: 27px;
   height: 66px;
   overflow:hidden;
+  
 `
 
 export const VideoViews = styled.div`
@@ -118,7 +152,12 @@ export const PlayAgainButton = styled.button`
     animation-name:${PlayButtonOut};
     animation-duration: 200ms;
     animation-fill-mode: forwards;
-
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+      -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
     &:hover{
       animation-name: ${PlayButtonHover};
       animation-duration: 300ms;
@@ -167,11 +206,52 @@ export const LeftArrow = styled.button`
     outline: none;
 `
 
+export const IconHover = keyframes`
+    0% {
+      background-color:transparent;
+    }
+    100% {
+      background-color:#484848;
+      opacity:0.7;
+    }
+`
+
+export const IconHoverDiv = styled.div`
+    width:83px;
+    height:83px;
+    border-radius:50%;
+    background-color:transparent;
+    &:hover{
+      animation-name:${IconHover};
+      animation-duration: 500ms;
+      animation-fill-mode: forwards;
+    }
+`
+
 export const LoseIcon = styled(MdCancel)`
     color: #FA6565;
     position:absolute;
     z-index: 5;
     top:80px;
+`
+
+export const WinIcon = styled(IoIosCheckmarkCircle)`
+    color: #6EDBA3;
+    position:absolute;
+    z-index: 5;
+    top:80px;
+`
+
+export const PlayIcon = styled(FaPlay)`
+    color: white;
+    position:absolute;
+    margin:auto;
+    text-align:center;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    filter: drop-shadow(5px 5px 10px #121212);
 `
 
 export const IconDiv = styled.div`
