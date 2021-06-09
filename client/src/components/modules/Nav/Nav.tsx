@@ -4,9 +4,12 @@ import { useRouter } from 'next/router'
 import { ThemeContext } from '../../../providers/AppProvider'
 import { SettingsPopup } from '../../modules/index'
 import * as Styled from './Nav.styled'
-import { green } from '@material-ui/core/colors'
 
-export const Nav: React.FC = () => {
+interface NavProps {
+  signedIn: boolean
+}
+
+export const Nav: React.FC<NavProps> = ({ signedIn }) => {
   const [showingSettings, setShowingSettings] = useState<boolean>(false)
 
   const { themeMode } = useContext(ThemeContext)
@@ -23,7 +26,7 @@ export const Nav: React.FC = () => {
             height={53.456}
             onClick={() => router.push('/')}
           />
-        </ Styled.LogoContainer>
+        </Styled.LogoContainer>
         <Styled.SettingsPopUpRow>
           <Styled.SettingsContainer>
             <Styled.SettingsIconWrapper
@@ -39,7 +42,10 @@ export const Nav: React.FC = () => {
               Log In
               <Styled.SignInUpHover />
             </Styled.SignInUp>
-            <Styled.SignInUp style={{ color: "white" }} onClick={() => router.push('register')}>
+            <Styled.SignInUp
+              style={{ color: 'white' }}
+              onClick={() => router.push('register')}
+            >
               Sign Up
               <Styled.SignInUpHover2 />
             </Styled.SignInUp>

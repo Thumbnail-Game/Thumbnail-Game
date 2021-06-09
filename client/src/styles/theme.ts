@@ -1,6 +1,5 @@
 export type ThemeType = typeof theme['light']
 
-
 const theme = {
   light: {
     theme: 'light',
@@ -13,7 +12,8 @@ const theme = {
     settingBackground: '#E0E0E0',
     scoreBackground: '#F1F1F1',
     nextArrow: '#444444',
-    signUp: '#E36969'
+    signUp: '#E36969',
+    formBackground: '#212121',
   },
   dark: {
     theme: 'dark',
@@ -26,7 +26,8 @@ const theme = {
     settingBackground: '#3D3D3D',
     scoreBackground: '#1C1C1C',
     nextArrow: '#F0F0F0',
-    signUp: '#9F1313'
+    signUp: '#9F1313',
+    formBackground: '#FFFFFF',
   },
 }
 

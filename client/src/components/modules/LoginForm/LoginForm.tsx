@@ -1,13 +1,35 @@
+import { useRouter } from 'next/router'
 import { Formik, Form } from 'formik'
-import { Button } from '@material-ui/core'
 
+import { auth } from '../../../config/firebaseConfig'
 import { CustomTextField } from '../../elements/index'
 import { FormContainer } from '../../../styles/constantStyles'
 import * as Styled from './LoginForm.styled'
 
+interface FormSubmitData {
+  email: string
+  password: string
+  displayName: string
+}
+
+type errorResponse = { error: string }
+
 export const LoginForm: React.FC = () => {
-  const handleSubmit = (data: any) => {
-    console.log('handle Submit reached')
+  const router = useRouter()
+
+  //  create a user and send a verification email
+  const handleSubmit = async (
+    data: FormSubmitData
+  ): Promise<errorResponse | null> => {
+    let response = null
+
+    await auth
+      .signInWithEmailAndPassword(data.email, data.password)
+      .catch((error) => {
+        response = { error: error.message }
+      })
+
+    return response
   }
 
   return (
@@ -15,44 +37,28 @@ export const LoginForm: React.FC = () => {
       validateOnChange={true}
       initialValues={{
         email: '',
-        username: '',
+        displayName: '',
         password: '',
       }}
-      onSubmit={async (data, { setSubmitting }) => {
+      onSubmit={async (data, { setSubmitting, setFieldError }) => {
         setSubmitting(true)
-        await handleSubmit(data)
+
+        const res: errorResponse | null = await handleSubmit(data)
+
+        //  if there is an error such as email already exists, display it
+        if (res?.error) {
+          setFieldError('password', res.error)
+        } else {
+          router.push('/play')
+        }
+
         setSubmitting(false)
       }}
-      validate={(values) => {
-        const errors: Record<string, string> = {}
-
-        const re =
-          /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-        if (!re.test(values.email)) {
-          console.log('invalid formiatting')
-          errors.email = 'Invalid email formatting'
-        }
-
-        if (values.username.length >= 4) {
-          errors.username = 'Usernames must be at least 4 characters long'
-        }
-
-        if (values.password.length >= 8) {
-          errors.password = 'Passwords must be at least 8 characters long'
-        }
-
-        return errors
-      }}
     >
-      {({ values, isSubmitting }) => (
+      {({ isSubmitting }) => (
         <Form>
           <FormContainer>
             <CustomTextField placeholder="Email" name="email" type="input" />
-            <CustomTextField
-              placeholder="Username"
-              name="username"
-              type="input"
-            />
             <CustomTextField
               placeholder="Password"
               name="password"
@@ -60,11 +66,15 @@ export const LoginForm: React.FC = () => {
               isPassword={true}
             />
             <div>
-              <Button disabled={isSubmitting} type="submit">
+              <Styled.LoginButton
+                disabled={isSubmitting}
+                type="submit"
+                variant="contained"
+                color="secondary"
+              >
                 LOGIN
-              </Button>
+              </Styled.LoginButton>
             </div>
-            <pre>{JSON.stringify(values, null, 2)}</pre>
           </FormContainer>
         </Form>
       )}

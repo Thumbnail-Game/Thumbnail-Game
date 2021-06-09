@@ -1,3 +1,7 @@
 import styled from 'styled-components'
+import { Button } from '@material-ui/core'
 
-export {}
+export const LoginButton = styled(Button)`
+  position: relative;
+  top: 10px;
+`
