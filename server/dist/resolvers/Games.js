@@ -34,13 +34,20 @@ let GamesResolver = class GamesResolver {
     }
     addGame(userId, score) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield typeorm_1.getConnection().createQueryBuilder().insert().into(index_1.Games).values([
-                {
-                    userId,
-                    score,
-                },
-            ]);
-            return 'Success';
+            console.log('18');
+            try {
+                console.log('reached');
+                yield typeorm_1.getConnection().createQueryBuilder().insert().into(index_1.Games).values([
+                    {
+                        userId,
+                        score,
+                    },
+                ]);
+            }
+            catch (err) {
+                return null;
+            }
+            return score;
         });
     }
 };
@@ -58,7 +65,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], GamesResolver.prototype, "addGame", null);
 GamesResolver = __decorate([
-    type_graphql_1.Resolver(index_1.Games)
+    type_graphql_1.Resolver()
 ], GamesResolver);
 exports.GamesResolver = GamesResolver;
 //# sourceMappingURL=Games.js.map

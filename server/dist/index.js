@@ -17,24 +17,24 @@ require("dotenv-safe/config");
 const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const cors_1 = __importDefault(require("cors"));
+const node_cron_1 = __importDefault(require("node-cron"));
 const apollo_server_express_1 = require("apollo-server-express");
 const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
 const index_1 = require("./entities/index");
 const index_2 = require("./resolvers/index");
+const updateAllVideoViews_1 = require("./utils/updateAllVideoViews");
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     console.log(process.env.DATABASE_URL);
-    yield typeorm_1.createConnection({
+    const conn = yield typeorm_1.createConnection({
         type: 'postgres',
         url: process.env.DATABASE_URL,
         logging: true,
         synchronize: false,
-        entities: [index_1.UserAccount, index_1.Videos],
+        entities: [index_1.UserAccount, index_1.Videos, index_1.Games],
         migrations: [path_1.default.join(__dirname, './migrations/*')],
-        ssl: {
-            rejectUnauthorized: false,
-        },
     });
+    yield conn.runMigrations();
     const app = express_1.default();
     app.set('trust proxy', 1);
     app.use(cors_1.default({
@@ -43,7 +43,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     }));
     const apolloServer = new apollo_server_express_1.ApolloServer({
         schema: yield type_graphql_1.buildSchema({
-            resolvers: [index_2.UserResolver, index_2.VideoResolver],
+            resolvers: [index_2.UserResolver, index_2.VideoResolver, index_2.GamesResolver],
             validate: false,
         }),
         context: ({ req, res }) => ({
@@ -58,6 +58,9 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     });
     app.listen(parseInt(process.env.PORT), () => {
         console.log(`server started on localhost:${process.env.PORT}`);
+    });
+    node_cron_1.default.schedule('0 0 0 * * *', () => {
+        updateAllVideoViews_1.updateAllVideoViews();
     });
 });
 main().catch((err) => {
