@@ -38,10 +38,7 @@ export const SubText = styled.div`
 export const FormContainer = styled.div`
   position: absolute;
   margin: auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  inset: 0;
   text-align: center;
   display: flex;
   flex-direction: column;
