@@ -107,12 +107,12 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ updateScore }) => {
   const handleResetGameFromChild = async () => {
     await invalidateAndFetch()
 
+    setHasPicked(false)
     setIsPlaying(true)
     setIsLoseAnimation(false)
     updateScore('reset')
     setSeenVideos([])
     setSeenVideoIds([])
-    setHasPicked(false)
   }
 
   //  invalidates the cache causing new video to be re-fetched
@@ -147,18 +147,14 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ updateScore }) => {
     setTimeout(() => {
       setIsPlaying(false)
       setIsLoseAnimation(false)
-    }, 1500) // 1500
+    }, 1500)
   }
 
   const handleThumbnailClick = async (index: number) => {
-    if (index === 0 && mostViewed === 'video1') {
-      updateScore('increment')
-    } else if (index === 0 && mostViewed !== 'video1') {
-      if (Array.isArray(seenVideos)) {
-        seenVideos[seenVideos.length - 1].isLoss = true
-      }
-      handleLoseAnimation()
-    } else if (index === 1 && mostViewed === 'video2') {
+    if (
+      (index === 0 && mostViewed === 'video1') ||
+      (index === 1 && mostViewed === 'video2')
+    ) {
       updateScore('increment')
     } else {
       if (Array.isArray(seenVideos)) {
@@ -232,16 +228,12 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ updateScore }) => {
         </Styled.TotalWrapper>
       )}
 
-      {hasPicked ? (
-        <>
-          {!isLoseAnimation ? isPlaying && <Styled.Shade2 /> : <Styled.Shade />}
-        </>
-      ) : (
-        <>
-          {isPlaying &&
-            (!isLoseAnimation ? <Styled.ShadeOut /> : <Styled.ShadeOut2 />)}
-        </>
-      )}
+      {hasPicked &&
+        (!isLoseAnimation ? isPlaying && <Styled.Shade2 /> : <Styled.Shade />)}
+
+      {!hasPicked &&
+        isPlaying &&
+        (!isLoseAnimation ? <Styled.ShadeOut /> : <Styled.ShadeOut2 />)}
     </>
   )
 }

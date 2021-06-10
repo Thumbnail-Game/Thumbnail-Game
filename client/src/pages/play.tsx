@@ -5,9 +5,8 @@ import { Snackbar } from '@material-ui/core'
 import { Alert, AlertTitle } from '@material-ui/lab'
 
 import { auth } from '../config/firebaseConfig'
-import { Thumbnail } from '../components/modules/index'
+import { Nav, Thumbnail } from '../components/modules/index'
 import { Score } from '../components/elements/index'
-import { Nav } from '../components/modules/index'
 import { createUrqlClient } from '../util/index'
 
 interface UserCallback {
