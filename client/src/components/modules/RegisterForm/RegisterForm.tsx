@@ -65,9 +65,9 @@ export const RegisterForm: React.FC = () => {
           const res: errorResponse | null = await handleSubmit(data)
 
           //  if there is an error such as email already exists, display it
+          setSubmitting(false)
           if (res?.error) {
             setFieldError('email', res.error)
-            setSubmitting(false)
           } else {
             router.push('/play')
           }

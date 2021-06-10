@@ -10,35 +10,32 @@ import { Score } from '../components/elements/index'
 import { Nav } from '../components/modules/index'
 import { createUrqlClient } from '../util/index'
 
+interface UserCallback {
+  signedIn: boolean
+  emailVerified: boolean
+}
+
 const Play: NextPage = () => {
   const [showEmailVerificationMessage, setShowEmailVerificationMessage] =
     useState<boolean>(false)
   const [signedIn, setSignedIn] = useState<boolean>(false)
   const [score, setScore] = useState<number>(0)
 
-  console.log(showEmailVerificationMessage)
-
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged((response: any) => {
-      console.log(response)
+    const unsubscribe = onAuthStateChanged((response: UserCallback) => {
       if (response.signedIn) {
-        if (!response.emailVerfied) {
+        if (!response.emailVerified) {
           setShowEmailVerificationMessage(true)
+
           auth.signOut()
+          setSignedIn(false)
+        } else {
+          setSignedIn(true)
         }
-        setSignedIn(true)
       } else {
         setSignedIn(false)
       }
     })
-    // if (user) {
-    //   if (!user.emailVerified) {
-    //     console.log('r')
-    //     setShowEmailVerificationMessage(true)
-    //     auth.signOut()
-    //   }
-    //   setSignedIn(true)
-    // } else setSignedIn(false)
 
     return () => unsubscribe()
   }, [])
@@ -47,7 +44,7 @@ const Play: NextPage = () => {
   const onAuthStateChanged = (callback: any) => {
     return auth.onAuthStateChanged((user: any) => {
       if (user) {
-        callback({ signedIn: true, emailVerfied: user.emailVerified })
+        callback({ signedIn: true, emailVerified: user.emailVerified })
       } else {
         callback({ signedIn: false })
       }
