@@ -187,21 +187,16 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ updateScore }) => {
                   <Styled.ViewCount>
                     <AnimatedViewText animatedNum={video.views} />
                   </Styled.ViewCount>
-                ) : <Styled.HiddenDiv />}
+                ) : (
+                  <Styled.HiddenDiv />
+                )}
                 <Styled.Thumbnail>
-                  {hasPicked &&
+                  {hasPicked && (
                     <>
-                      <a style={{
-                        position: "absolute",
-                        backgroundColor: "transparent",
-                        width: "672px",
-                        height: "378px",
-                        zIndex: 2
-                      }}
-                        href={video.url} target="_blank" />
+                      <Styled.VideoLink href={video.url} target="_blank" />
                       <PlayIcon />
                     </>
-                  }
+                  )}
                   <Styled.VideoImage
                     src={video.thumbnail}
                     alt={`thumbnail-image-${i}`}
@@ -235,23 +230,18 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ updateScore }) => {
             </div>
           )}
         </Styled.TotalWrapper>
-      )
-      }
+      )}
 
       {hasPicked ? (
         <>
-          {!isLoseAnimation ? (
-            isPlaying && (
-              <Styled.Shade2 />
-            )
-          ) : (
-            <Styled.Shade />
-          )}
+          {!isLoseAnimation ? isPlaying && <Styled.Shade2 /> : <Styled.Shade />}
         </>
       ) : (
-        <>{isPlaying && (!isLoseAnimation ? <Styled.ShadeOut /> : <Styled.ShadeOut2 />)}</>
-      )
-      }
+        <>
+          {isPlaying &&
+            (!isLoseAnimation ? <Styled.ShadeOut /> : <Styled.ShadeOut2 />)}
+        </>
+      )}
     </>
   )
 }

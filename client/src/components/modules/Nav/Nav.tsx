@@ -55,8 +55,10 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
               </>
             ) : (
               <>
-                <div>{auth.currentUser?.displayName}</div>
-                <button
+                <Styled.DisplayName>
+                  {auth.currentUser?.displayName}
+                </Styled.DisplayName>
+                <Styled.SignOutButton
                   style={{ zIndex: 2 }}
                   onClick={() => {
                     auth.signOut().catch((error) => {
@@ -65,7 +67,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
                   }}
                 >
                   Sign Out
-                </button>
+                </Styled.SignOutButton>
               </>
             )}
           </Styled.SettingsContainer>

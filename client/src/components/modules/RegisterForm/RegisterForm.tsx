@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import { useRouter } from 'next/router'
 import { Formik, Form } from 'formik'
 
 import { auth } from '../../../config/firebaseConfig'
+import { ThemeContext } from '../../../providers/AppProvider'
 import { CustomTextField } from '../../elements/index'
-import { FormContainer } from '../../../styles/constantStyles'
 import * as Styled from './RegisterForm.styled'
 
 interface FormSubmitData {
@@ -16,9 +16,9 @@ interface FormSubmitData {
 type errorResponse = { error: string }
 
 export const RegisterForm: React.FC = () => {
-  const [showSucessMessage, setShowSuccessMessage] = useState<boolean>(false)
-
   const router = useRouter()
+
+  const { themeMode } = useContext(ThemeContext)
 
   //  create a user and send a verification email
   const handleSubmit = async (
@@ -34,14 +34,9 @@ export const RegisterForm: React.FC = () => {
           displayName: data.displayName,
         })
 
-        user
-          ?.sendEmailVerification()
-          .then(() => {
-            setShowSuccessMessage(true)
-          })
-          .catch((error: any) => {
-            return { error: error }
-          })
+        user?.sendEmailVerification().catch((error: any) => {
+          return { error: error }
+        })
       })
       .catch((error) => {
         response = { error: error.message }
@@ -51,7 +46,7 @@ export const RegisterForm: React.FC = () => {
   }
 
   return (
-    <>
+    <Styled.FormContainer>
       <Formik
         validateOnChange={true}
         initialValues={{
@@ -94,7 +89,12 @@ export const RegisterForm: React.FC = () => {
       >
         {({ isSubmitting }) => (
           <Form>
-            <FormContainer>
+            <Styled.FormContainer>
+              <Styled.Logo
+                src={`/images/thumbnail-${themeMode}.png`}
+                width={373.4}
+                height={106.912}
+              />
               <CustomTextField placeholder="Email" name="email" type="input" />
               <CustomTextField
                 placeholder="Display Name"
@@ -117,10 +117,10 @@ export const RegisterForm: React.FC = () => {
                   REGISTER
                 </Styled.RegisterButton>
               </div>
-            </FormContainer>
+            </Styled.FormContainer>
           </Form>
         )}
       </Formik>
-    </>
+    </Styled.FormContainer>
   )
 }

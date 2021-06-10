@@ -3,7 +3,10 @@ import Image from 'next/image'
 import { BiRightArrowAlt } from 'react-icons/bi'
 import { MdCancel } from 'react-icons/md'
 
-import { PlayIcon, PlayIconAnimation } from '../../elements/PlayIcon/PlayIcon.styled'
+import {
+  PlayIcon,
+  PlayIconAnimation,
+} from '../../elements/PlayIcon/PlayIcon.styled'
 
 interface TotalWrapperProps {
   isLosingAnimation: boolean
@@ -69,14 +72,16 @@ export const VideoContainer = styled.div<VideoContainerProps>`
   margin-top: -10px;
   position: relative;
   z-index: 1;
-  
-  ${(props) => !props.hasPicked && css`
-    margin-top:-1000px;
 
-    animation-name: ${VideoContainerAnimation};
-    animation-duration:500ms;
-    animation-fill-mode: forwards; 
-  `}
+  ${(props) =>
+    !props.hasPicked &&
+    css`
+      margin-top: -1000px;
+
+      animation-name: ${VideoContainerAnimation};
+      animation-duration: 500ms;
+      animation-fill-mode: forwards;
+    `}
 `
 
 export const VideoImage = styled(Image)`
@@ -137,11 +142,19 @@ export const Thumbnail = styled.div`
     border-radius: 10px;
   }
 
-  &:hover ${PlayIcon}{
-    animation-name:${PlayIconAnimation};
-    animation-duration:500ms;
+  &:hover ${PlayIcon} {
+    animation-name: ${PlayIconAnimation};
+    animation-duration: 500ms;
     animation-fill-mode: forwards;
   }
+`
+
+export const VideoLink = styled.a`
+  position: absolute;
+  background-color: transparent;
+  width: 672px;
+  height: 378px;
+  z-index: 2;
 `
 
 export const Bar = styled.div`
@@ -154,10 +167,6 @@ export const Bar = styled.div`
   z-index: 1;
   background-color: ${(props) => props.theme.divider};
 `
-interface ContainerProps {
-  hasPicked: boolean
-}
-
 
 const containerAnimation = keyframes`
  0% {
@@ -168,22 +177,28 @@ const containerAnimation = keyframes`
  }
 `
 
+interface ContainerProps {
+  hasPicked: boolean
+}
+
 export const Container = styled.div<ContainerProps>`
   display: flex;
   width: 1525px;
   margin: auto;
   justify-content: space-around;
   margin-top: 65px;
-  ${(props) => props.hasPicked && css`
-    display: flex;
-    width: 1790px;
-    margin: auto;
-    position: relative;
-    justify-content: space-around;
-    margin-top: 65px;
-    animation-name: ${containerAnimation};
-    animation-duration: 700ms;
-  `}
+  ${(props) =>
+    props.hasPicked &&
+    css`
+      display: flex;
+      width: 1790px;
+      margin: auto;
+      position: relative;
+      justify-content: space-around;
+      margin-top: 65px;
+      animation-name: ${containerAnimation};
+      animation-duration: 700ms;
+    `}
 `
 
 export const ViewCount = styled.div`
@@ -246,11 +261,11 @@ export const Button = styled.button`
   border-radius: 50%;
   outline: none;
   border: none;
-  color: ${props => props.theme.background};
-  background-color: ${props => props.theme.nextArrow};
+  color: ${(props) => props.theme.background};
+  background-color: ${(props) => props.theme.nextArrow};
   position: relative;
   margin-top: 30px;
-  z-index:1;
+  z-index: 1;
   animation-name: ${moveButton};
   animation-duration: 1300ms;
 `
@@ -275,8 +290,8 @@ export const HeaderText = styled.div`
 `
 
 export const RightArrow = styled(BiRightArrowAlt)`
-  margin-top:2px;  
-  margin-left:-1.5px;
+  margin-top: 2px;
+  margin-left: -1.5px;
 `
 
 export const LoseIcon = styled(MdCancel)`

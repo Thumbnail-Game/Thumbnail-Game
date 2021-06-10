@@ -12,13 +12,12 @@ export const Flex = styled.div`
   top: 22.5px;
 `
 
-export const Logo = styled(Image)`
-`
+export const Logo = styled(Image)``
 
 export const LogoContainer = styled.div`
   cursor: pointer;
-  height:49px;
-  overflow:hidden;
+  height: 49px;
+  overflow: hidden;
   z-index: 1;
 `
 
@@ -29,8 +28,8 @@ export const SignInUp = styled.div`
   position: relative;
 
   z-index: 1;
-  margin-left:10px;
-  margin-right:10px;
+  margin-left: 10px;
+  margin-right: 10px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -110,21 +109,21 @@ export const SignInUpHover = styled.div`
 `
 
 export const SignInUpHover2 = styled.div`
-    width: 87px;
-    height: 38px;
-    top: -5px;
-    left: -8.5px;
-    border-radius: 8px;
-    background-color: #FF0000;
-    position: absolute;
-    z-index: -1;
-    ${SignInUp}:hover &{
-      animation-name:${props =>
-    props.theme.theme === 'dark' ? DarkfillButton2 : LightfillButton2};
-      animation-duration: 200ms;
-      animation-iteration-count: 1;
-      animation-fill-mode: forwards;
-    }
+  width: 87px;
+  height: 38px;
+  top: -5px;
+  left: -8.5px;
+  border-radius: 8px;
+  background-color: #ff0000;
+  position: absolute;
+  z-index: -1;
+  ${SignInUp}:hover & {
+    animation-name: ${(props) =>
+      props.theme.theme === 'dark' ? DarkfillButton2 : LightfillButton2};
+    animation-duration: 200ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
 `
 
 export const Nav = styled.div`
@@ -200,3 +199,12 @@ export const SettingsHover = styled.div`
     animation-iteration-count: 1;
   }
 `
+
+export const DisplayName = styled.div`
+  font-family: 'Gothic Bold';
+  font-size: 19.5px;
+  margin-top: 2px;
+  color: ${(props) => props.theme.primaryText};
+`
+
+export const SignOutButton = styled.div``

@@ -31,7 +31,7 @@ export const GameSummaryWrapper = styled.div`
 `
 
 export const GameSummaryTitle = styled.div`
-  font-family:"Gothic Bold";
+  font-family: 'Gothic Bold';
   font-size: 45px;
 `
 
@@ -49,16 +49,16 @@ export const VideoContainer = styled.div`
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-      -ms-user-select: none; /* Internet Explorer/Edge */
-          user-select: none;
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
 `
 
 export const VideoColumnContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width:604.8px;
-  padding-top:10px;
+  width: 604.8px;
+  padding-top: 10px;
 `
 
 export const VideoHover = keyframes`
@@ -76,49 +76,48 @@ export const VideoHover = keyframes`
 
 export const VideoThumbnail = styled(Image)`
   border-radius: 10px;
-  
 `
 
 export const Videos = styled.div`
-    border-radius:10px;
-    height:340.2px;
-    position:relative;
-  &:hover{
-    animation-name:${VideoHover};
-    animation-duration:300ms;
-    animation-fill-mode: forwards;  
+  border-radius: 10px;
+  height: 340.2px;
+  position: relative;
+
+  &:hover {
+    animation-name: ${VideoHover};
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
   }
 
-  &:hover ${PlayIcon}{
+  &:hover ${PlayIcon} {
     color: white;
-    animation-name:${PlayIconAnimation};
-    animation-duration:500ms;
+    animation-name: ${PlayIconAnimation};
+    animation-duration: 500ms;
     animation-fill-mode: fowards;
   }
 `
 
 export const VideoTitle = styled.div`
   margin-top: 12px;
-  text-align:left;
-  font-family:"Gothic Bold";
+  text-align: left;
+  font-family: 'Gothic Bold';
   font-size: 27px;
   height: 66px;
-  overflow:hidden;
-  
+  overflow: hidden;
 `
 
 export const VideoViews = styled.div`
   margin-top: 10px;
-  text-align:left;
-  font-family:"Gothic Bold";
+  text-align: left;
+  font-family: 'Gothic Bold';
   font-size: 33px;
 `
 
 export const ViewSpan = styled.span`
-margin-top: 12px;
-text-align:left;
-font-family:"Gothic Bold";
-font-size: 28px;
+  margin-top: 12px;
+  text-align: left;
+  font-family: 'Gothic Bold';
+  font-size: 28px;
 `
 
 export const PlayButtonHoverOut = keyframes`
@@ -161,40 +160,40 @@ export const LightPlayButtonOut = keyframes`
 `
 
 export const PlayAgainButton = styled.button`
-    position: relative;
-    outline:none;
-    width: 200px;
-    height:60px;
-    border-radius: 10px;
-    border: 3.5px solid ${props => props.theme.primaryText};
-    background-color: transparent;
-    color:${props => props.theme.primaryText};
-    font-size:25px;
-    font-family:"Gothic Bold";
-    padding-bottom: 4px;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-      -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none;
-            
-    &:hover{
-      animation-name: ${props =>
-    props.theme.theme === 'dark' ? DarkPlayButtonOut : LightPlayButtonOut};
-      animation-duration: 300ms;
-      animation-fill-mode: forwards;
-      animation-iteration-count: 1;
-    }
+  position: relative;
+  outline: none;
+  width: 200px;
+  height: 60px;
+  border-radius: 10px;
+  border: 3.5px solid ${(props) => props.theme.primaryText};
+  background-color: transparent;
+  color: ${(props) => props.theme.primaryText};
+  font-size: 25px;
+  font-family: 'Gothic Bold';
+  padding-bottom: 4px;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+
+  &:hover {
+    animation-name: ${(props) =>
+      props.theme.theme === 'dark' ? DarkPlayButtonOut : LightPlayButtonOut};
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
 `
 
 export const ButtonContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 450px;
-    margin:auto;
-    margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 450px;
+  margin: auto;
+  margin-top: 50px;
 `
 
 export const IconHover = keyframes`
@@ -208,37 +207,37 @@ export const IconHover = keyframes`
 `
 
 export const IconHoverDiv = styled.div`
-    width:83px;
-    height:83px;
-    border-radius:50%;
-    background-color:transparent;
-    &:hover{
-      animation-name:${IconHover};
-      animation-duration: 500ms;
-      animation-fill-mode: forwards;
-    }
+  width: 83px;
+  height: 83px;
+  border-radius: 50%;
+  background-color: transparent;
+  &:hover {
+    animation-name: ${IconHover};
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+  }
 `
 
 export const LoseIcon = styled(MdCancel)`
-    color: #FA6565;
-    position:absolute;
-    z-index: 5;
-    top:80px;
+  color: #fa6565;
+  position: absolute;
+  z-index: 5;
+  top: 80px;
 `
 
 export const WinIcon = styled(IoIosCheckmarkCircle)`
-    color: #6EDBA3;
-    position:absolute;
-    z-index: 5;
-    top:80px;
+  color: #6edba3;
+  position: absolute;
+  z-index: 5;
+  top: 80px;
 `
 
 export const IconDiv = styled.div`
-    width:110px;
-    height:110px;
-    border-radius:50%;
-    position:absolute;
-    background-color:#282828;
-    z-index:4;
-    top:105px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #282828;
+  z-index: 4;
+  top: 105px;
 `
