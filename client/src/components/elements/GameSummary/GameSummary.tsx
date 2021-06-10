@@ -6,7 +6,6 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 import { ThemeContext } from '../../../providers/AppProvider'
-import { AnimatedViewText } from '../index'
 import { HeaderText } from '../../../styles/constantStyles'
 import { PlayIcon } from '../PlayIcon/PlayIcon'
 import * as Styled from './GameSummary.styled'

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { useRouter } from 'next/router'
 import { Formik, Form } from 'formik'
 import { Snackbar } from '@material-ui/core'
@@ -6,7 +6,8 @@ import { Alert, AlertTitle } from '@material-ui/lab'
 
 import { auth } from '../../../config/firebaseConfig'
 import { CustomTextField } from '../../elements/index'
-import { FormContainer } from '../../../styles/constantStyles'
+import { ThemeContext } from '../../../providers/AppProvider'
+import { Logo, FormContainer } from '../../../styles/constantStyles'
 import * as Styled from './LoginForm.styled'
 
 interface FormSubmitData {
@@ -21,6 +22,8 @@ export const LoginForm: React.FC = () => {
   const [showResendEmail, setShowResendEmail] = useState<boolean>(false)
 
   const router = useRouter()
+
+  const { themeMode } = useContext(ThemeContext)
 
   //  create a user and send a verification email
   const handleSubmit = async (
@@ -77,6 +80,11 @@ export const LoginForm: React.FC = () => {
       {({ isSubmitting }) => (
         <Form>
           <FormContainer>
+            <Logo
+              src={`/images/thumbnail-${themeMode}.png`}
+              width={373.4}
+              height={106.912}
+            />
             <CustomTextField placeholder="Email" name="email" type="input" />
             <CustomTextField
               placeholder="Password"
@@ -89,7 +97,13 @@ export const LoginForm: React.FC = () => {
                 disabled={isSubmitting}
                 type="submit"
                 variant="contained"
-                color="secondary"
+                color="default"
+                style={{
+                  fontSize: '25px',
+                  textTransform: 'none',
+                  fontFamily: 'Gothic Bold',
+                  borderRadius: '15px',
+                }}
               >
                 LOGIN
               </Styled.LoginButton>

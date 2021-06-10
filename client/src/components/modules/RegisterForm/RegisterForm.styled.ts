@@ -1,21 +1,18 @@
-import styled from 'styled-components'
-import Image from 'next/image'
+import styled, { keyframes } from 'styled-components'
 import { Button } from '@material-ui/core'
 
-export const Logo = styled(Image)``
+export const fillRegisterButton = keyframes`
+  0% {
 
-export const FormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 600px;
-  height: 100vh;
-  margin: auto;
-  background-color: blue;
+  }
+  100% {
+
+  }
 `
 
 export const RegisterButton = styled(Button)`
   position: relative;
   top: 10px;
+  width: 160px;
+  height: 50px;
 `

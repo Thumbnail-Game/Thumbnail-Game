@@ -4,6 +4,7 @@ import { Formik, Form } from 'formik'
 
 import { auth } from '../../../config/firebaseConfig'
 import { ThemeContext } from '../../../providers/AppProvider'
+import { Logo, FormContainer } from '../../../styles/constantStyles'
 import { CustomTextField } from '../../elements/index'
 import * as Styled from './RegisterForm.styled'
 
@@ -46,7 +47,7 @@ export const RegisterForm: React.FC = () => {
   }
 
   return (
-    <Styled.FormContainer>
+    <FormContainer>
       <Formik
         validateOnChange={true}
         initialValues={{
@@ -89,8 +90,8 @@ export const RegisterForm: React.FC = () => {
       >
         {({ isSubmitting }) => (
           <Form>
-            <Styled.FormContainer>
-              <Styled.Logo
+            <FormContainer>
+              <Logo
                 src={`/images/thumbnail-${themeMode}.png`}
                 width={373.4}
                 height={106.912}
@@ -112,15 +113,21 @@ export const RegisterForm: React.FC = () => {
                   disabled={isSubmitting}
                   type="submit"
                   variant="contained"
-                  color="secondary"
+                  color="default"
+                  style={{
+                    fontSize: '25px',
+                    textTransform: 'none',
+                    fontFamily: 'Gothic Bold',
+                    borderRadius: '15px',
+                  }}
                 >
-                  REGISTER
+                  Sign Up
                 </Styled.RegisterButton>
               </div>
-            </Styled.FormContainer>
+            </FormContainer>
           </Form>
         )}
       </Formik>
-    </Styled.FormContainer>
+    </FormContainer>
   )
 }

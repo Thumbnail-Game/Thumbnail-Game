@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Image from 'next/image'
 import { Grid } from '@material-ui/core'
 
 export const CenterContainer = styled.div`
@@ -35,9 +36,27 @@ export const SubText = styled.div`
 `
 
 export const FormContainer = styled.div`
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  margin-top: 25px;
+  width: 500px;
+  height: 600px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: ${(props) => props.theme.settingBackground};
+
+  @media (max-width: 650px) {
+    width: 80%;
+    height: 500px;
+  }
 `
+
+export const Logo = styled(Image)``

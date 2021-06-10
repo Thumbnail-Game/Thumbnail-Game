@@ -24,6 +24,8 @@ export const CustomTextField: React.FC<CustomTextFieldProps> = ({
       helperText={errorText}
       error={!!errorText}
       autoComplete="true"
+      variant="outlined"
+      color="secondary"
     />
   )
 }
