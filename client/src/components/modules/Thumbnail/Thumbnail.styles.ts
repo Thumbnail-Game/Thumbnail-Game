@@ -285,9 +285,6 @@ export const Filler = styled.div`
     background-color: #6edba3;
   }
 `
-export const HeaderText = styled.div`
-  font-family: 'Gothic Bold';
-`
 
 export const RightArrow = styled(BiRightArrowAlt)`
   margin-top: 2px;

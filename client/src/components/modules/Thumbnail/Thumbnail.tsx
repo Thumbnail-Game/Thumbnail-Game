@@ -227,7 +227,6 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ updateScore }) => {
           )}
         </Styled.TotalWrapper>
       )}
-
       {hasPicked &&
         (!isLoseAnimation ? isPlaying && <Styled.Shade2 /> : <Styled.Shade />)}
 

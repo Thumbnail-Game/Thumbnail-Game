@@ -19,16 +19,20 @@ export const StyledGridContainer = styled(Grid)`
 `
 
 export const HeaderText = styled.div`
+  font-family: Gothic Bold;
   font-size: 50px;
   text-align: center;
-  font-family: Gothic Bold;
+  user-select: none;
+  margin-top: 40px;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none;
-  margin-top: 40px;
+
+  @media (max-width: 1200px) {
+    font-size: 30px;
+  }
 `
 
 export const SubText = styled.div`
