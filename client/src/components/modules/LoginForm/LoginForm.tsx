@@ -124,7 +124,13 @@ export const LoginForm: React.FC = () => {
           </Form>
         )}
       </Formik>
-      <Styled.BackButton>Back</Styled.BackButton>
+      <Styled.BackButton
+        onClick={
+          (e) => {
+            e.preventDefault()
+            router.push("/")
+          }}
+      >Back</Styled.BackButton>
     </>
   )
 }
