@@ -5,9 +5,7 @@ import { LoginForm } from '../components/modules/index'
 
 const login: NextPage = () => {
   return (
-    <>
-      <LoginForm />
-    </>
+    <LoginForm />
   )
 }
 

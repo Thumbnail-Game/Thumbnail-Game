@@ -48,8 +48,8 @@ export const FormContainer = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 500px;
-  height: 600px;
+  width: 23%;
+  height: 50%;
   padding: 20px;
   border-radius: 20px;
   background-color: ${(props) => props.theme.settingBackground};
