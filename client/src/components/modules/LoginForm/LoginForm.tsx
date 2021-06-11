@@ -56,71 +56,75 @@ export const LoginForm: React.FC = () => {
   }
 
   return (
-    <Formik
-      validateOnChange={true}
-      initialValues={{
-        email: '',
-        displayName: '',
-        password: '',
-      }}
-      onSubmit={async (data, { setSubmitting, setFieldError }) => {
-        setSubmitting(true)
+    <>
+      <Styled.Divider></Styled.Divider>
+      <Formik
+        validateOnChange={true}
+        initialValues={{
+          email: '',
+          displayName: '',
+          password: '',
+        }}
+        onSubmit={async (data, { setSubmitting, setFieldError }) => {
+          setSubmitting(true)
 
-        const res: errorResponse | null = await handleSubmit(data)
+          const res: errorResponse | null = await handleSubmit(data)
 
-        //  if there is an error such as email already exists, display it
-        if (res?.error) {
-          setFieldError('password', res.error)
-          setSubmitting(false)
-        } else {
-          router.push('/play')
-        }
-      }}
-    >
-      {({ isSubmitting }) => (
-        <Form>
-          <FormContainer>
-            <Logo
-              src={`/images/thumbnail-${themeMode}.png`}
-              width={373.4}
-              height={106.912}
-            />
-            <CustomTextField placeholder="Email" name="email" type="input" />
-            <CustomTextField
-              placeholder="Password"
-              name="password"
-              type="password"
-              isPassword={true}
-            />
-            <div>
-              <Styled.LoginButton
-                disabled={isSubmitting}
-                type="submit"
-                variant="contained"
-                color="default"
-                style={{
-                  fontSize: '25px',
-                  textTransform: 'none',
-                  fontFamily: 'Gothic Bold',
-                  borderRadius: '15px',
-                }}
-              >
-                LOGIN
+          //  if there is an error such as email already exists, display it
+          if (res?.error) {
+            setFieldError('password', res.error)
+            setSubmitting(false)
+          } else {
+            router.push('/play')
+          }
+        }}
+      >
+        {({ isSubmitting }) => (
+          <Form>
+            <FormContainer>
+              <Logo
+                src={`/images/thumbnail-${themeMode}.png`}
+                width={373.4}
+                height={106.912}
+              />
+              <CustomTextField placeholder="Email" name="email" type="input" />
+              <CustomTextField
+                placeholder="Password"
+                name="password"
+                type="password"
+                isPassword={true}
+              />
+              <div>
+                <Styled.LoginButton
+                  disabled={isSubmitting}
+                  type="submit"
+                  variant="contained"
+                  color="default"
+                  style={{
+                    fontSize: '25px',
+                    textTransform: 'none',
+                    fontFamily: 'Gothic Bold',
+                    borderRadius: '15px',
+                  }}
+                >
+                  LOGIN
               </Styled.LoginButton>
-            </div>
-            <Snackbar
-              open={showResendEmail}
-              onClose={() => setShowResendEmail(false)}
-              autoHideDuration={6000}
-            >
-              <Alert severity="warning">
-                <AlertTitle>You must verify your email!</AlertTitle>
-                <strong>Resending a verification email</strong>
-              </Alert>
-            </Snackbar>
-          </FormContainer>
-        </Form>
-      )}
-    </Formik>
+              </div>
+              <Snackbar
+                open={showResendEmail}
+                onClose={() => setShowResendEmail(false)}
+                autoHideDuration={6000}
+              >
+                <Alert severity="warning">
+                  <AlertTitle>You must verify your email!</AlertTitle>
+                  <strong>Resending a verification email</strong>
+                </Alert>
+              </Snackbar>
+            </FormContainer>
+          </Form>
+        )}
+      </Formik>
+      <Styled.BackButton>Back</Styled.BackButton>
+    </>
   )
 }
