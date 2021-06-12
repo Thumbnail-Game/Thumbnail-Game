@@ -1,4 +1,4 @@
-query getTwoVideos($videoIds: [Int]) {
+query getTwoVideos($videoIds: [Int!]!) {
   twoVideos(videoIds: $videoIds) {
     id
     title

@@ -20,10 +20,20 @@ export type FieldError = {
   message: Scalars['String'];
 };
 
+export type Games = {
+  __typename?: 'Games';
+  id: Scalars['Float'];
+  userId: Scalars['Float'];
+  score: Scalars['Float'];
+  createdAt: Scalars['String'];
+  updatedAt: Scalars['String'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createUser: UserResponse;
   invalidateVideos?: Maybe<Array<Videos>>;
+  addGame?: Maybe<Games>;
 };
 
 
@@ -31,12 +41,19 @@ export type MutationCreateUserArgs = {
   options: UserInput;
 };
 
+
+export type MutationAddGameArgs = {
+  score: Scalars['Float'];
+  userId: Scalars['Float'];
+};
+
 export type Query = {
   __typename?: 'Query';
   user?: Maybe<UserAccount>;
   users?: Maybe<Array<UserAccount>>;
-  videos?: Maybe<Array<Videos>>;
+  videos?: Maybe<Array<Games>>;
   twoVideos?: Maybe<Array<Videos>>;
+  getVideos?: Maybe<Array<Videos>>;
 };
 
 
@@ -49,11 +66,18 @@ export type QueryTwoVideosArgs = {
   videoIds: Array<Scalars['Int']>;
 };
 
+
+export type QueryGetVideosArgs = {
+  numVideos: Scalars['Int'];
+};
+
 export type UserAccount = {
   __typename?: 'UserAccount';
   id: Scalars['Float'];
   username: Scalars['String'];
   email: Scalars['String'];
+  gamesPlayed: Scalars['String'];
+  highScore: Scalars['String'];
   createdAt: Scalars['String'];
   updatedAt: Scalars['String'];
 };
@@ -150,14 +174,16 @@ export type GetUsersQuery = (
   )>> }
 );
 
-export type GetVideosQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetVideosQueryVariables = Exact<{
+  numVideos: Scalars['Int'];
+}>;
 
 
 export type GetVideosQuery = (
   { __typename?: 'Query' }
-  & { videos?: Maybe<Array<(
+  & { getVideos?: Maybe<Array<(
     { __typename?: 'Videos' }
-    & Pick<Videos, 'id' | 'title' | 'url' | 'thumbnail' | 'views' | 'date_published' | 'channel_id'>
+    & Pick<Videos, 'id' | 'title' | 'thumbnail' | 'views' | 'date_published' | 'channel_id' | 'url'>
   )>> }
 );
 
@@ -235,15 +261,15 @@ export function useGetUsersQuery(options: Omit<Urql.UseQueryArgs<GetUsersQueryVa
   return Urql.useQuery<GetUsersQuery>({ query: GetUsersDocument, ...options });
 };
 export const GetVideosDocument = gql`
-    query getVideos {
-  videos {
+    query getVideos($numVideos: Int!) {
+  getVideos(numVideos: $numVideos) {
     id
     title
-    url
     thumbnail
     views
     date_published
     channel_id
+    url
   }
 }
     `;
