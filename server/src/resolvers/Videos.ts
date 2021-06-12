@@ -35,6 +35,25 @@ export class VideoResolver {
       }
     } catch (err) {
       //  TODO: return field error instead
+      console.log(err)
+      return null
+    }
+
+    if (!videos) return null
+
+    return videos
+  }
+
+  @Query(() => [Videos], { nullable: true })
+  async getVideos(@Arg('numVideos', () => Int) numVideos: number) {
+    let videos
+    try {
+      videos = await getConnection().query(
+        `select * from videos order by random() limit ${numVideos};`
+      )
+    } catch (err) {
+      //  TODO: return field error instead
+      console.log(err)
       return null
     }
 
