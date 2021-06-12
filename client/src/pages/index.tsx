@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { NextPage } from 'next'
 import { withUrqlClient } from 'next-urql'
 import { useRouter } from 'next/router'
@@ -6,6 +5,7 @@ import { Button } from '@material-ui/core'
 
 import { useGetVideosQuery } from '../generated/graphql'
 import { createUrqlClient } from '../util/index'
+import { Home3D } from '../components/elements/index'
 
 const Home: NextPage = () => {
   const router = useRouter()
@@ -18,20 +18,16 @@ const Home: NextPage = () => {
   })
   const videoData = videos && videos.data
 
-  useEffect(() => {
-    if (videos.data) console.log(videoData)
-  }, [videoData])
-
   return (
     <>
-      <div> This is the home page</div>
+      {videoData && (<Home3D videos={videoData} />)}
       <Button
         variant="contained"
         color="secondary"
         onClick={() => router.push('/play')}
       >
         Click to go to play page
-      </Button>
+    </Button>
     </>
   )
 }
