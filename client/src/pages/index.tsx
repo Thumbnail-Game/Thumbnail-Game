@@ -5,7 +5,7 @@ import { Button } from '@material-ui/core'
 
 import { useGetVideosQuery } from '../generated/graphql'
 import { createUrqlClient } from '../util/index'
-import { Home3D } from '../components/elements/index'
+import { HomeDisplay } from '../components/elements/index'
 
 const Home: NextPage = () => {
   const router = useRouter()
@@ -20,7 +20,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      {videoData && (<Home3D videos={videoData} />)}
+      {videoData && (<HomeDisplay videos={videoData} />)}
       <Button
         variant="contained"
         color="secondary"
