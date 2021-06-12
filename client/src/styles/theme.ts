@@ -27,7 +27,7 @@ const theme = {
     scoreBackground: '#1C1C1C',
     nextArrow: '#F0F0F0',
     signUp: '#9F1313',
-    formBackground: '#212121',
+    formBackground: '#FFFFFF',
   },
 }
 
