@@ -13,7 +13,7 @@ const theme = {
     scoreBackground: '#F1F1F1',
     nextArrow: '#444444',
     signUp: '#E36969',
-    formBackground: '#212121',
+    formBackground: '#FFFFFF',
   },
   dark: {
     theme: 'dark',

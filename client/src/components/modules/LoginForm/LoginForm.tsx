@@ -84,6 +84,7 @@ export const LoginForm: React.FC = () => {
             <FormContainer>
               <Logo
                 src={`/images/thumbnail-${themeMode}.png`}
+                alt={'logo-img'}
                 width={373.4}
                 height={106.912}
               />
@@ -108,7 +109,7 @@ export const LoginForm: React.FC = () => {
                   }}
                 >
                   LOGIN
-              </Styled.LoginButton>
+                </Styled.LoginButton>
               </div>
               <Snackbar
                 open={showResendEmail}
@@ -125,12 +126,13 @@ export const LoginForm: React.FC = () => {
         )}
       </Formik>
       <Styled.BackButton
-        onClick={
-          (e) => {
-            e.preventDefault()
-            router.push("/")
-          }}
-      >Back</Styled.BackButton>
+        onClick={(e) => {
+          e.preventDefault()
+          router.push('/')
+        }}
+      >
+        Back
+      </Styled.BackButton>
     </>
   )
 }

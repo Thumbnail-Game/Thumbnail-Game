@@ -80,7 +80,8 @@ export const RegisterForm: React.FC = () => {
             }
 
             if (values.displayName.length < 4) {
-              errors.displayName = 'Usernames must be at least 4 characters long'
+              errors.displayName =
+                'Usernames must be at least 4 characters long'
             }
 
             if (values.password.length < 8) {
@@ -95,10 +96,15 @@ export const RegisterForm: React.FC = () => {
               <FormContainer>
                 <Logo
                   src={`/images/thumbnail-${themeMode}.png`}
+                  alt={'logo-img'}
                   width={373.4}
                   height={106.912}
                 />
-                <CustomTextField placeholder="Email" name="email" type="input" />
+                <CustomTextField
+                  placeholder="Email"
+                  name="email"
+                  type="input"
+                />
                 <CustomTextField
                   placeholder="Display Name"
                   name="displayName"
@@ -124,7 +130,7 @@ export const RegisterForm: React.FC = () => {
                     }}
                   >
                     Sign Up
-                </Styled.RegisterButton>
+                  </Styled.RegisterButton>
                 </div>
               </FormContainer>
             </Form>
@@ -132,12 +138,13 @@ export const RegisterForm: React.FC = () => {
         </Formik>
       </FormContainer>
       <Styled.BackButton
-        onClick={
-          (e) => {
-            e.preventDefault()
-            router.push("/")
-          }}
-      >Back</Styled.BackButton>
+        onClick={(e) => {
+          e.preventDefault()
+          router.push('/')
+        }}
+      >
+        Back
+      </Styled.BackButton>
     </>
   )
 }

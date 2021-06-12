@@ -1,11 +1,11 @@
-query getVideos {
-  videos {
+query getVideos($numVideos: Int!) {
+  getVideos(numVideos: $numVideos) {
     id
     title
-    url
     thumbnail
     views
     date_published
     channel_id
+    url
   }
 }
