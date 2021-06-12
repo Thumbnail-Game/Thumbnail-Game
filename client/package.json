@@ -11,6 +11,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/lab": "^4.0.0-alpha.58",
+    "@react-three/drei": "^6.0.5",
     "@react-three/fiber": "^6.2.2",
     "@types/cookie": "^0.4.0",
     "@types/js-cookie": "^2.2.6",
@@ -29,6 +30,7 @@
     "react-responsive-carousel": "^3.2.18",
     "react-spring": "^9.2.1",
     "react-switch": "^6.0.0",
+    "react-three-fiber": "^0.0.0-deprecated",
     "styled-components": "^5.3.0",
     "three": "^0.129.0",
     "urql": "^2.0.3"
