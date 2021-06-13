@@ -5,6 +5,8 @@ import type { AppProps } from 'next/app'
 import { AppProvider } from '../providers/AppProvider'
 import { analytics } from '../config/firebaseConfig'
 
+import './bodyStyle.css'
+
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
