@@ -15,7 +15,6 @@ import { updateAllVideoViews } from './utils/updateAllVideoViews'
 
 const main = async () => {
   console.log(process.env.DATABASE_URL)
-
   const conn = await createConnection({
     type: 'postgres',
     url: process.env.DATABASE_URL,
