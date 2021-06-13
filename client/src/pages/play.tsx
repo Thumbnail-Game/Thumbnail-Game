@@ -66,7 +66,7 @@ const Play: NextPage = () => {
   if (!supportedWidth) return <MobileNotSupported />
 
   return (
-    <>
+    <div id="playContainer">
       <Nav signedIn={signedIn} />
       <Score score={score} />
       <Thumbnail updateScore={updateScore} />
@@ -80,7 +80,7 @@ const Play: NextPage = () => {
           <strong>Please verify your email!</strong>
         </Alert>
       </Snackbar>
-    </>
+    </div>
   )
 }
 
