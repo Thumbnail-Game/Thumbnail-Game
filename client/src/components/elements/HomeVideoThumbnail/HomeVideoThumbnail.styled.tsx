@@ -3,10 +3,10 @@ import { keyframes } from 'styled-components'
 
 const VideoHover = keyframes`
     0%{
-        transform:scale(0.1);
+        transform:scale(1);
     }
     100%{
-        transform:scale(1.07);
+        transform:scale(1.1);
     }
 `
 
@@ -16,6 +16,14 @@ export const VideoWrapper = styled.div`
     background-color:#282828;
     position:relative;
     z-index:0;
+
+    &:hover{
+        animation-name:${VideoHover};
+        animation-duration:300ms;
+        animation-fill-mode:forwards;
+        border-radius: 5px;
+        z-index:1;
+    }
 `
 
 export const VideoThumbnail = styled.div`

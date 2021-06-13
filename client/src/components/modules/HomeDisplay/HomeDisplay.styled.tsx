@@ -2,19 +2,21 @@ import styled from 'styled-components'
 
 export const Parent = styled.div`
     background-color: #282828;
-    height: 100%;
+    height: 100vh;
     width: 100%;
     overflow:hidden;
+    position:absolute;
+    top:0;
 `
 
 export const Line = styled.div`
     position: absolute;
     height: 30px;
     width: 100%;
-    background-color: red;
-    top: 120px;
+    background-color: ${(props) => props.theme.divider};
+    top: 103px;
     box-shadow: 15px 15px 18px black;
-    z-index:1;
+    z-index:2;
 `
 
 export const Logo = styled.img`
@@ -26,7 +28,7 @@ export const Logo = styled.img`
     right: 0;
     left: 0;
     filter: drop-shadow(15px 15px 16px black);
-    z-index:1;
+    z-index:2;
 `
 
 export const Grid = styled.div`

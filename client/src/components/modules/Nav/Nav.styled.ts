@@ -119,7 +119,7 @@ export const SignInUpHover2 = styled.div`
   z-index: -1;
   ${SignInUp}:hover & {
     animation-name: ${(props) =>
-      props.theme.theme === 'dark' ? DarkfillButton2 : LightfillButton2};
+    props.theme.theme === 'dark' ? DarkfillButton2 : LightfillButton2};
     animation-duration: 200ms;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -131,6 +131,7 @@ export const Nav = styled.div`
   height: 110px;
   background-color: ${(props) => props.theme.navBackground};
   position: relative;
+  z-index:2;
 `
 
 export const Divider = styled.div`

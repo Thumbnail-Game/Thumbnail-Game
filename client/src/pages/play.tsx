@@ -5,9 +5,10 @@ import { Snackbar } from '@material-ui/core'
 import { Alert, AlertTitle } from '@material-ui/lab'
 
 import { auth } from '../config/firebaseConfig'
-import { Nav, Thumbnail } from '../components/modules/index'
-import { Score } from '../components/elements/index'
 import { createUrqlClient } from '../util/index'
+import { useMediaQuery } from '../hooks/useMediaQuery'
+import { Nav, Thumbnail } from '../components/modules/index'
+import { Score, MobileNotSupported } from '../components/elements/index'
 
 interface UserCallback {
   signedIn: boolean
@@ -60,6 +61,9 @@ const Play: NextPage = () => {
       setScore(0)
     }
   }
+
+  const supportedWidth = useMediaQuery('(min-width: 500px)')
+  if (!supportedWidth) return <MobileNotSupported />
 
   return (
     <>
