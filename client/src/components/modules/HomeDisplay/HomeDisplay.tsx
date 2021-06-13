@@ -8,8 +8,8 @@ type Home3DProps = { videos: any }
 export const HomeDisplay: React.FC<Home3DProps> = ({ videos }) => {
     return (
         <Styled.Parent>
-            {/* <Styled.Line />
-            <Styled.Logo src={"/images/thumbnail-dark.png"} /> */}
+            <Styled.Line />
+            <Styled.Logo src={"/images/thumbnail-dark.png"} />
             <Styled.Grid>
                 {
                     videos.getVideos.map((video: any) => (
