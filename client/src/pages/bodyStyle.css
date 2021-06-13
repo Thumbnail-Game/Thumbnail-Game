@@ -1,31 +1,31 @@
-@media only screen and (max-width: 1600px) {
+@media screen and (max-width: 1900px) {
   #playContainer {
-    zoom: 0.9;
+    zoom: 0.8;
     -moz-transform: scale(0.9);
     -moz-transform-origin: 0 0;
   }
 }
 
-@media only screen and (max-width: 1450px) {
+@media screen and (max-width: 1450px) {
   #playContainer {
     zoom: 0.8;
-    -moz-transform: scale(0.8);
-    -moz-transform-origin: 0 0;
-  }
-}
-
-@media only screen and (max-width: 1220px) {
-  #playContainer {
-    zoom: 0.7;
     -moz-transform: scale(0.7);
     -moz-transform-origin: 0 0;
   }
 }
 
-@media only screen and (max-width: 1030px) {
+@media screen and (max-width: 1320px) {
   #playContainer {
-    zoom: 0.6;
+    zoom: 0.65;
     -moz-transform: scale(0.6);
+    -moz-transform-origin: 0 0;
+  }
+}
+
+@media screen and (max-width: 1030px) {
+  #playContainer {
+    zoom: 0.4;
+    -moz-transform: scale(0.5);
     -moz-transform-origin: 0 0;
   }
 }
