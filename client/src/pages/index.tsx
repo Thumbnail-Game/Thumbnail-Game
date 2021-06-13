@@ -9,8 +9,8 @@ import styled, { keyframes } from 'styled-components'
 import { useGetVideosQuery } from '../generated/graphql'
 import { createUrqlClient } from '../util/index'
 import { HomeDisplay } from '../components/modules/index'
-import { Nav } from '../components/modules/index'
-import { StyledGridContainer } from '../styles/constantStyles'
+// import { Nav } from '../components/modules/index'
+// import { StyledGridContainer } from '../styles/constantStyles'
 
 const Home: NextPage = () => {
   const router = useRouter()
@@ -27,9 +27,7 @@ const Home: NextPage = () => {
     <>
       {/* <Nav /> */}
       {videoData && <HomeDisplay videos={videoData} />}
-      <PlayButton
-        onClick={() => router.push('/play')}
-      >Play</PlayButton>
+      <PlayButton onClick={() => router.push('/play')}>Play</PlayButton>
     </>
   )
 }
@@ -48,27 +46,27 @@ export const PlayButtonAnimation = keyframes`
 
 export const PlayButton = styled.div`
   position: absolute;
-  bottom:15%;
-  margin:auto;
+  bottom: 15%;
+  margin: auto;
   font-size: 45px;
-  font-family:"Gothic Bold";
-  text-align:center;
-  left:0;
-  right:0;
-  transform:scale(0.8); 
+  font-family: 'Gothic Bold';
+  text-align: center;
+  left: 0;
+  right: 0;
+  transform: scale(0.8);
   z-index: 1;
-  border-radius:13px;
+  border-radius: 13px;
   box-shadow: 8px 8px 20px black;
-  width:300px;
-  height:60px;
-  padding-top:20px;
-  padding-bottom:20px;
-  background-color:red;
+  width: 300px;
+  height: 60px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: red;
 
-  &:hover{
+  &:hover {
     animation-name: ${PlayButtonAnimation};
-    animation-duration:300ms;
-    animation-fill-mode:forwards;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
   }
 `
 
