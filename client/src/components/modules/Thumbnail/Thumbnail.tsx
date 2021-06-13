@@ -40,6 +40,8 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ updateScore }) => {
 
   const [isLoseAnimation, setIsLoseAnimation] = useState<boolean>(false)
 
+  const [isLoadingVideos, setIsLoadingVideos] = useState<boolean>(false)
+
   const [videos] = useGetTwoVideosQuery({
     variables: {
       videoIds: seenVideoIds ? seenVideoIds : [],
@@ -52,12 +54,14 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ updateScore }) => {
   useEffect(() => {
     setUpdatedVideos(videoData)
     if (videos.data && typeof handleFirstMostViewed === 'function') {
+      setIsLoadingVideos(false)
+
       handleFirstMostViewed()
       handleUpdateSeenVideos()
     }
   }, [videos])
 
-  if (videos.fetching) return <p>Loading...</p>
+  if (videos.fetching || isLoadingVideos) return <p>Loading...</p>
   if (videos.error) {
     console.log(videos.error.message)
     return <p>There was an error</p>
@@ -214,6 +218,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ updateScore }) => {
               <Styled.Button
                 color="primary"
                 onClick={() => {
+                  setIsLoadingVideos(true)
                   invalidateAndFetch()
                   setHasPicked(false)
                 }}
