@@ -7,7 +7,7 @@ import { Alert, AlertTitle } from '@material-ui/lab'
 import { auth } from '../../../config/firebaseConfig'
 import { CustomTextField } from '../../elements/index'
 import { ThemeContext } from '../../../providers/AppProvider'
-import { Logo, FormContainer } from '../../../styles/constantStyles'
+import { Logo, FormContainer, BackButton } from '../../../styles/constantStyles'
 import * as Styled from './LoginForm.styled'
 
 interface FormSubmitData {
@@ -57,7 +57,7 @@ export const LoginForm: React.FC = () => {
 
   return (
     <>
-      <Styled.Divider></Styled.Divider>
+      <Styled.Divider />
       <Formik
         validateOnChange={true}
         initialValues={{
@@ -125,14 +125,14 @@ export const LoginForm: React.FC = () => {
           </Form>
         )}
       </Formik>
-      <Styled.BackButton
+      <BackButton
         onClick={(e) => {
           e.preventDefault()
           router.push('/')
         }}
       >
         Back
-      </Styled.BackButton>
+      </BackButton>
     </>
   )
 }

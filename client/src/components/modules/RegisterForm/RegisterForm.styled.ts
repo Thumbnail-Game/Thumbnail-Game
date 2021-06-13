@@ -15,15 +15,15 @@ export const Divider = styled.div`
 `
 
 export const BackButton = styled.button`
-  position: absolute;
   background-color: ${(props) => props.theme.button};
   width: 90px;
   height: 40px;
-  top: 80%;
+  bottom:30px;
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0;
+  position:relative;
   outline: none;
   border: none;
   border-radius: 10px;

@@ -62,6 +62,7 @@ export const PlayButton = styled.div`
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: red;
+  cursor:pointer;
 
   &:hover {
     animation-name: ${PlayButtonAnimation};

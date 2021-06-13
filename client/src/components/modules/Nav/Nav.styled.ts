@@ -92,22 +92,6 @@ const LightfillButton2 = keyframes`
  }
 `
 
-export const SignInUpHover = styled.div`
-  ${SignInUp}:hover & {
-    width: 87px;
-    height: 38px;
-    top: -5.75px;
-    left: -16px;
-    border-radius: 20px;
-    background-color: ${(props) => props.theme.button};
-    position: absolute;
-    z-index: -1;
-    animation-name: ${fillButton};
-    animation-duration: 300ms;
-    animation-iteration-count: 1;
-  }
-`
-
 export const SignInUpHover2 = styled.div`
   width: 87px;
   height: 38px;
@@ -205,7 +189,76 @@ export const DisplayName = styled.div`
   font-family: 'Gothic Bold';
   font-size: 19.5px;
   margin-top: 2px;
+  cursor:pointer;
   color: ${(props) => props.theme.primaryText};
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none;
 `
 
-export const SignOutButton = styled.div``
+export const SignOutButton = styled.div`
+  font-family:"Gothic Bold";
+  font-size:20px;
+  margin-top: 4px;
+  cursor:pointer;
+  position:relative;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none;
+`
+
+const fillButton2 = keyframes`
+ 0% {
+   height: 0px;
+   width: 0px;
+   top:10px;
+   left:30px;
+ }
+ 70% {
+  width:105px;
+  height:44px;
+  top:-8px;
+  left:-12px;
+  border-radius:25px;
+  position:absolute;
+  z-index:-1;
+ }
+ 100% {
+  width: 98px;
+  height: 38px;
+  top: -5.75px;
+  left: -8.5px;
+  border-radius: 20px;
+  position: absolute;
+  z-index: -1;
+ }
+`
+
+export const SignInUpHover = styled.div`
+  ${SignInUp}:hover & {
+    width: 87px;
+    height: 38px;
+    top: -5.75px;
+    left: -16px;
+    border-radius: 20px;
+    background-color: ${(props) => props.theme.button};
+    position: absolute;
+    z-index: -1;
+    animation-name: ${fillButton};
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+  }
+  ${SignOutButton}:hover & {
+    background-color: ${(props) => props.theme.button};
+    animation-name: ${fillButton2};
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+  }
+`
