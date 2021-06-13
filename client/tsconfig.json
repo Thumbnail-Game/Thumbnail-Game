@@ -23,7 +23,8 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "src/components/elements/Home3D/Home3D.jsx"
   ],
   "exclude": [
     "node_modules"

@@ -5,7 +5,7 @@ import { Button } from '@material-ui/core'
 
 import { useGetVideosQuery } from '../generated/graphql'
 import { createUrqlClient } from '../util/index'
-import { HomeDisplay } from '../components/elements/index'
+import { HomeDisplay } from '../components/modules/index'
 
 const Home: NextPage = () => {
   const router = useRouter()
@@ -13,10 +13,10 @@ const Home: NextPage = () => {
   //  get 10 random videos for the 3d homepage
   const [videos] = useGetVideosQuery({
     variables: {
-      numVideos: 10,
+      numVideos: 100,
     },
   })
-  const videoData = videos && videos.data
+  const videoData: any = videos && videos.data
 
   return (
     <>
