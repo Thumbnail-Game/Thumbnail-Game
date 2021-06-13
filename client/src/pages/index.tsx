@@ -20,14 +20,14 @@ const Home: NextPage = () => {
 
   return (
     <>
-      {videoData && (<HomeDisplay videos={videoData} />)}
+      {videoData && <HomeDisplay videos={videoData} />}
       <Button
         variant="contained"
         color="secondary"
         onClick={() => router.push('/play')}
       >
         Click to go to play page
-    </Button>
+      </Button>
     </>
   )
 }
