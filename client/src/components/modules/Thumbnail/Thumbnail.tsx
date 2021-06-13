@@ -53,9 +53,9 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ updateScore }) => {
 
   useEffect(() => {
     setUpdatedVideos(videoData)
-    if (videos.data && typeof handleFirstMostViewed === 'function') {
-      setIsLoadingVideos(false)
+    setIsLoadingVideos(false)
 
+    if (videos.data && typeof handleFirstMostViewed === 'function') {
       handleFirstMostViewed()
       handleUpdateSeenVideos()
     }
