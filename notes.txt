@@ -2,3 +2,6 @@ features to implement:
 - filter settings ex: no music videos, etc.
 
 - look into font-family change when toggling theme mode
+
+TODO:
+- Figure out database one to many relation
