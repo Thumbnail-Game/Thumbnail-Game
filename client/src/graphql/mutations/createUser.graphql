@@ -1,14 +1,8 @@
-mutation CreateUser($username: String!, $email: String!, $password: String!) {
-  createUser(
-    options: { username: $username, email: $email, password: $password }
-  ) {
+mutation CreateUser($options: UserInput!) {
+  createUser(options: $options) {
     errors {
       field
       message
-    }
-    user {
-      id
-      username
     }
   }
 }

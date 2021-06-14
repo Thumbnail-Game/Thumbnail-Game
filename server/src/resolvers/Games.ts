@@ -1,5 +1,5 @@
 import { Arg, Resolver, Mutation, Query } from 'type-graphql'
-import { getConnection } from 'typeorm'
+// import { getConnection } from 'typeorm'
 
 import { Games } from '../entities/index'
 
@@ -21,19 +21,29 @@ export class GamesResolver {
 
   @Mutation(() => Games, { nullable: true })
   async addGame(@Arg('userId') userId: number, @Arg('score') score: number) {
-    console.log('18')
+    console.log('reached add game')
     try {
-      console.log('reached')
-      await getConnection().createQueryBuilder().insert().into(Games).values([
-        {
-          userId,
-          score,
-        },
-      ])
+      await Games.create({ score, userId }).save()
     } catch (err) {
+      console.log(err)
       return null
     }
 
     return score
+  }
+
+  @Query(() => Games, { nullable: true })
+  async getGamesByUser(@Arg('userid') userId: number) {
+    // many to one relationship; logging game will give all games from userId
+    let games
+    try {
+      games = await Games.find({ userId })
+    } catch (err) {
+      console.log(err)
+      return null
+    }
+    console.log(games)
+
+    return games
   }
 }

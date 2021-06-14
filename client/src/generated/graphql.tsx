@@ -58,7 +58,7 @@ export type Query = {
 
 
 export type QueryUserArgs = {
-  id: Scalars['String'];
+  uid: Scalars['String'];
 };
 
 
@@ -74,18 +74,19 @@ export type QueryGetVideosArgs = {
 export type UserAccount = {
   __typename?: 'UserAccount';
   id: Scalars['Float'];
-  username: Scalars['String'];
+  uid: Scalars['String'];
+  displayName: Scalars['String'];
   email: Scalars['String'];
-  gamesPlayed: Scalars['String'];
-  highScore: Scalars['String'];
+  photoURL: Scalars['String'];
   createdAt: Scalars['String'];
   updatedAt: Scalars['String'];
 };
 
 export type UserInput = {
+  uid: Scalars['String'];
+  displayName: Scalars['String'];
   email: Scalars['String'];
-  username: Scalars['String'];
-  password: Scalars['String'];
+  photoURL?: Maybe<Scalars['String']>;
 };
 
 export type UserResponse = {
@@ -106,9 +107,7 @@ export type Videos = {
 };
 
 export type CreateUserMutationVariables = Exact<{
-  username: Scalars['String'];
-  email: Scalars['String'];
-  password: Scalars['String'];
+  options: UserInput;
 }>;
 
 
@@ -119,10 +118,7 @@ export type CreateUserMutation = (
     & { errors?: Maybe<Array<(
       { __typename?: 'FieldError' }
       & Pick<FieldError, 'field' | 'message'>
-    )>>, user?: Maybe<(
-      { __typename?: 'UserAccount' }
-      & Pick<UserAccount, 'id' | 'username'>
-    )> }
+    )>> }
   ) }
 );
 
@@ -151,7 +147,7 @@ export type GetTwoVideosQuery = (
 );
 
 export type GetUserQueryVariables = Exact<{
-  id: Scalars['String'];
+  uid: Scalars['String'];
 }>;
 
 
@@ -159,7 +155,7 @@ export type GetUserQuery = (
   { __typename?: 'Query' }
   & { user?: Maybe<(
     { __typename?: 'UserAccount' }
-    & Pick<UserAccount, 'id' | 'username' | 'email'>
+    & Pick<UserAccount, 'uid' | 'displayName' | 'email' | 'photoURL'>
   )> }
 );
 
@@ -170,7 +166,7 @@ export type GetUsersQuery = (
   { __typename?: 'Query' }
   & { users?: Maybe<Array<(
     { __typename?: 'UserAccount' }
-    & Pick<UserAccount, 'id' | 'username' | 'email'>
+    & Pick<UserAccount, 'uid' | 'displayName' | 'email'>
   )>> }
 );
 
@@ -189,15 +185,11 @@ export type GetVideosQuery = (
 
 
 export const CreateUserDocument = gql`
-    mutation CreateUser($username: String!, $email: String!, $password: String!) {
-  createUser(options: {username: $username, email: $email, password: $password}) {
+    mutation CreateUser($options: UserInput!) {
+  createUser(options: $options) {
     errors {
       field
       message
-    }
-    user {
-      id
-      username
     }
   }
 }
@@ -235,11 +227,12 @@ export function useGetTwoVideosQuery(options: Omit<Urql.UseQueryArgs<GetTwoVideo
   return Urql.useQuery<GetTwoVideosQuery>({ query: GetTwoVideosDocument, ...options });
 };
 export const GetUserDocument = gql`
-    query getUser($id: String!) {
-  user(id: $id) {
-    id
-    username
+    query getUser($uid: String!) {
+  user(uid: $uid) {
+    uid
+    displayName
     email
+    photoURL
   }
 }
     `;
@@ -250,8 +243,8 @@ export function useGetUserQuery(options: Omit<Urql.UseQueryArgs<GetUserQueryVari
 export const GetUsersDocument = gql`
     query getUsers {
   users {
-    id
-    username
+    uid
+    displayName
     email
   }
 }

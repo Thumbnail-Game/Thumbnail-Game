@@ -50,6 +50,22 @@ let VideoResolver = class VideoResolver {
                 }
             }
             catch (err) {
+                console.log(err);
+                return null;
+            }
+            if (!videos)
+                return null;
+            return videos;
+        });
+    }
+    getVideos(numVideos) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let videos;
+            try {
+                videos = yield typeorm_1.getConnection().query(`select * from videos order by random() limit ${numVideos};`);
+            }
+            catch (err) {
+                console.log(err);
                 return null;
             }
             if (!videos)
@@ -74,6 +90,13 @@ __decorate([
     __metadata("design:paramtypes", [Array]),
     __metadata("design:returntype", Promise)
 ], VideoResolver.prototype, "twoVideos", null);
+__decorate([
+    type_graphql_1.Query(() => [index_1.Videos], { nullable: true }),
+    __param(0, type_graphql_1.Arg('numVideos', () => type_graphql_1.Int)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], VideoResolver.prototype, "getVideos", null);
 __decorate([
     type_graphql_1.Mutation(() => [index_1.Videos], { nullable: true }),
     __metadata("design:type", Function),

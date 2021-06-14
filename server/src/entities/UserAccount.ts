@@ -6,7 +6,9 @@ import {
   UpdateDateColumn,
   Column,
   BaseEntity,
+  OneToMany,
 } from 'typeorm'
+import { Games } from './Games'
 
 @ObjectType()
 @Entity()
@@ -17,23 +19,23 @@ export class UserAccount extends BaseEntity {
 
   @Field()
   @Column({ unique: true })
-  username!: string
+  uid!: string
+
+  @Field()
+  @Column()
+  displayName!: string
 
   @Field()
   @Column({ unique: true })
   email!: string
 
-  @Column()
-  password!: string
-
-
   @Field()
-  @Column()
-  gamesPlayed: string
+  @Column({ nullable: true })
+  photoURL: string
 
-  @Field()
-  @Column()
-  highScore: string
+  @Field(() => [Games])
+  @OneToMany(() => Games, (game) => game.userId)
+  games: Games[]
 
   @Field(() => String)
   @CreateDateColumn()

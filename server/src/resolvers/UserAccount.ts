@@ -1,8 +1,9 @@
 import { Resolver, Mutation, Arg, Field, ObjectType, Query } from 'type-graphql'
 import { getConnection } from 'typeorm'
-import * as argon2 from 'argon2'
+// import * as argon2 from 'argon2'
 
-import { validateRegister } from '../utils/validateRegister'
+//  firebase does this validation for us
+// import { validateRegister } from '../utils/validateRegister'
 import { UserAccount } from '../entities/index'
 import { UserInput } from './userInput'
 
@@ -27,8 +28,8 @@ class UserResponse {
 @Resolver(UserAccount)
 export class UserResolver {
   @Query(() => UserAccount, { nullable: true })
-  user(@Arg('id') id: string) {
-    const user = UserAccount.findOne({ where: { id } })
+  user(@Arg('uid') uid: string) {
+    const user = UserAccount.findOne({ where: { uid } })
     if (!user) return null
 
     return user
@@ -44,12 +45,7 @@ export class UserResolver {
 
   @Mutation(() => UserResponse)
   async createUser(@Arg('options') options: UserInput): Promise<UserResponse> {
-    const errors = validateRegister(options)
-    if (errors) {
-      return { errors }
-    }
-
-    const hashedPassword = await argon2.hash(options.password)
+    console.log('create user mutation reached')
     let user
     try {
       const result = await getConnection()
@@ -57,23 +53,22 @@ export class UserResolver {
         .insert()
         .into(UserAccount)
         .values({
-          username: options.username,
+          uid: options.uid,
+          displayName: options.displayName,
           email: options.email,
-          password: hashedPassword,
+          photoURL: options.photoURL,
         })
         .returning('*')
         .execute()
       user = result.raw[0]
     } catch (err) {
-      if (err.code === '23505') {
-        return {
-          errors: [
-            {
-              field: 'username',
-              message: 'username already taken',
-            },
-          ],
-        }
+      return {
+        errors: [
+          {
+            field: 'username',
+            message: 'there was an error creating a user',
+          },
+        ],
       }
     }
 
