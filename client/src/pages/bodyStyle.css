@@ -1,7 +1,15 @@
-@media screen and (max-width: 1900px) {
+@media screen and (max-width: 2200px) {
   #playContainer {
     zoom: 0.8;
-    -moz-transform: scale(0.9);
+    -moz-transform: scale(0.8);
+    -moz-transform-origin: 0 0;
+  }
+}
+
+@media screen and (max-width: 2000px) {
+  #playContainer {
+    zoom: 0.8;
+    -moz-transform: scale(0.8);
     -moz-transform-origin: 0 0;
   }
 }

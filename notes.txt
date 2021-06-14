@@ -1,9 +1,4 @@
 features to implement:
-
-- do not repeat videos in a single game session. store video ids on frontend and query new videos with 
-seen videos variable
 - filter settings ex: no music videos, etc.
 
 - look into font-family change when toggling theme mode
-
--use a snackbar for confirmation
