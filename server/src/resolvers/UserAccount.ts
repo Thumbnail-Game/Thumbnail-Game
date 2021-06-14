@@ -28,8 +28,9 @@ class UserResponse {
 @Resolver(UserAccount)
 export class UserResolver {
   @Query(() => UserAccount, { nullable: true })
-  user(@Arg('uid') uid: string) {
-    const user = UserAccount.findOne({ where: { uid } })
+  async user(@Arg('uid') uid: string) {
+    const user = await UserAccount.findOne({ where: { uid } })
+
     if (!user) return null
 
     return user
