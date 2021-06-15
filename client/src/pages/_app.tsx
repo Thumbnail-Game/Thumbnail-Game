@@ -1,13 +1,16 @@
-import { useEffect } from 'react'
 import Head from 'next/head'
+import { NextPage } from 'next'
+import { useEffect } from 'react'
 import type { AppProps } from 'next/app'
+import { withUrqlClient } from 'next-urql'
 
 import { AppProvider } from '../providers/AppProvider'
+import { createUrqlClient } from '../util'
 import { analytics } from '../config/firebaseConfig'
 
 import './bodyStyle.css'
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp: NextPage = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
       const logEvent = () => {
@@ -40,4 +43,5 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
-export default MyApp
+//  creates client with server side rendering enabled
+export default withUrqlClient(createUrqlClient, { ssr: true })(MyApp)
