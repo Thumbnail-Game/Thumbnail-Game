@@ -4,13 +4,13 @@ import { withUrqlClient } from 'next-urql'
 
 import { createUrqlClient } from '../../util'
 
-const User: NextPage = () => {
-    const router = useRouter()
-    const { username } = router.query
+const User = () => {
+  const router = useRouter()
 
-    return <div>{username}</div>
+  //  username => query for id
+
+  return <div>{router.query.user}</div>
 }
 
 //  creates client with server side rendering enabled
 export default withUrqlClient(createUrqlClient, { ssr: true })(User)
-

@@ -22,7 +22,7 @@ export class UserAccount extends BaseEntity {
   uid!: string
 
   @Field()
-  @Column()
+  @Column({ unique: true })
   displayName!: string
 
   @Field()

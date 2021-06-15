@@ -1,10 +1,7 @@
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import { NextPage } from 'next'
 import { withUrqlClient } from 'next-urql'
-import { Snackbar } from '@material-ui/core'
-import { Alert, AlertTitle } from '@material-ui/lab'
 
-// import { auth } from '../config/firebaseConfig'
 import { SignedInContext } from '../providers/AppProvider'
 import { createUrqlClient } from '../util/index'
 import { useMediaQuery } from '../hooks/useMediaQuery'

@@ -10,7 +10,7 @@ import { analytics } from '../config/firebaseConfig'
 
 import './bodyStyle.css'
 
-const MyApp: NextPage = ({ Component, pageProps }: AppProps) => {
+function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
       const logEvent = () => {
@@ -43,5 +43,4 @@ const MyApp: NextPage = ({ Component, pageProps }: AppProps) => {
   )
 }
 
-//  creates client with server side rendering enabled
-export default withUrqlClient(createUrqlClient, { ssr: true })(MyApp)
+export default MyApp

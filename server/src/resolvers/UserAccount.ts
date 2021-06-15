@@ -62,13 +62,15 @@ export class UserResolver {
         .execute()
       user = result.raw[0]
     } catch (err) {
-      return {
-        errors: [
-          {
-            field: 'username',
-            message: 'there was an error creating a user',
-          },
-        ],
+      if (err.code === '23505') {
+        return {
+          errors: [
+            {
+              field: 'username',
+              message: 'username already taken',
+            },
+          ],
+        }
       }
     }
 

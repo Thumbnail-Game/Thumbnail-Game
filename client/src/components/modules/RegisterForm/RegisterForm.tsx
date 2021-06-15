@@ -31,6 +31,8 @@ export const RegisterForm: React.FC = () => {
   ): Promise<errorResponse | null> => {
     let response = null
 
+    //  TODO MAKE USERNAMES UNIQUE, SHOULD NOT BE ABLE TO SIGN UP WITH TAKEN USERNAME
+
     await auth
       .createUserWithEmailAndPassword(data.email, data.password)
       .then((userCredential) => {
