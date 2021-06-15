@@ -53,7 +53,6 @@ export const FormContainer = styled.div`
   padding: 20px;
   border-radius: 20px;
   background-color: ${(props) => props.theme.settingBackground};
-  overflow:hidden;
   z-index:2;
   @media (max-width: 650px) {
     width: 80%;
@@ -65,42 +64,41 @@ export const BackButton = styled.div`
   background-color: ${(props) => props.theme.button};
   width: 90px;
   height: 21px;
-  padding-top:10px;
-  padding-bottom:10px;
-  bottom:30px;
-  margin:auto;
-  margin-bottom:190px;
-  top:0;
-  bottom:0;
-  top:100px;
-  text-align:center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  bottom: 30px;
+  margin: auto;
+  margin-bottom: 190px;
+  top: 0;
+  bottom: 0;
+  top: 100px;
+  text-align: center;
   left: 0;
   right: 0;
-  position:absolute;
+  position: absolute;
   outline: none;
   border: none;
   border-radius: 10px;
   font-family: 'Gothic Bold';
   font-size: 18px;
   color: ${(props) => props.theme.primaryText};
-  
+
   &:hover {
     background-color: ${(props) => props.theme.settingBackground};
   }
 
   @media screen and (max-height: 1030px) {
-    margin-bottom:70px;
+    margin-bottom: 70px;
   }
   @media screen and (max-height: 820px) {
-    margin-bottom:20px;
+    margin-bottom: 20px;
   }
   @media screen and (max-height: 690px) {
-    margin-bottom:5px;
+    margin-bottom: 5px;
   }
   @media screen and (max-height: 650px) {
     display: none;
   }
 `
 
-export const Logo = styled(Image)`
-`
+export const Logo = styled(Image)``

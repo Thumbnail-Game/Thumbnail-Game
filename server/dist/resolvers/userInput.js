@@ -16,15 +16,19 @@ let UserInput = class UserInput {
 __decorate([
     type_graphql_1.Field(),
     __metadata("design:type", String)
+], UserInput.prototype, "uid", void 0);
+__decorate([
+    type_graphql_1.Field(),
+    __metadata("design:type", String)
+], UserInput.prototype, "displayName", void 0);
+__decorate([
+    type_graphql_1.Field(),
+    __metadata("design:type", String)
 ], UserInput.prototype, "email", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    type_graphql_1.Field({ nullable: true }),
     __metadata("design:type", String)
-], UserInput.prototype, "username", void 0);
-__decorate([
-    type_graphql_1.Field(),
-    __metadata("design:type", String)
-], UserInput.prototype, "password", void 0);
+], UserInput.prototype, "photoURL", void 0);
 UserInput = __decorate([
     type_graphql_1.InputType()
 ], UserInput);

@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Games = void 0;
 const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
+const UserAccount_1 = require("./UserAccount");
 let Games = class Games extends typeorm_1.BaseEntity {
 };
 __decorate([
@@ -20,9 +21,9 @@ __decorate([
     __metadata("design:type", Number)
 ], Games.prototype, "id", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    type_graphql_1.Field(() => UserAccount_1.UserAccount),
     typeorm_1.Column({ nullable: true }),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], Games.prototype, "userId", void 0);
 __decorate([
     type_graphql_1.Field(),

@@ -33,6 +33,9 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         synchronize: false,
         entities: [index_1.UserAccount, index_1.Videos, index_1.Games],
         migrations: [path_1.default.join(__dirname, './migrations/*')],
+        ssl: {
+            rejectUnauthorized: false,
+        },
     });
     yield conn.runMigrations();
     const app = express_1.default();

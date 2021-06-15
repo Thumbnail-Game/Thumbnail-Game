@@ -1,55 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { NextPage } from 'next'
 import { withUrqlClient } from 'next-urql'
 import { Snackbar } from '@material-ui/core'
 import { Alert, AlertTitle } from '@material-ui/lab'
 
-import { auth } from '../config/firebaseConfig'
+// import { auth } from '../config/firebaseConfig'
+import { SignedInContext } from '../providers/AppProvider'
 import { createUrqlClient } from '../util/index'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import { Nav, Thumbnail } from '../components/modules/index'
 import { Score, MobileNotSupported } from '../components/elements/index'
 
-interface UserCallback {
-  signedIn: boolean
-  emailVerified: boolean
-}
-
 const Play: NextPage = () => {
-  const [showEmailVerificationMessage, setShowEmailVerificationMessage] =
-    useState<boolean>(false)
-  const [signedIn, setSignedIn] = useState<boolean>(false)
   const [score, setScore] = useState<number>(0)
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged((response: UserCallback) => {
-      if (response.signedIn) {
-        if (!response.emailVerified) {
-          setShowEmailVerificationMessage(true)
-
-          auth.signOut()
-          setSignedIn(false)
-        } else {
-          setSignedIn(true)
-        }
-      } else {
-        setSignedIn(false)
-      }
-    })
-
-    return () => unsubscribe()
-  }, [])
-
-  //  have to use callbacks, setting state within the listener does not work
-  const onAuthStateChanged = (callback: any) => {
-    return auth.onAuthStateChanged((user: any) => {
-      if (user) {
-        callback({ signedIn: true, emailVerified: user.emailVerified })
-      } else {
-        callback({ signedIn: false })
-      }
-    })
-  }
+  const { signedIn } = useContext(SignedInContext)
 
   const updateScore = (updateType: string) => {
     if (updateType === 'increment') {
@@ -70,16 +35,6 @@ const Play: NextPage = () => {
       <Nav signedIn={signedIn} />
       <Score score={score} />
       <Thumbnail updateScore={updateScore} />
-      <Snackbar
-        open={showEmailVerificationMessage}
-        onClose={() => setShowEmailVerificationMessage(false)}
-        autoHideDuration={6000}
-      >
-        <Alert severity="success">
-          <AlertTitle>Your account has been created!</AlertTitle>
-          <strong>Please verify your email!</strong>
-        </Alert>
-      </Snackbar>
     </div>
   )
 }

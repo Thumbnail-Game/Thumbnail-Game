@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { Formik, Form } from 'formik'
 
 import { auth } from '../../../config/firebaseConfig'
+import { useCreateUserMutation } from '../../../generated/graphql'
 import { ThemeContext } from '../../../providers/AppProvider'
 import { Logo, FormContainer, BackButton } from '../../../styles/constantStyles'
 import { CustomTextField } from '../../elements/index'
@@ -22,8 +23,10 @@ export const RegisterForm: React.FC = () => {
 
   const { themeMode } = useContext(ThemeContext)
 
+  const [, createUser] = useCreateUserMutation()
+
   //  create a user and send a verification email
-  const handleSubmit = async (
+  const createAccount = async (
     data: FormSubmitData
   ): Promise<errorResponse | null> => {
     let response = null
@@ -61,13 +64,30 @@ export const RegisterForm: React.FC = () => {
         onSubmit={async (data, { setSubmitting, setFieldError }) => {
           setSubmitting(true)
 
-          const res: errorResponse | null = await handleSubmit(data)
+          const res: errorResponse | null = await createAccount(data)
 
           //  if there is an error such as email already exists, display it
           setSubmitting(false)
           if (res?.error) {
             setFieldError('email', res.error)
           } else {
+            //  add user to database
+            const currentUser = auth.currentUser
+
+            if (currentUser) {
+              const res = await createUser({
+                options: {
+                  uid: currentUser.uid,
+                  displayName: data.displayName,
+                  email: data.email,
+                  photoURL: currentUser.photoURL,
+                },
+              })
+              if (res.error) {
+                console.log(res.error)
+              }
+            }
+
             router.push('/play')
           }
         }}
@@ -81,8 +101,7 @@ export const RegisterForm: React.FC = () => {
           }
 
           if (values.displayName.length < 4) {
-            errors.displayName =
-              'Usernames must be at least 4 characters long'
+            errors.displayName = 'Usernames must be at least 4 characters long'
           }
 
           if (values.password.length < 8) {
@@ -101,11 +120,7 @@ export const RegisterForm: React.FC = () => {
                 width={373.4}
                 height={106.912}
               />
-              <CustomTextField
-                placeholder="Email"
-                name="email"
-                type="input"
-              />
+              <CustomTextField placeholder="Email" name="email" type="input" />
               <CustomTextField
                 placeholder="Display Name"
                 name="displayName"
@@ -131,7 +146,7 @@ export const RegisterForm: React.FC = () => {
                   }}
                 >
                   Sign Up
-                  </Styled.RegisterButton>
+                </Styled.RegisterButton>
               </div>
             </FormContainer>
           </Form>

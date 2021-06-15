@@ -194,6 +194,7 @@ export const ButtonContainer = styled.div`
   width: 450px;
   margin: auto;
   margin-top: 50px;
+  margin-bottom: 25px;
 `
 
 export const IconHover = keyframes`

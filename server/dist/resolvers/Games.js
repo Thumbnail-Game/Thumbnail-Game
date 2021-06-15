@@ -23,7 +23,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GamesResolver = void 0;
 const type_graphql_1 = require("type-graphql");
-const typeorm_1 = require("typeorm");
 const index_1 = require("../entities/index");
 let GamesResolver = class GamesResolver {
     videos() {
@@ -34,20 +33,29 @@ let GamesResolver = class GamesResolver {
     }
     addGame(userId, score) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log('18');
+            console.log('reached add game');
             try {
-                console.log('reached');
-                yield typeorm_1.getConnection().createQueryBuilder().insert().into(index_1.Games).values([
-                    {
-                        userId,
-                        score,
-                    },
-                ]);
+                yield index_1.Games.create({ score, userId }).save();
             }
             catch (err) {
+                console.log(err);
                 return null;
             }
             return score;
+        });
+    }
+    getGamesByUser(userId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let games;
+            try {
+                games = yield index_1.Games.find({ userId });
+            }
+            catch (err) {
+                console.log(err);
+                return null;
+            }
+            console.log(games);
+            return games;
         });
     }
 };
@@ -61,9 +69,16 @@ __decorate([
     type_graphql_1.Mutation(() => index_1.Games, { nullable: true }),
     __param(0, type_graphql_1.Arg('userId')), __param(1, type_graphql_1.Arg('score')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Number]),
+    __metadata("design:paramtypes", [String, Number]),
     __metadata("design:returntype", Promise)
 ], GamesResolver.prototype, "addGame", null);
+__decorate([
+    type_graphql_1.Query(() => index_1.Games, { nullable: true }),
+    __param(0, type_graphql_1.Arg('userid')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], GamesResolver.prototype, "getGamesByUser", null);
 GamesResolver = __decorate([
     type_graphql_1.Resolver()
 ], GamesResolver);

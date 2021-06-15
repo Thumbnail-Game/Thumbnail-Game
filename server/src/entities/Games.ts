@@ -6,7 +6,10 @@ import {
   UpdateDateColumn,
   Column,
   BaseEntity,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm'
+import { UserAccount } from './UserAccount'
 
 @ObjectType()
 @Entity()
@@ -15,9 +18,16 @@ export class Games extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number
 
-  @Field()
+  @Field(() => UserAccount)
   @Column({ nullable: true })
   userId: number
+
+  //  foreign key to the UserAccount table and
+  //  expose the creator field
+  @Field(() => UserAccount)
+  @ManyToOne(() => UserAccount, (user) => user.games)
+  @JoinColumn({ name: 'userId' })
+  user: UserAccount
 
   @Field()
   @Column()

@@ -1,7 +1,9 @@
-query getUser($id: String!) {
-  user(id: $id) {
+query getUser($uid: String!) {
+  user(uid: $uid) {
     id
-    username
+    uid
+    displayName
     email
+    photoURL
   }
 }

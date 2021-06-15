@@ -1,13 +1,12 @@
 import { NextPage } from 'next'
 import { withUrqlClient } from 'next-urql'
 
-import { createUrqlClient } from '../util/index'
+// import { Nav } from '../components/modules/index'
+import { createUrqlClient } from '../util'
 import { LoginForm } from '../components/modules/index'
 
 const Login: NextPage = () => {
-  return (
-    <LoginForm />
-  )
+  return <LoginForm />
 }
 
 //  creates client with server side rendering enabled
