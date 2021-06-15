@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { animated } from 'react-spring'
 
 export const AnimatedDiv = styled(animated.span)`
-  font-family: 'Gothic Bold';
+  font-family: 'Roboto';
   font-size: 50px;
   margin:auto;
 `

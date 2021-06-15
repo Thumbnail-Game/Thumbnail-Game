@@ -12,9 +12,16 @@ export default class MyDocument extends Document {
             httpEquiv="Content-Security-Policy"
             content="upgrade-insecure-requests"
           />
+          <meta name="description" content="Play with your friends and pick which thumbnail has more views!" />
           <link
             rel="preload"
             href="/fonts/gothicb.ttf"
+            as="font"
+            crossOrigin=""
+          />
+          <link
+            rel="preload"
+            href="/fonts/Roboto-Bold.ttf"
             as="font"
             crossOrigin=""
           />

@@ -10,8 +10,8 @@ export default createGlobalStyle`
 }
 
 @font-face {
-  font-family: 'Gothic Regular';
-  src: url("/fonts/GOTHIC.ttf");
+  font-family: 'Roboto';
+  src: url("/fonts/Roboto-Bold.ttf");
   font-style: normal;
   font-weight: 400;
   font-display: swap;

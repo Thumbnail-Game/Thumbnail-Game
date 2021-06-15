@@ -6,6 +6,7 @@ import { auth } from '../../../config/firebaseConfig'
 import { ThemeContext } from '../../../providers/AppProvider'
 import { Logo, FormContainer, BackButton } from '../../../styles/constantStyles'
 import { CustomTextField } from '../../elements/index'
+import { HomeDisplay } from '../../modules/index'
 import * as Styled from './RegisterForm.styled'
 
 interface FormSubmitData {
@@ -49,6 +50,7 @@ export const RegisterForm: React.FC = () => {
   return (
     <>
       <Styled.Divider />
+      <HomeDisplay showLogo={false} />
       <Formik
         validateOnChange={true}
         initialValues={{

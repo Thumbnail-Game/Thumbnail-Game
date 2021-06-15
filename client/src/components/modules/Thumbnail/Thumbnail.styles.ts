@@ -37,8 +37,8 @@ export const TotalWrapper = styled.div<TotalWrapperProps>`
 `
 
 export const VideoText = styled.div`
-  font-size: 26px;
-  font-family: 'Gothic Bold';
+  font-family: 'Roboto';
+  font-size:26px;
   width: 672px;
   height: 93px;
   overflow: hidden;

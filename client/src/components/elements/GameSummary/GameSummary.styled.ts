@@ -100,7 +100,7 @@ export const Videos = styled.div`
 export const VideoTitle = styled.div`
   margin-top: 12px;
   text-align: left;
-  font-family: 'Gothic Bold';
+  font-family: 'Roboto';
   font-size: 27px;
   height: 66px;
   overflow: hidden;
@@ -109,7 +109,7 @@ export const VideoTitle = styled.div`
 export const VideoViews = styled.div`
   margin-top: 10px;
   text-align: left;
-  font-family: 'Gothic Bold';
+  font-family: 'Roboto';
   font-size: 33px;
 `
 
@@ -180,7 +180,7 @@ export const PlayAgainButton = styled.button`
 
   &:hover {
     animation-name: ${(props) =>
-      props.theme.theme === 'dark' ? DarkPlayButtonOut : LightPlayButtonOut};
+    props.theme.theme === 'dark' ? DarkPlayButtonOut : LightPlayButtonOut};
     animation-duration: 300ms;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;

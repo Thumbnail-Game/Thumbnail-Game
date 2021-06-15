@@ -54,6 +54,7 @@ export const FormContainer = styled.div`
   border-radius: 20px;
   background-color: ${(props) => props.theme.settingBackground};
   overflow:hidden;
+  z-index:2;
   @media (max-width: 650px) {
     width: 80%;
     height: 500px;

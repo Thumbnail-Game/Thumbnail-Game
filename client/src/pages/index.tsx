@@ -15,18 +15,10 @@ import { HomeDisplay } from '../components/modules/index'
 const Home: NextPage = () => {
   const router = useRouter()
 
-  //  get 100 random videos for the 3d homepage
-  const [videos] = useGetVideosQuery({
-    variables: {
-      numVideos: 100,
-    },
-  })
-  const videoData: any = videos && videos.data
-
   return (
     <>
       {/* <Nav /> */}
-      {videoData && <HomeDisplay videos={videoData} />}
+      <HomeDisplay showLogo={true} />
       <PlayButton onClick={() => router.push('/play')}>Play</PlayButton>
     </>
   )

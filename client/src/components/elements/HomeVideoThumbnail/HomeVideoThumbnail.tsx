@@ -1,5 +1,4 @@
-
-import { useEffect, useMemo, useRef } from "react"
+import { useEffect } from "react"
 import * as Styled from './HomeVideoThumbnail.styled'
 
 type Home3DProps = { video: any }

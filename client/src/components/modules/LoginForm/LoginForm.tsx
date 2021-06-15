@@ -6,6 +6,7 @@ import { Alert, AlertTitle } from '@material-ui/lab'
 
 import { auth } from '../../../config/firebaseConfig'
 import { CustomTextField } from '../../elements/index'
+import { HomeDisplay } from '../../modules/index'
 import { ThemeContext } from '../../../providers/AppProvider'
 import { Logo, FormContainer, BackButton } from '../../../styles/constantStyles'
 import * as Styled from './LoginForm.styled'
@@ -58,6 +59,7 @@ export const LoginForm: React.FC = () => {
   return (
     <>
       <Styled.Divider />
+      <HomeDisplay showLogo={false} />
       <Formik
         validateOnChange={true}
         initialValues={{
