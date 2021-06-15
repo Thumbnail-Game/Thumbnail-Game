@@ -11,11 +11,6 @@ import { useMediaQuery } from '../hooks/useMediaQuery'
 import { Nav, Thumbnail } from '../components/modules/index'
 import { Score, MobileNotSupported } from '../components/elements/index'
 
-interface UserCallback {
-  signedIn: boolean
-  emailVerified: boolean
-}
-
 const Play: NextPage = () => {
   const [score, setScore] = useState<number>(0)
 
