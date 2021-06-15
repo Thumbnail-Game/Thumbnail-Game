@@ -23,7 +23,8 @@ export type FieldError = {
 export type Games = {
   __typename?: 'Games';
   id: Scalars['Float'];
-  userId: Scalars['Float'];
+  userId: UserAccount;
+  user: UserAccount;
   score: Scalars['Float'];
   createdAt: Scalars['String'];
   updatedAt: Scalars['String'];
@@ -43,8 +44,8 @@ export type MutationCreateUserArgs = {
 
 
 export type MutationAddGameArgs = {
-  score: Scalars['Float'];
-  userId: Scalars['Float'];
+  score: Scalars['Int'];
+  userId: Scalars['Int'];
 };
 
 export type Query = {
@@ -54,6 +55,7 @@ export type Query = {
   videos?: Maybe<Array<Games>>;
   twoVideos?: Maybe<Array<Videos>>;
   getVideos?: Maybe<Array<Videos>>;
+  getGamesByUser?: Maybe<Array<Games>>;
 };
 
 
@@ -71,6 +73,11 @@ export type QueryGetVideosArgs = {
   numVideos: Scalars['Int'];
 };
 
+
+export type QueryGetGamesByUserArgs = {
+  userId: Scalars['Int'];
+};
+
 export type UserAccount = {
   __typename?: 'UserAccount';
   id: Scalars['Float'];
@@ -78,6 +85,7 @@ export type UserAccount = {
   displayName: Scalars['String'];
   email: Scalars['String'];
   photoURL: Scalars['String'];
+  games: Array<Games>;
   createdAt: Scalars['String'];
   updatedAt: Scalars['String'];
 };
@@ -105,6 +113,20 @@ export type Videos = {
   channel_id: Scalars['String'];
   url: Scalars['String'];
 };
+
+export type AddGameMutationVariables = Exact<{
+  score: Scalars['Int'];
+  userId: Scalars['Int'];
+}>;
+
+
+export type AddGameMutation = (
+  { __typename?: 'Mutation' }
+  & { addGame?: Maybe<(
+    { __typename?: 'Games' }
+    & Pick<Games, 'score'>
+  )> }
+);
 
 export type CreateUserMutationVariables = Exact<{
   options: UserInput;
@@ -155,7 +177,7 @@ export type GetUserQuery = (
   { __typename?: 'Query' }
   & { user?: Maybe<(
     { __typename?: 'UserAccount' }
-    & Pick<UserAccount, 'uid' | 'displayName' | 'email' | 'photoURL'>
+    & Pick<UserAccount, 'id' | 'uid' | 'displayName' | 'email' | 'photoURL'>
   )> }
 );
 
@@ -184,6 +206,17 @@ export type GetVideosQuery = (
 );
 
 
+export const AddGameDocument = gql`
+    mutation addGame($score: Int!, $userId: Int!) {
+  addGame(score: $score, userId: $userId) {
+    score
+  }
+}
+    `;
+
+export function useAddGameMutation() {
+  return Urql.useMutation<AddGameMutation, AddGameMutationVariables>(AddGameDocument);
+};
 export const CreateUserDocument = gql`
     mutation CreateUser($options: UserInput!) {
   createUser(options: $options) {
@@ -229,6 +262,7 @@ export function useGetTwoVideosQuery(options: Omit<Urql.UseQueryArgs<GetTwoVideo
 export const GetUserDocument = gql`
     query getUser($uid: String!) {
   user(uid: $uid) {
+    id
     uid
     displayName
     email

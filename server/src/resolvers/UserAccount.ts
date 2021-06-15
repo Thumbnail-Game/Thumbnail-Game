@@ -46,7 +46,6 @@ export class UserResolver {
 
   @Mutation(() => UserResponse)
   async createUser(@Arg('options') options: UserInput): Promise<UserResponse> {
-    console.log('create user mutation reached')
     let user
     try {
       const result = await getConnection()

@@ -1,5 +1,6 @@
 query getUser($uid: String!) {
   user(uid: $uid) {
+    id
     uid
     displayName
     email
