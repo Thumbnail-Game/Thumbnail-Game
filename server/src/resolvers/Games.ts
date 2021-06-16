@@ -1,13 +1,6 @@
 import { Arg, Resolver, Mutation, Query, Int } from 'type-graphql'
-// import { getConnection } from 'typeorm'
 
 import { Games } from '../entities/index'
-
-// ObjectType()
-// class Score {
-//   @Field()
-//   score: number
-// }
 
 @Resolver()
 export class GamesResolver {
@@ -21,8 +14,8 @@ export class GamesResolver {
 
   @Mutation(() => Games, { nullable: true })
   async addGame(
-    @Arg('userId', () => Int) userId: number,
-    @Arg('score', () => Int) score: number
+    @Arg('score', () => Int) score: number,
+    @Arg('userId', () => Int, { nullable: true }) userId: number | null
   ): Promise<Games | null> {
     let game
     try {

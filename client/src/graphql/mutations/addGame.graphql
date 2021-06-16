@@ -1,4 +1,4 @@
-mutation addGame($score: Int!, $userId: Int!) {
+mutation addGame($score: Int!, $userId: Int) {
   addGame(score: $score, userId: $userId) {
     score
   }

@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react'
 
+import { auth } from '../../../config/firebaseConfig'
 import {
   GetTwoVideosQuery,
+  useGetUserQuery,
   useGetTwoVideosQuery,
   useInvalidateMutation,
+  useAddGameMutation
 } from '../../../generated/graphql'
 import { AnimatedViewText, GameSummary } from '../../elements/index'
 import { LoseWinAnimation } from '../../elements/LoseWinAnimation/LoseWinAnimation'
@@ -23,23 +26,22 @@ export interface SeenVideos {
 }
 
 interface ThumbnailProps {
+  score: number
   updateScore: (updateType: string) => void
 }
 
-export const Thumbnail: React.FC<ThumbnailProps> = ({ updateScore }) => {
+export const Thumbnail: React.FC<ThumbnailProps> = ({ score, updateScore }) => {
   const [isPlaying, setIsPlaying] = useState<boolean>(true)
   const [hasPicked, setHasPicked] = useState<boolean>(false)
-
   const [hiddenViews, setHiddenViews] = useState<boolean>(true)
-
   const [updatedVideos, setUpdatedVideos] = useState<GetTwoVideosQuery>()
   const [mostViewed, setMostViewed] = useState<string>()
+
   //  keep track of videos already seen, do not want repeat, necessary for game end screen
   const [seenVideos, setSeenVideos] = useState<SeenVideos>([])
   const [seenVideoIds, setSeenVideoIds] = useState<number[]>([])
 
   const [isLoseAnimation, setIsLoseAnimation] = useState<boolean>(false)
-
   const [isLoadingVideos, setIsLoadingVideos] = useState<boolean>(false)
 
   const [videos] = useGetTwoVideosQuery({
@@ -48,8 +50,15 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ updateScore }) => {
     },
   })
   const videoData = videos && videos.data
+
+  const uid = auth?.currentUser?.uid
+  const [user] = useGetUserQuery({ variables: { uid: auth?.currentUser?.uid } })
+  const userData = user && user.data
+  console.log(userData)
+
   //  this mutation will invalidate the cache and cause useGetTwoVideosQuery to refetch
   const [, invalidateVideos] = useInvalidateMutation()
+  const [, addGame] = useAddGameMutation()
 
   useEffect(() => {
     setUpdatedVideos(videoData)
@@ -60,12 +69,6 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ updateScore }) => {
       handleUpdateSeenVideos()
     }
   }, [videos])
-
-  if (videos.fetching || isLoadingVideos) return <p>Loading...</p>
-  if (videos.error) {
-    console.log(videos.error.message)
-    return <p>There was an error</p>
-  }
 
   const handleFirstMostViewed = () => {
     if (videoData?.twoVideos) {
@@ -164,11 +167,25 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ updateScore }) => {
       if (Array.isArray(seenVideos)) {
         seenVideos[seenVideos.length - 1].isLoss = true
       }
+
+      const id = userData?.user?.id
+      console.log('adding game with score: ', score, ' to id: ', id)
+      addGame({
+        userId: id ? id : null,
+        score
+      })
+
       handleLoseAnimation()
     }
 
     setHasPicked(true)
     setHiddenViews(false)
+  }
+
+  if (videos.fetching || isLoadingVideos) return <p>Loading...</p>
+  if (videos.error) {
+    console.log(videos.error.message)
+    return <p>There was an error</p>
   }
 
   return (

@@ -31,7 +31,7 @@ const Play: NextPage = () => {
     <div id="playContainer">
       <Nav signedIn={signedIn} />
       <Score score={score} />
-      <Thumbnail updateScore={updateScore} />
+      <Thumbnail score={score} updateScore={updateScore} />
     </div>
   )
 }

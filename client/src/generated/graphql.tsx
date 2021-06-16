@@ -44,8 +44,8 @@ export type MutationCreateUserArgs = {
 
 
 export type MutationAddGameArgs = {
+  userId?: Maybe<Scalars['Int']>;
   score: Scalars['Int'];
-  userId: Scalars['Int'];
 };
 
 export type Query = {
@@ -60,7 +60,7 @@ export type Query = {
 
 
 export type QueryUserArgs = {
-  uid: Scalars['String'];
+  uid?: Maybe<Scalars['String']>;
 };
 
 
@@ -116,7 +116,7 @@ export type Videos = {
 
 export type AddGameMutationVariables = Exact<{
   score: Scalars['Int'];
-  userId: Scalars['Int'];
+  userId?: Maybe<Scalars['Int']>;
 }>;
 
 
@@ -180,7 +180,7 @@ export type GetTwoVideosQuery = (
 );
 
 export type GetUserQueryVariables = Exact<{
-  uid: Scalars['String'];
+  uid?: Maybe<Scalars['String']>;
 }>;
 
 
@@ -218,7 +218,7 @@ export type GetVideosQuery = (
 
 
 export const AddGameDocument = gql`
-    mutation addGame($score: Int!, $userId: Int!) {
+    mutation addGame($score: Int!, $userId: Int) {
   addGame(score: $score, userId: $userId) {
     score
   }
@@ -283,7 +283,7 @@ export function useGetTwoVideosQuery(options: Omit<Urql.UseQueryArgs<GetTwoVideo
   return Urql.useQuery<GetTwoVideosQuery>({ query: GetTwoVideosDocument, ...options });
 };
 export const GetUserDocument = gql`
-    query getUser($uid: String!) {
+    query getUser($uid: String) {
   user(uid: $uid) {
     id
     uid

@@ -1,9 +1,6 @@
 import { Resolver, Mutation, Arg, Field, ObjectType, Query } from 'type-graphql'
 import { getConnection } from 'typeorm'
-// import * as argon2 from 'argon2'
 
-//  firebase does this validation for us
-// import { validateRegister } from '../utils/validateRegister'
 import { UserAccount } from '../entities/index'
 import { UserInput } from './userInput'
 
@@ -28,7 +25,7 @@ class UserResponse {
 @Resolver(UserAccount)
 export class UserResolver {
   @Query(() => UserAccount, { nullable: true })
-  async user(@Arg('uid') uid: string) {
+  async user(@Arg('uid', () => String, { nullable: true }) uid: string | null) {
     const user = await UserAccount.findOne({ where: { uid } })
 
     if (!user) return null

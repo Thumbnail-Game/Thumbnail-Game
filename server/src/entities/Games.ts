@@ -20,7 +20,7 @@ export class Games extends BaseEntity {
 
   @Field(() => UserAccount)
   @Column({ nullable: true })
-  userId: number
+  userId: number | null
 
   //  foreign key to the UserAccount table and
   //  expose the creator field

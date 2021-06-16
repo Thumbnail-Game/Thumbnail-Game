@@ -1,4 +1,4 @@
-query getUser($uid: String!) {
+query getUser($uid: String) {
   user(uid: $uid) {
     id
     uid
