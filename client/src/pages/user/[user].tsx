@@ -4,7 +4,7 @@ import { withUrqlClient } from 'next-urql'
 
 import { createUrqlClient } from '../../util'
 
-const User = () => {
+const User: NextPage = () => {
   const router = useRouter()
 
   //  username => query for id

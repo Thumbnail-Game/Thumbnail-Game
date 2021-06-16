@@ -54,10 +54,12 @@ UserResponse = __decorate([
 ], UserResponse);
 let UserResolver = class UserResolver {
     user(uid) {
-        const user = index_1.UserAccount.findOne({ where: { uid } });
-        if (!user)
-            return null;
-        return user;
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = yield index_1.UserAccount.findOne({ where: { uid } });
+            if (!user)
+                return null;
+            return user;
+        });
     }
     users() {
         const users = index_1.UserAccount.find();
@@ -67,7 +69,6 @@ let UserResolver = class UserResolver {
     }
     createUser(options) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log('create user mutation reached');
             let user;
             try {
                 const result = yield typeorm_1.getConnection()
@@ -85,14 +86,16 @@ let UserResolver = class UserResolver {
                 user = result.raw[0];
             }
             catch (err) {
-                return {
-                    errors: [
-                        {
-                            field: 'username',
-                            message: 'there was an error creating a user',
-                        },
-                    ],
-                };
+                if (err.code === '23505') {
+                    return {
+                        errors: [
+                            {
+                                field: 'username',
+                                message: 'username already taken',
+                            },
+                        ],
+                    };
+                }
             }
             return { user };
         });
@@ -103,7 +106,7 @@ __decorate([
     __param(0, type_graphql_1.Arg('uid')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "user", null);
 __decorate([
     type_graphql_1.Query(() => [index_1.UserAccount], { nullable: true }),

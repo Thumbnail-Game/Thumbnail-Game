@@ -1,30 +1,29 @@
-import { useEffect, useMemo, useRef } from "react"
 import * as Styled from './HomeDisplay.styled'
 import { HomeVideoThumbnail } from '../../elements/index'
 import { useGetVideosQuery } from '../../../generated/graphql'
 
 interface HomeDisplayProps {
-    showLogo: boolean
+  showLogo: boolean
 }
 
 export const HomeDisplay: React.FC<HomeDisplayProps> = ({ showLogo }) => {
-    const [videos] = useGetVideosQuery({
-        variables: {
-            numVideos: 100,
-        },
-    })
+  const [videos] = useGetVideosQuery({
+    variables: {
+      numVideos: 100,
+    },
+  })
 
-    const videoData: any = videos && videos.data
-    console.log(videoData)
+  const videoData: any = videos && videos.data
 
-    return (
-        <Styled.Parent>
-            {showLogo && <Styled.Logo src={"/images/thumbnail-dark.png"} />}
-            <Styled.Grid>
-                {videoData && videoData.getVideos.map((video: any, i: number) => (
-                    <HomeVideoThumbnail key={i} video={video} />
-                ))}
-            </Styled.Grid>
-        </Styled.Parent>
-    )
+  return (
+    <Styled.Parent>
+      {showLogo && <Styled.Logo src={'/images/thumbnail-dark.png'} />}
+      <Styled.Grid>
+        {videoData &&
+          videoData.getVideos.map((video: any, i: number) => (
+            <HomeVideoThumbnail key={i} video={video} />
+          ))}
+      </Styled.Grid>
+    </Styled.Parent>
+  )
 }

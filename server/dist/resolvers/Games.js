@@ -33,15 +33,15 @@ let GamesResolver = class GamesResolver {
     }
     addGame(userId, score) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log('reached add game');
+            let game;
             try {
-                yield index_1.Games.create({ score, userId }).save();
+                game = yield index_1.Games.create({ score, userId }).save();
             }
             catch (err) {
                 console.log(err);
                 return null;
             }
-            return score;
+            return game;
         });
     }
     getGamesByUser(userId) {
@@ -67,16 +67,17 @@ __decorate([
 ], GamesResolver.prototype, "videos", null);
 __decorate([
     type_graphql_1.Mutation(() => index_1.Games, { nullable: true }),
-    __param(0, type_graphql_1.Arg('userId')), __param(1, type_graphql_1.Arg('score')),
+    __param(0, type_graphql_1.Arg('userId', () => type_graphql_1.Int)),
+    __param(1, type_graphql_1.Arg('score', () => type_graphql_1.Int)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Number]),
+    __metadata("design:paramtypes", [Number, Number]),
     __metadata("design:returntype", Promise)
 ], GamesResolver.prototype, "addGame", null);
 __decorate([
-    type_graphql_1.Query(() => index_1.Games, { nullable: true }),
-    __param(0, type_graphql_1.Arg('userid')),
+    type_graphql_1.Query(() => [index_1.Games], { nullable: true }),
+    __param(0, type_graphql_1.Arg('userId', () => type_graphql_1.Int)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], GamesResolver.prototype, "getGamesByUser", null);
 GamesResolver = __decorate([

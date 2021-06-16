@@ -1,9 +1,12 @@
-import { useContext } from 'react'
+import { useState, useContext } from 'react'
 import { useRouter } from 'next/router'
 import { Formik, Form } from 'formik'
 
 import { auth } from '../../../config/firebaseConfig'
-import { useCreateUserMutation } from '../../../generated/graphql'
+import {
+  useCreateUserMutation,
+  useGetDisplayNamesQuery,
+} from '../../../generated/graphql'
 import { ThemeContext } from '../../../providers/AppProvider'
 import { Logo, FormContainer, BackButton } from '../../../styles/constantStyles'
 import { CustomTextField } from '../../elements/index'
@@ -23,6 +26,10 @@ export const RegisterForm: React.FC = () => {
 
   const { themeMode } = useContext(ThemeContext)
 
+  const [displayNames] = useGetDisplayNamesQuery()
+  const displayNamesData = displayNames && displayNames.data
+
+  //  this must invalidate the display names query
   const [, createUser] = useCreateUserMutation()
 
   //  create a user and send a verification email
@@ -31,12 +38,20 @@ export const RegisterForm: React.FC = () => {
   ): Promise<errorResponse | null> => {
     let response = null
 
-    //  TODO MAKE USERNAMES UNIQUE, SHOULD NOT BE ABLE TO SIGN UP WITH TAKEN USERNAME
+    if (displayNamesData) {
+      const matchingNames = displayNamesData.users?.filter(
+        (user) => user.displayName === data.displayName
+      )
+      if (matchingNames && matchingNames.length > 0) {
+        return (response = { error: 'The display name already exists.' })
+      }
+    }
 
     await auth
       .createUserWithEmailAndPassword(data.email, data.password)
       .then((userCredential) => {
         const user = userCredential.user
+
         user?.updateProfile({
           displayName: data.displayName,
         })
@@ -44,6 +59,18 @@ export const RegisterForm: React.FC = () => {
         user?.sendEmailVerification().catch((error: any) => {
           return { error: error }
         })
+
+        //  create user in database
+        if (user?.uid) {
+          createUser({
+            options: {
+              uid: user.uid,
+              displayName: data.displayName,
+              email: data.email,
+              photoURL: user.photoURL,
+            },
+          })
+        }
       })
       .catch((error) => {
         response = { error: error.message }
@@ -70,28 +97,10 @@ export const RegisterForm: React.FC = () => {
 
           //  if there is an error such as email already exists, display it
           setSubmitting(false)
-          if (res?.error) {
-            setFieldError('email', res.error)
-          } else {
-            //  add user to database
-            const currentUser = auth.currentUser
 
-            if (currentUser) {
-              const res = await createUser({
-                options: {
-                  uid: currentUser.uid,
-                  displayName: data.displayName,
-                  email: data.email,
-                  photoURL: currentUser.photoURL,
-                },
-              })
-              if (res.error) {
-                console.log(res.error)
-              }
-            }
+          if (res?.error) return setFieldError('email', res.error)
 
-            router.push('/play')
-          }
+          router.push('/play')
         }}
         validate={(values) => {
           const errors: Record<string, string> = {}

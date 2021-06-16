@@ -155,6 +155,17 @@ export type InvalidateMutation = (
   )>> }
 );
 
+export type GetDisplayNamesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetDisplayNamesQuery = (
+  { __typename?: 'Query' }
+  & { users?: Maybe<Array<(
+    { __typename?: 'UserAccount' }
+    & Pick<UserAccount, 'id' | 'displayName'>
+  )>> }
+);
+
 export type GetTwoVideosQueryVariables = Exact<{
   videoIds: Array<Scalars['Int']> | Scalars['Int'];
 }>;
@@ -241,6 +252,18 @@ export const InvalidateDocument = gql`
 
 export function useInvalidateMutation() {
   return Urql.useMutation<InvalidateMutation, InvalidateMutationVariables>(InvalidateDocument);
+};
+export const GetDisplayNamesDocument = gql`
+    query getDisplayNames {
+  users {
+    id
+    displayName
+  }
+}
+    `;
+
+export function useGetDisplayNamesQuery(options: Omit<Urql.UseQueryArgs<GetDisplayNamesQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetDisplayNamesQuery>({ query: GetDisplayNamesDocument, ...options });
 };
 export const GetTwoVideosDocument = gql`
     query getTwoVideos($videoIds: [Int!]!) {

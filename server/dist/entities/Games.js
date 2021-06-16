@@ -23,8 +23,14 @@ __decorate([
 __decorate([
     type_graphql_1.Field(() => UserAccount_1.UserAccount),
     typeorm_1.Column({ nullable: true }),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], Games.prototype, "userId", void 0);
+__decorate([
+    type_graphql_1.Field(() => UserAccount_1.UserAccount),
+    typeorm_1.ManyToOne(() => UserAccount_1.UserAccount, (user) => user.games),
+    typeorm_1.JoinColumn({ name: 'userId' }),
+    __metadata("design:type", UserAccount_1.UserAccount)
+], Games.prototype, "user", void 0);
 __decorate([
     type_graphql_1.Field(),
     typeorm_1.Column(),

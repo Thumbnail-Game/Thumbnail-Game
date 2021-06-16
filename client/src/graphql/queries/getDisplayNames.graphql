@@ -1,0 +1,6 @@
+query getDisplayNames {
+  users {
+    id
+    displayName
+  }
+}
