@@ -6,7 +6,7 @@ import {
   useGetUserQuery,
   useGetTwoVideosQuery,
   useInvalidateMutation,
-  useAddGameMutation
+  useAddGameMutation,
 } from '../../../generated/graphql'
 import { AnimatedViewText, GameSummary } from '../../elements/index'
 import { LoseWinAnimation } from '../../elements/LoseWinAnimation/LoseWinAnimation'
@@ -52,13 +52,18 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ score, updateScore }) => {
   const videoData = videos && videos.data
 
   const uid = auth?.currentUser?.uid
-  const [user] = useGetUserQuery({ variables: { uid: auth?.currentUser?.uid } })
+  console.log(uid)
+  const [user] = useGetUserQuery({ variables: { uid: uid ? uid : '' } })
   const userData = user && user.data
   console.log(userData)
 
   //  this mutation will invalidate the cache and cause useGetTwoVideosQuery to refetch
   const [, invalidateVideos] = useInvalidateMutation()
   const [, addGame] = useAddGameMutation()
+
+  useEffect(() => {
+    console.log(user.data?.user?.displayName)
+  }, [user])
 
   useEffect(() => {
     setUpdatedVideos(videoData)
@@ -172,7 +177,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ score, updateScore }) => {
       console.log('adding game with score: ', score, ' to id: ', id)
       addGame({
         userId: id ? id : null,
-        score
+        score,
       })
 
       handleLoseAnimation()
