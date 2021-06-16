@@ -55,7 +55,8 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
               </>
             ) : (
               <>
-                <Styled.DisplayName>
+                <Styled.DisplayName
+                  onClick={() => router.push(`/user/${auth.currentUser?.displayName}`)}>
                   {auth.currentUser?.displayName}
                 </Styled.DisplayName>
                 <Styled.SignOutButton
@@ -67,7 +68,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
                   }}
                 >
                   Sign Out
-                  
+
                   <Styled.SignInUpHover />
                 </Styled.SignOutButton>
               </>
