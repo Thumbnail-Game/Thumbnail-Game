@@ -22,6 +22,7 @@
     "next": "10.2.2",
     "next-urql": "^3.1.0",
     "react": "^17.0.2",
+    "react-chartjs-2": "^3.0.3",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
     "react-items-carousel": "^2.8.0",
