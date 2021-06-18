@@ -41,13 +41,13 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
             </Styled.SettingsIconWrapper>
             {!signedIn ? (
               <>
-                <Styled.SignInUp onClick={() => router.push('login')}>
+                <Styled.SignInUp onClick={() => router.replace('/login', undefined, { shallow: true })}>
                   Log In
                   <Styled.SignInUpHover />
                 </Styled.SignInUp>
                 <Styled.SignInUp
                   style={{ color: 'white' }}
-                  onClick={() => router.push('register')}
+                  onClick={() => router.replace('/register', undefined, { shallow: true })}
                 >
                   Sign Up
                   <Styled.SignInUpHover2 />
@@ -56,8 +56,9 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
             ) : (
               <>
                 <Styled.DisplayName
-                  onClick={() => router.push(`/user/${auth.currentUser?.displayName}`)}>
+                  onClick={() => router.replace(`/user/${auth.currentUser?.displayName}`, undefined, { shallow: true })}>
                   {auth.currentUser?.displayName}
+                  <Styled.SignInUpHover />
                 </Styled.DisplayName>
                 <Styled.SignOutButton
                   style={{ zIndex: 2 }}

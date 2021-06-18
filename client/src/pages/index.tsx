@@ -36,6 +36,15 @@ export const PlayButtonAnimation = keyframes`
   }
 `
 
+export const PlayButtonAnimationOut = keyframes`
+  100% {
+    transform:scale(0.8); 
+  }
+  0%{
+    transform:scale(1.06);
+  }
+`
+
 export const PlayButton = styled.div`
   position: absolute;
   bottom: 15%;
@@ -55,6 +64,9 @@ export const PlayButton = styled.div`
   padding-bottom: 20px;
   background-color: red;
   cursor:pointer;
+  animation-name: ${PlayButtonAnimationOut};
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
 
   &:hover {
     animation-name: ${PlayButtonAnimation};

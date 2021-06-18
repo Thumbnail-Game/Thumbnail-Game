@@ -13,6 +13,7 @@ interface ProfileChartProps {
 export const ProfileChart: React.FC<ProfileChartProps> = ({ userData }) => {
     const [scores, setScores] = useState<number[]>()
     const [labels, setLabels] = useState<string[]>()
+
     const [games] = useGetGamesByUserQuery({ variables: { userId: userData!.userByDisplayName!.id } })
 
     useEffect(() => {

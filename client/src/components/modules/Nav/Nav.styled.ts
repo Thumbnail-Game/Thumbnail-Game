@@ -92,6 +92,20 @@ const LightfillButton2 = keyframes`
  }
 `
 
+export const DisplayName = styled.div`
+  font-family: 'Gothic Bold';
+  font-size: 19.5px;
+  margin-top: 2px;
+  cursor:pointer;
+  color: ${(props) => props.theme.primaryText};
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none;
+`
+
 export const SignInUpHover2 = styled.div`
   width: 87px;
   height: 38px;
@@ -185,20 +199,6 @@ export const SettingsHover = styled.div`
   }
 `
 
-export const DisplayName = styled.div`
-  font-family: 'Gothic Bold';
-  font-size: 19.5px;
-  margin-top: 2px;
-  cursor:pointer;
-  color: ${(props) => props.theme.primaryText};
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-   -khtml-user-select: none; /* Konqueror HTML */
-     -moz-user-select: none; /* Old versions of Firefox */
-      -ms-user-select: none; /* Internet Explorer/Edge */
-          user-select: none;
-`
-
 export const SignOutButton = styled.div`
   font-family:"Gothic Bold";
   font-size:20px;
@@ -240,6 +240,33 @@ const fillButton2 = keyframes`
  }
 `
 
+const fillButton3 = keyframes`
+ 0% {
+   height: 0px;
+   width: 0px;
+   top:17px;
+   left:100px;
+ }
+ 70% {
+  width:105px;
+  height:44px;
+  border-radius:25px;
+  position:absolute;
+  z-index:-1;
+  top:6px;
+  left:57px;
+ }
+ 100% {
+  width: 98px;
+  height: 38px;
+  top:9px;
+  left:59px;
+  border-radius: 20px;
+  position: absolute;
+  z-index: -1;
+ }
+`
+
 export const SignInUpHover = styled.div`
   ${SignInUp}:hover & {
     width: 87px;
@@ -255,8 +282,17 @@ export const SignInUpHover = styled.div`
     animation-iteration-count: 1;
   }
   ${SignOutButton}:hover & {
+    position:absolute;
     background-color: ${(props) => props.theme.button};
     animation-name: ${fillButton2};
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+  }
+  ${DisplayName}:hover & {
+    position:absolute;
+    background-color: ${(props) => props.theme.button};
+    animation-name: ${fillButton3};
     animation-duration: 300ms;
     animation-iteration-count: 1;
     animation-fill-mode:forwards;

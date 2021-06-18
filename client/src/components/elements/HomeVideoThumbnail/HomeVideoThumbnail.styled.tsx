@@ -10,12 +10,25 @@ const VideoHover = keyframes`
     }
 `
 
+const VideoHoverOut = keyframes`
+    100%{
+        transform:scale(1);
+    }
+    0%{
+        transform:scale(1.1);
+    }
+`
+
 export const VideoWrapper = styled.div`
     width: 330px;
     height:190px;
     background-color:#282828;
     position:relative;
     z-index:0;
+    animation-name:${VideoHoverOut};
+    animation-duration:300ms;
+    animation-fill-mode:forwards;
+    border-radius: 5px;
 
     &:hover{
         animation-name:${VideoHover};
