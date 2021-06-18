@@ -18,7 +18,6 @@ const Play: NextPage = () => {
   const uid = auth?.currentUser?.uid
   const [user] = useGetUserQuery({ variables: { uid: uid ? uid : '' } })
   const userData = user && user.data
-  console.log(userData?.user)
 
   const updateScore = (updateType: string) => {
     if (updateType === 'increment') {

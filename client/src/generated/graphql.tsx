@@ -51,6 +51,7 @@ export type MutationAddGameArgs = {
 export type Query = {
   __typename?: 'Query';
   user?: Maybe<UserAccount>;
+  userByDisplayName?: Maybe<UserAccount>;
   users?: Maybe<Array<UserAccount>>;
   videos?: Maybe<Array<Games>>;
   twoVideos?: Maybe<Array<Videos>>;
@@ -61,6 +62,11 @@ export type Query = {
 
 export type QueryUserArgs = {
   uid?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryUserByDisplayNameArgs = {
+  displayName?: Maybe<Scalars['String']>;
 };
 
 
@@ -166,6 +172,19 @@ export type GetDisplayNamesQuery = (
   )>> }
 );
 
+export type GetGamesByUserQueryVariables = Exact<{
+  userId: Scalars['Int'];
+}>;
+
+
+export type GetGamesByUserQuery = (
+  { __typename?: 'Query' }
+  & { getGamesByUser?: Maybe<Array<(
+    { __typename?: 'Games' }
+    & Pick<Games, 'id' | 'score'>
+  )>> }
+);
+
 export type GetTwoVideosQueryVariables = Exact<{
   videoIds: Array<Scalars['Int']> | Scalars['Int'];
 }>;
@@ -189,6 +208,19 @@ export type GetUserQuery = (
   & { user?: Maybe<(
     { __typename?: 'UserAccount' }
     & Pick<UserAccount, 'id' | 'uid' | 'displayName' | 'email'>
+  )> }
+);
+
+export type GetUserByDisplayNameQueryVariables = Exact<{
+  displayName: Scalars['String'];
+}>;
+
+
+export type GetUserByDisplayNameQuery = (
+  { __typename?: 'Query' }
+  & { userByDisplayName?: Maybe<(
+    { __typename?: 'UserAccount' }
+    & Pick<UserAccount, 'id' | 'displayName' | 'email'>
   )> }
 );
 
@@ -265,6 +297,18 @@ export const GetDisplayNamesDocument = gql`
 export function useGetDisplayNamesQuery(options: Omit<Urql.UseQueryArgs<GetDisplayNamesQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<GetDisplayNamesQuery>({ query: GetDisplayNamesDocument, ...options });
 };
+export const GetGamesByUserDocument = gql`
+    query getGamesByUser($userId: Int!) {
+  getGamesByUser(userId: $userId) {
+    id
+    score
+  }
+}
+    `;
+
+export function useGetGamesByUserQuery(options: Omit<Urql.UseQueryArgs<GetGamesByUserQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetGamesByUserQuery>({ query: GetGamesByUserDocument, ...options });
+};
 export const GetTwoVideosDocument = gql`
     query getTwoVideos($videoIds: [Int!]!) {
   twoVideos(videoIds: $videoIds) {
@@ -295,6 +339,19 @@ export const GetUserDocument = gql`
 
 export function useGetUserQuery(options: Omit<Urql.UseQueryArgs<GetUserQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<GetUserQuery>({ query: GetUserDocument, ...options });
+};
+export const GetUserByDisplayNameDocument = gql`
+    query getUserByDisplayName($displayName: String!) {
+  userByDisplayName(displayName: $displayName) {
+    id
+    displayName
+    email
+  }
+}
+    `;
+
+export function useGetUserByDisplayNameQuery(options: Omit<Urql.UseQueryArgs<GetUserByDisplayNameQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetUserByDisplayNameQuery>({ query: GetUserByDisplayNameDocument, ...options });
 };
 export const GetUsersDocument = gql`
     query getUsers {

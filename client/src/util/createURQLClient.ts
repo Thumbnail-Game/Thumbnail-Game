@@ -30,6 +30,14 @@ export const createUrqlClient = (ssrExchange: any, ctx: any) => {
                   cache.invalidate('Query', field.fieldKey)
                 })
             },
+            addGame: (_result, _args, cache, _info) => {
+              cache
+                .inspectFields('Query')
+                .filter((field) => field.fieldName === 'getGamesByUser')
+                .forEach((field) => {
+                  cache.invalidate('Query', field.fieldKey)
+                })
+            },
           },
         },
       }),

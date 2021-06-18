@@ -1,0 +1,6 @@
+query getGamesByUser($userId:Int!) {
+  getGamesByUser(userId:$userId) {
+    id
+    score
+  }
+}

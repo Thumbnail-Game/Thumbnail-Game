@@ -30,13 +30,22 @@ export class UserResolver {
 
     if (!user) return null
 
-    console.log(user)
+    return user
+  }
+
+  @Query(() => UserAccount, { nullable: true })
+  async userByDisplayName(@Arg('displayName', () => String, { nullable: true }) displayName: string | null) {
+    const user = await UserAccount.findOne({ where: { displayName } })
+
+    if (!user) return null
+
     return user
   }
 
   @Query(() => [UserAccount], { nullable: true })
   users() {
     const users = UserAccount.find()
+
     if (!users) return null
 
     return users

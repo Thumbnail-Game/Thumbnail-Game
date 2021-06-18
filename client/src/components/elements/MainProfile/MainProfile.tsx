@@ -1,19 +1,19 @@
-import * as Styled from './MainProfile.styled'
-import { useGetUserQuery } from '../../../generated/graphql'
+import { GetUserByDisplayNameQuery, useGetGamesByUserQuery } from '../../../generated/graphql'
 import { auth } from '../../../config/firebaseConfig'
+import * as Styled from './MainProfile.styled'
 
-export const MainProfile = () => {
+interface ProfileChartProps {
+    userData: GetUserByDisplayNameQuery
+}
 
-    const uid = auth?.currentUser?.uid
-    console.log(uid)
-    const [user] = useGetUserQuery({ variables: { uid: uid ? uid : '' } })
-    const userData = user && user.data
-    console.log(userData)
+export const MainProfile: React.FC<ProfileChartProps> = ({ userData }) => {
+
+    const [games] = useGetGamesByUserQuery({ variables: { userId: userData!.userByDisplayName!.id } })
 
     return (
         <Styled.Wrapper>
             <Styled.LeftContainer>
-                <Styled.Name>{userData?.user?.displayName}</Styled.Name>
+                <Styled.Name>{userData!.userByDisplayName!.displayName}</Styled.Name>
             </Styled.LeftContainer>
             <Styled.MiddleContainer>
 

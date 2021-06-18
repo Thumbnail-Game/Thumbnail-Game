@@ -1,0 +1,8 @@
+query getUserByDisplayName($displayName: String!) {
+  userByDisplayName(displayName: $displayName) {
+    id
+    displayName
+    email
+  }
+}
+
