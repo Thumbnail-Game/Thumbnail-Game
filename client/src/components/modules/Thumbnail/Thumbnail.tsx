@@ -51,19 +51,19 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ score, updateScore }) => {
   })
   const videoData = videos && videos.data
 
-  const uid = auth?.currentUser?.uid
-  console.log(uid)
-  const [user] = useGetUserQuery({ variables: { uid: uid ? uid : '' } })
-  const userData = user && user.data
-  console.log(userData)
+  // const uid = auth?.currentUser?.uid
+  // console.log(uid)
+  // const [user] = useGetUserQuery({ variables: { uid: uid ? uid : '' } })
+  // const userData = user && user.data
+  // console.log(userData)
 
   //  this mutation will invalidate the cache and cause useGetTwoVideosQuery to refetch
   const [, invalidateVideos] = useInvalidateMutation()
   const [, addGame] = useAddGameMutation()
 
-  useEffect(() => {
-    console.log(user.data?.user?.displayName)
-  }, [user])
+  // useEffect(() => {
+  //   console.log(user.data?.user?.displayName)
+  // }, [user])
 
   useEffect(() => {
     setUpdatedVideos(videoData)
@@ -173,12 +173,12 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ score, updateScore }) => {
         seenVideos[seenVideos.length - 1].isLoss = true
       }
 
-      const id = userData?.user?.id
-      console.log('adding game with score: ', score, ' to id: ', id)
-      addGame({
-        userId: id ? id : null,
-        score,
-      })
+      // const id = userData?.user?.id
+      // console.log('adding game with score: ', score, ' to id: ', id)
+      // addGame({
+      //   userId: id ? id : null,
+      //   score,
+      // })
 
       handleLoseAnimation()
     }

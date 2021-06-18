@@ -188,7 +188,7 @@ export type GetUserQuery = (
   { __typename?: 'Query' }
   & { user?: Maybe<(
     { __typename?: 'UserAccount' }
-    & Pick<UserAccount, 'id' | 'uid' | 'displayName' | 'email' | 'photoURL'>
+    & Pick<UserAccount, 'id' | 'uid' | 'displayName' | 'email'>
   )> }
 );
 
@@ -289,7 +289,6 @@ export const GetUserDocument = gql`
     uid
     displayName
     email
-    photoURL
   }
 }
     `;

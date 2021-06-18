@@ -7,11 +7,18 @@ import { createUrqlClient } from '../util/index'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import { Nav, Thumbnail } from '../components/modules/index'
 import { Score, MobileNotSupported } from '../components/elements/index'
+import { auth } from '../config/firebaseConfig'
+import { useGetUserQuery } from '../generated/graphql'
 
 const Play: NextPage = () => {
   const [score, setScore] = useState<number>(0)
 
   const { signedIn } = useContext(SignedInContext)
+
+  const uid = auth?.currentUser?.uid
+  const [user] = useGetUserQuery({ variables: { uid: uid ? uid : '' } })
+  const userData = user && user.data
+  console.log(userData?.user)
 
   const updateScore = (updateType: string) => {
     if (updateType === 'increment') {

@@ -4,6 +4,5 @@ query getUser($uid: String) {
     uid
     displayName
     email
-    photoURL
   }
 }
