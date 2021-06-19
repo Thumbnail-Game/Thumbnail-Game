@@ -83,6 +83,7 @@ export const LevelCircle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Gothic Bold';
   text-align: center;
   width: 40px;
   height: 40px;
