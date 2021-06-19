@@ -21,12 +21,14 @@ export const ProfileChart: React.FC<ProfileChartProps> = ({ userData }) => {
   })
 
   useEffect(() => {
-    const tempScores: number[] = []
-    games.data?.getGamesByUser?.forEach((game) => tempScores.push(game.score))
-    setScores(tempScores)
+    if (games.data && games.data.getGamesByUser) {
+      const tempScores: number[] = []
+      games.data?.getGamesByUser?.forEach((game) => tempScores.push(game.score))
+      setScores(tempScores)
 
-    const tempLabels = new Array(tempScores.length).fill('')
-    setLabels(tempLabels)
+      const tempLabels = new Array(tempScores.length).fill('')
+      setLabels(tempLabels)
+    }
   }, [games])
 
   const data: ChartData = {
