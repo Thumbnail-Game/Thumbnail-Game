@@ -2,34 +2,27 @@ import { useEffect, useState } from 'react'
 import { ChartOptions, ChartData } from 'chart.js'
 import { Line } from 'react-chartjs-2'
 
-import {
-  useGetGamesByUserQuery,
-  GetUserByDisplayNameQuery,
-} from '../../../generated/graphql'
+import { GetGamesByUserQuery } from '../../../generated/graphql'
 import * as Styled from './ProfileChart.styled'
 
 interface ProfileChartProps {
-  userData: GetUserByDisplayNameQuery
+  gamesData: GetGamesByUserQuery
 }
 
-export const ProfileChart: React.FC<ProfileChartProps> = ({ userData }) => {
+export const ProfileChart: React.FC<ProfileChartProps> = ({ gamesData }) => {
   const [scores, setScores] = useState<number[]>()
   const [labels, setLabels] = useState<string[]>()
 
-  const [games] = useGetGamesByUserQuery({
-    variables: { userId: userData!.userByDisplayName!.id },
-  })
-
   useEffect(() => {
-    if (games.data && games.data.getGamesByUser) {
+    if (gamesData && gamesData.getGamesByUser) {
       const tempScores: number[] = []
-      games.data?.getGamesByUser?.forEach((game) => tempScores.push(game.score))
+      gamesData.getGamesByUser.forEach((game) => tempScores.push(game.score))
       setScores(tempScores)
 
       const tempLabels = new Array(tempScores.length).fill('')
       setLabels(tempLabels)
     }
-  }, [games])
+  }, [gamesData])
 
   const data: ChartData = {
     labels: labels!,

@@ -1,24 +1,17 @@
 import { useState, useEffect } from 'react'
-import {
-  GetUserByDisplayNameQuery,
-  useGetGamesByUserQuery,
-} from '../../../generated/graphql'
+import { GetGamesByUserQuery } from '../../../generated/graphql'
 import * as Styled from './TopPlays.styled'
 
 interface ProfileChartProps {
-  userData: GetUserByDisplayNameQuery
+  gamesData: GetGamesByUserQuery
 }
 
-export const TopPlays: React.FC<ProfileChartProps> = ({ userData }) => {
+export const TopPlays: React.FC<ProfileChartProps> = ({ gamesData }) => {
   const [gameData, setGameData] = useState<number[]>()
 
-  const [games] = useGetGamesByUserQuery({
-    variables: { userId: userData!.userByDisplayName!.id },
-  })
-
   useEffect(() => {
-    if (games.data && games.data.getGamesByUser) {
-      const allGames = games.data.getGamesByUser
+    if (gamesData && gamesData.getGamesByUser) {
+      const allGames = gamesData.getGamesByUser
 
       let tempGameData: number[] = []
       for (let i = 0; i < allGames.length; i++) {
@@ -29,7 +22,7 @@ export const TopPlays: React.FC<ProfileChartProps> = ({ userData }) => {
       })
       setGameData(tempGameData.splice(0, 10))
     }
-  }, [games])
+  }, [gamesData])
 
   return (
     <Styled.Wrapper>
