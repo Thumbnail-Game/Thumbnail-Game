@@ -111,6 +111,8 @@ export const RegisterForm: React.FC = () => {
 
           if (values.displayName.length < 4) {
             errors.displayName = 'Usernames must be at least 4 characters long'
+          } else if (values.displayName.length > 36) {
+            errors.displayName = 'Usernames must be at most 36 characters long'
           }
 
           if (values.password.length < 8) {
