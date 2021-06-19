@@ -5,11 +5,13 @@ import { IoIosCheckmarkCircle } from 'react-icons/io'
 
 export const Wrapper = styled.div`
     width: 1000px;
-    height:200px;
-    background-color:black;
+    height:280px;
+    background-color: #3F3F3F;;
     display:flex;
     justify-content: space-between;
     margin:auto;
+    border-radius:15px;
+    box-shadow:0px 0px 20px  #111;
 `
 
 export const LeftContainer = styled.div`

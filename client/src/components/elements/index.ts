@@ -7,4 +7,5 @@ export { HomeVideoThumbnail } from './HomeVideoThumbnail/HomeVideoThumbnail'
 export { MobileNotSupported } from './MobileNotSupported/MobileNotSupported'
 export { MainProfile } from './MainProfile/MainProfile'
 export { ProfileChart } from './ProfileChart/ProfileChart'
+export { TopPlays } from './TopPlays/TopPlays'
 

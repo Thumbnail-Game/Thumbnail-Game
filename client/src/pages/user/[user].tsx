@@ -2,12 +2,13 @@ import { NextPage } from 'next'
 import { useState, useContext } from 'react'
 import { useRouter } from 'next/router'
 import { withUrqlClient } from 'next-urql'
+import styled from 'styled-components'
 
 import { GetUserByDisplayNameQuery, useGetUserByDisplayNameQuery } from '../../generated/graphql'
 import { auth } from '../../config/firebaseConfig'
 import { createUrqlClient } from '../../util'
 import { SignedInContext } from '../../providers/AppProvider'
-import { ProfileChart, MainProfile } from '../../components/elements/index'
+import { ProfileChart, MainProfile, TopPlays } from '../../components/elements/index'
 import { Nav } from '../../components/modules/index'
 
 const User: React.FC = () => {
@@ -21,10 +22,15 @@ const User: React.FC = () => {
     <>
       <Nav signedIn={signedIn} />
       {userData?.userByDisplayName ? (
-        <>
-          <MainProfile userData={userData} />
-          <ProfileChart userData={userData} />
-        </>
+        <div style={{ position: "relative" }}>
+          <Wrapper>
+            <LeftComponent>
+              <MainProfile userData={userData} />
+              <ProfileChart userData={userData} />
+            </LeftComponent>
+            <TopPlays userData={userData}></TopPlays>
+          </Wrapper>
+        </div>
       ) : (
         <div>User does not exist</div>
       )
@@ -32,6 +38,19 @@ const User: React.FC = () => {
     </>
   )
 }
+
+export const LeftComponent = styled.div`
+  width:1000px;
+`
+
+export const Wrapper = styled.div`
+  width:1400px;
+  display:flex;
+  justify-content:space-between;
+  flex-direction:row;
+  margin:auto;
+  margin-top:20px;
+`
 
 //  creates client with server side rendering enabled
 export default withUrqlClient(createUrqlClient, { ssr: true })(User)

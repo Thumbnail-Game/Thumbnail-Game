@@ -69,7 +69,6 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
                   }}
                 >
                   Sign Out
-
                   <Styled.SignInUpHover />
                 </Styled.SignOutButton>
               </>
