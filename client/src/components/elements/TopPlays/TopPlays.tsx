@@ -14,17 +14,20 @@ export const TopPlays: React.FC<ProfileChartProps> = ({ userData }) => {
     const [games] = useGetGamesByUserQuery({ variables: { userId: userData!.userByDisplayName!.id } })
 
     useEffect(() => {
-        const allGames = games!.data!.getGamesByUser!
+        if (games.data && games.data.getGamesByUser) {
+            const allGames = games.data.getGamesByUser
+            console.log(allGames)
 
-        let tempGameData: number[] = []
-        for (let i = 0; i < allGames.length; i++) {
-            tempGameData[i] = allGames[i].score
+            let tempGameData: number[] = []
+            for (let i = 0; i < allGames.length; i++) {
+                tempGameData[i] = allGames[i].score
+            }
+            tempGameData = tempGameData.sort((a, b) => {
+                return b - a;
+            });
+            setGameData(tempGameData.splice(0, 10))
         }
-        tempGameData = tempGameData.sort((a, b) => {
-            return b - a;
-        });
-        setGameData(tempGameData.splice(0, 10))
-    }, []);
+    }, [games]);
 
     return (
         <Styled.Wrapper>
@@ -34,9 +37,9 @@ export const TopPlays: React.FC<ProfileChartProps> = ({ userData }) => {
                 <Styled.Component>Score</Styled.Component>
             </Styled.Label>
             <Styled.Divider />
-            {gameData && gameData.map((score: number, i: number) => (
+            {/* {gameData && gameData.map((score: number, i: number) => (
                 <Styled.EachPlay key={i}>{score}</Styled.EachPlay>
-            ))}
+            ))} */}
         </Styled.Wrapper>
     )
 }
