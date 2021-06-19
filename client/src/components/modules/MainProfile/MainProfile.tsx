@@ -4,6 +4,7 @@ import ProgressBar from '@ramonak/react-progress-bar'
 import {
   GetGamesByUserQuery,
   GetUserByDisplayNameQuery,
+  useGetGamesQuery,
 } from '../../../generated/graphql'
 import { Achievements } from '../../elements/index'
 import * as Styled from './MainProfile.styled'
@@ -19,6 +20,11 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
 }) => {
   const [level, setLevel] = useState<number>(0)
   const [percent, setPercent] = useState<number>(0)
+
+  const [allGames] = useGetGamesQuery()
+  const allGamesData = allGames && allGames.data
+
+  console.log(allGamesData)
 
   useEffect(() => {
     //  calculate level by total score
