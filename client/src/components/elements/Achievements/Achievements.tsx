@@ -34,8 +34,6 @@ export const Achievements: React.FC<AchievementsProps> = ({ gamesData }) => {
     }
   }, [])
 
-  console.log(achievements)
-
   return (
     <>
       <Styled.Title>Achievements</Styled.Title>
@@ -43,11 +41,19 @@ export const Achievements: React.FC<AchievementsProps> = ({ gamesData }) => {
         {achievements &&
           Array.isArray(achievements) &&
           achievements.map((achievement: Achievement, i: number) => (
-            <Styled.AchievementImage
-              alt={`achievement-${i}`}
-              src={achievement.imageURL}
-              isCrownImage={achievement.title === 'Thumbnail Master'}
-            />
+            <Styled.ImageContainer key={i}>
+              <Styled.AchievementImage
+                alt={`achievement-${i}`}
+                src={achievement.imageURL}
+                isCrownImage={achievement.title === 'Thumbnail Master'}
+              />
+              <Styled.AchievementPopupContainer>
+                <Styled.PopupTitle>{achievement.title}</Styled.PopupTitle>
+                <Styled.PopupDescription>
+                  {achievement.description}
+                </Styled.PopupDescription>
+              </Styled.AchievementPopupContainer>
+            </Styled.ImageContainer>
           ))}
       </Styled.AchievementContainer>
     </>
