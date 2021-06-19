@@ -43,7 +43,6 @@ export const MiddleContainer = styled.div`
 export const RightContainer = styled.div`
   width: 300px;
   height: 150px;
-  background-color: red;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
