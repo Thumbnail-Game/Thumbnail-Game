@@ -1,33 +1,28 @@
-import { useState, useEffect } from 'react';
-import { GetUserByDisplayNameQuery, useGetGamesByUserQuery } from '../../../generated/graphql'
-import { auth } from '../../../config/firebaseConfig'
+import { useState, useEffect } from 'react'
+import { GetGamesByUserQuery } from '../../../generated/graphql'
 import * as Styled from './TopPlays.styled'
 
-
 interface ProfileChartProps {
-    userData: GetUserByDisplayNameQuery
+    gamesData: GetGamesByUserQuery
 }
 
-export const TopPlays: React.FC<ProfileChartProps> = ({ userData }) => {
+export const TopPlays: React.FC<ProfileChartProps> = ({ gamesData }) => {
     const [gameData, setGameData] = useState<number[]>()
 
-    const [games] = useGetGamesByUserQuery({ variables: { userId: userData!.userByDisplayName!.id } })
-
     useEffect(() => {
-        if (games.data && games.data.getGamesByUser) {
-            const allGames = games.data.getGamesByUser
-            console.log(allGames)
+        if (gamesData && gamesData.getGamesByUser) {
+            const allGames = gamesData.getGamesByUser
 
             let tempGameData: number[] = []
             for (let i = 0; i < allGames.length; i++) {
                 tempGameData[i] = allGames[i].score
             }
             tempGameData = tempGameData.sort((a, b) => {
-                return b - a;
-            });
+                return b - a
+            })
             setGameData(tempGameData.splice(0, 10))
         }
-    }, [games]);
+    }, [gamesData])
 
     return (
         <Styled.Wrapper>
@@ -37,9 +32,10 @@ export const TopPlays: React.FC<ProfileChartProps> = ({ userData }) => {
                 <Styled.Component>Score</Styled.Component>
             </Styled.Label>
             <Styled.Divider />
-            {/* {gameData && gameData.map((score: number, i: number) => (
-                <Styled.EachPlay key={i}>{score}</Styled.EachPlay>
-            ))} */}
+            {gameData &&
+                gameData.map((score: number, i: number) => (
+                    <Styled.EachPlay key={i}>{score}</Styled.EachPlay>
+                ))}
         </Styled.Wrapper>
     )
 }
