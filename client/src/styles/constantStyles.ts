@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Image from 'next/image'
+import { IoMdArrowRoundBack } from 'react-icons/io'
 import { Grid } from '@material-ui/core'
 
 export const CenterContainer = styled.div`
@@ -39,10 +40,42 @@ export const SubText = styled.div`
   font-size: 25px;
 `
 
-export const FormContainer = styled.div`
+export const Divider = styled.div`
   position: absolute;
+  width: 100%;
+  height: 10px;
+  background-color: red;
+`
+
+export const FormWrapper = styled.div`
+  display: flex;
+  width: 1300px;
+  height: 600px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: space-around;
+  z-index: 2;
+  border-radius: 30px;
+  background-color: ${(props) => props.theme.settingBackground};
+
+  @media (max-width: 950px) {
+    width: 500px;
+  }
+
+  @media (max-width: 400px) {
+    width: 400px;
+  }
+`
+
+export const PreviewImage = styled(Image)``
+
+export const FormContainer = styled.div`
   margin: auto;
-  inset: 0;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -51,37 +84,30 @@ export const FormContainer = styled.div`
   width: 400px;
   height: 500px;
   padding: 20px;
-  border-radius: 20px;
-  background-color: ${(props) => props.theme.settingBackground};
-  z-index:2;
+  z-index: 2;
+
   @media (max-width: 650px) {
     width: 80%;
     height: 500px;
   }
 `
 
-export const BackButton = styled.div`
-  background-color: ${(props) => props.theme.button};
-  width: 90px;
-  height: 21px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  bottom: 30px;
+export const BackButton = styled(IoMdArrowRoundBack)`
+  position: absolute;
+  width: 61px;
+  height: 61px;
   margin: auto;
-  margin-bottom: 190px;
-  top: 0;
-  bottom: 0;
-  top: 100px;
-  text-align: center;
+  bottom: -180px;
   left: 0;
   right: 0;
-  position: absolute;
+  text-align: center;
   outline: none;
   border: none;
-  border-radius: 10px;
+  border-radius: 50%;
   font-family: 'Gothic Bold';
-  font-size: 18px;
+  cursor: pointer;
   color: ${(props) => props.theme.primaryText};
+  background-color: ${(props) => props.theme.button};
 
   &:hover {
     background-color: ${(props) => props.theme.settingBackground};

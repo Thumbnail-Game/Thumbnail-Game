@@ -2,12 +2,15 @@ import styled from 'styled-components'
 import { TextField } from '@material-ui/core'
 
 export const CustomTextField = styled(TextField)`
-  background-color: ${(props) => props.theme.formBackground};
   width: 300px;
   height: 60px;
-  margin: auto;
+  margin-top: 35px;
+  margin-bottom: 15px;
   border-radius: 7px;
+  background-color: ${(props) => props.theme.formBackground};
 
-  @media (max-width: 900px) {
+  &:nth-child(4) {
+    margin-bottom: 30px;
+    color: red !important;
   }
 `
