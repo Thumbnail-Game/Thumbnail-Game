@@ -57,6 +57,7 @@ export const LevelText = styled.div`
 export const PercentText = styled.div`
   align-self: flex-end;
   margin-top: 5px;
+  font-family:"Gothic Bold";
 `
 
 export const LevelContainer = styled.div`
