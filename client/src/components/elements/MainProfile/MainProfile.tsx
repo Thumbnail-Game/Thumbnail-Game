@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { LinearProgress } from '@material-ui/core'
 import ProgressBar from '@ramonak/react-progress-bar'
 
 import {
@@ -54,7 +53,9 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
                 isLabelVisible={false}
                 height="10px"
               />
-              {percent && <Styled.PercentText>{percent}%</Styled.PercentText>}
+              {percent && (
+                <Styled.PercentText>{Math.floor(percent)}%</Styled.PercentText>
+              )}
             </Styled.ProgressContainer>
             <Styled.LevelCircle>
               {level && <div>{Math.floor(level)}</div>}
