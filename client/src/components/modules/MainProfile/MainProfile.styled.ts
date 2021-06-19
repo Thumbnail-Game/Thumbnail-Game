@@ -17,7 +17,6 @@ export const Wrapper = styled.div`
 export const LeftContainer = styled.div`
   width: 300px;
   height: 150px;
-  background-color: red;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -26,8 +25,12 @@ export const LeftContainer = styled.div`
 
 export const Name = styled.div`
   font-family: 'Gothic Bold';
-  font-size: 40px;
-  text-align: center;
+  font-size: 28px;
+  word-wrap: break-word;
+  text-decoration: underline;
+  text-decoration-color: red;
+  text-decoration-thickness: 5px;
+  text-underline-offset: 5px;
 `
 
 export const MiddleContainer = styled.div`

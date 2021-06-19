@@ -14,6 +14,7 @@ const theme = {
     nextArrow: '#444444',
     signUp: '#E36969',
     formBackground: '#FFFFFF',
+    achievementPopupBackground: 'blue',
   },
   dark: {
     theme: 'dark',
@@ -28,6 +29,7 @@ const theme = {
     nextArrow: '#F0F0F0',
     signUp: '#9F1313',
     formBackground: '#FFFFFF',
+    achievementPopupBackground: '#181818',
   },
 }
 

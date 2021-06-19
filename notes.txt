@@ -1,7 +1,5 @@
-features to implement:
-- filter settings ex: no music videos, etc.
-
-- look into font-family change when toggling theme mode
-
 TODO:
-- Figure out database one to many relation
+- filter settings ex: no music videos, etc
+- if not logged in using cookies to store highscore is fine,
+otherwise need to be using database
+
