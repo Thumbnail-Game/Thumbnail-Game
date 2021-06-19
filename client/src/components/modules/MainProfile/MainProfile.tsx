@@ -5,6 +5,7 @@ import {
   GetGamesByUserQuery,
   GetUserByDisplayNameQuery,
 } from '../../../generated/graphql'
+import { Achievements } from '../../elements/index'
 import * as Styled from './MainProfile.styled'
 
 interface ProfileChartProps {
@@ -22,15 +23,9 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
   useEffect(() => {
     //  calculate level by total score
     if (gamesData && gamesData.getGamesByUser) {
-      let totalScore = 0
-      for (const gameObj of gamesData.getGamesByUser) {
-        totalScore += gameObj.score
-      }
+      let totalScore = gamesData.getGamesByUser.length
 
-      //  10 points of exp for level
-      setPercent(
-        (Math.abs(totalScore / 10) - Math.floor(totalScore / 10)) * 100
-      )
+      setPercent((totalScore % 10) * 10)
       setLevel(totalScore / 10)
     }
   }, [gamesData])
@@ -62,6 +57,7 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
             </Styled.LevelCircle>
           </Styled.InnerProgressRow>
         </Styled.LevelContainer>
+        <Achievements gamesData={gamesData} />
       </Styled.RightContainer>
     </Styled.Wrapper>
   )
