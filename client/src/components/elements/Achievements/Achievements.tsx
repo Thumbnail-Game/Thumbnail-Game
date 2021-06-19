@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 
 import { GetGamesByUserQuery } from '../../../generated/graphql'
 import { getAchievements } from '../../../util/getAchievements'
+import * as Styled from './Achievements.styled'
 
 interface Achievements {
   [index: number]: Achievement
@@ -37,11 +38,18 @@ export const Achievements: React.FC<AchievementsProps> = ({ gamesData }) => {
 
   return (
     <>
-      {achievements &&
-        Array.isArray(achievements) &&
-        achievements.map((achievement: Achievement, i: number) => (
-          <div key={i}>{achievement.title}</div>
-        ))}
+      <Styled.Title>Achievements</Styled.Title>
+      <Styled.AchievementContainer>
+        {achievements &&
+          Array.isArray(achievements) &&
+          achievements.map((achievement: Achievement, i: number) => (
+            <Styled.AchievementImage
+              alt={`achievement-${i}`}
+              src={achievement.imageURL}
+              isCrownImage={achievement.title === 'Thumbnail Master'}
+            />
+          ))}
+      </Styled.AchievementContainer>
     </>
   )
 }
