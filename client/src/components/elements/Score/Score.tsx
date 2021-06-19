@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+
 import { getCookie, setCookie } from '../../../util/cookies'
 
 import * as Styled from './Score.styled'

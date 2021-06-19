@@ -36,7 +36,7 @@ export const ImageContainer = styled.div`
 `
 
 export const Title = styled.div`
-  margin-top: 10px;
+  margin-top: 20px;
   font-family: 'Gothic Bold';
   font-size: 20px;
 `

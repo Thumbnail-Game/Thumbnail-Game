@@ -53,9 +53,10 @@ export type Query = {
   user?: Maybe<UserAccount>;
   userByDisplayName?: Maybe<UserAccount>;
   users?: Maybe<Array<UserAccount>>;
-  videos?: Maybe<Array<Games>>;
+  videos?: Maybe<Array<Videos>>;
   twoVideos?: Maybe<Array<Videos>>;
   getVideos?: Maybe<Array<Videos>>;
+  games?: Maybe<Array<Games>>;
   getGamesByUser?: Maybe<Array<Games>>;
 };
 
@@ -169,6 +170,17 @@ export type GetDisplayNamesQuery = (
   & { users?: Maybe<Array<(
     { __typename?: 'UserAccount' }
     & Pick<UserAccount, 'id' | 'displayName'>
+  )>> }
+);
+
+export type GetGamesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetGamesQuery = (
+  { __typename?: 'Query' }
+  & { games?: Maybe<Array<(
+    { __typename?: 'Games' }
+    & Pick<Games, 'id' | 'score'>
   )>> }
 );
 
@@ -296,6 +308,18 @@ export const GetDisplayNamesDocument = gql`
 
 export function useGetDisplayNamesQuery(options: Omit<Urql.UseQueryArgs<GetDisplayNamesQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<GetDisplayNamesQuery>({ query: GetDisplayNamesDocument, ...options });
+};
+export const GetGamesDocument = gql`
+    query getGames {
+  games {
+    id
+    score
+  }
+}
+    `;
+
+export function useGetGamesQuery(options: Omit<Urql.UseQueryArgs<GetGamesQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetGamesQuery>({ query: GetGamesDocument, ...options });
 };
 export const GetGamesByUserDocument = gql`
     query getGamesByUser($userId: Int!) {

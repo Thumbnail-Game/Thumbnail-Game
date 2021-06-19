@@ -1,0 +1,6 @@
+query getGames {
+  games {
+    id
+    score
+  }
+}

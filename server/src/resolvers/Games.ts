@@ -5,8 +5,9 @@ import { Games } from '../entities/index'
 @Resolver()
 export class GamesResolver {
   @Query(() => [Games], { nullable: true })
-  videos() {
+  games() {
     const games = Games.find()
+
     if (!games) return null
 
     return games
