@@ -28,7 +28,11 @@ const User: React.FC = () => {
   const userData = user && user.data
 
   const [games] = useGetGamesByUserQuery({
-    variables: { userId: userData!.userByDisplayName!.id },
+    variables: {
+      userId: userData?.userByDisplayName
+        ? userData?.userByDisplayName?.id
+        : -1,
+    },
   })
   const gamesData = games && games.data
 

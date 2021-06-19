@@ -12,12 +12,24 @@ interface ProfileChartProps {
     gamesData: GetGamesByUserQuery
 }
 
+function calculateLevel(score: number, level: number) {
+    let tempScore = level * 10 * 1.2;
+    if (score < tempScore) {
+        let percentEXP = (score / tempScore) * 100
+        let obj = { level: level, percent: Math.round(percentEXP) };
+        return obj;
+    }
+
+    level += 1;
+    return calculateLevel(score - tempScore, level);
+}
+
 export const MainProfile: React.FC<ProfileChartProps> = ({
     userData,
     gamesData,
 }) => {
-    const [level, setLevel] = useState<number>(0)
-    const [percent, setPercent] = useState<number>(0)
+    const [level, setLevel] = useState<number | undefined>(0)
+    const [percent, setPercent] = useState<number | undefined>(0)
 
     useEffect(() => {
         //  calculate level by total score
@@ -25,10 +37,10 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
             let totalScore = gamesData.getGamesByUser.length;
 
             //  10 points of exp for level
-            setPercent(
-                (totalScore % 10) * 10
-            )
-            setLevel(totalScore / 10)
+            const levelData = calculateLevel(totalScore, 1);
+            console.log(levelData);
+            setPercent(levelData?.percent)
+            setLevel(levelData?.level)
         }
     }, [gamesData])
 
