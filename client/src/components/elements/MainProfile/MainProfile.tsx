@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react'
+import { LinearProgress } from '@material-ui/core'
+import ProgressBar from '@ramonak/react-progress-bar'
+
 import {
   GetGamesByUserQuery,
   GetUserByDisplayNameQuery,
@@ -36,16 +39,28 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
   return (
     <Styled.Wrapper>
       <Styled.LeftContainer>
-        <Styled.Name>{userData!.userByDisplayName!.displayName}</Styled.Name>
+        <Styled.Name>{userData?.userByDisplayName?.displayName}</Styled.Name>
       </Styled.LeftContainer>
       <Styled.MiddleContainer></Styled.MiddleContainer>
       <Styled.RightContainer>
-        {level && <div>{Math.floor(level)}</div>}
-        {percent && (
-          <div>
-            {percent}% to level {Math.floor(level) + 1}
-          </div>
-        )}
+        <Styled.LevelContainer>
+          <Styled.LevelText>Level</Styled.LevelText>
+          <Styled.InnerProgressRow>
+            <Styled.ProgressContainer>
+              <ProgressBar
+                completed={percent}
+                bgColor="#8AE37C"
+                borderRadius="50px"
+                isLabelVisible={false}
+                height="10px"
+              />
+              {percent && <Styled.PercentText>{percent}%</Styled.PercentText>}
+            </Styled.ProgressContainer>
+            <Styled.LevelCircle>
+              {level && <div>{Math.floor(level)}</div>}
+            </Styled.LevelCircle>
+          </Styled.InnerProgressRow>
+        </Styled.LevelContainer>
       </Styled.RightContainer>
     </Styled.Wrapper>
   )

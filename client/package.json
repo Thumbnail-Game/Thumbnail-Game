@@ -11,6 +11,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/lab": "^4.0.0-alpha.58",
+    "@ramonak/react-progress-bar": "^3.1.0",
     "@react-three/drei": "^6.0.5",
     "@react-three/fiber": "^6.2.2",
     "@types/cookie": "^0.4.0",
@@ -20,8 +21,10 @@
     "firebase": "^8.6.5",
     "formik": "^2.2.9",
     "graphql": "^15.5.0",
+    "i": "^0.3.6",
     "next": "10.2.2",
     "next-urql": "^3.1.0",
+    "npm": "^7.18.1",
     "react": "^17.0.2",
     "react-chartjs-2": "^3.0.3",
     "react-dom": "^17.0.2",
