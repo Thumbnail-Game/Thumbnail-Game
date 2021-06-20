@@ -1,23 +1,17 @@
-import { useState, useEffect } from 'react'
 import { NextPage } from 'next'
 import { withUrqlClient } from 'next-urql'
 import { useRouter } from 'next/router'
-import { Button } from '@material-ui/core'
-import { auth } from '../config/firebaseConfig'
 import styled, { keyframes } from 'styled-components'
 
 import { useGetVideosQuery } from '../generated/graphql'
 import { createUrqlClient } from '../util/index'
 import { HomeDisplay } from '../components/modules/index'
-// import { Nav } from '../components/modules/index'
-// import { StyledGridContainer } from '../styles/constantStyles'
 
 const Home: NextPage = () => {
   const router = useRouter()
 
   return (
     <>
-      {/* <Nav /> */}
       <HomeDisplay showLogo={true} />
       <PlayButton onClick={() => router.push('/play')}>Play</PlayButton>
     </>
