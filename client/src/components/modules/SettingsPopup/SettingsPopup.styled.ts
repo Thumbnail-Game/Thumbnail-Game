@@ -19,7 +19,7 @@ export const SettingsContainer = styled.div`
   width: 200px;
   background-color: ${(props) => props.theme.settingBackground};
   border-radius: 10px;
-  z-index: 1;
+  z-index: 5;
   filter: ${(props) =>
     props.theme.theme === 'dark'
       ? 'drop-shadow(1px 1px 10px #222222);'
