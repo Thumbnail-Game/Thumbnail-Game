@@ -32,7 +32,7 @@ const User: React.FC = () => {
   const gamesData = games && games.data
 
   return (
-    <>
+    <div id="userProfile">
       <Nav signedIn={signedIn} />
       {userData?.userByDisplayName ? (
         <div style={{ position: 'relative' }}>
@@ -49,7 +49,7 @@ const User: React.FC = () => {
       ) : (
         <div>User does not exist</div>
       )}
-    </>
+    </div>
   )
 }
 

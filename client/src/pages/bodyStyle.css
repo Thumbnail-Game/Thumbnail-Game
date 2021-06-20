@@ -2,25 +2,9 @@ body {
   overflow: hidden;
 }
 
-@media screen and (min-width: 2300px) {
-  #playContainer {
-    zoom: 1.1;
-    -moz-transform: scale(0.8);
-    -moz-transform-origin: 0 0;
-  }
-}
-
-@media screen and (max-width: 2000px) {
-  #playContainer {
-    zoom: 1;
-    -moz-transform: scale(0.8);
-    -moz-transform-origin: 0 0;
-  }
-}
-
 @media screen and (max-width: 1700px) {
   #playContainer {
-    zoom: 0.7;
+    zoom: 0.78;
     -moz-transform: scale(0.78);
     -moz-transform-origin: 0 0;
   }
@@ -61,7 +45,7 @@ body {
 @media screen and (min-width: 2300px) {
   #formContainer {
     zoom: 1.1;
-    -moz-transform: scale(0.8);
+    -moz-transform: scale(1.1);
     -moz-transform-origin: 0 0;
   }
 }
@@ -69,7 +53,55 @@ body {
 @media screen and (max-width: 1450px) {
   #formContainer {
     zoom: 0.7;
-    -moz-transform: scale(0.78);
+    -moz-transform: scale(0.7);
+    -moz-transform-origin: 0 0;
+  }
+}
+
+@media screen and (max-width: 1550px) {
+  #userProfile {
+    zoom: .8;
+    -moz-transform: scale(0.8);
+    -moz-transform-origin: 0 0;
+  }
+}
+
+@media screen and (max-width: 1230px) {
+  #userProfile {
+    zoom: .7;
+    -moz-transform: scale(0.7);
+    -moz-transform-origin: 0 0;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  #userProfile {
+    zoom: .6;
+    -moz-transform: scale(0.6);
+    -moz-transform-origin: 0 0;
+  }
+}
+
+@media screen and (max-width: 940px) {
+  #userProfile {
+    zoom: .5;
+    -moz-transform: scale(0.5);
+    -moz-transform-origin: 0 0;
+  }
+}
+
+@media screen and (max-width: 790px) {
+  #userProfile {
+    zoom: .4;
+    -moz-transform: scale(0.4);
+    -moz-transform-origin: 0 0;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  #userProfile {
+    zoom: .3;
+    -moz-transform: scale(0.4);
     -moz-transform-origin: 0 0;
   }
 }

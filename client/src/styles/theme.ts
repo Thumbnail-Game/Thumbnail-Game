@@ -15,6 +15,7 @@ const theme = {
     signUp: '#E36969',
     formBackground: '#FFFFFF',
     achievementPopupBackground: 'blue',
+    profileBackground: 'white',
   },
   dark: {
     theme: 'dark',
@@ -30,6 +31,7 @@ const theme = {
     signUp: '#9F1313',
     formBackground: '#FFFFFF',
     achievementPopupBackground: '#181818',
+    profileBackground: '#3f3f3f',
   },
 }
 

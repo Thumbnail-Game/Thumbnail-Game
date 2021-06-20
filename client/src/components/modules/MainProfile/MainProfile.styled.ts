@@ -1,17 +1,14 @@
 import styled from 'styled-components'
-import { keyframes } from 'styled-components'
-import { MdCancel } from 'react-icons/md'
-import { IoIosCheckmarkCircle } from 'react-icons/io'
 
 export const Wrapper = styled.div`
   width: 1000px;
   height: 280px;
-  background-color: #3f3f3f;
   display: flex;
   justify-content: space-between;
   margin: auto;
   border-radius: 15px;
   box-shadow: 0px 0px 20px #111;
+  background-color: ${(props) => props.theme.profileBackground};
 `
 
 export const LeftContainer = styled.div`
@@ -121,7 +118,7 @@ export const LevelCircle = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #c4c4c4;
+  background-color: #e37c7c;
   margin-right: 20px;
-  color: ${(props) => props.theme.background};
+  color: white;
 `

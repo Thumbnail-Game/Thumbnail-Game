@@ -1,15 +1,12 @@
 import styled from 'styled-components'
-import { keyframes } from 'styled-components'
-import { MdCancel } from 'react-icons/md'
-import { IoIosCheckmarkCircle } from 'react-icons/io'
 
 export const Wrapper = styled.div`
   width: 340px;
   height: 540px;
-  background-color: #3f3f3f;
   text-align: left;
   border-radius: 15px;
   box-shadow: 0px 0px 20px #111;
+  background-color: ${(props) => props.theme.profileBackground};
 `
 
 export const Title = styled.div`

@@ -28,12 +28,12 @@ export const ProfileChart: React.FC<ProfileChartProps> = ({ gamesData }) => {
     labels: labels!,
     datasets: [
       {
-        label: 'game',
+        label: 'Score',
         data: scores!,
         fill: false,
         backgroundColor: 'white',
         borderColor: '#8AE37C',
-        borderWidth: 2,
+        borderWidth: 4,
       },
     ],
   }

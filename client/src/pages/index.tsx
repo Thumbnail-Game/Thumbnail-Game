@@ -63,10 +63,11 @@ export const PlayButton = styled.div`
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: red;
-  cursor:pointer;
+  cursor: pointer;
   animation-name: ${PlayButtonAnimationOut};
   animation-duration: 300ms;
   animation-fill-mode: forwards;
+  color: white;
 
   &:hover {
     animation-name: ${PlayButtonAnimation};
