@@ -31,7 +31,7 @@ export const getAchievements = (numGames: number, topScore: number) => {
   if (topScore >= 15) {
     achievements.push({
       title: 'Pro',
-      description: 'You scored 15 points in one game!',
+      description: 'You scored 20 points in one game!',
       imageURL: '/images/score-achievement-20.png',
     })
   }
