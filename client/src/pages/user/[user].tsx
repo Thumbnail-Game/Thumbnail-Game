@@ -64,6 +64,7 @@ export const Wrapper = styled.div`
   flex-direction: row;
   margin: auto;
   margin-top: 20px;
+  overflow: visible;
 `
 
 //  creates client with server side rendering enabled
