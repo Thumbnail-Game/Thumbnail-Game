@@ -2,25 +2,39 @@ import { useState, useEffect } from 'react'
 import { GetGamesByUserQuery } from '../../../generated/graphql'
 import * as Styled from './TopPlays.styled'
 
+interface GameData {
+  [index: number]: Game
+}
+
+interface Game {
+  score: number
+  date: string
+}
+
 interface ProfileChartProps {
   gamesData: GetGamesByUserQuery
 }
 
 export const TopPlays: React.FC<ProfileChartProps> = ({ gamesData }) => {
-  const [gameData, setGameData] = useState<number[]>()
+  const [gameData, setGameData] = useState<GameData>()
 
   useEffect(() => {
     if (gamesData && gamesData.getGamesByUser) {
-      const allGames = gamesData.getGamesByUser
+      const userGames = gamesData.getGamesByUser
 
-      let tempGameData: number[] = []
-      for (let i = 0; i < allGames.length; i++) {
-        tempGameData[i] = allGames[i].score
+      let tempGameData = []
+      for (let i = 0; i < userGames.length; i++) {
+        tempGameData[i] = {
+          score: userGames[i].score,
+          date: userGames[i].createdAt,
+        }
       }
+
       tempGameData = tempGameData.sort((a, b) => {
-        return b - a
+        return b.score - a.score
       })
-      setGameData(tempGameData.splice(0, 10))
+
+      setGameData(tempGameData.splice(0, 9))
     }
   }, [gamesData])
 
@@ -28,13 +42,19 @@ export const TopPlays: React.FC<ProfileChartProps> = ({ gamesData }) => {
     <Styled.Wrapper>
       <Styled.Title>Top Plays</Styled.Title>
       <Styled.Label>
-        <Styled.Component>Lost To</Styled.Component>
+        <Styled.Component>Date</Styled.Component>
         <Styled.Component>Score</Styled.Component>
       </Styled.Label>
       <Styled.Divider />
       {gameData &&
-        gameData.map((score: number, i: number) => (
-          <Styled.EachPlay key={i}>{score}</Styled.EachPlay>
+        Array.isArray(gameData) &&
+        gameData.map((game: Game, i: number) => (
+          <Styled.DateScoreContainer key={i}>
+            <Styled.DateString>
+              {new Date(parseInt(game.date)).toDateString()}
+            </Styled.DateString>
+            <Styled.EachPlay key={i}>{game.score}</Styled.EachPlay>
+          </Styled.DateScoreContainer>
         ))}
     </Styled.Wrapper>
   )

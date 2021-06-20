@@ -32,7 +32,7 @@ export const Achievements: React.FC<AchievementsProps> = ({ gamesData }) => {
       const tempAchievements = getAchievements(numGames, topScore)
       setAchievements(tempAchievements)
     }
-  }, [])
+  }, [gamesData])
 
   return (
     <>

@@ -8,6 +8,7 @@ import {
 } from '../../../generated/graphql'
 import { Achievements } from '../../elements/index'
 import * as Styled from './MainProfile.styled'
+import Moment from 'moment'
 
 interface ProfileChartProps {
   userData: GetUserByDisplayNameQuery
@@ -20,28 +21,103 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
 }) => {
   const [level, setLevel] = useState<number>(0)
   const [percent, setPercent] = useState<number>(0)
+  const [percentile, setPercentile] = useState<string>('')
 
   const [allGames] = useGetGamesQuery()
   const allGamesData = allGames && allGames.data
 
-  console.log(allGamesData)
+  useEffect(() => {
+    //  calculate the percentile of the user
+    if (
+      gamesData &&
+      gamesData.getGamesByUser &&
+      allGamesData &&
+      allGamesData.games
+    ) {
+      //  turn gamesObject into array of scores for all users
+      const allScores: number[] = []
+      for (let i = 0; i < allGamesData.games.length; i++) {
+        allScores[i] = allGamesData.games[i].score
+      }
+
+      allScores.sort(function (a, b) {
+        return a - b
+      })
+
+      //  get the top score to calculate percentile
+      let topScore = 0
+      for (const game of gamesData.getGamesByUser) {
+        if (game.score > topScore) topScore = game.score
+      }
+
+      let index = allScores.indexOf(topScore)
+
+      console.log((index / allScores.length) * 100)
+      let percentile: number = Math.round((index / allScores.length) * 100)
+      let finalPercentile: string
+      if (percentile % 10 === 1) {
+        finalPercentile = percentile + 'st'
+      } else if (percentile % 10 === 2) {
+        finalPercentile = percentile + 'nd'
+      } else if (percentile % 10 === 3) {
+        finalPercentile = percentile + 'rd'
+      } else {
+        finalPercentile = percentile + 'th'
+      }
+      setPercentile(finalPercentile)
+    }
+  }, [gamesData, allGames])
 
   useEffect(() => {
-    //  calculate level by total score
     if (gamesData && gamesData.getGamesByUser) {
       let totalScore = gamesData.getGamesByUser.length
 
-      setPercent((totalScore % 10) * 10)
-      setLevel(totalScore / 10)
+      const levelData = calculateLevel(totalScore, 1)
+      setPercent(levelData?.percent)
+      setLevel(levelData?.level)
     }
   }, [gamesData])
+
+  const calculateLevel = (score: number, level: number): any => {
+    let tempScore = level * 10 * 1.2
+    if (score < tempScore) {
+      let percentEXP = (score / tempScore) * 100
+      let obj = { level: level, percent: Math.round(percentEXP) }
+      return obj
+    }
+
+    level++
+    return calculateLevel(score - tempScore, level)
+  }
 
   return (
     <Styled.Wrapper>
       <Styled.LeftContainer>
         <Styled.Name>{userData?.userByDisplayName?.displayName}</Styled.Name>
+        {userData && userData.userByDisplayName && (
+          <Styled.AccountCreatedDate>
+            User since{' '}
+            {Moment(
+              new Date(
+                parseInt(userData.userByDisplayName.createdAt)
+              ).toISOString()
+            ).format('MM/DD/YYYY')}
+          </Styled.AccountCreatedDate>
+        )}
       </Styled.LeftContainer>
-      <Styled.MiddleContainer></Styled.MiddleContainer>
+      <Styled.MiddleContainer>
+        <Styled.PercentileTitle>You are in the</Styled.PercentileTitle>
+        <Styled.Percentile
+          isAbove50={
+            parseInt(percentile.slice(0, percentile.length - 2)) >= 50
+              ? true
+              : false
+          }
+        >
+          {percentile}
+        </Styled.Percentile>
+        <Styled.PercentileLabel>percentile</Styled.PercentileLabel>
+      </Styled.MiddleContainer>
       <Styled.RightContainer>
         <Styled.LevelContainer>
           <Styled.LevelText>Level</Styled.LevelText>

@@ -20,27 +20,55 @@ export const LeftContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-left: 30px;
 `
 
 export const Name = styled.div`
   font-family: 'Gothic Bold';
-  font-size: 28px;
-  word-wrap: break-word;
+  font-size: 32px;
   text-decoration: underline;
   text-decoration-color: red;
   text-decoration-thickness: 5px;
-  text-underline-offset: 5px;
+  text-underline-offset: 10px;
+`
+
+export const AccountCreatedDate = styled.div`
+  font-family: 'Gothic Bold';
+  font-size: 20px;
+  margin-bottom: 60px;
 `
 
 export const MiddleContainer = styled.div`
   width: 300px;
   height: 150px;
-  background-color: red;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: auto;
+  margin-top: 85px;
+`
+
+export const PercentileTitle = styled.div`
+  font-family: Gothic Bold;
+  font-size: 20px;
+`
+
+interface PercentileProps {
+  isAbove50: boolean
+}
+
+export const Percentile = styled.div<PercentileProps>`
+  font-family: Gothic Bold;
+  font-size: 70px;
+  color: ${(props) => (props.isAbove50 ? '#8AE37C' : '#E37C7C')};
+`
+
+export const PercentileLabel = styled.div`
+  font-family: Gothic Bold;
+  font-size: 20px;
 `
 
 export const RightContainer = styled.div`
@@ -50,6 +78,7 @@ export const RightContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin: auto;
+  margin-top: 83px;
 `
 
 export const LevelText = styled.div`
@@ -60,6 +89,7 @@ export const LevelText = styled.div`
 export const PercentText = styled.div`
   align-self: flex-end;
   margin-top: 5px;
+  font-family: 'Gothic Bold';
 `
 
 export const LevelContainer = styled.div`

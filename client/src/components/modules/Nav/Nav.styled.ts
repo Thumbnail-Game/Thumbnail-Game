@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { MdSettings } from 'react-icons/md'
+import { BsFillPersonFill } from 'react-icons/bs'
 import styled, { keyframes } from 'styled-components'
 
 export const Flex = styled.div`
@@ -96,14 +97,14 @@ export const DisplayName = styled.div`
   font-family: 'Gothic Bold';
   font-size: 19.5px;
   margin-top: 2px;
-  cursor:pointer;
+  cursor: pointer;
   color: ${(props) => props.theme.primaryText};
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
-   -khtml-user-select: none; /* Konqueror HTML */
-     -moz-user-select: none; /* Old versions of Firefox */
-      -ms-user-select: none; /* Internet Explorer/Edge */
-          user-select: none;
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
 `
 
 export const SignInUpHover2 = styled.div`
@@ -117,7 +118,7 @@ export const SignInUpHover2 = styled.div`
   z-index: -1;
   ${SignInUp}:hover & {
     animation-name: ${(props) =>
-    props.theme.theme === 'dark' ? DarkfillButton2 : LightfillButton2};
+      props.theme.theme === 'dark' ? DarkfillButton2 : LightfillButton2};
     animation-duration: 200ms;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -129,7 +130,7 @@ export const Nav = styled.div`
   height: 110px;
   background-color: ${(props) => props.theme.navBackground};
   position: relative;
-  z-index:2;
+  z-index: 2;
 `
 
 export const Divider = styled.div`
@@ -172,6 +173,13 @@ export const SettingsIcon = styled(MdSettings)`
   z-index: 1;
 `
 
+export const PersonIcon = styled(BsFillPersonFill)`
+  position: relative;
+  z-index: 1;
+  margin-top: 5px;
+  cursor: pointer;
+`
+
 export const SettingsIconWrapper = styled.div`
   position: relative;
   display: 'flex';
@@ -181,6 +189,32 @@ export const SettingsIconWrapper = styled.div`
   alignitems: 'center';
   height: '100%';
   top: 4px;
+  cursor: pointer;
+`
+
+export const IconContainer = styled.div`
+  position: relative;
+`
+const fillSetting2 = keyframes`
+ 0% { height: 0px; width: 0px;  top:19px; left:15px; }
+ 70%{
+  width:53px;
+  height:53px;
+  top:-6.4px;
+  left:-10.8px;
+  border-radius:50%;
+  position:absolute;
+  z-index:0;
+ }
+ 100% {
+  width:45px;
+  height:45px;
+  top: -2.7px;
+  left: -7.4px;
+  border-radius:50%;
+  position:absolute;
+  z-index:0;
+  }
 `
 
 export const SettingsHover = styled.div`
@@ -197,20 +231,33 @@ export const SettingsHover = styled.div`
     animation-duration: 300ms;
     animation-iteration-count: 1;
   }
+  ${IconContainer}:hover & {
+    width: 45px;
+    height: 45px;
+    top: -2.7px;
+    left: -7.4px;
+    border-radius: 50%;
+    background-color: ${(props) => props.theme.button};
+    position: absolute;
+    z-index: 0;
+    animation-name: ${fillSetting2};
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+  }
 `
 
 export const SignOutButton = styled.div`
-  font-family:"Gothic Bold";
-  font-size:20px;
-  margin-top: 4px;
-  cursor:pointer;
-  position:relative;
+  font-family: 'Gothic Bold';
+  font-size: 20px;
+  margin-top: -2px;
+  cursor: pointer;
+  position: relative;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
-   -khtml-user-select: none; /* Konqueror HTML */
-     -moz-user-select: none; /* Old versions of Firefox */
-      -ms-user-select: none; /* Internet Explorer/Edge */
-          user-select: none;
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
 `
 
 const fillButton2 = keyframes`
@@ -282,19 +329,19 @@ export const SignInUpHover = styled.div`
     animation-iteration-count: 1;
   }
   ${SignOutButton}:hover & {
-    position:absolute;
+    position: absolute;
     background-color: ${(props) => props.theme.button};
     animation-name: ${fillButton2};
     animation-duration: 300ms;
     animation-iteration-count: 1;
-    animation-fill-mode:forwards;
+    animation-fill-mode: forwards;
   }
   ${DisplayName}:hover & {
-    position:absolute;
+    position: absolute;
     background-color: ${(props) => props.theme.button};
     animation-name: ${fillButton3};
     animation-duration: 300ms;
     animation-iteration-count: 1;
-    animation-fill-mode:forwards;
+    animation-fill-mode: forwards;
   }
 `

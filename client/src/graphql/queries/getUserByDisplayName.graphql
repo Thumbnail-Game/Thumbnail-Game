@@ -3,6 +3,6 @@ query getUserByDisplayName($displayName: String!) {
     id
     displayName
     email
+    createdAt
   }
 }
-

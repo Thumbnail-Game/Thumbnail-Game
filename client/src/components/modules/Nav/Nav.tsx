@@ -41,13 +41,19 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
             </Styled.SettingsIconWrapper>
             {!signedIn ? (
               <>
-                <Styled.SignInUp onClick={() => router.replace('/login', undefined, { shallow: true })}>
+                <Styled.SignInUp
+                  onClick={() =>
+                    router.replace('/login', undefined, { shallow: true })
+                  }
+                >
                   Log In
                   <Styled.SignInUpHover />
                 </Styled.SignInUp>
                 <Styled.SignInUp
                   style={{ color: 'white' }}
-                  onClick={() => router.replace('/register', undefined, { shallow: true })}
+                  onClick={() =>
+                    router.replace('/register', undefined, { shallow: true })
+                  }
                 >
                   Sign Up
                   <Styled.SignInUpHover2 />
@@ -55,11 +61,19 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
               </>
             ) : (
               <>
-                <Styled.DisplayName
-                  onClick={() => router.replace(`/user/${auth.currentUser?.displayName}`, undefined, { shallow: true })}>
-                  {auth.currentUser?.displayName}
-                  <Styled.SignInUpHover />
-                </Styled.DisplayName>
+                <Styled.IconContainer>
+                  <Styled.PersonIcon
+                    size={30}
+                    onClick={() =>
+                      router.replace(
+                        `/user/${auth.currentUser?.displayName}`,
+                        undefined,
+                        { shallow: true }
+                      )
+                    }
+                  ></Styled.PersonIcon>
+                  <Styled.SettingsHover />
+                </Styled.IconContainer>
                 <Styled.SignOutButton
                   style={{ zIndex: 2 }}
                   onClick={() => {

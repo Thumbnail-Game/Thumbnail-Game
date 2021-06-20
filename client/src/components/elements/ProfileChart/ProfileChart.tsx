@@ -28,18 +28,35 @@ export const ProfileChart: React.FC<ProfileChartProps> = ({ gamesData }) => {
     labels: labels!,
     datasets: [
       {
-        label: 'Game',
+        label: 'game',
         data: scores!,
         fill: false,
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgba(255, 99, 132, 0.2)',
+        backgroundColor: 'white',
+        borderColor: '#8AE37C',
+        borderWidth: 2,
       },
     ],
   }
 
+  const option = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    tooltips: {
+      callbacks: {
+        label: function (tooltipItem: any) {
+          return tooltipItem.yLabel
+        },
+      },
+    },
+    lineTension: 0.4,
+  }
+
   return (
     <Styled.Wrapper>
-      <Line type="line" data={data} />
+      <Line type="line" data={data} options={option} />
     </Styled.Wrapper>
   )
 }
