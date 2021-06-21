@@ -1,12 +1,11 @@
 body {}
 
 #playContainer {
-  overflow: hidden;
 }
 
 @media screen and (max-width: 1810px) {
   #playContainer {
-    zoom: 0.9;
+    zoom: 0.96;
     -moz-transform: scale(0.78);
     -moz-transform-origin: 0 0;
   }
@@ -20,9 +19,25 @@ body {}
   }
 }
 
+@media screen and (max-width: 1645px) {
+  #playContainer {
+    zoom: 0.87;
+    -moz-transform: scale(0.65);
+    -moz-transform-origin: 0 0;
+  }
+}
+
 @media screen and (max-width: 1590px) {
   #playContainer {
     zoom: 0.79;
+    -moz-transform: scale(0.65);
+    -moz-transform-origin: 0 0;
+  }
+}
+
+@media screen and (max-width: 1515px) {
+  #playContainer {
+    zoom: 0.735;
     -moz-transform: scale(0.65);
     -moz-transform-origin: 0 0;
   }
@@ -36,6 +51,14 @@ body {}
   }
 }
 
+@media screen and (max-width: 1350px) {
+  #playContainer {
+    zoom: 0.67;
+    -moz-transform: scale(0.65);
+    -moz-transform-origin: 0 0;
+  }
+}
+
 @media screen and (max-width: 1330px) {
   #playContainer {
     zoom: 0.65;
@@ -44,9 +67,25 @@ body {}
   }
 }
 
+@media screen and (max-width: 1280px) {
+  #playContainer {
+    zoom: 0.622;
+    -moz-transform: scale(0.55);
+    -moz-transform-origin: 0 0;
+  }
+}
+
 @media screen and (max-width: 1235px) {
   #playContainer {
     zoom: 0.605;
+    -moz-transform: scale(0.55);
+    -moz-transform-origin: 0 0;
+  }
+}
+
+@media screen and (max-width: 1190px) {
+  #playContainer {
+    zoom: 0.588;
     -moz-transform: scale(0.55);
     -moz-transform-origin: 0 0;
   }
