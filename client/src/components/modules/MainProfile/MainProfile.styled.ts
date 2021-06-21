@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   margin: auto;
   border-radius: 15px;
-  box-shadow: 0px 0px 20px #111;
+  box-shadow: 0px 0px 12px #181818;
   background-color: ${(props) => props.theme.profileBackground};
 `
 

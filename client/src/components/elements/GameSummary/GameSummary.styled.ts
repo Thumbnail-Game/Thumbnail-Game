@@ -28,6 +28,9 @@ export const GameSummaryWrapper = styled.div`
   animation-duration: 1000ms;
   animation-delay: 1s;
   animation-fill-mode: forwards;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `
 
 export const GameSummaryTitle = styled.div`
