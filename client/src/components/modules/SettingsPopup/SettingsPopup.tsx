@@ -1,14 +1,17 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
+import { MdDragHandle } from 'react-icons/md'
 
-import { ThemeContext } from '../../../providers/AppProvider'
 import { ThemeToggle } from '../../elements/index'
 import * as Styled from './SettingsPopup.styled'
 
-export const SettingsPopup: React.FC = () => {
-  const { themeMode } = useContext(ThemeContext)
+interface SettingsPopupProps {
+  toggleShowingSettings: () => void
+}
 
+export const SettingsPopup: React.FC<SettingsPopupProps> = ({ toggleShowingSettings }) => {
   return (
     <>
+      <Styled.TransparentBackground onClick={toggleShowingSettings} />
       <Styled.TriangleIcon
         size={50}
       />

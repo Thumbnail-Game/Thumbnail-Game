@@ -13,14 +13,14 @@ export const HomeDisplay: React.FC<HomeDisplayProps> = ({ showLogo }) => {
     },
   })
 
-  const videoData: any = videos && videos.data
+  const videoData = videos && videos.data
 
   return (
     <Styled.Parent>
       {showLogo && <Styled.Logo src={'/images/thumbnail-dark.png'} />}
       <Styled.Grid>
         {videoData &&
-          videoData.getVideos.map((video: any, i: number) => (
+          videoData.getVideos?.map((video, i: number) => (
             <HomeVideoThumbnail key={i} video={video} />
           ))}
       </Styled.Grid>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+
 import { GetGamesByUserQuery } from '../../../generated/graphql'
 import * as Styled from './TopPlays.styled'
 

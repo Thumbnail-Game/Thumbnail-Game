@@ -17,6 +17,10 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
 
   const router = useRouter()
 
+  const toggleShowSettings = () => {
+    setShowingSettings((oldShowingSettings) => !oldShowingSettings)
+  }
+
   return (
     <Styled.Nav>
       <Styled.Flex>
@@ -88,7 +92,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
               </>
             )}
           </Styled.SettingsContainer>
-          {showingSettings && <SettingsPopup />}
+          {showingSettings && <SettingsPopup toggleShowingSettings={toggleShowSettings} />}
         </Styled.SettingsPopUpRow>
       </Styled.Flex>
       <Styled.Divider />

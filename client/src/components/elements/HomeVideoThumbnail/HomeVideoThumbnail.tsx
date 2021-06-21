@@ -1,14 +1,21 @@
 import { useEffect } from "react"
+
+import { GetVideosQuery } from '../../../generated/graphql'
 import * as Styled from './HomeVideoThumbnail.styled'
 
-type Home3DProps = { video: any }
+interface Home3DProps {
+    video: {
+        title: string,
+        thumbnail: string
+    }
+}
 
 export const HomeVideoThumbnail: React.FC<Home3DProps> = ({ video }) => {
 
     return (
         <Styled.VideoWrapper>
             <Styled.VideoThumbnail>
-                <Styled.Thumbnail src={video.thumbnail}></Styled.Thumbnail>
+                <Styled.Thumbnail src={video.thumbnail} alt={`image-background-${video.title}`} />
             </Styled.VideoThumbnail>
         </Styled.VideoWrapper>
     )

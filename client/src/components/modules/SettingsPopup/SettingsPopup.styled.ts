@@ -18,7 +18,7 @@ export const SettingsContainer = styled.div`
   top: 60px;
   width: 200px;
   border-radius: 10px;
-  z-index: 5;
+  z-index: 7;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -37,4 +37,17 @@ export const ThemeLabel = styled.div`
   margin: 13px 14px 0px 0px;
   font-family: 'Gothic Bold';
   color: ${(props) => props.theme.primaryText};
+`
+
+export const TransparentBackground = styled.div`
+  position:fixed;
+  top:0;
+  left:0;
+  bottom:0;
+  top:0;
+  width:100vw;
+  opacity:0;
+  height:100vh;
+  z-index: 1;
+  background-color:black;
 `
