@@ -17,19 +17,19 @@ export const SettingsContainer = styled.div`
   height: 50px;
   top: 60px;
   width: 200px;
-  background-color: ${(props) => props.theme.settingBackground};
   border-radius: 10px;
   z-index: 5;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  background-color: ${(props) => props.theme.settingBackground};
   filter: ${(props) =>
     props.theme.theme === 'dark'
       ? 'drop-shadow(1px 1px 10px #222222);'
-      : 'drop-shadow(1px 1px 3px #444444);'}
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-   -khtml-user-select: none; /* Konqueror HTML */
-     -moz-user-select: none; /* Old versions of Firefox */
-      -ms-user-select: none; /* Internet Explorer/Edge */
-          user-select: none;
+      : 'drop-shadow(1px 1px 3px #444444);'};
 `
 
 export const ThemeLabel = styled.div`
