@@ -1,5 +1,7 @@
-TODO:
-- filter settings ex: no music videos, etc
-- if not logged in using cookies to store highscore is fine,
-otherwise need to be using database
-
+BUGS TO FIX:
+1. Hover element in light mode on profile oddly colored
+2. z-index of dark/light theme toggle popup in carousel
+3. There should be no scroll bar in carousel or in the animation for lose/win
+4. Negative percentile when you achieve a new highscore 
+5. If you are logged in should not use cookies for highscore
+6. Should eventurally fix having to refetch if a video is invalid, maybe fetch more videos at a time as a backup?
