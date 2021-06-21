@@ -6,8 +6,11 @@ import { SignedInContext } from '../providers/AppProvider'
 import { createUrqlClient } from '../util/index'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import { Nav, Thumbnail } from '../components/modules/index'
-import { Score, MobileNotSupported } from '../components/elements/index'
-import { auth } from '../config/firebaseConfig'
+import {
+  Score,
+  MobileNotSupported,
+  // TestThumbnailsExists,
+} from '../components/elements/index'
 
 const Play: NextPage = () => {
   const [score, setScore] = useState<number>(0)
@@ -33,6 +36,7 @@ const Play: NextPage = () => {
       <Nav signedIn={signedIn} />
       <Score score={score} />
       <Thumbnail score={score} updateScore={updateScore} />
+      {/* <TestThumbnailsExists /> */}
     </div>
   )
 }

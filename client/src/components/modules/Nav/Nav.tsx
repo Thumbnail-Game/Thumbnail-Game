@@ -39,7 +39,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
             >
               <Styled.SettingsIcon
                 fontSize={27}
-                color={themeMode === 'light' ? 'grey' : 'white'}
+                color={themeMode === 'light' ? '#282828' : 'white'}
               />
               <Styled.SettingsHover />
             </Styled.SettingsIconWrapper>
