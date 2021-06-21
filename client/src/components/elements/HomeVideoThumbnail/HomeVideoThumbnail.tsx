@@ -11,7 +11,6 @@ interface Home3DProps {
 }
 
 export const HomeVideoThumbnail: React.FC<Home3DProps> = ({ video }) => {
-
     return (
         <Styled.VideoWrapper>
             <Styled.VideoThumbnail>

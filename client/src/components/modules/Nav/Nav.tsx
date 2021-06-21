@@ -3,8 +3,8 @@ import { useRouter } from 'next/router'
 
 import { ThemeContext } from '../../../providers/AppProvider'
 import { SettingsPopup } from '../../modules/index'
-import * as Styled from './Nav.styled'
 import { auth } from '../../../config/firebaseConfig'
+import * as Styled from './Nav.styled'
 
 interface NavProps {
   signedIn: boolean

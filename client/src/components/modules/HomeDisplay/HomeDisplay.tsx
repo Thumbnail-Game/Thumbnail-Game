@@ -17,7 +17,7 @@ export const HomeDisplay: React.FC<HomeDisplayProps> = ({ showLogo }) => {
 
   return (
     <Styled.Parent>
-      {showLogo && <Styled.Logo src={'/images/thumbnail-dark.png'} />}
+      {showLogo && <Styled.Logo src={'/images/thumbnail-dark.png'} alt={'home-display-logo'} />}
       <Styled.Grid>
         {videoData &&
           videoData.getVideos?.map((video, i: number) => (
