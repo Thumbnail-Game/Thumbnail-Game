@@ -51,6 +51,9 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
       }
 
       let index = allScores.indexOf(topScore)
+      if (index < 0) {
+        index = allScores.length;
+      }
 
       let percentile: number = Math.round((index / allScores.length) * 100)
 
