@@ -29,6 +29,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
             src={`/images/thumbnail-${themeMode}.png`}
             width={187.2}
             height={53.456}
+            alt={'nav-logo'}
             onClick={() => router.push('/')}
           />
         </Styled.LogoContainer>
