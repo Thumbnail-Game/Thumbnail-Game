@@ -199,6 +199,19 @@ export const Container = styled.div<ContainerProps>`
       animation-name: ${containerAnimation};
       animation-duration: 700ms;
     `}
+
+    @media (max-width: 760px) {
+      flex-direction:column;
+      width:672px;
+      ${(props) =>
+    props.hasPicked &&
+    css`
+          margin: auto;
+          position: relative;
+          justify-content: space-between;
+          margin-top: 65px;
+        `}
+    }
 `
 
 export const ViewCount = styled.div`
@@ -268,6 +281,13 @@ export const Button = styled.button`
   z-index: 1;
   animation-name: ${moveButton};
   animation-duration: 1300ms;
+
+  @media (max-width: 760px) {
+    width: 120px;
+    height: 120px;
+    animation:none;
+    margin-top:40px;
+  }
 `
 export const Filler = styled.div`
   width: 91px;

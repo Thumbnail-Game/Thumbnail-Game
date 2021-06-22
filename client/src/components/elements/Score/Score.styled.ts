@@ -21,6 +21,14 @@ export const ScoreWrapper = styled.div`
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
+
+  @media (max-width: 760px) {
+    transform:scale(1.2);
+    width:240px;
+    margin-top: 10px;
+    flex-direction:column;
+    justify-content:space-between;
+  }
 `
 export const CurrentScore = styled.div`
   font-size: 28px;
@@ -38,4 +46,8 @@ export const HighScore = styled.div`
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
+
+  @media (max-width: 760px) {
+    font-size:24px;
+  }
 `

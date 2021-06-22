@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { ThemeContext } from '../../../providers/AppProvider'
 import { SettingsPopup } from '../../modules/index'
 import { auth } from '../../../config/firebaseConfig'
+import { useMediaQuery } from '../../../hooks/useMediaQuery'
 import * as Styled from './Nav.styled'
 
 interface NavProps {
@@ -21,6 +22,8 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
     setShowingSettings((oldShowingSettings) => !oldShowingSettings)
   }
 
+  const supportedWidth = useMediaQuery('(min-width: 760px)')
+
   return (
     <Styled.Nav>
       <Styled.Flex>
@@ -33,7 +36,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
             onClick={() => router.push('/')}
           />
         </Styled.LogoContainer>
-        <Styled.SettingsPopUpRow>
+        {supportedWidth ? (<Styled.SettingsPopUpRow>
           <Styled.SettingsContainer>
             <Styled.SettingsIconWrapper
               onClick={() => setShowingSettings((oldSetting) => !oldSetting)}
@@ -94,7 +97,9 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
             )}
           </Styled.SettingsContainer>
           {showingSettings && <SettingsPopup toggleShowingSettings={toggleShowSettings} />}
-        </Styled.SettingsPopUpRow>
+        </Styled.SettingsPopUpRow>) :(
+          <Styled.MenuIcon size={60}/>
+        )}
       </Styled.Flex>
       <Styled.Divider />
     </Styled.Nav>

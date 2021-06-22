@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { MdSettings } from 'react-icons/md'
 import { BsFillPersonFill } from 'react-icons/bs'
+import { CgMenuRightAlt } from 'react-icons/cg'
 import styled, { keyframes } from 'styled-components'
 
 export const Flex = styled.div`
@@ -11,15 +12,22 @@ export const Flex = styled.div`
   margin: auto;
   position: relative;
   top: 22.5px;
+
+  @media (max-width: 760px) {
+    width:100%;
+  }
 `
 
-export const Logo = styled(Image)``
+export const Logo = styled(Image)`
+`
 
 export const LogoContainer = styled.div`
   cursor: pointer;
   height: 49px;
   overflow: hidden;
   z-index: 1;
+  margin-top:13px;
+  margin-left:7px;
 `
 
 export const SignInUp = styled.div`
@@ -118,7 +126,7 @@ export const SignInUpHover2 = styled.div`
   z-index: -1;
   ${SignInUp}:hover & {
     animation-name: ${(props) =>
-      props.theme.theme === 'dark' ? DarkfillButton2 : LightfillButton2};
+    props.theme.theme === 'dark' ? DarkfillButton2 : LightfillButton2};
     animation-duration: 200ms;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -131,6 +139,10 @@ export const Nav = styled.div`
   background-color: ${(props) => props.theme.navBackground};
   position: relative;
   z-index: 2;
+
+  @media (max-width: 760px) {
+    height: 140px;
+  }
 `
 
 export const Divider = styled.div`
@@ -344,4 +356,9 @@ export const SignInUpHover = styled.div`
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
   }
+`
+
+export const MenuIcon = styled(CgMenuRightAlt)`
+  margin-top:10px;
+  margin-right:7px;
 `

@@ -28,8 +28,8 @@ const Play: NextPage = () => {
     }
   }
 
-  const supportedWidth = useMediaQuery('(min-width: 760px)')
-  if (!supportedWidth) return <MobileNotSupported />
+  // const supportedWidth = useMediaQuery('(min-width: 760px)')
+  // if (!supportedWidth) return <MobileNotSupported />
 
   return (
     <div id="playContainer">
