@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { MdSettings } from 'react-icons/md'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { CgMenuRightAlt } from 'react-icons/cg'
+import { BiSearchAlt2 } from 'react-icons/bi'
 import styled, { keyframes } from 'styled-components'
 
 export const Flex = styled.div`
@@ -14,20 +15,19 @@ export const Flex = styled.div`
   top: 22.5px;
 
   @media (max-width: 760px) {
-    width:100%;
+    width: 100%;
   }
 `
 
-export const Logo = styled(Image)`
-`
+export const Logo = styled(Image)``
 
 export const LogoContainer = styled.div`
   cursor: pointer;
   height: 49px;
   overflow: hidden;
   z-index: 1;
-  margin-top:13px;
-  margin-left:7px;
+  margin-top: 13px;
+  margin-left: 7px;
 `
 
 export const SignInUp = styled.div`
@@ -47,7 +47,7 @@ export const SignInUp = styled.div`
   user-select: none;
 `
 
-export const SettingsContainer = styled.div`
+export const NavWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -126,7 +126,7 @@ export const SignInUpHover2 = styled.div`
   z-index: -1;
   ${SignInUp}:hover & {
     animation-name: ${(props) =>
-    props.theme.theme === 'dark' ? DarkfillButton2 : LightfillButton2};
+      props.theme.theme === 'dark' ? DarkfillButton2 : LightfillButton2};
     animation-duration: 200ms;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -176,37 +176,6 @@ const fillSetting = keyframes`
   }
 `
 
-export const SettingsPopUpRow = styled.div`
-  position: relative;
-`
-
-export const SettingsIcon = styled(MdSettings)`
-  position: relative;
-  z-index: 1;
-`
-
-export const PersonIcon = styled(BsFillPersonFill)`
-  position: relative;
-  z-index: 1;
-  margin-top: 5px;
-  cursor: pointer;
-`
-
-export const SettingsIconWrapper = styled.div`
-  position: relative;
-  display: 'flex';
-  flex-direction: column;
-  justify-content: space-between;
-  justifycontent: 'center';
-  alignitems: 'center';
-  height: '100%';
-  top: 4px;
-  cursor: pointer;
-`
-
-export const IconContainer = styled.div`
-  position: relative;
-`
 const fillSetting2 = keyframes`
  0% { height: 0px; width: 0px;  top:19px; left:15px; }
  70%{
@@ -229,19 +198,85 @@ const fillSetting2 = keyframes`
   }
 `
 
-export const SettingsHover = styled.div`
-  ${SettingsIconWrapper}:hover & {
+export const SettingsPopUpRow = styled.div`
+  position: relative;
+`
+
+export const SearchIcon = styled(BiSearchAlt2)`
+  position: relative;
+  top: 2px;
+  z-index: 1;
+`
+
+export const SettingsIcon = styled(MdSettings)`
+  position: relative;
+  z-index: 1;
+`
+
+export const PersonIcon = styled(BsFillPersonFill)`
+  position: relative;
+  z-index: 1;
+  margin-top: 5px;
+  cursor: pointer;
+`
+
+export const NavIconWrapper = styled.div`
+  position: relative;
+  display: 'flex';
+  flex-direction: column;
+  justify-content: space-between;
+  justifycontent: 'center';
+  alignitems: 'center';
+  height: '100%';
+  top: 4px;
+  cursor: pointer;
+`
+
+export const IconContainer = styled.div`
+  position: relative;
+`
+export const SearchHover = styled.div`
+  ${NavIconWrapper}:hover & {
     width: 45px;
     height: 45px;
     top: -8.7px;
-    left: -8.8px;
+    left: -10.8px;
     border-radius: 50%;
-    background-color: ${(props) => props.theme.button};
     position: absolute;
     z-index: 0;
     animation-name: ${fillSetting};
     animation-duration: 300ms;
     animation-iteration-count: 1;
+    background-color: ${(props) => props.theme.button};
+  }
+  ${IconContainer}:hover & {
+    width: 45px;
+    height: 45px;
+    top: -2.7px;
+    left: -9.4px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 0;
+    animation-name: ${fillSetting2};
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+    background-color: ${(props) => props.theme.button};
+  }
+`
+
+export const SettingsHover = styled.div`
+  ${NavIconWrapper}:hover & {
+    width: 45px;
+    height: 45px;
+    top: -8.7px;
+    left: -8.8px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 0;
+    animation-name: ${fillSetting};
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+    background-color: ${(props) => props.theme.button};
   }
   ${IconContainer}:hover & {
     width: 45px;
@@ -249,12 +284,12 @@ export const SettingsHover = styled.div`
     top: -2.7px;
     left: -7.4px;
     border-radius: 50%;
-    background-color: ${(props) => props.theme.button};
     position: absolute;
     z-index: 0;
     animation-name: ${fillSetting2};
     animation-duration: 300ms;
     animation-iteration-count: 1;
+    background-color: ${(props) => props.theme.button};
   }
 `
 
@@ -359,6 +394,6 @@ export const SignInUpHover = styled.div`
 `
 
 export const MenuIcon = styled(CgMenuRightAlt)`
-  margin-top:10px;
-  margin-right:7px;
+  margin-top: 10px;
+  margin-right: 7px;
 `

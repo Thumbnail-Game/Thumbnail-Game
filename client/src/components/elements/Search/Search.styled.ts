@@ -17,6 +17,7 @@ export const SearchContainer = styled.div`
   width: 800px;
   height: 90vh;
   margin: auto;
+  border-radius: 15px;
   background-color: red;
 `
 
@@ -24,6 +25,8 @@ export const Input = styled.input`
   padding: 15px;
   width: 250px;
   margin: 15px 15px 15px 15px;
+  outline: none;
+  border-radius: 7px;
   background: ${(props) => props.theme.formBackground};
 `
 
@@ -35,5 +38,6 @@ export const UserContainer = styled.div`
   width: 350px;
   height: 90px;
   cursor: pointer;
+  border-radius: 15px;
   background-color: blue;
 `

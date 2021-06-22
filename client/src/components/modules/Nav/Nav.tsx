@@ -36,69 +36,84 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
             onClick={() => router.push('/')}
           />
         </Styled.LogoContainer>
-        {supportedWidth ? (<Styled.SettingsPopUpRow>
-          <Styled.SettingsContainer>
-            <Styled.SettingsIconWrapper
-              onClick={() => setShowingSettings((oldSetting) => !oldSetting)}
-            >
-              <Styled.SettingsIcon
-                fontSize={27}
-                color={themeMode === 'light' ? '#282828' : 'white'}
-              />
-              <Styled.SettingsHover />
-            </Styled.SettingsIconWrapper>
-            {!signedIn ? (
-              <>
-                <Styled.SignInUp
-                  onClick={() =>
-                    router.replace('/login', undefined, { shallow: true })
-                  }
-                >
-                  Log In
-                  <Styled.SignInUpHover />
-                </Styled.SignInUp>
-                <Styled.SignInUp
-                  style={{ color: 'white' }}
-                  onClick={() =>
-                    router.replace('/register', undefined, { shallow: true })
-                  }
-                >
-                  Sign Up
-                  <Styled.SignInUpHover2 />
-                </Styled.SignInUp>
-              </>
-            ) : (
-              <>
-                <Styled.IconContainer>
-                  <Styled.PersonIcon
-                    size={30}
+        {supportedWidth ? (
+          <Styled.SettingsPopUpRow>
+            <Styled.NavWrapper>
+              <Styled.NavIconWrapper
+                onClick={() =>
+                  router.replace('/search', undefined, { shallow: true })
+                }
+              >
+                <Styled.SearchIcon
+                  fontSize={27}
+                  color={themeMode === 'light' ? '#282828' : 'white'}
+                />
+                <Styled.SearchHover />
+              </Styled.NavIconWrapper>
+              <Styled.NavIconWrapper
+                onClick={() => setShowingSettings((oldSetting) => !oldSetting)}
+              >
+                <Styled.SettingsIcon
+                  fontSize={27}
+                  color={themeMode === 'light' ? '#282828' : 'white'}
+                />
+                <Styled.SettingsHover />
+              </Styled.NavIconWrapper>
+              {!signedIn ? (
+                <>
+                  <Styled.SignInUp
                     onClick={() =>
-                      router.replace(
-                        `/user/${auth.currentUser?.displayName}`,
-                        undefined,
-                        { shallow: true }
-                      )
+                      router.replace('/login', undefined, { shallow: true })
                     }
-                  ></Styled.PersonIcon>
-                  <Styled.SettingsHover />
-                </Styled.IconContainer>
-                <Styled.SignOutButton
-                  style={{ zIndex: 2 }}
-                  onClick={() => {
-                    auth.signOut().catch((error) => {
-                      console.log(error)
-                    })
-                  }}
-                >
-                  Sign Out
-                  <Styled.SignInUpHover />
-                </Styled.SignOutButton>
-              </>
+                  >
+                    Log In
+                    <Styled.SignInUpHover />
+                  </Styled.SignInUp>
+                  <Styled.SignInUp
+                    style={{ color: 'white' }}
+                    onClick={() =>
+                      router.replace('/register', undefined, { shallow: true })
+                    }
+                  >
+                    Sign Up
+                    <Styled.SignInUpHover2 />
+                  </Styled.SignInUp>
+                </>
+              ) : (
+                <>
+                  <Styled.IconContainer>
+                    <Styled.PersonIcon
+                      size={30}
+                      onClick={() =>
+                        router.replace(
+                          `/user/${auth.currentUser?.displayName}`,
+                          undefined,
+                          { shallow: true }
+                        )
+                      }
+                    ></Styled.PersonIcon>
+                    <Styled.SettingsHover />
+                  </Styled.IconContainer>
+                  <Styled.SignOutButton
+                    style={{ zIndex: 2 }}
+                    onClick={() => {
+                      auth.signOut().catch((error) => {
+                        console.log(error)
+                      })
+                    }}
+                  >
+                    Sign Out
+                    <Styled.SignInUpHover />
+                  </Styled.SignOutButton>
+                </>
+              )}
+            </Styled.NavWrapper>
+            {showingSettings && (
+              <SettingsPopup toggleShowingSettings={toggleShowSettings} />
             )}
-          </Styled.SettingsContainer>
-          {showingSettings && <SettingsPopup toggleShowingSettings={toggleShowSettings} />}
-        </Styled.SettingsPopUpRow>) :(
-          <Styled.MenuIcon size={60}/>
+          </Styled.SettingsPopUpRow>
+        ) : (
+          <Styled.MenuIcon size={60} />
         )}
       </Styled.Flex>
       <Styled.Divider />
