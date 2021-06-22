@@ -1,20 +1,28 @@
 import styled from 'styled-components'
 import { BsFillTriangleFill } from 'react-icons/bs'
 
-export const TriangleIcon = styled(BsFillTriangleFill)`
+interface TriangleIconProps {
+  signedIn: boolean
+}
+
+export const TriangleIcon = styled(BsFillTriangleFill)<TriangleIconProps>`
   position: absolute;
   width: 50px;
   top: 46px;
-  left: 12px;
+  right: ${(props) => (props.signedIn ? '165px' : '185px')};
   color: ${(props) => props.theme.settingBackground};
 `
 
-export const SettingsContainer = styled.div`
+interface SettingsContainerProps {
+  signedIn: boolean
+}
+
+export const SettingsContainer = styled.div<SettingsContainerProps>`
   display: flex;
   justify-content: space-between;
   position: absolute;
-  right: 200px;
   height: 50px;
+  right: ${(props) => (props.signedIn ? '150px' : '175px')};
   top: 60px;
   width: 200px;
   border-radius: 10px;
@@ -40,14 +48,14 @@ export const ThemeLabel = styled.div`
 `
 
 export const TransparentBackground = styled.div`
-  position:fixed;
-  top:0;
-  left:0;
-  bottom:0;
-  top:0;
-  width:100vw;
-  opacity:0;
-  height:100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  width: 100vw;
+  opacity: 0;
+  height: 100vh;
   z-index: 1;
-  background-color:black;
+  background-color: black;
 `

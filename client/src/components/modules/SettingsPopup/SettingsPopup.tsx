@@ -1,6 +1,6 @@
-import { useContext, useState } from 'react'
-import { MdDragHandle } from 'react-icons/md'
+import { useContext } from 'react'
 
+import { SignedInContext } from '../../../providers/AppProvider'
 import { ThemeToggle } from '../../elements/index'
 import * as Styled from './SettingsPopup.styled'
 
@@ -8,13 +8,15 @@ interface SettingsPopupProps {
   toggleShowingSettings: () => void
 }
 
-export const SettingsPopup: React.FC<SettingsPopupProps> = ({ toggleShowingSettings }) => {
+export const SettingsPopup: React.FC<SettingsPopupProps> = ({
+  toggleShowingSettings,
+}) => {
+  const { signedIn } = useContext(SignedInContext)
+
   return (
     <>
       <Styled.TransparentBackground onClick={toggleShowingSettings} />
-      <Styled.TriangleIcon
-        size={50}
-      />
+      <Styled.TriangleIcon size={50} signedIn={signedIn} />
       <Styled.SettingsContainer>
         <ThemeToggle />
         <Styled.ThemeLabel>Dark Mode</Styled.ThemeLabel>
