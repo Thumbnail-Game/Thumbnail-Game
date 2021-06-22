@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const ScoreWrapper = styled.div`
-  background-color: ${(props) => props.theme.scoreBackground};
   width: 395px;
   text-align: center;
   border-radius: 15px;
@@ -21,6 +20,7 @@ export const ScoreWrapper = styled.div`
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
+  background-color: ${(props) => props.theme.scoreBackground};
 `
 export const CurrentScore = styled.div`
   font-size: 28px;

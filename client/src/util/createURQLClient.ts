@@ -12,6 +12,9 @@ export const createUrqlClient = (ssrExchange: any, ctx: any) => {
     exchanges: [
       dedupExchange,
       cacheExchange({
+        keys: {
+          UserAccount: () => null,
+        },
         updates: {
           Mutation: {
             invalidateVideos: (_result, _args, cache, _info) => {

@@ -3,7 +3,6 @@ import { withUrqlClient } from 'next-urql'
 import { useRouter } from 'next/router'
 import styled, { keyframes } from 'styled-components'
 
-import { useGetVideosQuery } from '../generated/graphql'
 import { createUrqlClient } from '../util/index'
 import { HomeDisplay } from '../components/modules/index'
 
