@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Paper } from '@material-ui/core'
 
 import { GetUsersQuery } from '../../../generated/graphql'
 import * as Styled from './Search.styled'
