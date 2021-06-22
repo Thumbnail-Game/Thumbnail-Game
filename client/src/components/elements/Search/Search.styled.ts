@@ -39,5 +39,5 @@ export const UserContainer = styled.div`
   cursor: pointer;
   border-radius: 15px;
   background-color: ${(props) => props.theme.scoreBackground};
-  margin: 25px 0px 25px 0px;
+  margin: 15px 0px 15px 0px;
 `
