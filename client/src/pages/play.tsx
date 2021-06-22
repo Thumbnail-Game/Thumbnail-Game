@@ -4,11 +4,10 @@ import { withUrqlClient } from 'next-urql'
 
 import { SignedInContext } from '../providers/AppProvider'
 import { createUrqlClient } from '../util/index'
-import { useMediaQuery } from '../hooks/useMediaQuery'
 import { Nav, Thumbnail } from '../components/modules/index'
 import {
   Score,
-  MobileNotSupported,
+  // MobileNotSupported,
   // TestThumbnailsExists,
 } from '../components/elements/index'
 

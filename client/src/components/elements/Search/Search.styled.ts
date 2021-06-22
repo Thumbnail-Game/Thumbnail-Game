@@ -14,10 +14,11 @@ export const SearchContainer = styled.div`
   align-items: center;
   text-align: center;
   width: 800px;
-  height: 90vh;
+  height: 400px;
   margin: auto;
   border-radius: 15px;
   background-color: red;
+  overflow: auto;
 `
 
 export const Input = styled.input`
@@ -35,7 +36,7 @@ export const UserContainer = styled.div`
   justify-content: center;
   text-align: center;
   width: 350px;
-  height: 90px;
+  min-height: 90px;
   cursor: pointer;
   border-radius: 15px;
   background-color: blue;
