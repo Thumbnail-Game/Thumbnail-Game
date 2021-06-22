@@ -11,7 +11,6 @@ background-color: purple;
 export const SearchContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   text-align: center;
   width: 800px;
@@ -40,4 +39,5 @@ export const UserContainer = styled.div`
   cursor: pointer;
   border-radius: 15px;
   background-color: blue;
+  margin: 25px 0px 25px 0px;
 `
