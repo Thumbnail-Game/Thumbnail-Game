@@ -5,7 +5,6 @@ display flex;
 flex-direction: column;
 align-items: center;
 height: 100vh;
-background-color: purple;
 `
 
 export const SearchContainer = styled.div`
@@ -17,8 +16,8 @@ export const SearchContainer = styled.div`
   height: 400px;
   margin: auto;
   border-radius: 15px;
-  background-color: red;
   overflow: auto;
+  background-color: ${(props) => props.theme.profileBackground};
 `
 
 export const Input = styled.input`
@@ -39,6 +38,6 @@ export const UserContainer = styled.div`
   min-height: 90px;
   cursor: pointer;
   border-radius: 15px;
-  background-color: blue;
+  background-color: ${(props) => props.theme.scoreBackground};
   margin: 25px 0px 25px 0px;
 `
