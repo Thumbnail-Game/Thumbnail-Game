@@ -1,15 +1,17 @@
-import { useState } from 'react'
-import { Input, StyledProps } from '@material-ui/core'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 import { GetUsersQuery } from '../../../generated/graphql'
 import * as Styled from './Search.styled'
 
+interface Users {
+  [index: number]: User
+}
+
 interface User {
-  [index: number]: {
-    uid: string
-    displayName: string
-    email: string
-  }
+  uid: string
+  displayName: string
+  email: string
 }
 
 interface SearchProps {
@@ -17,10 +19,20 @@ interface SearchProps {
 }
 
 export const Search: React.FC<SearchProps> = ({ users }) => {
-  const [matchingUsers, setMatchingUsers] = useState<User>()
+  const [matchingUsers, setMatchingUsers] =
+    useState<Users | undefined | null>(users)
+
+  const router = useRouter()
+
+  useEffect(() => {
+    if (users.users) {
+      setMatchingUsers(users.users)
+    }
+  }, [users])
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.currentTarget.value
+
     setMatchingUsers(
       users.users?.filter(
         (userObj) =>
@@ -30,15 +42,28 @@ export const Search: React.FC<SearchProps> = ({ users }) => {
   }
 
   return (
-    <>
+    <Styled.Wrapper>
       <Styled.Input
-        placeholder="input field"
+        placeholder="Search For User"
         color="primary"
         onChange={handleSearch}
       />
-      {matchingUsers &&
-        Array.isArray(matchingUsers) &&
-        matchingUsers.map((user, i) => <div key={i}>{user.displayName}</div>)}
-    </>
+      <Styled.SearchContainer>
+        {matchingUsers &&
+          Array.isArray(matchingUsers) &&
+          matchingUsers.map((user: User, i) => (
+            <Styled.UserContainer
+              key={i}
+              onClick={() =>
+                router.replace(`/user/${user.displayName}`, undefined, {
+                  shallow: true,
+                })
+              }
+            >
+              {user.displayName}
+            </Styled.UserContainer>
+          ))}
+      </Styled.SearchContainer>
+    </Styled.Wrapper>
   )
 }
