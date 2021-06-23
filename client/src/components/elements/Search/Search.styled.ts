@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 
 export const SearchContainer = styled.div`
-  margin:auto;
   background-color: #606060;
-  width:650px;
+  width:100%;
   border-radius:12px;
   font-family: "Gothic Bold";
-  height:680px;
+  margin:auto;
+  height:100%;
 `
 
 export const Input = styled.input`
@@ -39,10 +39,10 @@ export const UserContainer = styled.div`
 
 
 export const Wrapper = styled.div`
-  width:100%;
-  height:100%;
-  display:flex;
-  justify-content:space-around;
+  width:300px;
+  height:680px;
+  background-color:red;
+  margin:auto;
 `
 
 export const LabelContainer = styled.div`
