@@ -197,7 +197,7 @@ export const RegisterForm: React.FC = () => {
           size={40}
           onClick={(e) => {
             e.preventDefault()
-            router.push('/')
+            router.push('/play')
           }}
         >
           Back
