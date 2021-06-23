@@ -60,6 +60,7 @@ export type Query = {
   getVideos?: Maybe<Array<Videos>>;
   games?: Maybe<Array<Games>>;
   getGamesByUser?: Maybe<Array<Games>>;
+  getUserHighscores?: Maybe<Array<UserHighscoreResponse>>;
 };
 
 
@@ -87,6 +88,11 @@ export type QueryGetGamesByUserArgs = {
   userId: Scalars['Int'];
 };
 
+
+export type QueryGetUserHighscoresArgs = {
+  userIds: Array<Scalars['Int']>;
+};
+
 export type UserAccount = {
   __typename?: 'UserAccount';
   id: Scalars['Float'];
@@ -97,6 +103,12 @@ export type UserAccount = {
   games: Array<Games>;
   createdAt: Scalars['String'];
   updatedAt: Scalars['String'];
+};
+
+export type UserHighscoreResponse = {
+  __typename?: 'UserHighscoreResponse';
+  userId?: Maybe<Scalars['Float']>;
+  highScore?: Maybe<Scalars['Float']>;
 };
 
 export type UserInput = {
@@ -237,6 +249,19 @@ export type GetUserByDisplayNameQuery = (
     { __typename?: 'UserAccount' }
     & Pick<UserAccount, 'id' | 'displayName' | 'email' | 'createdAt'>
   )> }
+);
+
+export type GetUserHighscoresQueryVariables = Exact<{
+  userIds: Array<Scalars['Int']> | Scalars['Int'];
+}>;
+
+
+export type GetUserHighscoresQuery = (
+  { __typename?: 'Query' }
+  & { getUserHighscores?: Maybe<Array<(
+    { __typename?: 'UserHighscoreResponse' }
+    & Pick<UserHighscoreResponse, 'userId' | 'highScore'>
+  )>> }
 );
 
 export type GetUsersQueryVariables = Exact<{ [key: string]: never; }>;
@@ -383,6 +408,18 @@ export const GetUserByDisplayNameDocument = gql`
 
 export function useGetUserByDisplayNameQuery(options: Omit<Urql.UseQueryArgs<GetUserByDisplayNameQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<GetUserByDisplayNameQuery>({ query: GetUserByDisplayNameDocument, ...options });
+};
+export const GetUserHighscoresDocument = gql`
+    query getUserHighscores($userIds: [Int!]!) {
+  getUserHighscores(userIds: $userIds) {
+    userId
+    highScore
+  }
+}
+    `;
+
+export function useGetUserHighscoresQuery(options: Omit<Urql.UseQueryArgs<GetUserHighscoresQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetUserHighscoresQuery>({ query: GetUserHighscoresDocument, ...options });
 };
 export const GetUsersDocument = gql`
     query getUsers {

@@ -22,6 +22,9 @@ export const Input = styled.input`
   color:black;
   font-family:"Gothic Bold";
   font-size:16px;
+  &::-webkit-search-cancel-button{
+    margin-right:20px;
+  }
 `
 
 export const UserContainer = styled.div`

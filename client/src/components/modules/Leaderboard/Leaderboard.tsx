@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import { NextPage } from 'next'
 import { withUrqlClient } from 'next-urql'
-import { useGetUsersQuery, useGetGamesQuery } from '../../../generated/graphql'
+import { useGetUsersQuery, useGetGamesQuery, useGetUserHighscoresQuery } from '../../../generated/graphql'
 
 import { SignedInContext } from '../../../providers/AppProvider'
 import { createUrqlClient } from '../../../util'
@@ -22,41 +22,27 @@ interface LeaderboardUser {
 
 export const Leaderboard: React.FC = () => {
     const [leaderboardUsers, setLeaderboardUsers] = useState<LeaderboardUsers>([])
+    const [userIds, setUserIds] = useState<number>([])
+
     const [users] = useGetUsersQuery()
     const usersData = users && users.data
 
     const [games] = useGetGamesQuery()
     const gamesData = games && games.data
 
+    const [highscores] = useGetUserHighscoresQuery({ variables: { userIds: [] } })
+    const highscoresData = highscores && highscores.data
+
     const { signedIn } = useContext(SignedInContext)
 
     useEffect(() => {
-        //  create an ordered list of top players' and their best games
-        // console.log(usersData)
-        // console.log(gamesData)
-        // if (usersData && usersData.users && gamesData && gamesData.games) {
-        //     const tempLeaderboardUsers: LeaderboardUsers = []
+        if (usersData && usersData.users) {
 
-        //     const userIds: number[] = []
-        //     usersData.users.forEach(user => userIds.push(user.id))
+        }
+    }, [users])
 
-        //     for (const userId of userIds) {
-        //         let highScore = 0;
-        //         let gameDate = ''
-        //         console.log('userId: ', userId)
-        //         const userGames = gamesData.games.filter(game => game === userId)
-        //         console.log(userGames)
+    useEffect(() => {
 
-        //         for (const game of userGames) {
-        //             if (game.score > highScore && game.gamemode === 'timed') {
-        //                 highScore = game.score
-        //                 gameDate = game.createdAt
-        //             }
-        //         }
-        //         console.log(highScore);
-        //         console.log(gameDate);
-        //     }
-        // }
     }, [usersData, gamesData])
 
     return (

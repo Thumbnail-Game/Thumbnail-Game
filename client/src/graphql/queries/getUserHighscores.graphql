@@ -1,4 +1,4 @@
-query getUserByHighscores($userIds: [Int!]!) {
+query getUserHighscores($userIds: [Int!]!) {
   getUserHighscores(userIds: $userIds) {
     userId
     highScore
