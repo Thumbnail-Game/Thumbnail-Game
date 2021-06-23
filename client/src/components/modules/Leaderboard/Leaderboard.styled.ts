@@ -1,25 +1,32 @@
-import styled from 'styled-components'
+import styled, { keyframes }  from 'styled-components'
+
+const LeaderboardIntro = keyframes`
+  0%{
+    top:-1000px;
+  }
+  100%{
+    top:20px;
+  }
+`
 
 export const Wrapper = styled.div`
   position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  margin:auto;
+  top:20px;
+  bottom:0;
+  left:0;
+  right:0;
   z-index: 2;
-`
+  width:1120px;
+  height:700px;
+  display:flex;
+  justify-content:space-around;
+  background-color:#424242;
+  border-radius:15px;
 
-export const LeaderboardContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  position: relative;
-  width: 1480px;
-  height: 750px;
-  border-radius: 15px;
-  margin: auto;
-  margin-top: 50px;
-  z-index: 2;
-  background-color: blue;
+  animation-name: ${LeaderboardIntro};
+  animation-duration:300ms;
+  animation-fill-mode:forwards;
 `
 
 export const Background = styled.div`
@@ -29,25 +36,19 @@ export const Background = styled.div`
   bottom: 0;
   right: 0;
   z-index: 1;
-  opacity: 0.5;
+  opacity: 0.6;
   background-color: #111111;
-`
-
-export const LeaderboardColumn = styled.div`
-  display: flex;
-  width: 1100px;
-  background-color: purple;
 `
 
 export const Leaderboard = styled.div`
   margin: auto;
-  width: 900px;
-  height: 600px;
-  border-radius: 15px;
-  background-color: orange;
+  width: 650px;
+  height: 93%;
+  border-radius: 9px;
+  background-color: #606060;
 `
 
-export const LeaderboardRow = styled.div`
+export const PlayerInfo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;

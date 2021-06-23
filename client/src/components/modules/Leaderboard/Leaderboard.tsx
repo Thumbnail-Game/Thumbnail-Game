@@ -18,7 +18,11 @@ interface LeaderboardUser {
     scoreDate?: string
 }
 
-export const Leaderboard: React.FC = () => {
+interface ShowLeaderboardProps {
+    toggleLeaderboard: () => void
+}
+
+export const Leaderboard: React.FC<ShowLeaderboardProps> = ({ toggleLeaderboard }) => {
     const [leaderboardUsers, setLeaderboardUsers] = useState<LeaderboardUsers>([])
     const [userIds, setUserIds] = useState<number[]>([])
 
@@ -77,26 +81,22 @@ export const Leaderboard: React.FC = () => {
     return (
         <>
             <Styled.Wrapper>
-                <Styled.LeaderboardContainer>
-                    <Styled.LeaderboardColumn>
-                        <Styled.Leaderboard>
-                            {leaderboardUsers &&
-                                Array.isArray(leaderboardUsers) &&
-                                leaderboardUsers.map((user: LeaderboardUser, i) => (
-                                    <Styled.LeaderboardRow
-                                        onClick={() => router.push(`/user/${user.displayName}`)}
-                                    >
-                                        <div>{user.displayName}</div>
-                                        <div>{user.topScore}</div>
-                                        <div>{user.scoreDate}</div>
-                                    </Styled.LeaderboardRow>
-                                ))}
-                        </Styled.Leaderboard>
-                    </Styled.LeaderboardColumn>
-                    {usersData && <Search users={usersData} />}
-                </Styled.LeaderboardContainer>
+                <Styled.Leaderboard>
+                    {leaderboardUsers &&
+                        Array.isArray(leaderboardUsers) &&
+                        leaderboardUsers.map((user: LeaderboardUser, i) => (
+                            <Styled.PlayerInfo
+                                onClick={() => router.push(`/user/${user.displayName}`)}
+                            >
+                                <div>{user.displayName}</div>
+                                <div>{user.topScore}</div>
+                                <div>{user.scoreDate}</div>
+                            </Styled.PlayerInfo>
+                        ))}
+                </Styled.Leaderboard>
+                {usersData && <Search users={usersData} />}
             </Styled.Wrapper>
-            {/* <Styled.Background /> */}
+            <Styled.Background onClick={toggleLeaderboard} />
         </>
     )
 }

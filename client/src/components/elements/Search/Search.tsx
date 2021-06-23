@@ -50,9 +50,6 @@ export const Search: React.FC<SearchProps> = ({ users }) => {
         type="search"
       />
       <Styled.SearchContainer>
-        <Styled.LabelContainer>
-          <Styled.Label>Search</Styled.Label>
-        </Styled.LabelContainer>
         {matchingUsers &&
           Array.isArray(matchingUsers) &&
           matchingUsers.map((user: User, i) => (

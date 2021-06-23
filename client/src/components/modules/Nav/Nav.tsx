@@ -31,7 +31,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
 
   return (
     <>
-      {showLeaderboard && <Leaderboard />}
+      {showLeaderboard && <Leaderboard toggleLeaderboard={toggleLeaderboard} />}
       <Styled.Nav>
         <Styled.Flex>
           <Styled.LogoContainer>
