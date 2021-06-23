@@ -9,7 +9,7 @@ import {
   useInvalidateMutation,
   useAddGameMutation,
 } from '../../../generated/graphql'
-import { AnimatedViewText, GameSummary } from '../../elements/index'
+import { AnimatedViewText, GameSummary, Timer } from '../../elements/index'
 import { LoseWinAnimation } from '../../elements/LoseWinAnimation/LoseWinAnimation'
 import { HeaderText } from '../../../styles/constantStyles'
 import { PlayIcon } from '../../elements/PlayIcon/PlayIcon'
@@ -161,6 +161,9 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
 
   //  need to know how long the animation is playing before rendering other components
   const handleLoseAnimation = () => {
+    //  best place to call is here, if loses on time, this is still called
+    addGameToDatabase()
+
     setIsLoseAnimation(true)
     setTimeout(() => {
       setIsPlaying(false)
@@ -179,18 +182,20 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
         seenVideos[seenVideos.length - 1].isLoss = true
       }
 
-      const id = userData?.user?.id
-      addGame({
-        userId: id ? id : null,
-        score,
-        gamemode,
-      })
-
       handleLoseAnimation()
     }
 
     setHasPicked(true)
     setHiddenViews(false)
+  }
+
+  const addGameToDatabase = () => {
+    const id = userData?.user?.id
+    addGame({
+      userId: id ? id : null,
+      score,
+      gamemode,
+    })
   }
 
   if (videos.fetching || isLoadingVideos) return <p>Loading...</p>
@@ -201,6 +206,12 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
 
   return (
     <>
+      {gamemode &&
+        gamemode === 'timed' &&
+        !isLoadingVideos &&
+        !hasPicked &&
+        isPlaying &&
+        !isLoseAnimation && <Timer handleLoseAnimation={handleLoseAnimation} />}
       {(!isPlaying || isLoseAnimation) && (
         <GameSummary videos={seenVideos} reset={handleResetGameFromChild} />
       )}
