@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  z-index: 2;
 `
 
 export const LeaderboardContainer = styled.div`
