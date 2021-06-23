@@ -43,11 +43,6 @@ export const Search: React.FC<SearchProps> = ({ users }) => {
 
   return (
     <Styled.Wrapper>
-      <Styled.Input
-        placeholder="Search For User"
-        color="primary"
-        onChange={handleSearch}
-      />
       <Styled.SearchContainer>
         {matchingUsers &&
           Array.isArray(matchingUsers) &&
@@ -64,6 +59,11 @@ export const Search: React.FC<SearchProps> = ({ users }) => {
             </Styled.UserContainer>
           ))}
       </Styled.SearchContainer>
+      <Styled.Input
+        placeholder="Search For User"
+        color="primary"
+        onChange={handleSearch}
+      />
     </Styled.Wrapper>
   )
 }

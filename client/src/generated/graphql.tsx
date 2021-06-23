@@ -183,7 +183,7 @@ export type GetGamesQuery = (
   { __typename?: 'Query' }
   & { games?: Maybe<Array<(
     { __typename?: 'Games' }
-    & Pick<Games, 'id' | 'score'>
+    & Pick<Games, 'id' | 'score' | 'gamemode' | 'createdAt'>
   )>> }
 );
 
@@ -246,7 +246,7 @@ export type GetUsersQuery = (
   { __typename?: 'Query' }
   & { users?: Maybe<Array<(
     { __typename?: 'UserAccount' }
-    & Pick<UserAccount, 'uid' | 'displayName' | 'email'>
+    & Pick<UserAccount, 'id' | 'uid' | 'displayName' | 'email'>
   )>> }
 );
 
@@ -317,6 +317,8 @@ export const GetGamesDocument = gql`
   games {
     id
     score
+    gamemode
+    createdAt
   }
 }
     `;
@@ -385,6 +387,7 @@ export function useGetUserByDisplayNameQuery(options: Omit<Urql.UseQueryArgs<Get
 export const GetUsersDocument = gql`
     query getUsers {
   users {
+    id
     uid
     displayName
     email

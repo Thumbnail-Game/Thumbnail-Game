@@ -1,32 +1,17 @@
 import styled from 'styled-components'
 
-export const Wrapper = styled.div`
-display flex;
-flex-direction: column;
-align-items: center;
-height: 100vh;
-`
-
 export const SearchContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 800px;
-  height: 400px;
-  margin: auto;
-  border-radius: 15px;
-  overflow: auto;
+  margin:auto;
   background-color: ${(props) => props.theme.profileBackground};
 `
 
 export const Input = styled.input`
   padding: 15px;
   width: 250px;
-  margin: 15px 15px 15px 15px;
+  margin:auto;
   outline: none;
+  border:none;
   border-radius: 7px;
-  background: ${(props) => props.theme.formBackground};
 `
 
 export const UserContainer = styled.div`
@@ -40,4 +25,12 @@ export const UserContainer = styled.div`
   border-radius: 15px;
   background-color: ${(props) => props.theme.scoreBackground};
   margin: 15px 0px 15px 0px;
+`
+
+
+export const Wrapper = styled.div`
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+  background-color:red;
 `

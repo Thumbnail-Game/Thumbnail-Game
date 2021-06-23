@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { MdSettings } from 'react-icons/md'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { CgMenuRightAlt } from 'react-icons/cg'
-import { BiSearchAlt2 } from 'react-icons/bi'
+import { AiFillTrophy } from 'react-icons/ai'
 import styled, { keyframes } from 'styled-components'
 
 export const Flex = styled.div`
@@ -126,7 +126,7 @@ export const SignInUpHover2 = styled.div`
   z-index: -1;
   ${SignInUp}:hover & {
     animation-name: ${(props) =>
-      props.theme.theme === 'dark' ? DarkfillButton2 : LightfillButton2};
+    props.theme.theme === 'dark' ? DarkfillButton2 : LightfillButton2};
     animation-duration: 200ms;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -202,7 +202,7 @@ export const SettingsPopUpRow = styled.div`
   position: relative;
 `
 
-export const SearchIcon = styled(BiSearchAlt2)`
+export const SearchIcon = styled(AiFillTrophy)`
   position: relative;
   top: 2px;
   z-index: 1;

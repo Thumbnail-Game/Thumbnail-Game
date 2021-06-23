@@ -2,7 +2,7 @@ import { useState, useContext } from 'react'
 import { useRouter } from 'next/router'
 
 import { ThemeContext } from '../../../providers/AppProvider'
-import { SettingsPopup } from '../../modules/index'
+import { SettingsPopup, Leaderboard } from '../../modules/index'
 import { auth } from '../../../config/firebaseConfig'
 import { useMediaQuery } from '../../../hooks/useMediaQuery'
 import * as Styled from './Nav.styled'
@@ -13,6 +13,7 @@ interface NavProps {
 
 export const Nav: React.FC<NavProps> = ({ signedIn }) => {
   const [showingSettings, setShowingSettings] = useState<boolean>(false)
+  const [showLeaderboard, setShowLeaderboard] = useState<boolean>(false)
 
   const { themeMode } = useContext(ThemeContext)
 
@@ -22,9 +23,14 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
     setShowingSettings((oldShowingSettings) => !oldShowingSettings)
   }
 
+  const toggleLeaderboard = () => {
+    setShowLeaderboard((oldLeaderboard) => !oldLeaderboard)
+  }
+
   const supportedWidth = useMediaQuery('(min-width: 760px)')
 
   return (
+  <>
     <Styled.Nav>
       <Styled.Flex>
         <Styled.LogoContainer>
@@ -40,9 +46,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
           <Styled.SettingsPopUpRow>
             <Styled.NavWrapper>
               <Styled.NavIconWrapper
-                onClick={() =>
-                  router.replace('/search', undefined, { shallow: true })
-                }
+                onClick={() => setShowLeaderboard((oldLeaderboard) => !oldLeaderboard)}
               >
                 <Styled.SearchIcon
                   fontSize={27}
@@ -118,5 +122,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
       </Styled.Flex>
       <Styled.Divider />
     </Styled.Nav>
+    {showLeaderboard &&  <Leaderboard />}
+  </>
   )
 }
