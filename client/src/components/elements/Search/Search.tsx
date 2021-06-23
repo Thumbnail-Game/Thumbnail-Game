@@ -19,8 +19,9 @@ interface SearchProps {
 }
 
 export const Search: React.FC<SearchProps> = ({ users }) => {
-  const [matchingUsers, setMatchingUsers] =
-    useState<Users | undefined | null>(users)
+  const [matchingUsers, setMatchingUsers] = useState<Users | undefined | null>(
+    users
+  )
 
   const router = useRouter()
 
@@ -50,7 +51,7 @@ export const Search: React.FC<SearchProps> = ({ users }) => {
       />
       <Styled.SearchContainer>
         <Styled.LabelContainer>
-          <Styled.Label>Leaderboard</Styled.Label>
+          <Styled.Label>Search</Styled.Label>
         </Styled.LabelContainer>
         {matchingUsers &&
           Array.isArray(matchingUsers) &&

@@ -11,3 +11,6 @@ DONE BY HACKATHON:
 4. Timed mode
 5. Leaderboard
 6. Theme color bug? 
+7. Update migrations and run on database to remove broken thumbnails
+8. Remove broken users from database
+9. Casual/Ranked mode switcher on profile

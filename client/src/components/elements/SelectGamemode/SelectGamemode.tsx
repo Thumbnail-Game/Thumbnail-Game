@@ -18,7 +18,7 @@ export const SelectGamemode: React.FC<SelectGamemodeProps> = ({
         <Styled.TimedIcon color={themeMode === 'light' ? 'grey' : 'grey'} />
         <Styled.Title>Timed mode</Styled.Title>
         <Styled.Description>
-          5 seconds to pick each thumbnail, scores are counted towards
+          5 seconds to pick each thumbnail, scores are counted towards the
           leaderboard
         </Styled.Description>
       </Styled.GamemodeContainer>
@@ -26,7 +26,7 @@ export const SelectGamemode: React.FC<SelectGamemodeProps> = ({
         <Styled.CasualIcon color={themeMode === 'light' ? 'grey' : 'grey'} />
         <Styled.Title>Casual mode</Styled.Title>
         <Styled.Description>
-          No time limit, scores do not count towards leaderboard
+          No time limit, scores do not count towards the leaderboard
         </Styled.Description>
       </Styled.GamemodeContainer>
     </Styled.Wrapper>

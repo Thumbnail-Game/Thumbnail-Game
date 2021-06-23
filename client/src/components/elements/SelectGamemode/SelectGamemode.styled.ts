@@ -1,6 +1,6 @@
 import { RiTimerLine } from 'react-icons/ri'
 import { GiRetroController } from 'react-icons/gi'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -20,6 +20,24 @@ export const Wrapper = styled.div`
   }
 `
 
+export const GamemodeContainerAnimation = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+`
+
+export const GamemodeContainerAnimationOut = keyframes`
+  100% {
+    transform: scale(1);
+  }
+  0% {
+    transform: scale(1.06);
+  }
+`
+
 export const GamemodeContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -28,8 +46,18 @@ export const GamemodeContainer = styled.div`
   width: 600px;
   height: 500px;
   border-radius: 15px;
+  cursor: pointer;
   box-shadow: 0px 0px 12px #181818;
+  animation-name: ${GamemodeContainerAnimationOut};
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
   background-color: ${(props) => props.theme.profileBackground};
+
+  &:hover {
+    animation-name: ${GamemodeContainerAnimation};
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+  }
 
   @media (max-width: 645px) {
     margin-top: 50px;
