@@ -67,7 +67,6 @@ export const Leaderboard: React.FC = () => {
           tempLeaderboardUsers.push(tempLeaderboardUser)
       }
 
-      console.log(tempLeaderboardUsers)
       setLeaderboardUsers(tempLeaderboardUsers)
     }
   }, [usersData, highscoresData])

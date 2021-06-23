@@ -28,6 +28,7 @@ export const GamemodeContainer = styled.div`
   width: 600px;
   height: 500px;
   border-radius: 15px;
+  cursor: pointer;
   box-shadow: 0px 0px 12px #181818;
   background-color: ${(props) => props.theme.profileBackground};
 
