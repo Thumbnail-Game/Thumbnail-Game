@@ -5,6 +5,8 @@ BUGS TO FIX:
 4. Should eventurally fix having to refetch if a video is invalid, maybe fetch more videos at a time as a backup?
 
 DONE BY HACKATHON:
+
+TODO
 1. Fix jitter when switching theme
 2. Complete mobile support
 3. Scroll wheel bug character

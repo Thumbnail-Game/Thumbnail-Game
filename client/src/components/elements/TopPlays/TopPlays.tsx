@@ -14,9 +14,13 @@ interface Game {
 
 interface ProfileChartProps {
   gamesData: GetGamesByUserQuery
+  gamemode: string
 }
 
-export const TopPlays: React.FC<ProfileChartProps> = ({ gamesData }) => {
+export const TopPlays: React.FC<ProfileChartProps> = ({
+  gamesData,
+  gamemode,
+}) => {
   const [gameData, setGameData] = useState<GameData>()
 
   useEffect(() => {
@@ -25,9 +29,11 @@ export const TopPlays: React.FC<ProfileChartProps> = ({ gamesData }) => {
 
       let tempGameData = []
       for (let i = 0; i < userGames.length; i++) {
-        tempGameData[i] = {
-          score: userGames[i].score,
-          date: userGames[i].createdAt,
+        if (userGames[i].gamemode === gamemode) {
+          tempGameData[i] = {
+            score: userGames[i].score,
+            date: userGames[i].createdAt,
+          }
         }
       }
 
@@ -37,7 +43,7 @@ export const TopPlays: React.FC<ProfileChartProps> = ({ gamesData }) => {
 
       setGameData(tempGameData.splice(0, 9))
     }
-  }, [gamesData])
+  }, [gamemode, gamesData])
 
   return (
     <Styled.Wrapper>

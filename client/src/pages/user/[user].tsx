@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useState, useContext } from 'react'
 import { useRouter } from 'next/router'
 import { withUrqlClient } from 'next-urql'
 import styled from 'styled-components'
@@ -13,6 +13,8 @@ import { ProfileChart, TopPlays } from '../../components/elements/index'
 import { Nav, MainProfile } from '../../components/modules/index'
 
 const User: React.FC = () => {
+  const [gamemode, setGamemode] = useState<string>('timed')
+
   const router = useRouter()
 
   const { signedIn } = useContext(SignedInContext)
@@ -31,18 +33,28 @@ const User: React.FC = () => {
   })
   const gamesData = games && games.data
 
+  const handleToggleGamemode = () => {
+    if (gamemode === 'timed') setGamemode('casual')
+    else setGamemode('timed')
+  }
+
   return (
     <div id="userProfile">
+      <button onClick={handleToggleGamemode}>Toggle Mode</button>
       <Nav signedIn={signedIn} />
       {userData?.userByDisplayName ? (
         <div style={{ position: 'relative' }}>
           {gamesData && (
             <Wrapper>
               <LeftComponent>
-                <MainProfile userData={userData} gamesData={gamesData} />
-                <ProfileChart gamesData={gamesData} />
+                <MainProfile
+                  userData={userData}
+                  gamesData={gamesData}
+                  gamemode={gamemode}
+                />
+                <ProfileChart gamesData={gamesData} gamemode={gamemode} />
               </LeftComponent>
-              <TopPlays gamesData={gamesData} />
+              <TopPlays gamesData={gamesData} gamemode={gamemode} />
             </Wrapper>
           )}
         </div>

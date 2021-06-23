@@ -7,22 +7,28 @@ import * as Styled from './ProfileChart.styled'
 
 interface ProfileChartProps {
   gamesData: GetGamesByUserQuery
+  gamemode: string
 }
 
-export const ProfileChart: React.FC<ProfileChartProps> = ({ gamesData }) => {
+export const ProfileChart: React.FC<ProfileChartProps> = ({
+  gamesData,
+  gamemode,
+}) => {
   const [scores, setScores] = useState<number[]>()
   const [labels, setLabels] = useState<string[]>()
 
   useEffect(() => {
     if (gamesData && gamesData.getGamesByUser) {
       const tempScores: number[] = []
-      gamesData.getGamesByUser.forEach((game) => tempScores.push(game.score))
+      gamesData.getGamesByUser.forEach((game) => {
+        if (game.gamemode === gamemode) tempScores.push(game.score)
+      })
       setScores(tempScores)
 
       const tempLabels = new Array(tempScores.length).fill('')
       setLabels(tempLabels)
     }
-  }, [gamesData])
+  }, [gamemode, gamesData])
 
   const data: ChartData = {
     labels: labels!,

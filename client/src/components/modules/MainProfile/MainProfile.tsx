@@ -13,11 +13,13 @@ import Moment from 'moment'
 interface ProfileChartProps {
   userData: GetUserByDisplayNameQuery
   gamesData: GetGamesByUserQuery
+  gamemode: string
 }
 
 export const MainProfile: React.FC<ProfileChartProps> = ({
   userData,
   gamesData,
+  gamemode,
 }) => {
   const [level, setLevel] = useState<number>(0)
   const [percent, setPercent] = useState<number>(0)
@@ -34,25 +36,30 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
       allGamesData &&
       allGamesData.games
     ) {
+      const filteredAllGamesData = allGamesData.games.filter(
+        (game) => game.gamemode === gamemode
+      )
       //  turn gamesObject into array of scores for all users
       const allScores: number[] = []
-      for (let i = 0; i < allGamesData.games.length; i++) {
-        allScores[i] = allGamesData.games[i].score
+      for (let i = 0; i < filteredAllGamesData.length; i++) {
+        allScores[i] = filteredAllGamesData[i].score
       }
 
-      allScores.sort(function (a, b) {
+      allScores.sort((a, b) => {
         return a - b
       })
 
       //  get the top score to calculate percentile
       let topScore = 0
       for (const game of gamesData.getGamesByUser) {
-        if (game.score > topScore) topScore = game.score
+        if (game.gamemode === gamemode && game.score > topScore) {
+          topScore = game.score
+        }
       }
 
       let index = allScores.indexOf(topScore)
       if (index < 0) {
-        index = allScores.length;
+        index = allScores.length
       }
 
       let percentile: number = Math.round((index / allScores.length) * 100)
@@ -70,10 +77,11 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
       }
       setPercentile(finalPercentile)
     }
-  }, [gamesData, allGames])
+  }, [gamemode, gamesData, allGames])
 
   useEffect(() => {
     if (gamesData && gamesData.getGamesByUser) {
+      //  gamemode does not matter for calculating level
       let totalScore = gamesData.getGamesByUser.length
 
       const levelData = calculateLevel(totalScore, 1)
