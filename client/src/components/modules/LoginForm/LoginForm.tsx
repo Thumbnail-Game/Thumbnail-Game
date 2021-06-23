@@ -154,6 +154,7 @@ export const LoginForm: React.FC = () => {
           )}
         </Formik>
         <BackButton
+          size={40}
           onClick={(e) => {
             e.preventDefault()
             router.push('/')

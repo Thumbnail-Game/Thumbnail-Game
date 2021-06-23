@@ -194,7 +194,7 @@ export const RegisterForm: React.FC = () => {
           )}
         </Formik>
         <BackButton
-          size={5}
+          size={40}
           onClick={(e) => {
             e.preventDefault()
             router.push('/')
