@@ -10,10 +10,10 @@ export const Timer: React.FC<TimerProps> = ({ handleLoseAnimation }) => {
   return (
     <Styled.CountdownWrapper>
       <CountdownCircleTimer
-        size={80}
+        size={90}
         isPlaying
-        duration={6}
-        strokeWidth={5}
+        duration={7}
+        strokeWidth={8}
         trailColor="#282828"
         colors="#FFFFFF"
         onComplete={handleLoseAnimation}

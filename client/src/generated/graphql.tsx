@@ -212,7 +212,7 @@ export type GetGamesByUserQuery = (
   { __typename?: 'Query' }
   & { getGamesByUser?: Maybe<Array<(
     { __typename?: 'Games' }
-    & Pick<Games, 'id' | 'score' | 'createdAt'>
+    & Pick<Games, 'id' | 'score' | 'gamemode' | 'createdAt'>
   )>> }
 );
 
@@ -360,6 +360,7 @@ export const GetGamesByUserDocument = gql`
   getGamesByUser(userId: $userId) {
     id
     score
+    gamemode
     createdAt
   }
 }
