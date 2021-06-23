@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+
 import {
   useGetUsersQuery,
   useGetUserHighscoresQuery,
 } from '../../../generated/graphql'
-
 import { Search } from '../../../components/elements/index'
 import * as Styled from './Leaderboard.styled'
 
@@ -26,6 +27,8 @@ export const Leaderboard: React.FC = () => {
 
   const [highscores] = useGetUserHighscoresQuery({ variables: { userIds } })
   const highscoresData = highscores && highscores.data
+
+  const router = useRouter()
 
   useEffect(() => {
     if (usersData && usersData.users) {
@@ -80,7 +83,9 @@ export const Leaderboard: React.FC = () => {
               {leaderboardUsers &&
                 Array.isArray(leaderboardUsers) &&
                 leaderboardUsers.map((user: LeaderboardUser, i) => (
-                  <Styled.LeaderboardRow>
+                  <Styled.LeaderboardRow
+                    onClick={() => router.push(`/user/${user.displayName}`)}
+                  >
                     <div>{user.displayName}</div>
                     <div>{user.topScore}</div>
                     <div>{user.scoreDate}</div>

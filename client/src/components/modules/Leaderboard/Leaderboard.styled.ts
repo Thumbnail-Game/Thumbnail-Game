@@ -52,5 +52,6 @@ export const LeaderboardRow = styled.div`
   justify-content: space-around;
   height: 50px;
   margin: 10px 0px 10px 0px;
+  cursor: pointer;
   background-color: red;
 `
