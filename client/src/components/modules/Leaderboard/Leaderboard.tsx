@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
 import {
   useGetUsersQuery,
   useGetUserHighscoresQuery,
@@ -15,7 +15,6 @@ interface LeaderboardUser {
   displayName?: string
   topScore?: number
   scoreDate?: string
-  level?: string
 }
 
 export const Leaderboard: React.FC = () => {
@@ -75,9 +74,9 @@ export const Leaderboard: React.FC = () => {
 
   return (
     <>
-      <Styled.Component>
+      <Styled.SearchContainer>
         {usersData && <Search users={usersData} />}
-      </Styled.Component>
+      </Styled.SearchContainer>
       <Styled.Background />
     </>
   )

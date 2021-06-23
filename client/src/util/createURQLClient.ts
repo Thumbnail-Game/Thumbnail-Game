@@ -14,7 +14,7 @@ export const createUrqlClient = (ssrExchange: any, ctx: any) => {
       cacheExchange({
         keys: {
           UserAccount: () => null,
-          UserHighScoreResponse: () => null,
+          UserHighscoreResponse: () => null,
         },
         updates: {
           Mutation: {
@@ -37,7 +37,11 @@ export const createUrqlClient = (ssrExchange: any, ctx: any) => {
             addGame: (_result, _args, cache, _info) => {
               cache
                 .inspectFields('Query')
-                .filter((field) => field.fieldName === 'getGamesByUser')
+                .filter(
+                  (field) =>
+                    field.fieldName === 'getGamesByUser' ||
+                    field.fieldName === 'getUserHighscores'
+                )
                 .forEach((field) => {
                   cache.invalidate('Query', field.fieldKey)
                 })
