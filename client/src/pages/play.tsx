@@ -4,6 +4,7 @@ import { withUrqlClient } from 'next-urql'
 
 import { SignedInContext } from '../providers/AppProvider'
 import { createUrqlClient } from '../util/index'
+import { SelectGamemode } from '../components/elements/index'
 import { Nav, Thumbnail } from '../components/modules/index'
 import {
   Score,
@@ -12,6 +13,7 @@ import {
 } from '../components/elements/index'
 
 const Play: NextPage = () => {
+  const [gamemode, setGamemode] = useState<string | null>()
   const [score, setScore] = useState<number>(0)
 
   const { signedIn } = useContext(SignedInContext)
@@ -34,7 +36,16 @@ const Play: NextPage = () => {
     <div id="playContainer">
       <Nav signedIn={signedIn} />
       <Score score={score} />
-      <Thumbnail score={score} updateScore={updateScore} />
+      {gamemode ? (
+        <Thumbnail
+          gamemode={gamemode}
+          score={score}
+          updateScore={updateScore}
+          setGamemode={setGamemode}
+        />
+      ) : (
+        <SelectGamemode setGamemode={setGamemode} />
+      )}
       {/* <TestThumbnailsExists /> */}
     </div>
   )

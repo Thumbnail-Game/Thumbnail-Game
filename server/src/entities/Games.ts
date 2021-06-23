@@ -33,6 +33,10 @@ export class Games extends BaseEntity {
   @Column()
   score!: number
 
+  @Field({ nullable: true })
+  @Column({ nullable: true })
+  gamemode: string
+
   @Field(() => String)
   @CreateDateColumn()
   createdAt: Date

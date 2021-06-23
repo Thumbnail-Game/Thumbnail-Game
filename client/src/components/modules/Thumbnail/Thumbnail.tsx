@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 import { auth } from '../../../config/firebaseConfig'
 import {
@@ -26,11 +27,18 @@ export interface SeenVideos {
 }
 
 interface ThumbnailProps {
+  gamemode: string
   score: number
   updateScore: (updateType: string) => void
+  setGamemode: Dispatch<SetStateAction<string | null | undefined>>
 }
 
-export const Thumbnail: React.FC<ThumbnailProps> = ({ score, updateScore }) => {
+export const Thumbnail: React.FC<ThumbnailProps> = ({
+  gamemode,
+  score,
+  updateScore,
+  setGamemode,
+}) => {
   const [isPlaying, setIsPlaying] = useState<boolean>(true)
   const [hasPicked, setHasPicked] = useState<boolean>(false)
   const [hiddenViews, setHiddenViews] = useState<boolean>(true)
@@ -119,6 +127,10 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ score, updateScore }) => {
     updateScore('reset')
     setSeenVideos([])
     setSeenVideoIds([])
+
+    //  set gamemode to null, this will unrender this component
+    //  and render SelectGameMode
+    setGamemode(null)
   }
 
   //  invalidates the cache causing new video to be re-fetched
@@ -171,6 +183,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({ score, updateScore }) => {
       addGame({
         userId: id ? id : null,
         score,
+        gamemode,
       })
 
       handleLoseAnimation()

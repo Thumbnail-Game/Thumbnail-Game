@@ -3,3 +3,11 @@ BUGS TO FIX:
 2. Negative percentile when you achieve a new highscore 
 3. If you are logged in should not use cookies for highscore
 4. Should eventurally fix having to refetch if a video is invalid, maybe fetch more videos at a time as a backup?
+
+DONE BY HACKATHON:
+1. Fix jitter when switching theme
+2. Complete mobile support
+3. Scroll wheel bug character
+4. Timed mode
+5. Leaderboard
+6. Theme color bug? 

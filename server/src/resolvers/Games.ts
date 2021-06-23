@@ -5,8 +5,8 @@ import { Games } from '../entities/index'
 @Resolver()
 export class GamesResolver {
   @Query(() => [Games], { nullable: true })
-  games() {
-    const games = Games.find()
+  async games(): Promise<Games[] | null> {
+    const games = await Games.find()
 
     if (!games) return null
 
@@ -16,11 +16,12 @@ export class GamesResolver {
   @Mutation(() => Games, { nullable: true })
   async addGame(
     @Arg('score', () => Int) score: number,
-    @Arg('userId', () => Int, { nullable: true }) userId: number | null
+    @Arg('userId', () => Int, { nullable: true }) userId: number | null,
+    @Arg('gamemode', () => String, { nullable: true }) gamemode: string
   ): Promise<Games | null> {
     let game
     try {
-      game = await Games.create({ score, userId }).save()
+      game = await Games.create({ score, userId, gamemode }).save()
     } catch (err) {
       console.log(err)
       return null

@@ -1,5 +1,5 @@
-mutation addGame($score: Int!, $userId: Int) {
-  addGame(score: $score, userId: $userId) {
+mutation addGame($score: Int!, $userId: Int, $gamemode: String) {
+  addGame(score: $score, userId: $userId, gamemode: $gamemode) {
     score
   }
 }

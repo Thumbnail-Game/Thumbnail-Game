@@ -26,6 +26,7 @@ export type Games = {
   userId: UserAccount;
   user: UserAccount;
   score: Scalars['Float'];
+  gamemode?: Maybe<Scalars['String']>;
   createdAt: Scalars['String'];
   updatedAt: Scalars['String'];
 };
@@ -44,6 +45,7 @@ export type MutationCreateUserArgs = {
 
 
 export type MutationAddGameArgs = {
+  gamemode?: Maybe<Scalars['String']>;
   userId?: Maybe<Scalars['Int']>;
   score: Scalars['Int'];
 };
@@ -124,6 +126,7 @@ export type Videos = {
 export type AddGameMutationVariables = Exact<{
   score: Scalars['Int'];
   userId?: Maybe<Scalars['Int']>;
+  gamemode?: Maybe<Scalars['String']>;
 }>;
 
 
@@ -262,8 +265,8 @@ export type GetVideosQuery = (
 
 
 export const AddGameDocument = gql`
-    mutation addGame($score: Int!, $userId: Int) {
-  addGame(score: $score, userId: $userId) {
+    mutation addGame($score: Int!, $userId: Int, $gamemode: String) {
+  addGame(score: $score, userId: $userId, gamemode: $gamemode) {
     score
   }
 }
