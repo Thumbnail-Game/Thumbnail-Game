@@ -60,6 +60,7 @@ export const Leaderboard: React.FC = () => {
           continue
         }
 
+        //  append the necessary fields
         tempLeaderboardUser.topScore = matchingUser.highScore
         tempLeaderboardUser.scoreDate = matchingUser.date
 

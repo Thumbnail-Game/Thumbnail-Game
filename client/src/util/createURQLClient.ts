@@ -14,6 +14,7 @@ export const createUrqlClient = (ssrExchange: any, ctx: any) => {
       cacheExchange({
         keys: {
           UserAccount: () => null,
+          UserHighScoreResponse: () => null,
         },
         updates: {
           Mutation: {
