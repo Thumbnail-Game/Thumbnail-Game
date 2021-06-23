@@ -9,6 +9,8 @@ export const Component = styled.div`
     margin-top:50px;
     z-index:2;
     background-color:#424242;
+    display:flex;
+    justify-content: space-around;
 `
 
 export const Background = styled.div`
@@ -20,4 +22,13 @@ export const Background = styled.div`
     z-index:1;
     opacity:0.5;
     background-color:#111111;
+`
+
+export const Leaderboard = styled.div`
+    width:650px;
+    height:680px;
+    background-color:#606060;
+    border-radius:15px;
+    margin:auto;
+    background-color:green;
 `

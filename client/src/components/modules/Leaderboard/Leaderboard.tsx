@@ -48,6 +48,7 @@ export const Leaderboard: React.FC = () => {
     return (
         <>
             <Styled.Component>
+                <Styled.Leaderboard></Styled.Leaderboard>
                 {usersData && <Search users={usersData} />}
             </Styled.Component>
             <Styled.Background />
