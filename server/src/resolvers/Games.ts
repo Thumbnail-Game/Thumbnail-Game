@@ -1,6 +1,22 @@
-import { Arg, Resolver, Mutation, Query, Int } from 'type-graphql'
+import {
+  Arg,
+  Resolver,
+  Mutation,
+  Query,
+  Int,
+  ObjectType,
+  Field,
+} from 'type-graphql'
 
 import { Games } from '../entities/index'
+
+@ObjectType()
+class UserHighscoreResponse {
+  @Field({ nullable: true })
+  userId: number
+  @Field({ nullable: true })
+  highScore: number
+}
 
 @Resolver()
 export class GamesResolver {
@@ -45,5 +61,32 @@ export class GamesResolver {
     console.log(games)
 
     return games
+  }
+
+  //  highscores only count if game is a timed mode
+  @Query(() => [UserHighscoreResponse], { nullable: true })
+  async getUserHighscores(@Arg('userIds', () => [Int]) userIds: number[]) {
+    const userHighScores = []
+    for (const userId of userIds) {
+      let games
+      try {
+        games = await Games.find({ userId })
+      } catch (err) {
+        console.log(err)
+        continue
+      }
+
+      let highScore = 0
+      for (const game of games) {
+        console.log(game)
+        if (game.gamemode === 'timed' && game.score > highScore) {
+          highScore = game.score
+        }
+      }
+
+      userHighScores.push({ userId, highScore })
+    }
+
+    return userHighScores
   }
 }
