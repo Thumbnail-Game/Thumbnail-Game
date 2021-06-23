@@ -78,7 +78,6 @@ export class GamesResolver {
 
       let highScore = 0
       for (const game of games) {
-        console.log(game)
         if (game.gamemode === 'timed' && game.score > highScore) {
           highScore = game.score
         }
