@@ -40,7 +40,7 @@ export const AccountCreatedDate = styled.div`
 
 export const MiddleContainer = styled.div`
   width: 300px;
-  height: 150px;
+  height: 120px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -121,7 +121,6 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
         )}
       </Styled.LeftContainer>
       <Styled.MiddleContainer>
-        <Styled.PercentileTitle>You are in the</Styled.PercentileTitle>
         <Styled.Percentile
           isAbove50={
             parseInt(percentile.slice(0, percentile.length - 2)) >= 50
