@@ -1,5 +1,6 @@
-import { Dispatch, SetStateAction } from 'react'
+import { useContext, Dispatch, SetStateAction } from 'react'
 
+import { ThemeContext } from '../../../providers/AppProvider'
 import * as Styled from './SelectGamemode.styled'
 
 interface SelectGamemodeProps {
@@ -9,14 +10,25 @@ interface SelectGamemodeProps {
 export const SelectGamemode: React.FC<SelectGamemodeProps> = ({
   setGamemode,
 }) => {
+  const { themeMode } = useContext(ThemeContext)
+
   return (
     <Styled.Wrapper>
-      <Styled.TimedModeContainer onClick={() => setGamemode('timed')}>
-        Timed Mode
-      </Styled.TimedModeContainer>
-      <Styled.CasualModeContainer onClick={() => setGamemode('casual')}>
-        Casual Mode
-      </Styled.CasualModeContainer>
+      <Styled.GamemodeContainer onClick={() => setGamemode('timed')}>
+        <Styled.TimedIcon color={themeMode === 'light' ? 'grey' : 'grey'} />
+        <Styled.Title>Timed mode</Styled.Title>
+        <Styled.Description>
+          5 seconds to pick each thumbnail, scores are counted towards
+          leaderboard
+        </Styled.Description>
+      </Styled.GamemodeContainer>
+      <Styled.GamemodeContainer onClick={() => setGamemode('casual')}>
+        <Styled.CasualIcon color={themeMode === 'light' ? 'grey' : 'grey'} />
+        <Styled.Title>Casual mode</Styled.Title>
+        <Styled.Description>
+          No time limit, scores do not count towards leaderboard
+        </Styled.Description>
+      </Styled.GamemodeContainer>
     </Styled.Wrapper>
   )
 }
