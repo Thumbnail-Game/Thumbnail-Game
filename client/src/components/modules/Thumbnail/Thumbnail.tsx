@@ -128,6 +128,8 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
     setSeenVideos([])
     setSeenVideoIds([])
 
+    console.log('resetting')
+
     //  set gamemode to null, this will unrender this component
     //  and render SelectGameMode
     if (changeGamemode) setGamemode(null)
@@ -138,19 +140,6 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
   const invalidateAndFetch = async () => {
     await invalidateVideos()
     if (!hiddenViews) setHiddenViews(true)
-
-    setSeenVideoIds((oldSeenVideosIds): any => {
-      if (videoData?.twoVideos && Array.isArray(oldSeenVideosIds)) {
-        const tempIds = [...oldSeenVideosIds]
-        const firstVideo = videoData.twoVideos[0]
-        const secondVideo = videoData.twoVideos[1]
-
-        tempIds.push(firstVideo.id)
-        tempIds.push(secondVideo.id)
-
-        return tempIds
-      }
-    })
 
     if (videoData) {
       handleFirstMostViewed()
@@ -207,12 +196,12 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
 
   return (
     <>
-      {gamemode &&
+      {/* {gamemode &&
         gamemode === 'timed' &&
         !isLoadingVideos &&
         !hasPicked &&
         isPlaying &&
-        !isLoseAnimation && <Timer handleLoseAnimation={handleLoseAnimation} />}
+        !isLoseAnimation && <Timer handleLoseAnimation={handleLoseAnimation} />} */}
       {(!isPlaying || isLoseAnimation) && (
         <GameSummary videos={seenVideos} reset={handleResetGameFromChild} />
       )}

@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from 'react'
-import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { Carousel } from 'react-responsive-carousel'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
@@ -18,9 +17,9 @@ interface GameSummaryProps {
 export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
   const [indexArr, setIndexArr] = useState<any>([])
 
-  const router = useRouter()
-
   const { themeMode } = useContext(ThemeContext)
+
+  console.log(videos)
 
   useEffect(() => {
     const tempArr = []
@@ -129,68 +128,73 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
             )
           }
         >
-          {indexArr.map((videoObj: any, i: number): any => (
-            <Styled.VideoContainer key={i}>
-              {videoObj?.video1.isLoss || videoObj?.video2.isLoss ? (
-                <>
-                  <Styled.LoseIcon size={160}></Styled.LoseIcon>
-                  <Styled.IconDiv />
-                </>
-              ) : (
-                <>
-                  <Styled.WinIcon size={160}></Styled.WinIcon>
-                  <Styled.IconDiv />
-                </>
-              )}
-              <Styled.VideoColumnContainer>
-                <Styled.Videos>
-                  <Link href={videoObj?.video1?.url}>
-                    <>
-                      <a href={videoObj?.video1?.url} target="_blank">
-                        <Styled.VideoThumbnail
-                          width={604.8}
-                          height={340.2}
-                          src={videoObj?.video1?.thumbnail}
-                        />
-                      </a>
-                      <a target="_blank" href={videoObj?.video1?.url}>
-                        <PlayIcon />
-                      </a>
-                    </>
-                  </Link>
-                </Styled.Videos>
-                <Styled.VideoTitle>{videoObj?.video1?.title}</Styled.VideoTitle>
-                <Styled.VideoViews>
-                  {videoObj?.video1?.views.toLocaleString()}{' '}
-                  <Styled.ViewSpan>views</Styled.ViewSpan>
-                </Styled.VideoViews>
-              </Styled.VideoColumnContainer>
-              <p style={{ marginTop: '520px' }} className=".control-dots"></p>
-              <Styled.VideoColumnContainer>
-                <Styled.Videos>
-                  <Link href={videoObj?.video2?.url}>
-                    <>
-                      <a href={videoObj?.video2?.url} target="_blank">
-                        <Styled.VideoThumbnail
-                          width={604.8}
-                          height={340.2}
-                          src={videoObj?.video2?.thumbnail}
-                        />
-                      </a>
-                      <a target="_blank" href={videoObj?.video2?.url}>
-                        <PlayIcon />
-                      </a>
-                    </>
-                  </Link>
-                </Styled.Videos>
-                <Styled.VideoTitle>{videoObj?.video2?.title}</Styled.VideoTitle>
-                <Styled.VideoViews>
-                  {videoObj?.video2?.views.toLocaleString()}{' '}
-                  <Styled.ViewSpan>views</Styled.ViewSpan>
-                </Styled.VideoViews>
-              </Styled.VideoColumnContainer>
-            </Styled.VideoContainer>
-          ))}
+          {indexArr &&
+            indexArr.map((videoObj: any, i: number): any => (
+              <Styled.VideoContainer key={i}>
+                {videoObj?.video1.isLoss || videoObj?.video2.isLoss ? (
+                  <>
+                    <Styled.LoseIcon size={160}></Styled.LoseIcon>
+                    <Styled.IconDiv />
+                  </>
+                ) : (
+                  <>
+                    <Styled.WinIcon size={160}></Styled.WinIcon>
+                    <Styled.IconDiv />
+                  </>
+                )}
+                <Styled.VideoColumnContainer>
+                  <Styled.Videos>
+                    <Link href={videoObj?.video1?.url}>
+                      <>
+                        <a href={videoObj?.video1?.url} target="_blank">
+                          <Styled.VideoThumbnail
+                            width={604.8}
+                            height={340.2}
+                            src={videoObj?.video1?.thumbnail}
+                          />
+                        </a>
+                        <a target="_blank" href={videoObj?.video1?.url}>
+                          <PlayIcon />
+                        </a>
+                      </>
+                    </Link>
+                  </Styled.Videos>
+                  <Styled.VideoTitle>
+                    {videoObj?.video1?.title}
+                  </Styled.VideoTitle>
+                  <Styled.VideoViews>
+                    {videoObj?.video1?.views.toLocaleString()}{' '}
+                    <Styled.ViewSpan>views</Styled.ViewSpan>
+                  </Styled.VideoViews>
+                </Styled.VideoColumnContainer>
+                <p style={{ marginTop: '520px' }} className=".control-dots"></p>
+                <Styled.VideoColumnContainer>
+                  <Styled.Videos>
+                    <Link href={videoObj?.video2?.url}>
+                      <>
+                        <a href={videoObj?.video2?.url} target="_blank">
+                          <Styled.VideoThumbnail
+                            width={604.8}
+                            height={340.2}
+                            src={videoObj?.video2?.thumbnail}
+                          />
+                        </a>
+                        <a target="_blank" href={videoObj?.video2?.url}>
+                          <PlayIcon />
+                        </a>
+                      </>
+                    </Link>
+                  </Styled.Videos>
+                  <Styled.VideoTitle>
+                    {videoObj?.video2?.title}
+                  </Styled.VideoTitle>
+                  <Styled.VideoViews>
+                    {videoObj?.video2?.views.toLocaleString()}{' '}
+                    <Styled.ViewSpan>views</Styled.ViewSpan>
+                  </Styled.VideoViews>
+                </Styled.VideoColumnContainer>
+              </Styled.VideoContainer>
+            ))}
         </Carousel>
       </Styled.CarouselContainer>
       <Styled.ButtonContainer>
