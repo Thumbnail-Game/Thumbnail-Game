@@ -94,8 +94,7 @@ export const FormContainer = styled.div`
 
 export const BackButton = styled(IoMdArrowRoundBack)`
   position: absolute;
-  width: 61px;
-  height: 61px;
+  padding:16px;
   margin: auto;
   bottom: -180px;
   left: 0;

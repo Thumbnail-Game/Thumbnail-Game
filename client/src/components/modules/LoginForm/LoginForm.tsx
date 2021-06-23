@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { Formik, Form } from 'formik'
 import { Snackbar } from '@material-ui/core'
 import { Alert, AlertTitle } from '@material-ui/lab'
+import LazyLoad from 'react-lazyload';
 
 import { auth } from '../../../config/firebaseConfig'
 import { CustomTextField } from '../../elements/index'
@@ -70,12 +71,14 @@ export const LoginForm: React.FC = () => {
       <Divider />
       <FormWrapper id="formContainer">
         {!hideImage && (
-          <PreviewImage
-            src={`/images/thumbnailPreviewLaptop.png`}
-            alt={'logo-img'}
-            width={896}
-            height={800}
-          />
+          <LazyLoad>
+            <PreviewImage
+              src={`/images/thumbnailPreviewLaptop.png`}
+              alt={'logo-img'}
+              width={896}
+              height={800}
+            />
+          </LazyLoad>
         )}
         <Formik
           validateOnChange={true}
@@ -151,6 +154,7 @@ export const LoginForm: React.FC = () => {
           )}
         </Formik>
         <BackButton
+          size={40}
           onClick={(e) => {
             e.preventDefault()
             router.push('/')

@@ -26,8 +26,11 @@ export const LogoContainer = styled.div`
   height: 49px;
   overflow: hidden;
   z-index: 1;
-  margin-top: 13px;
   margin-left: 7px;
+
+  @media (max-width: 760px) {
+    margin-top: 13px;
+  }
 `
 
 export const SignInUp = styled.div`
@@ -52,7 +55,7 @@ export const NavWrapper = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  width: 270px;
+  width: 295px;
   height: 50px;
 `
 
@@ -204,7 +207,8 @@ export const SettingsPopUpRow = styled.div`
 
 export const SearchIcon = styled(AiFillTrophy)`
   position: relative;
-  top: 2px;
+  top:0.5px;
+  right:2px;
   z-index: 1;
 `
 
@@ -230,6 +234,7 @@ export const NavIconWrapper = styled.div`
   height: '100%';
   top: 4px;
   cursor: pointer;
+  margin-right:1px;
 `
 
 export const IconContainer = styled.div`

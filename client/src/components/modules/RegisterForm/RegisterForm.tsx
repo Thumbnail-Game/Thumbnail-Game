@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { useRouter } from 'next/router'
 import { Formik, Form } from 'formik'
+import LazyLoad from 'react-lazyload';
 
 import { auth } from '../../../config/firebaseConfig'
 import {
@@ -93,12 +94,14 @@ export const RegisterForm: React.FC = () => {
       <Divider />
       <FormWrapper id="formContainer">
         {!hideImage && (
-          <PreviewImage
-            src={`/images/thumbnailPreviewLaptop.png`}
-            alt={'logo-img'}
-            width={896}
-            height={800}
-          />
+          <LazyLoad>
+            <PreviewImage
+              src={`/images/thumbnailPreviewLaptop.png`}
+              alt={'logo-img'}
+              width={896}
+              height={800}
+            />
+          </LazyLoad>
         )}
         <Formik
           validateOnChange={true}
@@ -191,7 +194,7 @@ export const RegisterForm: React.FC = () => {
           )}
         </Formik>
         <BackButton
-          size={5}
+          size={40}
           onClick={(e) => {
             e.preventDefault()
             router.push('/')

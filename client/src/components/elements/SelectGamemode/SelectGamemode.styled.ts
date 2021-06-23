@@ -4,9 +4,9 @@ import styled, { keyframes } from 'styled-components'
 
 export const Wrapper = styled.div`
   display: flex;
-  height: 85vh;
+  height: 760px;
   margin: auto;
-  width: 1400px;
+  width: 1200px;
   align-items: center;
   justify-content: space-around;
 
@@ -25,7 +25,8 @@ export const GamemodeContainerAnimation = keyframes`
     transform: scale(1);
   }
   100% {
-    transform: scale(1.1);
+    background-color:#494949;
+    transform: scale(1.03);
   }
 `
 
@@ -34,7 +35,8 @@ export const GamemodeContainerAnimationOut = keyframes`
     transform: scale(1);
   }
   0% {
-    transform: scale(1.06);
+    background-color:#444444;
+    transform: scale(1.03);
   }
 `
 
@@ -43,7 +45,7 @@ export const GamemodeContainer = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 600px;
+  width: 400px;
   height: 500px;
   border-radius: 15px;
   cursor: pointer;
@@ -52,6 +54,8 @@ export const GamemodeContainer = styled.div`
   animation-duration: 300ms;
   animation-fill-mode: forwards;
   background-color: ${(props) => props.theme.profileBackground};
+  padding-left: 50px;
+  padding-right: 50px;
 
   &:hover {
     animation-name: ${GamemodeContainerAnimation};

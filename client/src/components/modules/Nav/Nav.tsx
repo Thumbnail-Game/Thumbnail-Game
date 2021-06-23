@@ -31,7 +31,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
 
   return (
     <>
-      {showLeaderboard && <Leaderboard />}
+      {showLeaderboard && <Leaderboard toggleLeaderboard={toggleLeaderboard} />}
       <Styled.Nav>
         <Styled.Flex>
           <Styled.LogoContainer>
@@ -47,6 +47,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
             <Styled.SettingsPopUpRow>
               <Styled.NavWrapper>
                 <Styled.NavIconWrapper
+                  style={{ marginRight: "5px" }}
                   onClick={() =>
                     setShowLeaderboard((oldLeaderboard) => !oldLeaderboard)
                   }
