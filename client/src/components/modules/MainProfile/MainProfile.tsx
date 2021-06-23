@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import ProgressBar from '@ramonak/react-progress-bar'
-
 import {
   GetGamesByUserQuery,
   GetUserByDisplayNameQuery,
@@ -9,6 +8,7 @@ import {
 import { Achievements } from '../../elements/index'
 import * as Styled from './MainProfile.styled'
 import Moment from 'moment'
+var Toggle = require('react-toggle')
 
 interface ProfileChartProps {
   userData: GetUserByDisplayNameQuery
@@ -106,7 +106,7 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
 
   return (
     <Styled.Wrapper>
-      <button onClick={handleToggleGamemode}>Toggle Mode</button>
+      <Styled.Toggle onClick={handleToggleGamemode}>Toggle Mode</Styled.Toggle>
       <Styled.LeftContainer>
         <Styled.Name>{userData?.userByDisplayName?.displayName}</Styled.Name>
         {userData && userData.userByDisplayName && (

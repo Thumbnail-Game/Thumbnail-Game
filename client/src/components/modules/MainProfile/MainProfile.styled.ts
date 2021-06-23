@@ -1,9 +1,10 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const Wrapper = styled.div`
   width: 1000px;
   height: 280px;
   display: flex;
+  position:relative;
   justify-content: space-between;
   margin: auto;
   border-radius: 15px;
@@ -121,4 +122,31 @@ export const LevelCircle = styled.div`
   background-color: #e37c7c;
   margin-right: 20px;
   color: white;
+`
+
+const ToggleAnimation = keyframes`
+  0%{
+  }
+  100%{
+    background-color:#282828;
+  }
+`
+
+export const Toggle = styled.div`
+  position:absolute;
+  right:0;
+  font-family:"Gothic Bold";
+  background-color:#606060;
+  padding:10px;
+  font-size:16px;
+  border-radius:8px;
+  margin-top:15px;
+  margin-right:15px;
+  cursor:pointer;
+
+  &:hover{
+    animation-name:${ToggleAnimation};
+    animation-duration: 250ms;
+    animation-fill-mode:forwards;
+  }
 `
