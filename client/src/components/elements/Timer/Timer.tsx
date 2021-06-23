@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
 import * as Styled from './Timer.styled'
@@ -13,7 +12,7 @@ export const Timer: React.FC<TimerProps> = ({ handleLoseAnimation }) => {
       <CountdownCircleTimer
         size={80}
         isPlaying
-        duration={5}
+        duration={6}
         strokeWidth={5}
         trailColor="#282828"
         colors="#FFFFFF"
