@@ -1,0 +1,6 @@
+query getUserByHighscores($userIds: [Int!]!) {
+  getUserHighscores(userIds: $userIds) {
+    userId
+    highScore
+  }
+}
