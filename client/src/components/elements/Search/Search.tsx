@@ -44,6 +44,9 @@ export const Search: React.FC<SearchProps> = ({ users }) => {
   return (
     <Styled.Wrapper>
       <Styled.SearchContainer>
+        <Styled.LabelContainer>
+          <Styled.Label>Leaderboard</Styled.Label>
+        </Styled.LabelContainer>
         {matchingUsers &&
           Array.isArray(matchingUsers) &&
           matchingUsers.map((user: User, i) => (
@@ -60,9 +63,9 @@ export const Search: React.FC<SearchProps> = ({ users }) => {
           ))}
       </Styled.SearchContainer>
       <Styled.Input
-        placeholder="Search For User"
-        color="primary"
+        placeholder="Search For Users"
         onChange={handleSearch}
+        type="search"
       />
     </Styled.Wrapper>
   )

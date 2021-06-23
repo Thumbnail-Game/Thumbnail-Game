@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Component = styled.div`
     position:relative;
-    width:1120px;
+    width:1080px;
     height:750px;
     border-radius:15px;
     margin:auto;
