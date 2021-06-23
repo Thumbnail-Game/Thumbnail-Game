@@ -18,15 +18,14 @@ export const SelectGamemode: React.FC<SelectGamemodeProps> = ({
         <Styled.TimedIcon color={themeMode === 'light' ? 'grey' : 'grey'} />
         <Styled.Title>Timed mode</Styled.Title>
         <Styled.Description>
-          5 seconds to pick each thumbnail, scores are counted towards the
-          leaderboard
+          7 seconds to pick a thumbnail. Play competitively.
         </Styled.Description>
       </Styled.GamemodeContainer>
       <Styled.GamemodeContainer onClick={() => setGamemode('casual')}>
         <Styled.CasualIcon color={themeMode === 'light' ? 'grey' : 'grey'} />
         <Styled.Title>Casual mode</Styled.Title>
         <Styled.Description>
-          No time limit, scores do not count towards the leaderboard
+          No time limit. Scores do not count towards the leaderboard.
         </Styled.Description>
       </Styled.GamemodeContainer>
     </Styled.Wrapper>

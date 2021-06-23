@@ -47,6 +47,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
             <Styled.SettingsPopUpRow>
               <Styled.NavWrapper>
                 <Styled.NavIconWrapper
+                  style={{ marginRight: "5px" }}
                   onClick={() =>
                     setShowLeaderboard((oldLeaderboard) => !oldLeaderboard)
                   }
