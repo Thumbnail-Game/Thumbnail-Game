@@ -12,7 +12,7 @@ import * as Styled from './GameSummary.styled'
 
 interface GameSummaryProps {
   videos: any
-  reset: () => void
+  reset: (changeGamemode: boolean) => void
 }
 
 export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
@@ -194,12 +194,12 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
         </Carousel>
       </Styled.CarouselContainer>
       <Styled.ButtonContainer>
-        <Styled.PlayAgainButton onClick={() => router.push('/')}>
+        <Styled.PlayAgainButton onClick={() => reset(true)}>
           Back to menu
         </Styled.PlayAgainButton>
         <Styled.PlayAgainButton
           onClick={() => {
-            reset()
+            reset(false)
           }}
         >
           Play again

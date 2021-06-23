@@ -118,7 +118,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
   }
 
   //  pass as a prop to GameSummary, can be called to Play Again
-  const handleResetGameFromChild = async () => {
+  const handleResetGameFromChild = async (changeGamemode: boolean) => {
     await invalidateAndFetch()
 
     setHasPicked(false)
@@ -130,7 +130,8 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
 
     //  set gamemode to null, this will unrender this component
     //  and render SelectGameMode
-    setGamemode(null)
+    if (changeGamemode) setGamemode(null)
+    else setGamemode(gamemode)
   }
 
   //  invalidates the cache causing new video to be re-fetched
