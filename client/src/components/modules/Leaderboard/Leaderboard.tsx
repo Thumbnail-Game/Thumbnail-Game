@@ -62,45 +62,41 @@ export const Leaderboard: React.FC = () => {
                     continue
                 }
 
-                tempLeaderboardUser.topScore = matchingUser.highScore
-                tempLeaderboardUser.scoreDate = matchingUser.date
-
                 //  append the necessary fields
                 tempLeaderboardUser.topScore = matchingUser.highScore
                 tempLeaderboardUser.scoreDate = matchingUser.date
 
-                console.log(tempLeaderboardUsers)
-                setLeaderboardUsers(tempLeaderboardUsers)
+                Array.isArray(tempLeaderboardUsers) &&
+                    tempLeaderboardUsers.push(tempLeaderboardUser)
             }
-        }, [usersData, highscoresData])
 
-    setLeaderboardUsers(tempLeaderboardUsers)
-}
-  }, [usersData, highscoresData])
+            setLeaderboardUsers(tempLeaderboardUsers)
+        }
+    }, [usersData, highscoresData])
 
-return (
-    <>
-        <Styled.Wrapper>
-            <Styled.LeaderboardContainer>
-                <Styled.LeaderboardColumn>
-                    <Styled.Leaderboard>
-                        {leaderboardUsers &&
-                            Array.isArray(leaderboardUsers) &&
-                            leaderboardUsers.map((user: LeaderboardUser, i) => (
-                                <Styled.LeaderboardRow
-                                    onClick={() => router.push(`/user/${user.displayName}`)}
-                                >
-                                    <div>{user.displayName}</div>
-                                    <div>{user.topScore}</div>
-                                    <div>{user.scoreDate}</div>
-                                </Styled.LeaderboardRow>
-                            ))}
-                    </Styled.Leaderboard>
-                </Styled.LeaderboardColumn>
-                {usersData && <Search users={usersData} />}
-            </Styled.LeaderboardContainer>
-        </Styled.Wrapper>
-        {/* <Styled.Background /> */}
-    </>
-)
+    return (
+        <>
+            <Styled.Wrapper>
+                <Styled.LeaderboardContainer>
+                    <Styled.LeaderboardColumn>
+                        <Styled.Leaderboard>
+                            {leaderboardUsers &&
+                                Array.isArray(leaderboardUsers) &&
+                                leaderboardUsers.map((user: LeaderboardUser, i) => (
+                                    <Styled.LeaderboardRow
+                                        onClick={() => router.push(`/user/${user.displayName}`)}
+                                    >
+                                        <div>{user.displayName}</div>
+                                        <div>{user.topScore}</div>
+                                        <div>{user.scoreDate}</div>
+                                    </Styled.LeaderboardRow>
+                                ))}
+                        </Styled.Leaderboard>
+                    </Styled.LeaderboardColumn>
+                    {usersData && <Search users={usersData} />}
+                </Styled.LeaderboardContainer>
+            </Styled.Wrapper>
+            {/* <Styled.Background /> */}
+        </>
+    )
 }
