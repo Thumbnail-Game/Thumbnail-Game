@@ -1,56 +1,85 @@
 import { useState, useEffect, useContext } from 'react'
-import { NextPage } from 'next'
-import { withUrqlClient } from 'next-urql'
-import { useGetUsersQuery, useGetGamesQuery, useGetUserHighscoresQuery } from '../../../generated/graphql'
+import {
+  useGetUsersQuery,
+  useGetUserHighscoresQuery,
+} from '../../../generated/graphql'
 
-import { SignedInContext } from '../../../providers/AppProvider'
-import { createUrqlClient } from '../../../util'
-import { Nav } from '../../../components/modules/index'
 import { Search } from '../../../components/elements/index'
 import * as Styled from './Leaderboard.styled'
 
 interface LeaderboardUsers {
-    [index: number]: LeaderboardUser
+  [index: number]: LeaderboardUser
 }
 
 interface LeaderboardUser {
-    displayName: string,
-    topScore: string,
-    scoreDate: string,
-    level: string
+  displayName?: string
+  topScore?: number
+  scoreDate?: string
+  level?: string
 }
 
 export const Leaderboard: React.FC = () => {
-    const [leaderboardUsers, setLeaderboardUsers] = useState<LeaderboardUsers>([])
-    const [userIds, setUserIds] = useState<number>([])
+  const [leaderboardUsers, setLeaderboardUsers] = useState<LeaderboardUsers>([])
+  const [userIds, setUserIds] = useState<number[]>([])
 
-    const [users] = useGetUsersQuery()
-    const usersData = users && users.data
+  const [users] = useGetUsersQuery()
+  const usersData = users && users.data
 
-    const [games] = useGetGamesQuery()
-    const gamesData = games && games.data
+  const [highscores] = useGetUserHighscoresQuery({ variables: { userIds } })
+  const highscoresData = highscores && highscores.data
 
-    const [highscores] = useGetUserHighscoresQuery({ variables: { userIds: [] } })
-    const highscoresData = highscores && highscores.data
+  useEffect(() => {
+    if (usersData && usersData.users) {
+      const tempUserIds: number[] = []
+      for (const user of usersData.users) {
+        tempUserIds.push(user.id)
+      }
+      setUserIds(tempUserIds)
+    }
+  }, [users])
 
-    const { signedIn } = useContext(SignedInContext)
+  useEffect(() => {
+    if (
+      usersData &&
+      usersData.users &&
+      highscoresData &&
+      highscoresData.getUserHighscores
+    ) {
+      console.log(usersData.users)
+      //    construct a leaderboard user
+      const tempLeaderboardUsers: LeaderboardUsers = []
 
-    useEffect(() => {
-        if (usersData && usersData.users) {
+      for (const user of usersData.users) {
+        const tempLeaderboardUser: LeaderboardUser = {}
+        tempLeaderboardUser.displayName = user.displayName
 
+        //    get the corresponding highscore for the user
+        const matchingUser = highscoresData.getUserHighscores.find(
+          (userObj) => userObj.userId === user.id
+        )
+        console.log(matchingUser)
+        if (!matchingUser || !matchingUser?.highScore || !matchingUser?.date) {
+          continue
         }
-    }, [users])
 
-    useEffect(() => {
+        tempLeaderboardUser.topScore = matchingUser.highScore
+        tempLeaderboardUser.scoreDate = matchingUser.date
 
-    }, [usersData, gamesData])
+        Array.isArray(tempLeaderboardUsers) &&
+          tempLeaderboardUsers.push(tempLeaderboardUser)
+      }
 
-    return (
-        <>
-            <Styled.Component>
-                {usersData && <Search users={usersData} />}
-            </Styled.Component>
-            <Styled.Background />
-        </>
-    )
+      console.log(tempLeaderboardUsers)
+      setLeaderboardUsers(tempLeaderboardUsers)
+    }
+  }, [usersData, highscoresData])
+
+  return (
+    <>
+      <Styled.Component>
+        {usersData && <Search users={usersData} />}
+      </Styled.Component>
+      <Styled.Background />
+    </>
+  )
 }

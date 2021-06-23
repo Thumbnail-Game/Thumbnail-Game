@@ -16,6 +16,8 @@ class UserHighscoreResponse {
   userId: number
   @Field({ nullable: true })
   highScore: number
+  @Field({ nullable: true })
+  date: Date
 }
 
 @Resolver()
@@ -77,13 +79,15 @@ export class GamesResolver {
       }
 
       let highScore = 0
+      let date
       for (const game of games) {
         if (game.gamemode === 'timed' && game.score > highScore) {
           highScore = game.score
+          date = game.createdAt
         }
       }
 
-      userHighScores.push({ userId, highScore })
+      userHighScores.push({ userId, highScore, date })
     }
 
     return userHighScores

@@ -2,5 +2,6 @@ query getUserHighscores($userIds: [Int!]!) {
   getUserHighscores(userIds: $userIds) {
     userId
     highScore
+    date
   }
 }
