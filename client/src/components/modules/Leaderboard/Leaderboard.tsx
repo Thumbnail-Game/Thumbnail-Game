@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Moment from 'react-moment';
 
 import {
     useGetUsersQuery,
@@ -82,6 +83,14 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({ toggleLeaderboard 
         <>
             <Styled.Wrapper>
                 <Styled.Leaderboard>
+                    <Styled.LabelContainer>
+                        <Styled.Label>Leaderboard</Styled.Label>
+                        <Styled.ColumnNamesContainer>
+                            <Styled.ColumnNames>Username</Styled.ColumnNames>
+                            <Styled.ColumnNames>Highscore</Styled.ColumnNames>
+                            <Styled.ColumnNames>Date</Styled.ColumnNames>
+                        </Styled.ColumnNamesContainer>
+                    </Styled.LabelContainer>
                     {leaderboardUsers &&
                         Array.isArray(leaderboardUsers) &&
                         leaderboardUsers.map((user: LeaderboardUser, i) => (
@@ -90,7 +99,7 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({ toggleLeaderboard 
                             >
                                 <div>{user.displayName}</div>
                                 <div>{user.topScore}</div>
-                                <div>{user.scoreDate}</div>
+                                <Moment format="MM/DD/YYYY" interval={0}>{user.scoreDate}</Moment>
                             </Styled.PlayerInfo>
                         ))}
                 </Styled.Leaderboard>

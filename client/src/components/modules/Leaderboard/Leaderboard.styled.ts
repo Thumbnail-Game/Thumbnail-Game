@@ -51,9 +51,42 @@ export const Leaderboard = styled.div`
 export const PlayerInfo = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 50px;
-  margin: 10px 0px 10px 0px;
+  margin:auto;
+  margin-top:10px;
   cursor: pointer;
-  background-color: red;
+  background-color: #353535;
+  width:91%;
+  padding-left:3%;
+  padding-right:3%;
+  border-radius:6px;
+  font-size: 17px;
+  font-family:"Gothic Bold";
+`
+
+export const LabelContainer = styled.div`
+  width:97%;
+  margin:auto;
+  margin-top:15px;
+`
+
+export const Label = styled.div`
+  font-size:35px;
+  font-family:"Gothic Bold";
+`
+
+export const ColumnNamesContainer = styled.div`
+  width:95%;
+  margin:auto;
+  margin-top:20px;
+  height:30px;
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:-5px;
+`
+
+export const ColumnNames = styled.div`
+  font-size:15px;
+  font-family:"Gothic Bold";
 `

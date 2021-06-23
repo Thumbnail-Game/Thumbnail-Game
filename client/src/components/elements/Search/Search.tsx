@@ -20,16 +20,10 @@ interface SearchProps {
 
 export const Search: React.FC<SearchProps> = ({ users }) => {
   const [matchingUsers, setMatchingUsers] = useState<Users | undefined | null>(
-    users
+    {}
   )
 
   const router = useRouter()
-
-  useEffect(() => {
-    if (users.users) {
-      setMatchingUsers(users.users)
-    }
-  }, [users])
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.currentTarget.value
