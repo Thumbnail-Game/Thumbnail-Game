@@ -9,7 +9,7 @@ export const TriangleIcon = styled(BsFillTriangleFill)<TriangleIconProps>`
   position: absolute;
   width: 50px;
   top: 46px;
-  right: ${(props) => (props.signedIn ? '165px' : '185px')};
+  right: ${(props) => (props.signedIn ? '177px' : '198px')};
   color: ${(props) => props.theme.settingBackground};
 `
 
@@ -22,7 +22,7 @@ export const SettingsContainer = styled.div<SettingsContainerProps>`
   justify-content: space-between;
   position: absolute;
   height: 50px;
-  right: ${(props) => (props.signedIn ? '150px' : '175px')};
+  right: ${(props) => (props.signedIn ? '160px' : '185px')};
   top: 60px;
   width: 200px;
   border-radius: 10px;
