@@ -56,14 +56,12 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
           topScore = game.score
         }
       }
-      console.log(topScore)
 
       let index = allScores.indexOf(topScore)
       if (index < 0) {
         index = allScores.length
       }
 
-      console.log(allScores.length)
       let percentile: number = Math.round((index / allScores.length) * 100)
 
       let finalPercentile: string
