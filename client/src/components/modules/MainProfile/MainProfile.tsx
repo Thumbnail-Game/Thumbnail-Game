@@ -14,12 +14,14 @@ interface ProfileChartProps {
   userData: GetUserByDisplayNameQuery
   gamesData: GetGamesByUserQuery
   gamemode: string
+  handleToggleGamemode: () => void
 }
 
 export const MainProfile: React.FC<ProfileChartProps> = ({
   userData,
   gamesData,
   gamemode,
+  handleToggleGamemode,
 }) => {
   const [level, setLevel] = useState<number>(0)
   const [percent, setPercent] = useState<number>(0)
@@ -104,6 +106,7 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
 
   return (
     <Styled.Wrapper>
+      <button onClick={handleToggleGamemode}>Toggle Mode</button>
       <Styled.LeftContainer>
         <Styled.Name>{userData?.userByDisplayName?.displayName}</Styled.Name>
         {userData && userData.userByDisplayName && (

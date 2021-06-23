@@ -19,8 +19,6 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
 
   const { themeMode } = useContext(ThemeContext)
 
-  console.log(videos)
-
   useEffect(() => {
     const tempArr = []
 

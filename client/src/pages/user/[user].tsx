@@ -40,7 +40,6 @@ const User: React.FC = () => {
 
   return (
     <div id="userProfile">
-      <button onClick={handleToggleGamemode}>Toggle Mode</button>
       <Nav signedIn={signedIn} />
       {userData?.userByDisplayName ? (
         <div style={{ position: 'relative' }}>
@@ -51,6 +50,7 @@ const User: React.FC = () => {
                   userData={userData}
                   gamesData={gamesData}
                   gamemode={gamemode}
+                  handleToggleGamemode={handleToggleGamemode}
                 />
                 <ProfileChart gamesData={gamesData} gamemode={gamemode} />
               </LeftComponent>
