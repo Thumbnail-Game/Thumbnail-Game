@@ -74,10 +74,25 @@ export const Leaderboard: React.FC = () => {
 
   return (
     <>
-      <Styled.SearchContainer>
-        {usersData && <Search users={usersData} />}
-      </Styled.SearchContainer>
-      <Styled.Background />
+      <Styled.Wrapper>
+        <Styled.LeaderboardContainer>
+          <Styled.LeaderboardColumn>
+            <Styled.Leaderboard>
+              {leaderboardUsers &&
+                Array.isArray(leaderboardUsers) &&
+                leaderboardUsers.map((user: LeaderboardUser, i) => (
+                  <Styled.LeaderboardRow>
+                    <div>{user.displayName}</div>
+                    <div>{user.topScore}</div>
+                    <div>{user.scoreDate}</div>
+                  </Styled.LeaderboardRow>
+                ))}
+            </Styled.Leaderboard>
+          </Styled.LeaderboardColumn>
+          {usersData && <Search users={usersData} />}
+        </Styled.LeaderboardContainer>
+      </Styled.Wrapper>
+      {/* <Styled.Background /> */}
     </>
   )
 }

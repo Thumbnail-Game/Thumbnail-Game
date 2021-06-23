@@ -1,16 +1,24 @@
 import styled from 'styled-components'
 
-export const SearchContainer = styled.div`
+export const Wrapper = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+`
+
+export const LeaderboardContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
   position: relative;
-  width: 1080px;
+  width: 1480px;
   height: 750px;
   border-radius: 15px;
   margin: auto;
   margin-top: 50px;
   z-index: 2;
-  background-color: #424242;
-  display: flex;
-  justify-content: space-around;
+  background-color: blue;
 `
 
 export const Background = styled.div`
@@ -24,11 +32,25 @@ export const Background = styled.div`
   background-color: #111111;
 `
 
+export const LeaderboardColumn = styled.div`
+  display: flex;
+  width: 1100px;
+  background-color: purple;
+`
+
 export const Leaderboard = styled.div`
-  width: 650px;
-  height: 680px;
-  background-color: #606060;
-  border-radius: 15px;
   margin: auto;
-  background-color: green;
+  width: 900px;
+  height: 600px;
+  border-radius: 15px;
+  background-color: orange;
+`
+
+export const LeaderboardRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 50px;
+  margin: 10px 0px 10px 0px;
+  background-color: red;
 `
