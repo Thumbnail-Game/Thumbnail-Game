@@ -45,7 +45,6 @@ export const Leaderboard: React.FC = () => {
       highscoresData &&
       highscoresData.getUserHighscores
     ) {
-      console.log(usersData.users)
       //    construct a leaderboard user
       const tempLeaderboardUsers: LeaderboardUsers = []
 
@@ -57,7 +56,6 @@ export const Leaderboard: React.FC = () => {
         const matchingUser = highscoresData.getUserHighscores.find(
           (userObj) => userObj.userId === user.id
         )
-        console.log(matchingUser)
         if (!matchingUser || !matchingUser?.highScore || !matchingUser?.date) {
           continue
         }
