@@ -96,6 +96,7 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({ toggleLeaderboard 
                         leaderboardUsers.map((user: LeaderboardUser, i) => (
                             <Styled.PlayerInfo
                                 onClick={() => router.push(`/user/${user.displayName}`)}
+                                key={i}
                             >
                                 <div>{user.displayName}</div>
                                 <div>{user.topScore}</div>

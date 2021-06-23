@@ -28,17 +28,22 @@ export const Search: React.FC<SearchProps> = ({ users }) => {
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.currentTarget.value
 
-    setMatchingUsers(
-      users.users?.filter(
-        (userObj) =>
-          userObj.displayName.toLowerCase().indexOf(val.toLowerCase()) >= 0
+    if ((document.getElementById('input')! as HTMLTextAreaElement).value !== "") {
+      setMatchingUsers(
+        users.users?.filter(
+          (userObj) =>
+            userObj.displayName.toLowerCase().indexOf(val.toLowerCase()) >= 0
+        )
       )
-    )
+    } else {
+      setMatchingUsers({})
+    }
   }
 
   return (
     <Styled.Wrapper>
       <Styled.Input
+        id="input"
         placeholder="Search For Users"
         onChange={handleSearch}
         type="search"
