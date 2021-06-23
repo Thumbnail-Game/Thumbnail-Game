@@ -196,12 +196,12 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
 
   return (
     <>
-      {/* {gamemode &&
+      {gamemode &&
         gamemode === 'timed' &&
         !isLoadingVideos &&
         !hasPicked &&
         isPlaying &&
-        !isLoseAnimation && <Timer handleLoseAnimation={handleLoseAnimation} />} */}
+        !isLoseAnimation && <Timer handleLoseAnimation={handleLoseAnimation} />}
       {(!isPlaying || isLoseAnimation) && (
         <GameSummary videos={seenVideos} reset={handleResetGameFromChild} />
       )}
