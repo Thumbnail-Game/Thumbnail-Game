@@ -12,7 +12,10 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  /** The javascript `Date` as string. Type represents date and time as the ISO Date string. */
+  DateTime: any;
 };
+
 
 export type FieldError = {
   __typename?: 'FieldError';
@@ -109,6 +112,7 @@ export type UserHighscoreResponse = {
   __typename?: 'UserHighscoreResponse';
   userId?: Maybe<Scalars['Float']>;
   highScore?: Maybe<Scalars['Float']>;
+  date?: Maybe<Scalars['DateTime']>;
 };
 
 export type UserInput = {
@@ -260,7 +264,7 @@ export type GetUserHighscoresQuery = (
   { __typename?: 'Query' }
   & { getUserHighscores?: Maybe<Array<(
     { __typename?: 'UserHighscoreResponse' }
-    & Pick<UserHighscoreResponse, 'userId' | 'highScore'>
+    & Pick<UserHighscoreResponse, 'userId' | 'highScore' | 'date'>
   )>> }
 );
 
@@ -414,6 +418,7 @@ export const GetUserHighscoresDocument = gql`
   getUserHighscores(userIds: $userIds) {
     userId
     highScore
+    date
   }
 }
     `;
