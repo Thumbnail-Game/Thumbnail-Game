@@ -1,9 +1,7 @@
 import Image from 'next/image'
-import { Button } from '@material-ui/core'
-import styled, { keyframes } from 'styled-components'
-import { MdCancel } from 'react-icons/md'
 import { IoIosCheckmarkCircle } from 'react-icons/io'
-import { FaPlay } from 'react-icons/fa'
+import { MdCancel, MdTimerOff } from 'react-icons/md'
+import styled, { keyframes } from 'styled-components'
 
 import { PlayIcon, PlayIconAnimation } from '../PlayIcon/PlayIcon.styled'
 
@@ -183,7 +181,7 @@ export const PlayAgainButton = styled.button`
 
   &:hover {
     animation-name: ${(props) =>
-    props.theme.theme === 'dark' ? DarkPlayButtonOut : LightPlayButtonOut};
+      props.theme.theme === 'dark' ? DarkPlayButtonOut : LightPlayButtonOut};
     animation-duration: 300ms;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
@@ -234,6 +232,15 @@ export const WinIcon = styled(IoIosCheckmarkCircle)`
   position: absolute;
   z-index: 5;
   top: 80px;
+`
+
+export const TimeIcon = styled(MdTimerOff)`
+  background-color: #fa6565;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 5;
+  top: 80px;
+  color: ${(props) => props.theme.background};
 `
 
 export const IconDiv = styled.div`

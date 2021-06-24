@@ -29,6 +29,33 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
     setIndexArr(tempArr)
   }, [videos])
 
+  const renderIcon = (videoObj: any, index: number) => {
+    if (videoObj?.video1.isLoss || videoObj?.video2.isLoss) {
+      return (
+        <>
+          <Styled.LoseIcon size={160} />
+          <Styled.IconDiv />
+        </>
+      )
+      //  if they did not lose by incorrect choice, the last video
+      //  has to be lost on time
+    } else if (index === indexArr.length - 1) {
+      return (
+        <>
+          <Styled.TimeIcon size={160} />
+          <Styled.IconDiv />
+        </>
+      )
+    } else {
+      return (
+        <>
+          <Styled.WinIcon size={160} />
+          <Styled.IconDiv />
+        </>
+      )
+    }
+  }
+
   return (
     <Styled.GameSummaryWrapper>
       <HeaderText>Game Summary</HeaderText>
@@ -129,17 +156,7 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
           {indexArr &&
             indexArr.map((videoObj: any, i: number): any => (
               <Styled.VideoContainer key={i}>
-                {videoObj?.video1.isLoss || videoObj?.video2.isLoss ? (
-                  <>
-                    <Styled.LoseIcon size={160}></Styled.LoseIcon>
-                    <Styled.IconDiv />
-                  </>
-                ) : (
-                  <>
-                    <Styled.WinIcon size={160}></Styled.WinIcon>
-                    <Styled.IconDiv />
-                  </>
-                )}
+                {renderIcon(videoObj, i)}
                 <Styled.VideoColumnContainer>
                   <Styled.Videos>
                     <Link href={videoObj?.video1?.url}>
