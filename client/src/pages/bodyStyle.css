@@ -3,6 +3,9 @@ body {
 
 #playContainer {
 }
+#playContainer::-webkit-scrollbar {
+  display: none;
+}
 
 @media screen and (max-width: 1923px) {
   #playContainer {
