@@ -13,6 +13,7 @@ TODO
 6. Theme color bug? 
 7. Update migrations and run on database to remove broken thumbnails
 8. Look more into copyright stuff
+10. Change achievements to be only Timed
 
 DONE
 8. Remove broken users from database
