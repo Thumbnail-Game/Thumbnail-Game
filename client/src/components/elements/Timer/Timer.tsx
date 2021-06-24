@@ -3,7 +3,7 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import * as Styled from './Timer.styled'
 
 interface TimerProps {
-  handleLoseAnimation: () => void
+  handleLoseAnimation: (loseType: string) => void
 }
 
 export const Timer: React.FC<TimerProps> = ({ handleLoseAnimation }) => {
@@ -16,7 +16,7 @@ export const Timer: React.FC<TimerProps> = ({ handleLoseAnimation }) => {
         strokeWidth={8}
         trailColor="#282828"
         colors="#FFFFFF"
-        onComplete={handleLoseAnimation}
+        onComplete={() => handleLoseAnimation('time')}
       >
         {({ remainingTime }) => remainingTime}
       </CountdownCircleTimer>

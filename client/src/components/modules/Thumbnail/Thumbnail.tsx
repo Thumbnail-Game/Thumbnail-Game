@@ -50,6 +50,8 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
   const [seenVideoIds, setSeenVideoIds] = useState<number[]>([])
 
   const [isLoseAnimation, setIsLoseAnimation] = useState<boolean>(false)
+  //  whether they have lost on time or incorrect choice
+  const [loseType, setLoseType] = useState<string>()
   const [isLoadingVideos, setIsLoadingVideos] = useState<boolean>(false)
 
   const [videos] = useGetTwoVideosQuery({
@@ -148,14 +150,22 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
   }
 
   //  need to know how long the animation is playing before rendering other components
-  const handleLoseAnimation = () => {
+  const handleLoseAnimation = (loseType: string) => {
     //  best place to call is here, if loses on time, this is still called
     addGameToDatabase()
+
+    //  running out of time needs to render an animation, the animation
+    //  is renders if the user has already picked
+    if (loseType === 'time') {
+      setHasPicked(true)
+    }
+    setLoseType(loseType)
 
     setIsLoseAnimation(true)
     setTimeout(() => {
       setIsPlaying(false)
       setIsLoseAnimation(false)
+      setLoseType('none')
     }, 1500)
   }
 
@@ -170,7 +180,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
         seenVideos[seenVideos.length - 1].isLoss = true
       }
 
-      handleLoseAnimation()
+      handleLoseAnimation('incorrect')
     }
 
     setHasPicked(true)
@@ -207,7 +217,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
         <Styled.TotalWrapper isLosingAnimation={isLoseAnimation}>
           <HeaderText>Which Video Has More Views?</HeaderText>
           <Styled.Container hasPicked={hasPicked}>
-            {hasPicked && <LoseWinAnimation result={isLoseAnimation} />}
+            {hasPicked && <LoseWinAnimation loseType={loseType} />}
             {updatedVideos?.twoVideos?.map((video, i) => (
               <Styled.VideoContainer key={i} hasPicked={hasPicked}>
                 {!hiddenViews ? (

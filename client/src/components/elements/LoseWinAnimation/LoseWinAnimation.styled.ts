@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { keyframes } from 'styled-components'
-import { MdCancel } from 'react-icons/md'
+import { MdCancel, MdTimer } from 'react-icons/md'
 import { IoIosCheckmarkCircle } from 'react-icons/io'
 
 export const LoseIcon = styled(MdCancel)`
@@ -8,8 +8,15 @@ export const LoseIcon = styled(MdCancel)`
   filter: drop-shadow(9px 9px px #222222);
 `
 
+export const TimeIcon = styled(MdTimer)`
+  background-color: #fa6565;
+  border-radius: 50%;
+  filter: drop-shadow(9px 9px px #222222);
+  color: ${(props) => props.theme.background};
+`
+
 export const WinIcon = styled(IoIosCheckmarkCircle)`
-  color: #6EDBA3;
+  color: #6edba3;
 `
 
 const buttonAnimation = keyframes`
@@ -39,5 +46,5 @@ export const IconWrapper = styled.div`
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-  z-index:2;
+  z-index: 2;
 `
