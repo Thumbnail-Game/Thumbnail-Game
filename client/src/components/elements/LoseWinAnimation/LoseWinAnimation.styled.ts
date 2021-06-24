@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { keyframes } from 'styled-components'
-import { MdCancel, MdTimer } from 'react-icons/md'
+import { MdCancel, MdTimerOff } from 'react-icons/md'
 import { IoIosCheckmarkCircle } from 'react-icons/io'
 
 export const LoseIcon = styled(MdCancel)`
@@ -8,7 +8,7 @@ export const LoseIcon = styled(MdCancel)`
   filter: drop-shadow(9px 9px px #222222);
 `
 
-export const TimeIcon = styled(MdTimer)`
+export const TimeIcon = styled(MdTimerOff)`
   background-color: #fa6565;
   border-radius: 50%;
   filter: drop-shadow(9px 9px px #222222);
