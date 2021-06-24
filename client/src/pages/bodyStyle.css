@@ -4,6 +4,22 @@ body {
 #playContainer {
 }
 
+@media screen and (max-width: 1920px) {
+  #playContainer {
+    zoom: 1.03;
+    -moz-transform: scale(0.78);
+    -moz-transform-origin: 0 0;
+  }
+}
+
+@media screen and (max-width: 1910px) {
+  #playContainer {
+    zoom: 1;
+    -moz-transform: scale(0.78);
+    -moz-transform-origin: 0 0;
+  }
+}
+
 @media screen and (max-width: 1810px) {
   #playContainer {
     zoom: 0.96;

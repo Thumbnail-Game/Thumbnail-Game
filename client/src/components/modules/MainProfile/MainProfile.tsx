@@ -120,11 +120,11 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
             ).format('MM/DD/YYYY')}
           </Styled.AccountCreatedDate>
         )}
-      </Styled.LeftContainer>
-      <Styled.MiddleContainer>
         <Styled.GamemodeTitle>
           {gamemode.charAt(0).toUpperCase() + gamemode.slice(1)}
         </Styled.GamemodeTitle>
+      </Styled.LeftContainer>
+      <Styled.MiddleContainer>
         <Styled.Percentile
           isAbove50={
             parseInt(percentile.slice(0, percentile.length - 2)) >= 50

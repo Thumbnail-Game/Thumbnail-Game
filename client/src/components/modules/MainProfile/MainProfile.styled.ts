@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 
 export const LeftContainer = styled.div`
   width: 300px;
-  height: 150px;
+  height: 210px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -152,11 +152,9 @@ export const Toggle = styled.div`
 `
 
 export const GamemodeTitle = styled.div`
-  position: absolute;
-  top: 22px;
-  font-family: Gothic Bold;
-  font-size: 32px;
-  text-decoration: underline;
+  font-size:40px;
+  font-family:"Gothic Bold";
+  text-decoration: overline;
   text-decoration-color: red;
   text-decoration-thickness: 5px;
   text-underline-offset: 10px;
