@@ -172,6 +172,7 @@ export const PlayAgainButton = styled.button`
   font-size: 25px;
   font-family: 'Gothic Bold';
   padding-bottom: 4px;
+  margin-bottom:-30px;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
