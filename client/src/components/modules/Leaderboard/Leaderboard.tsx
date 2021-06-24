@@ -1,114 +1,124 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import Moment from 'react-moment';
+import Moment from 'react-moment'
 
 import {
-    useGetUsersQuery,
-    useGetUserHighscoresQuery,
+  useGetUsersQuery,
+  useGetUserHighscoresQuery,
 } from '../../../generated/graphql'
 import { Search } from '../../../components/elements/index'
 import * as Styled from './Leaderboard.styled'
 
 interface LeaderboardUsers {
-    [index: number]: LeaderboardUser
+  [index: number]: LeaderboardUser
 }
 
 interface LeaderboardUser {
-    displayName?: string
-    topScore?: number
-    scoreDate?: string
+  displayName?: string
+  topScore?: number
+  scoreDate?: string
 }
 
 interface ShowLeaderboardProps {
-    toggleLeaderboard: () => void
+  toggleLeaderboard: () => void
 }
 
-export const Leaderboard: React.FC<ShowLeaderboardProps> = ({ toggleLeaderboard }) => {
-    const [leaderboardUsers, setLeaderboardUsers] = useState<LeaderboardUsers>([])
-    const [userIds, setUserIds] = useState<number[]>([])
+export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
+  toggleLeaderboard,
+}) => {
+  const [leaderboardUsers, setLeaderboardUsers] = useState<LeaderboardUsers>([])
+  const [userIds, setUserIds] = useState<number[]>([])
 
-    const [users] = useGetUsersQuery()
-    const usersData = users && users.data
+  const [users] = useGetUsersQuery()
+  const usersData = users && users.data
 
-    const [highscores] = useGetUserHighscoresQuery({ variables: { userIds } })
-    const highscoresData = highscores && highscores.data
+  const [highscores] = useGetUserHighscoresQuery({ variables: { userIds } })
+  const highscoresData = highscores && highscores.data
 
-    const router = useRouter()
+  const router = useRouter()
 
-    useEffect(() => {
-        if (usersData && usersData.users) {
-            const tempUserIds: number[] = []
-            for (const user of usersData.users) {
-                tempUserIds.push(user.id)
-            }
-            setUserIds(tempUserIds)
+  useEffect(() => {
+    if (usersData && usersData.users) {
+      const tempUserIds: number[] = []
+      for (const user of usersData.users) {
+        tempUserIds.push(user.id)
+      }
+      setUserIds(tempUserIds)
+    }
+  }, [users])
+
+  useEffect(() => {
+    if (
+      usersData &&
+      usersData.users &&
+      highscoresData &&
+      highscoresData.getUserHighscores
+    ) {
+      //    construct a leaderboard user
+      let tempLeaderboardUsers: LeaderboardUsers = []
+
+      for (const user of usersData.users) {
+        const tempLeaderboardUser: LeaderboardUser = {}
+        tempLeaderboardUser.displayName = user.displayName
+
+        //    get the corresponding highscore for the user
+        const matchingUser = highscoresData.getUserHighscores.find(
+          (userObj) => userObj.userId === user.id
+        )
+        if (!matchingUser || !matchingUser?.highScore || !matchingUser?.date) {
+          continue
         }
-    }, [users])
 
-    useEffect(() => {
-        if (
-            usersData &&
-            usersData.users &&
-            highscoresData &&
-            highscoresData.getUserHighscores
-        ) {
-            //    construct a leaderboard user
-            const tempLeaderboardUsers: LeaderboardUsers = []
+        //  append the necessary fields
+        tempLeaderboardUser.topScore = matchingUser.highScore
+        tempLeaderboardUser.scoreDate = matchingUser.date
 
-            for (const user of usersData.users) {
-                const tempLeaderboardUser: LeaderboardUser = {}
-                tempLeaderboardUser.displayName = user.displayName
+        Array.isArray(tempLeaderboardUsers) &&
+          tempLeaderboardUsers.push(tempLeaderboardUser)
+      }
 
-                //    get the corresponding highscore for the user
-                const matchingUser = highscoresData.getUserHighscores.find(
-                    (userObj) => userObj.userId === user.id
-                )
-                if (!matchingUser || !matchingUser?.highScore || !matchingUser?.date) {
-                    continue
-                }
+      //  sort and take the top 100
+      if (Array.isArray(tempLeaderboardUsers)) {
+        tempLeaderboardUsers = tempLeaderboardUsers
+          .sort((a: any, b: any) => {
+            return b.topScore - a.topScore
+          })
+          .slice(0, 99)
+      }
+      setLeaderboardUsers(tempLeaderboardUsers)
+    }
+  }, [usersData, highscoresData])
 
-                //  append the necessary fields
-                tempLeaderboardUser.topScore = matchingUser.highScore
-                tempLeaderboardUser.scoreDate = matchingUser.date
-
-                Array.isArray(tempLeaderboardUsers) &&
-                    tempLeaderboardUsers.push(tempLeaderboardUser)
-            }
-
-            //  sort and take the top 100
-            tempLeaderboardUsers = Array.isArray(tempLeaderboardUsers) && (tempLeaderboardUsers.sort(a: LeaderboardUser, b: LeaderboardUser) => (a.score > b.score))).splice(100)
-setLeaderboardUsers(tempLeaderboardUsers)
-        }
-    }, [usersData, highscoresData])
-
-return (
+  return (
     <>
-        <Styled.Wrapper>
-            <Styled.Leaderboard>
-                <Styled.LabelContainer>
-                    <Styled.Label>Leaderboard</Styled.Label>
-                    <Styled.ColumnNamesContainer>
-                        <Styled.ColumnNames>Username</Styled.ColumnNames>
-                        <Styled.ColumnNames>Highscore</Styled.ColumnNames>
-                        <Styled.ColumnNames>Date</Styled.ColumnNames>
-                    </Styled.ColumnNamesContainer>
-                </Styled.LabelContainer>
-                {leaderboardUsers &&
-                    Array.isArray(leaderboardUsers) &&
-                    leaderboardUsers.map((user: LeaderboardUser, i) => (
-                        <Styled.PlayerInfo
-                            onClick={() => router.push(`/user/${user.displayName}`)}
-                            key={i}
-                        >
-                            <div>{user.displayName}</div>
-                            <div>{user.topScore}</div>
-                            <Moment format="MM/DD/YYYY" interval={0}>{user.scoreDate}</Moment>
-                        </Styled.PlayerInfo>
-                    ))}
-            </Styled.Leaderboard>
-            {usersData && <Search users={usersData} />}
-        </Styled.Wrapper>
-        <Styled.Background onClick={toggleLeaderboard} />
+      <Styled.Wrapper>
+        <Styled.Leaderboard>
+          <Styled.LabelContainer>
+            <Styled.Label>Leaderboard</Styled.Label>
+            <Styled.ColumnNamesContainer>
+              <Styled.ColumnNames>Username</Styled.ColumnNames>
+              <Styled.ColumnNames>Highscore</Styled.ColumnNames>
+              <Styled.ColumnNames>Date</Styled.ColumnNames>
+            </Styled.ColumnNamesContainer>
+          </Styled.LabelContainer>
+          {leaderboardUsers &&
+            Array.isArray(leaderboardUsers) &&
+            leaderboardUsers.map((user: LeaderboardUser, i) => (
+              <Styled.PlayerInfo
+                onClick={() => router.push(`/user/${user.displayName}`)}
+                key={i}
+              >
+                <div>{user.displayName}</div>
+                <div>{user.topScore}</div>
+                <Moment format="MM/DD/YYYY" interval={0}>
+                  {user.scoreDate}
+                </Moment>
+              </Styled.PlayerInfo>
+            ))}
+        </Styled.Leaderboard>
+        {usersData && <Search users={usersData} />}
+      </Styled.Wrapper>
+      <Styled.Background onClick={toggleLeaderboard} />
     </>
-)
+  )
 }
