@@ -128,8 +128,6 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
     setSeenVideos([])
     setSeenVideoIds([])
 
-    console.log('resetting')
-
     //  set gamemode to null, this will unrender this component
     //  and render SelectGameMode
     if (changeGamemode) setGamemode(null)
