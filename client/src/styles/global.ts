@@ -9,14 +9,6 @@ export default createGlobalStyle`
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Roboto';
-  src: url("/fonts/Roboto-Bold.ttf");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
 ${({ theme }) => css`
   html {
     height: 100%;
@@ -27,7 +19,7 @@ ${({ theme }) => css`
       margin: 0;
       background: ${theme.background};
       color: ${theme.primaryText};
-      font-family: Newsreader;
+      font-family: 'Gothic Bold';
     }
   }
 `}
