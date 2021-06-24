@@ -2,7 +2,6 @@ BUGS TO FIX:
 1. Hover element in light mode on profile oddly colored
 2. Negative percentile when you achieve a new highscore 
 3. If you are logged in should not use cookies for highscore
-4. Should eventurally fix having to refetch if a video is invalid, maybe fetch more videos at a time as a backup?
 
 DONE BY HACKATHON:
 
@@ -13,10 +12,10 @@ TODO
 6. Theme color bug? 
 7. Update migrations and run on database to remove broken thumbnails
 8. Look more into copyright stuff
-10. Change achievements to be only Timed
 
 DONE
 8. Remove broken users from database
 4. Timed mode
 9. Casual/Ranked mode switcher on profile
 3. Scroll wheel bug character
+10. Change achievements to be only Timed

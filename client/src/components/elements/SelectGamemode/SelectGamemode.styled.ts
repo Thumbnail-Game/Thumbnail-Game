@@ -25,7 +25,6 @@ export const GamemodeContainerAnimation = keyframes`
     transform: scale(1);
   }
   100% {
-    background-color:#494949;
     transform: scale(1.03);
   }
 `
@@ -35,7 +34,6 @@ export const GamemodeContainerAnimationOut = keyframes`
     transform: scale(1);
   }
   0% {
-    background-color:#444444;
     transform: scale(1.03);
   }
 `
