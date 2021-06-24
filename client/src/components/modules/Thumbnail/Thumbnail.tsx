@@ -70,6 +70,11 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
   const [, addGame] = useAddGameMutation()
 
   useEffect(() => {
+    //  invalidate upon load incase user clicks off and reloads, need to refetch to prevent cheating
+    invalidateVideos()
+  }, [])
+
+  useEffect(() => {
     setUpdatedVideos(videoData)
     setIsLoadingVideos(false)
 

@@ -19,12 +19,11 @@ export const LoseWinAnimation: React.FC<LoseWinAnimationProps> = ({
         <Styled.TimeIcon size={'100%'} />
       </Styled.IconWrapper>
     )
-  } else if (loseType === 'none') {
+  } else {
     return (
       <Styled.IconWrapper>
         <Styled.WinIcon size={'100%'} />
       </Styled.IconWrapper>
     )
   }
-  return null
 }
