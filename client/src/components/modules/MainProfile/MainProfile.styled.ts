@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   width: 1000px;
   height: 280px;
   display: flex;
-  position:relative;
+  position: relative;
   justify-content: space-between;
   margin: auto;
   border-radius: 15px;
@@ -133,20 +133,31 @@ const ToggleAnimation = keyframes`
 `
 
 export const Toggle = styled.div`
-  position:absolute;
-  right:0;
-  font-family:"Gothic Bold";
-  background-color:#606060;
-  padding:10px;
-  font-size:16px;
-  border-radius:8px;
-  margin-top:15px;
-  margin-right:15px;
-  cursor:pointer;
+  position: absolute;
+  right: 0;
+  font-family: 'Gothic Bold';
+  background-color: #606060;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  margin-top: 15px;
+  margin-right: 15px;
+  cursor: pointer;
 
-  &:hover{
-    animation-name:${ToggleAnimation};
+  &:hover {
+    animation-name: ${ToggleAnimation};
     animation-duration: 250ms;
-    animation-fill-mode:forwards;
+    animation-fill-mode: forwards;
   }
+`
+
+export const GamemodeTitle = styled.div`
+  position: absolute;
+  top: 22px;
+  font-family: Gothic Bold;
+  font-size: 32px;
+  text-decoration: underline;
+  text-decoration-color: red;
+  text-decoration-thickness: 5px;
+  text-underline-offset: 10px;
 `

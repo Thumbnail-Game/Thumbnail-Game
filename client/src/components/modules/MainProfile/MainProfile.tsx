@@ -8,7 +8,6 @@ import {
 import { Achievements } from '../../elements/index'
 import * as Styled from './MainProfile.styled'
 import Moment from 'moment'
-var Toggle = require('react-toggle')
 
 interface ProfileChartProps {
   userData: GetUserByDisplayNameQuery
@@ -106,7 +105,9 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
 
   return (
     <Styled.Wrapper>
-      <Styled.Toggle onClick={handleToggleGamemode}>Toggle Mode</Styled.Toggle>
+      <Styled.Toggle onClick={handleToggleGamemode}>
+        Toggle Gamemode
+      </Styled.Toggle>
       <Styled.LeftContainer>
         <Styled.Name>{userData?.userByDisplayName?.displayName}</Styled.Name>
         {userData && userData.userByDisplayName && (
@@ -121,6 +122,9 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
         )}
       </Styled.LeftContainer>
       <Styled.MiddleContainer>
+        <Styled.GamemodeTitle>
+          {gamemode.charAt(0).toUpperCase() + gamemode.slice(1)}
+        </Styled.GamemodeTitle>
         <Styled.Percentile
           isAbove50={
             parseInt(percentile.slice(0, percentile.length - 2)) >= 50
