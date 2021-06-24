@@ -8,6 +8,7 @@ import {
 import { Achievements } from '../../elements/index'
 import * as Styled from './MainProfile.styled'
 import Moment from 'moment'
+import Skeleton from 'react-loading-skeleton';
 
 interface ProfileChartProps {
   userData: GetUserByDisplayNameQuery
@@ -109,7 +110,7 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
         Toggle Gamemode
       </Styled.Toggle>
       <Styled.LeftContainer>
-        <Styled.Name>{userData?.userByDisplayName?.displayName}</Styled.Name>
+        <Styled.Name>{userData?.userByDisplayName?.displayName || <Skeleton />}</Styled.Name>
         {userData && userData.userByDisplayName && (
           <Styled.AccountCreatedDate>
             User since{' '}
@@ -121,7 +122,7 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
           </Styled.AccountCreatedDate>
         )}
         <Styled.GamemodeTitle>
-          {gamemode.charAt(0).toUpperCase() + gamemode.slice(1)}
+          {gamemode.charAt(0).toUpperCase() + gamemode.slice(1) || <Skeleton />}
         </Styled.GamemodeTitle>
       </Styled.LeftContainer>
       <Styled.MiddleContainer>
@@ -132,7 +133,7 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
               : false
           }
         >
-          {percentile}
+          {percentile || <Skeleton />}
         </Styled.Percentile>
         <Styled.PercentileLabel>percentile</Styled.PercentileLabel>
       </Styled.MiddleContainer>
@@ -149,11 +150,11 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
                 height="10px"
               />
               {percent && (
-                <Styled.PercentText>{Math.floor(percent)}%</Styled.PercentText>
+                <Styled.PercentText>{Math.floor(percent) || <Skeleton />}%</Styled.PercentText>
               )}
             </Styled.ProgressContainer>
             <Styled.LevelCircle>
-              {level && <div>{Math.floor(level)}</div>}
+              {level && <div>{Math.floor(level) || <Skeleton />}</div>}
             </Styled.LevelCircle>
           </Styled.InnerProgressRow>
         </Styled.LevelContainer>

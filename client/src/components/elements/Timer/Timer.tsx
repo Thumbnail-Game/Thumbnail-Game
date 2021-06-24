@@ -13,7 +13,7 @@ export const Timer: React.FC<TimerProps> = ({ handleLoseAnimation }) => {
         size={120}
         isPlaying
         duration={7}
-        strokeWidth={20}
+        strokeWidth={16}
         trailColor="#282828"
         colors="#FFFFFF"
         onComplete={() => handleLoseAnimation('time')}
