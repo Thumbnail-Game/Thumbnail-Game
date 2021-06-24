@@ -1,4 +1,5 @@
-body {}
+body {
+}
 
 #playContainer {
 }
@@ -94,7 +95,7 @@ body {}
 @media screen and (max-width: 1140px) {
   #playContainer {
     zoom: 0.57;
-    -moz-transform: scale(0.50);
+    -moz-transform: scale(0.5);
     -moz-transform-origin: 0 0;
   }
 }
@@ -102,7 +103,7 @@ body {}
 @media screen and (max-width: 1080px) {
   #playContainer {
     zoom: 0.53;
-    -moz-transform: scale(0.50);
+    -moz-transform: scale(0.5);
     -moz-transform-origin: 0 0;
   }
 }
@@ -133,7 +134,7 @@ body {}
 
 @media screen and (max-width: 1550px) {
   #userProfile {
-    zoom: .8;
+    zoom: 0.8;
     -moz-transform: scale(0.8);
     -moz-transform-origin: 0 0;
   }
@@ -141,7 +142,7 @@ body {}
 
 @media screen and (max-width: 1230px) {
   #userProfile {
-    zoom: .7;
+    zoom: 0.7;
     -moz-transform: scale(0.7);
     -moz-transform-origin: 0 0;
   }
@@ -149,7 +150,7 @@ body {}
 
 @media screen and (max-width: 1080px) {
   #userProfile {
-    zoom: .6;
+    zoom: 0.6;
     -moz-transform: scale(0.6);
     -moz-transform-origin: 0 0;
   }
@@ -157,7 +158,7 @@ body {}
 
 @media screen and (max-width: 940px) {
   #userProfile {
-    zoom: .5;
+    zoom: 0.5;
     -moz-transform: scale(0.5);
     -moz-transform-origin: 0 0;
   }
@@ -165,7 +166,7 @@ body {}
 
 @media screen and (max-width: 790px) {
   #userProfile {
-    zoom: .4;
+    zoom: 0.4;
     -moz-transform: scale(0.4);
     -moz-transform-origin: 0 0;
   }
@@ -173,7 +174,7 @@ body {}
 
 @media screen and (max-width: 640px) {
   #userProfile {
-    zoom: .3;
+    zoom: 0.3;
     -moz-transform: scale(0.4);
     -moz-transform-origin: 0 0;
   }
