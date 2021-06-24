@@ -23,9 +23,13 @@ export const Achievements: React.FC<AchievementsProps> = ({ gamesData }) => {
 
   useEffect(() => {
     if (gamesData && gamesData.getGamesByUser) {
-      const numGames = gamesData.getGamesByUser.length
+      //  only games that are ranked should count towards achievements
+      const timedGamesData = gamesData.getGamesByUser.filter(
+        (game) => game.gamemode === 'timed'
+      )
+      const numGames = timedGamesData.length
       let topScore = 0
-      for (const game of gamesData.getGamesByUser) {
+      for (const game of timedGamesData) {
         if (game.score > topScore) topScore = game.score
       }
 
