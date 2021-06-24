@@ -143,6 +143,11 @@ export const Toggle = styled.div`
   margin-right: 15px;
   cursor: pointer;
   background-color: ${(props) => props.theme.toggleButton};
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
 
   &:hover {
     animation-name: ${ToggleAnimation};

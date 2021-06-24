@@ -34,6 +34,8 @@ export const TotalWrapper = styled.div<TotalWrapperProps>`
   animation-delay: 1s;
   animation-duration: 1000ms;
   animation-fill-mode: forwards;
+  height: calc(100vh - 120px);
+  overflow:hidden;
 `
 
 export const VideoText = styled.div`
