@@ -3,7 +3,7 @@ body {
 
 #playContainer {
 }
-#playContainer::-webkit-scrollbar {
+body::-webkit-scrollbar {
   display: none;
 }
 
