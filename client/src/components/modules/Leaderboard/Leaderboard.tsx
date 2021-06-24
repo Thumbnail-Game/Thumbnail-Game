@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Moment from 'react-moment'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 import {
   useGetUsersQuery,
@@ -108,8 +109,8 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
                 onClick={() => router.push(`/user/${user.displayName}`)}
                 key={i}
               >
-                <div>{user.displayName}</div>
-                <div>{user.topScore}</div>
+                <div>{user.displayName || <Skeleton />}</div>
+                <div>{user.topScore || <Skeleton />}</div>
                 <Moment format="MM/DD/YYYY" interval={0}>
                   {user.scoreDate}
                 </Moment>

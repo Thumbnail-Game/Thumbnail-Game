@@ -34,6 +34,7 @@
     "react-icons": "^4.2.0",
     "react-items-carousel": "^2.8.0",
     "react-lazyload": "^3.2.0",
+    "react-loading-skeleton": "^2.2.0",
     "react-moment": "^1.1.1",
     "react-multi-carousel": "^2.6.3",
     "react-responsive-carousel": "^3.2.18",

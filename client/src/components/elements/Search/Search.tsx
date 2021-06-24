@@ -47,7 +47,8 @@ export const Search: React.FC<SearchProps> = ({ users }) => {
         placeholder="Search For Users"
         onChange={handleSearch}
         type="search"
-      />
+        autoComplete="off"
+      ></Styled.Input>
       <Styled.SearchContainer>
         {matchingUsers &&
           Array.isArray(matchingUsers) &&
