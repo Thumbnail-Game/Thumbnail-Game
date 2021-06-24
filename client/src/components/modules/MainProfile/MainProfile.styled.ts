@@ -128,7 +128,7 @@ const ToggleAnimation = keyframes`
   0%{
   }
   100%{
-    background-color:#282828;
+    background-color:	#808080;
   }
 `
 
@@ -136,13 +136,13 @@ export const Toggle = styled.div`
   position: absolute;
   right: 0;
   font-family: 'Gothic Bold';
-  background-color: #606060;
   padding: 10px;
   font-size: 16px;
   border-radius: 8px;
   margin-top: 15px;
   margin-right: 15px;
   cursor: pointer;
+  background-color: ${(props) => props.theme.toggleButton};
 
   &:hover {
     animation-name: ${ToggleAnimation};

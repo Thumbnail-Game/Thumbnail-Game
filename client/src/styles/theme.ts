@@ -16,6 +16,7 @@ const theme = {
     formBackground: '#FFFFFF',
     achievementPopupBackground: '#E3E3E3',
     profileBackground: 'white',
+    toggleButton: '#D3D3D3',
   },
   dark: {
     theme: 'dark',
@@ -32,6 +33,7 @@ const theme = {
     formBackground: '#FFFFFF',
     achievementPopupBackground: '#181818',
     profileBackground: '#3f3f3f',
+    toggleButton: '#606060',
   },
 }
 
