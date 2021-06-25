@@ -132,11 +132,19 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
                   onClick={() => router.push(`/user/${user.displayName}`)}
                   key={i}
                 >
-                  <div>{user.displayName}</div>
-                  <div>{user.topScore}</div>
-                  <Moment format="MM/DD/YYYY" interval={0}>
-                    {user.scoreDate}
-                  </Moment>
+                  {user.displayName && (
+                    <Styled.Username>
+                      {user.displayName.length > 18
+                        ? user.displayName.slice(0, 18) + '...'
+                        : user.displayName}
+                    </Styled.Username>
+                  )}
+                  <Styled.Highscore>{user.topScore}</Styled.Highscore>
+                  <Styled.Date>
+                    <Moment format="MM/DD/YYYY" interval={0}>
+                      {user.scoreDate}
+                    </Moment>
+                  </Styled.Date>
                 </Styled.PlayerInfo>
               ))
             : renderSkeletonLoaders()}

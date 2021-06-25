@@ -1,4 +1,4 @@
-import styled, { keyframes }  from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 const LeaderboardIntro = keyframes`
   0%{
@@ -11,22 +11,22 @@ const LeaderboardIntro = keyframes`
 
 export const Wrapper = styled.div`
   position: absolute;
-  margin:auto;
-  top:20px;
-  bottom:0;
-  left:0;
-  right:0;
-  z-index: 2;
-  width:1120px;
-  height:700px;
-  display:flex;
-  justify-content:space-around;
-  background-color:#424242;
-  border-radius:15px;
+  margin: auto;
+  top: 20px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  width: 1120px;
+  height: 700px;
+  display: flex;
+  justify-content: space-around;
+  background-color: #424242;
+  border-radius: 15px;
 
   animation-name: ${LeaderboardIntro};
-  animation-duration:300ms;
-  animation-fill-mode:forwards;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
 `
 
 export const Background = styled.div`
@@ -51,42 +51,58 @@ export const Leaderboard = styled.div`
 export const PlayerInfo = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 50px;
-  margin:auto;
-  margin-top:10px;
+  margin: auto;
+  margin-top: 10px;
   cursor: pointer;
   background-color: #353535;
-  width:91%;
-  padding-left:3%;
-  padding-right:3%;
-  border-radius:6px;
+  width: 91%;
+  padding-left: 3%;
+  padding-right: 3%;
+  border-radius: 6px;
   font-size: 17px;
-  font-family:"Gothic Bold";
+  font-family: 'Gothic Bold';
+`
+
+export const Username = styled.div`
+  width: 39%;
+  overflow: hidden;
+`
+
+export const Highscore = styled.div`
+  text-align: center;
+  width: 33%;
+  overflow: hidden;
+`
+
+export const Date = styled.div`
+  text-align: right;
+  width: 33%;
+  overflow: hidden;
 `
 
 export const LabelContainer = styled.div`
-  width:97%;
-  margin:auto;
-  margin-top:15px;
+  width: 97%;
+  margin: auto;
+  margin-top: 15px;
 `
 
 export const Label = styled.div`
-  font-size:35px;
-  font-family:"Gothic Bold";
+  font-size: 35px;
+  font-family: 'Gothic Bold';
 `
 
 export const ColumnNamesContainer = styled.div`
-  width:95%;
-  margin:auto;
-  margin-top:20px;
-  height:30px;
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:-5px;
+  width: 95%;
+  margin: auto;
+  margin-top: 20px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -5px;
 `
 
 export const ColumnNames = styled.div`
-  font-size:15px;
-  font-family:"Gothic Bold";
+  font-size: 15px;
+  font-family: 'Gothic Bold';
 `
