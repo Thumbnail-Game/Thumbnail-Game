@@ -17,6 +17,7 @@ const theme = {
     achievementPopupBackground: '#E3E3E3',
     profileBackground: 'white',
     toggleButton: '#D3D3D3',
+    searchInput: '#F1F1F1',
   },
   dark: {
     theme: 'dark',
@@ -34,6 +35,7 @@ const theme = {
     achievementPopupBackground: '#181818',
     profileBackground: '#3f3f3f',
     toggleButton: '#606060',
+    searchInput: '#FFFFFF',
   },
 }
 

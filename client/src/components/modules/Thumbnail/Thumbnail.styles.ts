@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from 'styled-components'
 import Image from 'next/image'
+import { LinearProgress } from '@material-ui/core'
 import { BiRightArrowAlt } from 'react-icons/bi'
 import { MdCancel } from 'react-icons/md'
 
@@ -35,12 +36,12 @@ export const TotalWrapper = styled.div<TotalWrapperProps>`
   animation-duration: 1000ms;
   animation-fill-mode: forwards;
   height: calc(100vh - 120px);
-  overflow:hidden;
+  overflow: hidden;
 `
 
 export const VideoText = styled.div`
-  font-family: 'Roboto';
-  font-size:26px;
+  font-family: 'Gothic Bold';
+  font-size: 26px;
   width: 672px;
   height: 93px;
   overflow: hidden;
@@ -202,18 +203,18 @@ export const Container = styled.div<ContainerProps>`
       animation-duration: 700ms;
     `}
 
-    @media (max-width: 760px) {
-      flex-direction:column;
-      width:672px;
-      ${(props) =>
-    props.hasPicked &&
-    css`
-          margin: auto;
-          position: relative;
-          justify-content: space-between;
-          margin-top: 65px;
-        `}
-    }
+  @media (max-width: 760px) {
+    flex-direction: column;
+    width: 672px;
+    ${(props) =>
+      props.hasPicked &&
+      css`
+        margin: auto;
+        position: relative;
+        justify-content: space-between;
+        margin-top: 65px;
+      `}
+  }
 `
 
 export const ViewCount = styled.div`
@@ -221,6 +222,7 @@ export const ViewCount = styled.div`
   background-color: none;
   margin-bottom: 15px;
   height: 67px;
+  font-family:"Gothic Bold";
 `
 
 export const HiddenDiv = styled.div`
@@ -287,8 +289,8 @@ export const Button = styled.button`
   @media (max-width: 760px) {
     width: 120px;
     height: 120px;
-    animation:none;
-    margin-top:40px;
+    animation: none;
+    margin-top: 40px;
   }
 `
 export const Filler = styled.div`
@@ -401,3 +403,5 @@ export const ShadeOut2 = styled.div`
   opacity: 0.2;
   animation: ${fillShadeOut2} 700ms;
 `
+
+export const LinearLoader = styled(LinearProgress)``

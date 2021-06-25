@@ -101,7 +101,7 @@ export const Videos = styled.div`
 export const VideoTitle = styled.div`
   margin-top: 12px;
   text-align: left;
-  font-family: 'Roboto';
+  font-family: 'Gothic Bold';
   font-size: 27px;
   height: 66px;
   overflow: hidden;
@@ -110,7 +110,7 @@ export const VideoTitle = styled.div`
 export const VideoViews = styled.div`
   margin-top: 10px;
   text-align: left;
-  font-family: 'Roboto';
+  font-family: 'Gothic Bold';
   font-size: 33px;
 `
 
