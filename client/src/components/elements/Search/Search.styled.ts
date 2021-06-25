@@ -17,7 +17,7 @@ export const Input = styled.input`
   outline: none;
   border: none;
   border-radius: 39px;
-  color: black;
+  color: white;
   font-family: 'Gothic Bold';
   font-size: 16px;
   margin: auto;
