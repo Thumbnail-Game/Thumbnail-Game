@@ -9,6 +9,7 @@ import {
 } from '../../../generated/graphql'
 import { Search } from '../../../components/elements/index'
 import * as Styled from './Leaderboard.styled'
+import { useTransition } from 'react-spring';
 
 interface LeaderboardUsers {
   [index: number]: LeaderboardUser
@@ -105,7 +106,7 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
           {leaderboardUsers &&
             Array.isArray(leaderboardUsers) &&
             leaderboardUsers.map((user: LeaderboardUser, i) => (
-              user ?
+              users ?
                 <Styled.PlayerInfo
                   onClick={() => router.push(`/user/${user.displayName}`)}
                   key={i}
