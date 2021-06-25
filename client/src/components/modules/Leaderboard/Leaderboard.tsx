@@ -90,6 +90,28 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
     }
   }, [usersData, highscoresData])
 
+  const renderSkeletonLoaders = () => {
+    const fields: JSX.Element[] = []
+    for (let i = 1; i < 10; i++) {
+      fields.push(
+        <Skeleton
+          style={{
+            margin: 'auto',
+            marginBottom: '10px',
+            borderRadius: '7px',
+          }}
+          key={i}
+          variant="rect"
+          width={630}
+          height={50}
+          animation="wave"
+        />
+      )
+    }
+
+    return fields
+  }
+
   return (
     <>
       <Styled.Wrapper>
@@ -102,34 +124,20 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
               <Styled.ColumnNames>Date</Styled.ColumnNames>
             </Styled.ColumnNamesContainer>
           </Styled.LabelContainer>
-          {!users.fetching &&
-          leaderboardUsers &&
-          Array.isArray(leaderboardUsers) ? (
-            leaderboardUsers.map((user: LeaderboardUser, i) => (
-              <Styled.PlayerInfo
-                onClick={() => router.push(`/user/${user.displayName}`)}
-                key={i}
-              >
-                <div>{user.displayName}</div>
-                <div>{user.topScore}</div>
-                <Moment format="MM/DD/YYYY" interval={0}>
-                  {user.scoreDate}
-                </Moment>
-              </Styled.PlayerInfo>
-            ))
-          ) : (
-            <Skeleton
-              style={{
-                margin: 'auto',
-                marginBottom: '10px',
-                borderRadius: '7px',
-              }}
-              variant="rect"
-              width={630}
-              height={50}
-              animation="wave"
-            />
-          )}
+          {users.fetching && leaderboardUsers && Array.isArray(leaderboardUsers)
+            ? leaderboardUsers.map((user: LeaderboardUser, i) => (
+                <Styled.PlayerInfo
+                  onClick={() => router.push(`/user/${user.displayName}`)}
+                  key={i}
+                >
+                  <div>{user.displayName}</div>
+                  <div>{user.topScore}</div>
+                  <Moment format="MM/DD/YYYY" interval={0}>
+                    {user.scoreDate}
+                  </Moment>
+                </Styled.PlayerInfo>
+              ))
+            : renderSkeletonLoaders()}
         </Styled.Leaderboard>
         {usersData ? (
           <Search users={usersData} />
