@@ -49,7 +49,7 @@ export const Achievements: React.FC<AchievementsProps> = ({ gamesData }) => {
               <Styled.AchievementImage
                 alt={`achievement-${i}`}
                 src={achievement.imageURL}
-                isCrownImage={achievement.title === 'Thumbnail Master'}
+                isCrownImage={achievement.title === 'Master'}
               />
               <Styled.AchievementPopupContainer>
                 <Styled.PopupTitle>{achievement.title}</Styled.PopupTitle>

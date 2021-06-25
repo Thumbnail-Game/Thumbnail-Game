@@ -8,7 +8,8 @@ export const AchievementImage = styled.img<AchievementImageProps>`
   position: relative;
   width: 47px;
 
-  margin-top: ${(props) => (props.isCrownImage ? '-4px' : '')};
+  top: ${(props) => (props.isCrownImage ? '-3.5px' : '0px')};
+
 `
 
 export const AchievementContainer = styled.div`
