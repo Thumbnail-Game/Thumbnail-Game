@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Moment from 'react-moment'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import Skeleton from '@material-ui/lab/Skeleton';
 
 import {
   useGetUsersQuery,
@@ -117,7 +117,7 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
               </Styled.PlayerInfo>
             ))}
         </Styled.Leaderboard>
-        {usersData && <Search users={usersData} />}
+        {usersData ? <Search users={usersData} /> : <Skeleton variant="text" animation="wave" />}
       </Styled.Wrapper>
       <Styled.Background onClick={toggleLeaderboard} />
     </>
