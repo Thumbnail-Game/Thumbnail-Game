@@ -201,7 +201,9 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
     })
   }
 
-  if (videos.fetching || isLoadingVideos) return <p>Loading...</p>
+  if (videos.fetching || isLoadingVideos) {
+    return <Styled.LinearLoader color="secondary" />
+  }
   if (videos.error) {
     console.log(videos.error.message)
     return <p>There was an error</p>
