@@ -129,7 +129,11 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
             />
           )}
         </Styled.Leaderboard>
-        {usersData && <Search users={usersData} />}
+        {usersData ? (
+          <Search users={usersData} />
+        ) : (
+          <Skeleton variant="rect" width={300} height={100} animation="wave" />
+        )}
       </Styled.Wrapper>
       <Styled.Background onClick={toggleLeaderboard} />
     </>
