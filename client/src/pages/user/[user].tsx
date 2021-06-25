@@ -11,6 +11,7 @@ import { createUrqlClient } from '../../util'
 import { SignedInContext } from '../../providers/AppProvider'
 import { ProfileChart, TopPlays } from '../../components/elements/index'
 import { Nav, MainProfile } from '../../components/modules/index'
+import { BackButton } from '../../styles/constantStyles'
 
 const User: React.FC = () => {
   const [gamemode, setGamemode] = useState<string>('timed')
@@ -59,7 +60,17 @@ const User: React.FC = () => {
           )}
         </div>
       ) : (
-        <div>User does not exist</div>
+        <DoesNotExistContainer>
+          {!user.fetching && (
+            <div>
+              <DoesNotExistText>User does not exist!</DoesNotExistText>
+              <BackButton
+                onClick={() => router.push('/play')}
+                style={{ position: 'relative' }}
+              />
+            </div>
+          )}
+        </DoesNotExistContainer>
       )}
     </div>
   )
@@ -77,6 +88,19 @@ export const Wrapper = styled.div`
   margin: auto;
   margin-top: 20px;
   overflow: visible;
+`
+
+export const DoesNotExistContainer = styled.div`
+  display: flex;
+  width: 100%;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`
+
+export const DoesNotExistText = styled.div`
+  font-size: 90px;
 `
 
 //  creates client with server side rendering enabled
