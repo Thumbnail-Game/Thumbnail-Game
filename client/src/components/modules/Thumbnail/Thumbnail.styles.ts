@@ -403,7 +403,4 @@ export const ShadeOut2 = styled.div`
   animation: ${fillShadeOut2} 700ms;
 `
 
-export const LinearLoader = styled(LinearProgress)`
-  background-color: blue;
-  color: blue;
-`
+export const LinearLoader = styled(LinearProgress)``
