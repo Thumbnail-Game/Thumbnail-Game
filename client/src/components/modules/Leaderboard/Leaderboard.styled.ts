@@ -47,6 +47,27 @@ export const Leaderboard = styled.div`
   border-radius: 9px;
 `
 
+export const InfoWrapper = styled.div`
+  width: 650px;
+  height: 530px;
+  overflow-y:scroll;
+  &::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+   }
+   &::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme.toggleButton};
+    border-radius: 10px;
+   }
+   &::-webkit-scrollbar-thumb:hover{
+    background: #ff0000;
+   }
+   &::-webkit-scrollbar-track{
+    background: none;
+    border-radius: 10px;
+   }
+`
+
 export const PlayerInfo = styled.div`
   display: flex;
   align-items: center;

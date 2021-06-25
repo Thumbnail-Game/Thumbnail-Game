@@ -125,30 +125,32 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
               <Styled.ColumnNames>Date</Styled.ColumnNames>
             </Styled.ColumnNamesContainer>
           </Styled.LabelContainer>
-          {!users.fetching &&
-            leaderboardUsers &&
-            Array.isArray(leaderboardUsers)
-            ? leaderboardUsers.map((user: LeaderboardUser, i) => (
-              <Styled.PlayerInfo
-                onClick={() => router.push(`/user/${user.displayName}`)}
-                key={i}
-              >
-                {user.displayName && (
-                  <Styled.Username>
-                    {user.displayName.length > 18
-                      ? user.displayName.slice(0, 18) + '...'
-                      : user.displayName}
-                  </Styled.Username>
-                )}
-                <Styled.Highscore>{user.topScore}</Styled.Highscore>
-                <Styled.Date>
-                  <Moment format="MM/DD/YYYY" interval={0}>
-                    {user.scoreDate}
-                  </Moment>
-                </Styled.Date>
-              </Styled.PlayerInfo>
-            ))
-            : renderSkeletonLoaders()}
+          <Styled.InfoWrapper>
+            {!users.fetching &&
+              leaderboardUsers &&
+              Array.isArray(leaderboardUsers)
+              ? leaderboardUsers.map((user: LeaderboardUser, i) => (
+                <Styled.PlayerInfo
+                  onClick={() => router.push(`/user/${user.displayName}`)}
+                  key={i}
+                >
+                  {user.displayName && (
+                    <Styled.Username>
+                      {user.displayName.length > 18
+                        ? user.displayName.slice(0, 18) + '...'
+                        : user.displayName}
+                    </Styled.Username>
+                  )}
+                  <Styled.Highscore>{user.topScore}</Styled.Highscore>
+                  <Styled.Date>
+                    <Moment format="MM/DD/YYYY" interval={0}>
+                      {user.scoreDate}
+                    </Moment>
+                  </Styled.Date>
+                </Styled.PlayerInfo>
+              ))
+              : renderSkeletonLoaders()}
+          </Styled.InfoWrapper>
         </Styled.Leaderboard>
         {usersData ? (
           <Search users={usersData} />
