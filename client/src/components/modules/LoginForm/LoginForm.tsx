@@ -141,7 +141,7 @@ export const LoginForm: React.FC = () => {
                   </Styled.LoginButton>
                 </div>
                 <Styled.Redirect
-                  onClick={() => router.push('/register')}
+                  onClick={() => router.push('/login')}
                 >Don't have an account? Sign up here</Styled.Redirect>
                 <Snackbar
                   open={showResendEmail}
