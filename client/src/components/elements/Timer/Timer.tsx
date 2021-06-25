@@ -1,5 +1,7 @@
+import { useContext } from 'react'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
+import { ThemeContext } from '../../../providers/AppProvider'
 import * as Styled from './Timer.styled'
 
 interface TimerProps {
@@ -7,6 +9,8 @@ interface TimerProps {
 }
 
 export const Timer: React.FC<TimerProps> = ({ handleLoseAnimation }) => {
+  const { themeMode } = useContext(ThemeContext)
+
   return (
     <Styled.CountdownWrapper>
       <CountdownCircleTimer
@@ -14,8 +18,8 @@ export const Timer: React.FC<TimerProps> = ({ handleLoseAnimation }) => {
         isPlaying
         duration={7}
         strokeWidth={16}
-        trailColor="#282828"
-        colors="#FFFFFF"
+        trailColor={themeMode === 'dark' ? '#282828' : '#FFFFFF'}
+        colors={themeMode === 'dark' ? '#FFFFFF' : '#282828'}
         onComplete={() => handleLoseAnimation('time')}
       >
         {({ remainingTime }) => remainingTime}
