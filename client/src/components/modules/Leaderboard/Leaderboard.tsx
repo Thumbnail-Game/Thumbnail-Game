@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Moment from 'react-moment'
-import Skeleton from '@material-ui/lab/Skeleton';
+import Skeleton from '@material-ui/lab/Skeleton'
 
 import {
   useGetUsersQuery,
@@ -102,27 +102,34 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
               <Styled.ColumnNames>Date</Styled.ColumnNames>
             </Styled.ColumnNamesContainer>
           </Styled.LabelContainer>
-          {leaderboardUsers &&
-            Array.isArray(leaderboardUsers) &&
+          {leaderboardUsers && Array.isArray(leaderboardUsers) ? (
             leaderboardUsers.map((user: LeaderboardUser, i) => (
-              user ?
-                <Styled.PlayerInfo
-                  onClick={() => router.push(`/user/${user.displayName}`)}
-                  key={i}
-                >
-                  <div>{user.displayName || <Skeleton />}</div>
-                  <div>{user.topScore || <Skeleton />}</div>
-                  <Moment format="MM/DD/YYYY" interval={0}>
-                    {user.scoreDate}
-                  </Moment>
-                </Styled.PlayerInfo>
-                :
-                <Skeleton style={{ margin: "auto", marginBottom: "10px", borderRadius: "7px" }} variant="rect" width={630} height={50} animation="wave" />
-
+              <Styled.PlayerInfo
+                onClick={() => router.push(`/user/${user.displayName}`)}
+                key={i}
+              >
+                <div>{user.displayName || <Skeleton />}</div>
+                <div>{user.topScore || <Skeleton />}</div>
+                <Moment format="MM/DD/YYYY" interval={0}>
+                  {user.scoreDate}
+                </Moment>
+              </Styled.PlayerInfo>
             ))
-          }
+          ) : (
+            <Skeleton
+              style={{
+                margin: 'auto',
+                marginBottom: '10px',
+                borderRadius: '7px',
+              }}
+              variant="rect"
+              width={630}
+              height={50}
+              animation="wave"
+            />
+          )}
         </Styled.Leaderboard>
-        {usersData ? <Search users={usersData} /> : <Skeleton variant="rect" width={300} height={100} animation="wave" />}
+        {usersData && <Search users={usersData} />}
       </Styled.Wrapper>
       <Styled.Background onClick={toggleLeaderboard} />
     </>

@@ -9,7 +9,7 @@ TODO
 1. Fix jitter when switching theme
 2. Complete mobile support
 5. Leaderboard
-6. Theme color bug? 
+6. Theme color bug?
 7. Update migrations and run on database to remove broken thumbnails
 8. Look more into copyright stuff
 
