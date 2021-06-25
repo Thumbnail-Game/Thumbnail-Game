@@ -116,7 +116,7 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
                 </Moment>
               </Styled.PlayerInfo>
             )) :
-            <Skeleton variant="rect" width={630} height={50} animation="wave" />
+            <Skeleton style={{ margin: "auto", borderRadius: "7px" }} variant="rect" width={630} height={50} animation="wave" />
           }
         </Styled.Leaderboard>
         {usersData ? <Search users={usersData} /> : <Skeleton variant="text" animation="wave" />}
