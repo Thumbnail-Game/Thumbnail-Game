@@ -3,42 +3,42 @@ export const getAchievements = (numGames: number, topScore: number) => {
   if (numGames >= 1) {
     achievements.push({
       title: 'Newbie',
-      description: 'You played your first game!',
+      description: 'Played 1 game!',
       imageURL: '/images/play-achievement-1.png',
     })
   }
   if (numGames >= 25) {
     achievements.push({
       title: 'Novice',
-      description: 'You played 25 games!',
+      description: 'Played 25 games!',
       imageURL: '/images/play-achievement-25.png',
     })
   }
   if (numGames >= 100) {
     achievements.push({
       title: 'Experienced',
-      description: 'You played 100 games!',
+      description: 'Played 100 games!',
       imageURL: '/images/play-achievement-100.png',
     })
   }
   if (topScore >= 5) {
     achievements.push({
       title: 'Beginner',
-      description: 'You scored 5 points in one game!',
+      description: 'Scored 5 points in one game!',
       imageURL: '/images/score-achievement-5.png',
     })
   }
   if (topScore >= 20) {
     achievements.push({
       title: 'Pro',
-      description: 'You scored 20 points in one game!',
+      description: 'Scored 20 points in one game!',
       imageURL: '/images/score-achievement-20.png',
     })
   }
   if (topScore >= 40) {
     achievements.push({
       title: 'Master',
-      description: 'You scored 40 points in one game!',
+      description: 'Scored 40 points in one game!',
       imageURL: '/images/score-achievement-40.png',
     })
   }
