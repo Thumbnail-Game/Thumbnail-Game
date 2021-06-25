@@ -102,7 +102,7 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
               <Styled.ColumnNames>Date</Styled.ColumnNames>
             </Styled.ColumnNamesContainer>
           </Styled.LabelContainer>
-          {leaderboardUsers &&
+          {leaderboardUsers ?
             Array.isArray(leaderboardUsers) &&
             leaderboardUsers.map((user: LeaderboardUser, i) => (
               <Styled.PlayerInfo
@@ -115,7 +115,9 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
                   {user.scoreDate}
                 </Moment>
               </Styled.PlayerInfo>
-            ))}
+            )) :
+            <Skeleton variant="rect" width={630} height={50} animation="wave" />
+          }
         </Styled.Leaderboard>
         {usersData ? <Search users={usersData} /> : <Skeleton variant="text" animation="wave" />}
       </Styled.Wrapper>
