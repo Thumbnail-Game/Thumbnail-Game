@@ -28,7 +28,9 @@ export const Search: React.FC<SearchProps> = ({ users }) => {
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.currentTarget.value
 
-    if ((document.getElementById('input')! as HTMLTextAreaElement).value !== "") {
+    if (
+      (document.getElementById('input')! as HTMLTextAreaElement).value !== ''
+    ) {
       setMatchingUsers(
         users.users?.filter(
           (userObj) =>
@@ -48,7 +50,7 @@ export const Search: React.FC<SearchProps> = ({ users }) => {
         onChange={handleSearch}
         type="search"
         autoComplete="off"
-      ></Styled.Input>
+      />
       <Styled.SearchContainer>
         {matchingUsers &&
           Array.isArray(matchingUsers) &&
@@ -61,7 +63,9 @@ export const Search: React.FC<SearchProps> = ({ users }) => {
                 })
               }
             >
-              {user.displayName}
+              {user.displayName.length > 25
+                ? user.displayName.slice(0, 25) + '...'
+                : user.displayName}
             </Styled.UserContainer>
           ))}
       </Styled.SearchContainer>

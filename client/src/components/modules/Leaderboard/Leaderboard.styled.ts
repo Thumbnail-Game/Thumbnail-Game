@@ -21,8 +21,8 @@ export const Wrapper = styled.div`
   height: 700px;
   display: flex;
   justify-content: space-around;
-  background-color: #424242;
   border-radius: 15px;
+  background-color: ${(props) => props.theme.profileBackground};
 
   animation-name: ${LeaderboardIntro};
   animation-duration: 300ms;
@@ -45,7 +45,6 @@ export const Leaderboard = styled.div`
   width: 650px;
   height: 93%;
   border-radius: 9px;
-  background-color: #606060;
 `
 
 export const PlayerInfo = styled.div`
@@ -55,13 +54,13 @@ export const PlayerInfo = styled.div`
   margin: auto;
   margin-top: 10px;
   cursor: pointer;
-  background-color: #353535;
   width: 91%;
   padding-left: 3%;
   padding-right: 3%;
   border-radius: 6px;
   font-size: 17px;
   font-family: 'Gothic Bold';
+  background-color: ${(props) => props.theme.scoreBackground};
 `
 
 export const Username = styled.div`

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import {AiOutlineSearch} from 'react-icons/ai'
 
 export const SearchContainer = styled.div`
   background-color: none;
@@ -18,11 +17,11 @@ export const Input = styled.input`
   outline: none;
   border: none;
   border-radius: 39px;
-  background-color: #969696;
   color: black;
   font-family: 'Gothic Bold';
   font-size: 16px;
-  margin:auto;
+  margin: auto;
+  background-color: ${(props) => props.theme.scoreBackground}
 
   &::-webkit-search-cancel-button {
     margin-right: 20px;
@@ -30,20 +29,25 @@ export const Input = styled.input`
 `
 
 export const UserContainer = styled.div`
-  background-color: #353535;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
   width: 100%;
   height: 60px;
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 10px;
+  cursor: pointer;
+  background-color: ${(props) => props.theme.scoreBackground};
 `
 
 export const Wrapper = styled.div`
   width: 350px;
   height: 93%;
   margin: auto;
-  overflow:hidden;
+  overflow: hidden;
 `
 
 export const LabelContainer = styled.div`
@@ -55,4 +59,3 @@ export const LabelContainer = styled.div`
 export const Label = styled.div`
   font-size: 32px;
 `
-
