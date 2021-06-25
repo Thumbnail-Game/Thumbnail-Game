@@ -124,7 +124,9 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
               <Styled.ColumnNames>Date</Styled.ColumnNames>
             </Styled.ColumnNamesContainer>
           </Styled.LabelContainer>
-          {users.fetching && leaderboardUsers && Array.isArray(leaderboardUsers)
+          {!users.fetching &&
+          leaderboardUsers &&
+          Array.isArray(leaderboardUsers)
             ? leaderboardUsers.map((user: LeaderboardUser, i) => (
                 <Styled.PlayerInfo
                   onClick={() => router.push(`/user/${user.displayName}`)}
