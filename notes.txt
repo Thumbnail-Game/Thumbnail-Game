@@ -11,7 +11,7 @@ TODO
 6. Theme color bug?
 5. Leaderboard
 8. Look more into copyright stuff
-9. Remove all jittery things
+9. Remove all jittery things ex. refresh on profile page
 11. FIX IN FIREBOX
 12. Loading Animation
 13. Just fetch 100 videos instead of fetching each time
