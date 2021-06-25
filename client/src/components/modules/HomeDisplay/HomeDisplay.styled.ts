@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Parent = styled.div`
-    background-color: #282828;
+    background-color: ${(props) => props.theme.background};
     height: 100vh;
     width: 100%;
     overflow:hidden;
