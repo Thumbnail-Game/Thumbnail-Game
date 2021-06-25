@@ -18,6 +18,7 @@ import {
 } from '../../../styles/constantStyles'
 import * as Styled from './LoginForm.styled'
 import { useMediaQuery } from '../../../hooks/useMediaQuery'
+import { CgBorderStyleDotted } from 'react-icons/cg'
 
 interface FormSubmitData {
   email: string
@@ -139,6 +140,9 @@ export const LoginForm: React.FC = () => {
                     LOGIN
                   </Styled.LoginButton>
                 </div>
+                <Styled.Redirect
+                  onClick={() => router.push('/register')}
+                >Don't have an account? Sign up here</Styled.Redirect>
                 <Snackbar
                   open={showResendEmail}
                   onClose={() => setShowResendEmail(false)}

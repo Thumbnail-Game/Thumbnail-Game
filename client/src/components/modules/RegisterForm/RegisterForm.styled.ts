@@ -7,3 +7,10 @@ export const RegisterButton = styled(Button)`
   width: 160px;
   height: 50px;
 `
+export const Redirect = styled.div`
+  cursor:pointer;
+  margin-top:20px;
+  &:hover{
+    text-decoration: underline;
+  }
+`

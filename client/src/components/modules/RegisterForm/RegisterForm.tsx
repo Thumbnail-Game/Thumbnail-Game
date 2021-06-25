@@ -189,6 +189,9 @@ export const RegisterForm: React.FC = () => {
                     Sign Up
                   </Styled.RegisterButton>
                 </div>
+                <Styled.Redirect
+                  onClick={() => router.push('/register')}
+                >Have an account? Log in here</Styled.Redirect>
               </FormContainer>
             </Form>
           )}

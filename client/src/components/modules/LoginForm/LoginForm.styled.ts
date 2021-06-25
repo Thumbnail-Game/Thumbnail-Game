@@ -34,3 +34,11 @@ export const BackButton = styled.button`
     background-color:${props => props.theme.settingBackground};
   }
 `
+
+export const Redirect = styled.div`
+  cursor:pointer;
+  margin-top:20px;
+  &:hover{
+    text-decoration: underline;
+  }
+`
