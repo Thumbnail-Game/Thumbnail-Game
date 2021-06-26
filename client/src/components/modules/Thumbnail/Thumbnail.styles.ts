@@ -338,10 +338,12 @@ export const ArrowHover = styled.div`
 
 const fillShade = keyframes`
  0% {
+  position: absolute;
    opacity:0;
    width:0%;
  }
  100% {
+  position: absolute;
   opacity:0.2;
   width:100%;
  }

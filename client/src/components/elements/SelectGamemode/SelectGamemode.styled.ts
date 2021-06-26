@@ -10,13 +10,15 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: space-around;
 
-  @media (max-width: 715px) {
-    width: 100%;
-  }
-
-  @media (max-width: 645px) {
-    margin-top: 50px;
-    flex-direction: column;
+  @media (max-width: 760px) {
+    position:absolute;
+    top:0;
+    bottom:30px;
+    left:0;
+    right:0;
+    margin:auto;
+    flex-direction:column;
+    width:500px;
   }
 `
 
