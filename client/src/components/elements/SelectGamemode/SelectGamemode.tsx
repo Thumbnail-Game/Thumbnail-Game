@@ -18,7 +18,7 @@ export const SelectGamemode: React.FC<SelectGamemodeProps> = ({
         <Styled.TimedIcon color={themeMode === 'light' ? 'grey' : 'grey'} />
         <Styled.Title>Timed mode</Styled.Title>
         <Styled.Description>
-          7 seconds to pick a thumbnail. Scores count towards the leaderboard.
+          7 seconds to pick a thumbnail. Play competitively.
         </Styled.Description>
       </Styled.GamemodeContainer>
       <Styled.GamemodeContainer onClick={() => setGamemode('casual')}>
