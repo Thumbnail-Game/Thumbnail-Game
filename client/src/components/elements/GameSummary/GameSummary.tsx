@@ -42,7 +42,7 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
     } else if (index === indexArr.length - 1) {
       return (
         <>
-          <Styled.TimeIcon size={160} />
+          <Styled.TimeIcon size={132} />
           <Styled.IconDiv />
         </>
       )

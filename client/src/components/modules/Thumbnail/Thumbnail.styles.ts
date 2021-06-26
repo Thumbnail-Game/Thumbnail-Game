@@ -37,6 +37,10 @@ export const TotalWrapper = styled.div<TotalWrapperProps>`
   animation-fill-mode: forwards;
   height: calc(100vh - 120px);
   overflow: hidden;
+
+  @media (max-width: 760px) {
+    height:100%;
+  }
 `
 
 export const VideoText = styled.div`
@@ -164,7 +168,7 @@ export const Bar = styled.div`
   width: 99.85%;
   height: 7.5px;
   margin-left: 0.8px;
-  margin-top: -11px;
+  margin-top: -10.6px;
   position: relative;
   border-radius: 0 0 10px 10px;
   z-index: 1;

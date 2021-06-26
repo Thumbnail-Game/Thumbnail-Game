@@ -238,6 +238,7 @@ export const WinIcon = styled(IoIosCheckmarkCircle)`
 export const TimeIcon = styled(MdTimerOff)`
   background-color: #fa6565;
   border-radius: 50%;
+  padding:15px;
   position: absolute;
   z-index: 5;
   top: 80px;

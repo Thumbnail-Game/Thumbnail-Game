@@ -1,3 +1,4 @@
+import { Scale } from 'chart.js'
 import * as Styled from './LoseWinAnimation.styled'
 
 interface LoseWinAnimationProps {
@@ -15,8 +16,8 @@ export const LoseWinAnimation: React.FC<LoseWinAnimationProps> = ({
     )
   } else if (loseType === 'time') {
     return (
-      <Styled.IconWrapper>
-        <Styled.TimeIcon size={'100%'} />
+      <Styled.IconWrapper style={{ marginLeft: "22px" }}>
+        <Styled.TimeIcon size={'74%'} />
       </Styled.IconWrapper>
     )
   } else {
