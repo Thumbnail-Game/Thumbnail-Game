@@ -40,6 +40,10 @@ export const CarouselContainer = styled.div`
   margin: auto;
   margin-top: 100px;
   width: 1700px;
+
+  @media (max-width: 760px) {
+    width:100%;
+  }
 `
 
 export const VideoContainer = styled.div`
@@ -53,6 +57,12 @@ export const VideoContainer = styled.div`
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
+
+  @media (max-width: 760px) {
+    display:block;
+    width:604.8px;
+    margin:auto;
+  }
 `
 
 export const VideoColumnContainer = styled.div`
@@ -60,6 +70,14 @@ export const VideoColumnContainer = styled.div`
   flex-direction: column;
   width: 604.8px;
   padding-top: 10px;
+`
+
+export const Dots = styled.p`
+  margin-top: 520px;
+
+  @media (max-width: 760px) {
+    margin-top: 40px;
+  }
 `
 
 export const VideoHover = keyframes`
@@ -197,6 +215,51 @@ export const ButtonContainer = styled.div`
   margin: auto;
   margin-top: 50px;
   margin-bottom: 25px;
+
+  @media (max-width: 760px) {
+    margin-top: 100px;
+    transform:scale(1.2);
+  }
+`
+
+export const RightButton = styled.button`
+  position:absolute;
+  margin-top:auto;
+  margin-bottom:auto;
+  top:0;
+  bottom:180px;
+  right:70px;
+  z-index:2;
+  background-color:transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow:hidden;
+  outline:none;
+
+  @media (max-width: 760px) {
+    right:-10px;
+  }
+`
+
+export const LeftButton = styled.button`
+  position:absolute;
+  margin-top:auto;
+  margin-bottom:auto;
+  top:0;
+  bottom:180px;
+  left:70px;
+  z-index:2;
+  background-color:transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow:hidden;
+  outline:none;
+
+  @media (max-width: 760px) {
+    left:-10px;
+  }
 `
 
 export const IconHover = keyframes`
@@ -219,29 +282,40 @@ export const IconHoverDiv = styled.div`
     animation-duration: 500ms;
     animation-fill-mode: forwards;
   }
+
+  @media (max-width: 760px) {
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+      animation:none;
+    }
+  }
 `
 
 export const LoseIcon = styled(MdCancel)`
   color: #fa6565;
   position: absolute;
   z-index: 5;
-  top: 80px;
+  top: -10px;
+  left:0px;
 `
 
 export const WinIcon = styled(IoIosCheckmarkCircle)`
   color: #6edba3;
   position: absolute;
   z-index: 5;
-  top: 80px;
+  top: -10px;
+  left:0px;
 `
 
 export const TimeIcon = styled(MdTimerOff)`
   background-color: #fa6565;
   border-radius: 50%;
-  padding:15px;
   position: absolute;
   z-index: 5;
-  top: 80px;
+  top: -10px;
+  left:0px;
   color: ${(props) => props.theme.background};
 `
 
@@ -251,6 +325,7 @@ export const IconDiv = styled.div`
   border-radius: 50%;
   position: absolute;
   background-color: #282828;
-  z-index: 4;
-  top: 105px;
+  z-index: 4; 
+  top: 10px;
+  left:14px;
 `

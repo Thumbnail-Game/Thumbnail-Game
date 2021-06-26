@@ -82,25 +82,10 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
           )}
           renderArrowPrev={(onClickHandler, hasPrev, label) =>
             hasPrev && (
-              <button
+              <Styled.LeftButton
                 onClick={onClickHandler}
                 type="button"
                 title={label}
-                style={{
-                  position: 'absolute',
-                  marginTop: 'auto',
-                  marginBottom: 'auto',
-                  top: '0px',
-                  bottom: '180px',
-                  zIndex: 2,
-                  left: '70px',
-                  backgroundColor: 'Transparent',
-                  backgroundRepeat: 'no-repeat',
-                  border: 'none',
-                  cursor: 'pointer',
-                  overflow: 'hidden',
-                  outline: 'none',
-                }}
               >
                 <Styled.IconHoverDiv>
                   <FiChevronLeft
@@ -113,30 +98,15 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                     }}
                   />
                 </Styled.IconHoverDiv>
-              </button>
+              </Styled.LeftButton>
             )
           }
           renderArrowNext={(onClickHandler, hasPrev, label) =>
             hasPrev && (
-              <button
+              <Styled.RightButton
                 type="button"
                 onClick={onClickHandler}
                 title={label}
-                style={{
-                  position: 'absolute',
-                  marginTop: 'auto',
-                  marginBottom: 'auto',
-                  top: '0px',
-                  bottom: '180px',
-                  right: '70px',
-                  zIndex: 2,
-                  backgroundColor: 'Transparent',
-                  backgroundRepeat: 'noRepeat',
-                  border: 'none',
-                  cursor: 'pointer',
-                  overflow: 'hidden',
-                  outline: 'none',
-                }}
               >
                 <Styled.IconHoverDiv>
                   <FiChevronRight
@@ -149,7 +119,7 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                     }}
                   />
                 </Styled.IconHoverDiv>
-              </button>
+              </Styled.RightButton>
             )
           }
         >
@@ -182,7 +152,7 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                     <Styled.ViewSpan>views</Styled.ViewSpan>
                   </Styled.VideoViews>
                 </Styled.VideoColumnContainer>
-                <p style={{ marginTop: '520px' }} className=".control-dots"></p>
+                <Styled.Dots className=".control-dots"></Styled.Dots>
                 <Styled.VideoColumnContainer>
                   <Styled.Videos>
                     <Link href={videoObj?.video2?.url}>
