@@ -217,6 +217,7 @@ export const Container = styled.div<ContainerProps>`
         position: relative;
         justify-content: space-between;
         margin-top: 65px;
+        animation:none;
       `}
   }
 `

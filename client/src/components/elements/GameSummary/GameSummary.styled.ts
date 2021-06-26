@@ -297,16 +297,24 @@ export const LoseIcon = styled(MdCancel)`
   color: #fa6565;
   position: absolute;
   z-index: 5;
-  top: -10px;
-  left:0px;
+  top:60px;
+
+  @media (max-width: 760px) {
+    top: -10px;
+    left:0px;
+  }
 `
 
 export const WinIcon = styled(IoIosCheckmarkCircle)`
   color: #6edba3;
   position: absolute;
   z-index: 5;
-  top: -10px;
-  left:0px;
+  top:60px;
+
+  @media (max-width: 760px) {
+    top: -10px;
+    left:0px;
+  }
 `
 
 export const TimeIcon = styled(MdTimerOff)`
@@ -314,8 +322,12 @@ export const TimeIcon = styled(MdTimerOff)`
   border-radius: 50%;
   position: absolute;
   z-index: 5;
-  top: -10px;
-  left:0px;
+  top:60px;
+
+  @media (max-width: 760px) {
+    top: -10px;
+    left:0px;
+  }
   color: ${(props) => props.theme.background};
 `
 
