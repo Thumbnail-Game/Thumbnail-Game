@@ -1,3 +1,4 @@
+import { MdCancel } from 'react-icons/md'
 import styled from 'styled-components'
 
 export const SearchContainer = styled.div`
@@ -17,14 +18,14 @@ export const Input = styled.input`
   outline: none;
   border: none;
   border-radius: 39px;
-  color: white;
   font-family: 'Gothic Bold';
   font-size: 16px;
   margin: auto;
+  color: ${(props) => props.theme.primaryText};
   background-color: ${(props) => props.theme.scoreBackground};
 
-  &::-webkit-search-cancel-button {
-    margin-right: 20px;
+  ::-webkit-search-cancel-button {
+    -webkit-appearance: none;
   }
 `
 
