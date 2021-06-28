@@ -1,10 +1,3 @@
-BUGS TO FIX:
-1. Hover element in light mode on profile oddly colored
-2. Negative percentile when you achieve a new highscore 
-3. If you are logged in should not use cookies for highscore
-
-DONE BY HACKATHON:
-
 TODO
 1. Fix jitter when switching theme
 2. Complete mobile support
@@ -16,11 +9,3 @@ TODO
 12. Loading Animation
 13. Just fetch 100 videos instead of fetching each time
 14. Sign in bug without email verification
-
-DONE
-8. Remove broken users from database
-4. Timed mode
-9. Casual/Ranked mode switcher on profile
-3. Scroll wheel bug character
-10. Change achievements to be only Timed
-7. Update migrations and run on database to remove broken thumbnails

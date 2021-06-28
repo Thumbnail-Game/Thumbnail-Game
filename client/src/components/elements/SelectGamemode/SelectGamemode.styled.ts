@@ -11,14 +11,14 @@ export const Wrapper = styled.div`
   justify-content: space-around;
 
   @media (max-width: 760px) {
-    position:absolute;
-    top:0;
-    bottom:30px;
-    left:0;
-    right:0;
-    margin:auto;
-    flex-direction:column;
-    width:500px;
+    position: absolute;
+    top: 0;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    flex-direction: column;
+    width: 500px;
   }
 `
 
@@ -63,7 +63,7 @@ export const GamemodeContainer = styled.div`
     animation-fill-mode: forwards;
   }
 
-  @media (max-width: 645px) {
+  @media (max-width: 760px) {
     margin-top: 50px;
   }
 `
