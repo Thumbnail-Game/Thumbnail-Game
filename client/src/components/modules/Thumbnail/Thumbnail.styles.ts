@@ -38,7 +38,7 @@ export const TotalWrapper = styled.div<TotalWrapperProps>`
   overflow: hidden;
 
   @media (max-width: 760px) {
-    height:100%;
+    height: 100%;
   }
 `
 
@@ -206,7 +206,7 @@ export const Container = styled.div<ContainerProps>`
       animation-duration: 700ms;
     `}
 
-  @media (max-width: 760px) {
+  @media (max-width: 900px) {
     flex-direction: column;
     width: 672px;
     ${(props) =>
@@ -216,7 +216,7 @@ export const Container = styled.div<ContainerProps>`
         position: relative;
         justify-content: space-between;
         margin-top: 65px;
-        animation:none;
+        animation: none;
       `}
   }
 `
@@ -226,7 +226,7 @@ export const ViewCount = styled.div`
   background-color: none;
   margin-bottom: 15px;
   height: 67px;
-  font-family:"Gothic Bold";
+  font-family: 'Gothic Bold';
 `
 
 export const HiddenDiv = styled.div`
@@ -257,6 +257,33 @@ const fillButton = keyframes`
  100% {
   width: 90px;
   height: 90px;
+  border-radius: 50%;
+ }
+`
+
+const fillButtonMediaQueried = keyframes`
+ 0% {
+  width: 0px;
+  height: 0px;
+  border-radius: 50%;
+  position: absolute;
+  top:45px;
+  left: 45px;
+  right: 45px;
+  bottom: 45px;
+  background-color: #daf2e6;
+ }
+ 40%{
+  width: 136px;
+  height: 136px;
+  border-radius: 50%;  
+  top:-6.5px;
+  left: -6.5px;
+  background-color: #daf2e6;
+ }
+ 100% {
+  width: 122px;
+  height: 122px;
   border-radius: 50%;
  }
 `
@@ -311,6 +338,17 @@ export const Filler = styled.div`
     animation-name: ${fillButton};
     animation-duration: 400ms;
     background-color: #6edba3;
+  }
+
+  @media (max-width: 760px) {
+    width: 122px;
+    height: 122px;
+
+    ${Button}:hover & {
+      animation-name: ${fillButtonMediaQueried};
+      animation-duration: 400ms;
+      background-color: #6edba3;
+    }
   }
 `
 
