@@ -6,7 +6,7 @@ export default createGlobalStyle`
   src: url("/fonts/gothicb.ttf");
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
+  font-display: block;
 }
 
 ${({ theme }) => css`
