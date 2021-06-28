@@ -9,7 +9,7 @@ import {
 } from '../../../generated/graphql'
 import { Search } from '../../../components/elements/index'
 import * as Styled from './Leaderboard.styled'
-import { useTransition } from 'react-spring';
+import { useTransition } from 'react-spring'
 
 interface LeaderboardUsers {
   [index: number]: LeaderboardUser
@@ -127,35 +127,44 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
           </Styled.LabelContainer>
           <Styled.InfoWrapper>
             {!users.fetching &&
-              leaderboardUsers &&
-              Array.isArray(leaderboardUsers)
+            leaderboardUsers &&
+            Array.isArray(leaderboardUsers)
               ? leaderboardUsers.map((user: LeaderboardUser, i) => (
-                <Styled.PlayerInfo
-                  onClick={() => router.push(`/user/${user.displayName}`)}
-                  key={i}
-                >
-                  {user.displayName && (
-                    <Styled.Username>
-                      {user.displayName.length > 18
-                        ? user.displayName.slice(0, 18) + '...'
-                        : user.displayName}
-                    </Styled.Username>
-                  )}
-                  <Styled.Highscore>{user.topScore}</Styled.Highscore>
-                  <Styled.Date>
-                    <Moment format="MM/DD/YYYY" interval={0}>
-                      {user.scoreDate}
-                    </Moment>
-                  </Styled.Date>
-                </Styled.PlayerInfo>
-              ))
+                  <Styled.PlayerInfo
+                    onClick={() => router.push(`/user/${user.displayName}`)}
+                    key={i}
+                  >
+                    {user.displayName && (
+                      <Styled.Username>
+                        {user.displayName.length > 18
+                          ? user.displayName.slice(0, 18) + '...'
+                          : user.displayName}
+                      </Styled.Username>
+                    )}
+                    <Styled.Highscore>{user.topScore}</Styled.Highscore>
+                    <Styled.Date>
+                      <Moment format="MM/DD/YYYY" interval={0}>
+                        {user.scoreDate}
+                      </Moment>
+                    </Styled.Date>
+                  </Styled.PlayerInfo>
+                ))
               : renderSkeletonLoaders()}
           </Styled.InfoWrapper>
         </Styled.Leaderboard>
         {usersData ? (
           <Search users={usersData} />
         ) : (
-          <Skeleton variant="rect" width={300} height={100} animation="wave" />
+          <Skeleton
+            style={{
+              margin: '25px 55px 0px 30px',
+              borderRadius: '12px',
+            }}
+            variant="rect"
+            width={330}
+            height={56}
+            animation="wave"
+          />
         )}
       </Styled.Wrapper>
       <Styled.Background onClick={toggleLeaderboard} />
