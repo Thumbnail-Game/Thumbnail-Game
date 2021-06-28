@@ -11,7 +11,7 @@ const theme = {
     button: '#E7E7E7',
     settingBackground: '#E0E0E0',
     scoreBackground: '#F1F1F1',
-    nextArrow: '#444444',
+    nextArrow: '#777777',
     signUp: '#E36969',
     formBackground: '#FFFFFF',
     achievementPopupBackground: '#E3E3E3',

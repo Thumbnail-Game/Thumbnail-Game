@@ -311,13 +311,13 @@ export const Button = styled.button`
   border-radius: 50%;
   outline: none;
   border: none;
-  color: ${(props) => props.theme.background};
-  background-color: ${(props) => props.theme.nextArrow};
   position: relative;
   margin-top: 30px;
   z-index: 1;
   animation-name: ${moveButton};
   animation-duration: 1300ms;
+  color: ${(props) => props.theme.background};
+  background-color: ${(props) => props.theme.nextArrow};
 
   @media (max-width: 760px) {
     width: 120px;
