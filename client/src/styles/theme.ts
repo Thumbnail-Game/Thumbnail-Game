@@ -28,7 +28,7 @@ const theme = {
     footer: '#595959',
     button: '#4A4A4A',
     settingBackground: '#3D3D3D',
-    scoreBackground: '#1C1C1C',
+    scoreBackground: '#303030',
     nextArrow: '#F0F0F0',
     signUp: '#9F1313',
     formBackground: '#FFFFFF',

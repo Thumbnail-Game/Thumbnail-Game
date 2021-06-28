@@ -24,7 +24,8 @@ export const Input = styled.input`
   background-color: ${(props) => props.theme.scoreBackground};
 
   ::-webkit-search-cancel-button {
-    -webkit-appearance: none;
+    margin-right:25px;
+    cursor:pointer;
   }
 `
 
@@ -33,7 +34,7 @@ export const UserContainer = styled.div`
   align-items: center;
   padding-left: 10px;
   padding-right: 10px;
-  width: 100%;
+  width: 90%;
   height: 60px;
   margin: auto;
   margin-top: 20px;
