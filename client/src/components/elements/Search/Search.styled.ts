@@ -1,4 +1,3 @@
-import { MdCancel } from 'react-icons/md'
 import styled from 'styled-components'
 
 export const SearchContainer = styled.div`
