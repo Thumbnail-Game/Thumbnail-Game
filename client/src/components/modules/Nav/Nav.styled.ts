@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { MdSettings } from 'react-icons/md'
 import { BsFillPersonFill } from 'react-icons/bs'
-import { CgMenuRightAlt } from 'react-icons/cg'
+import { HiMenu } from 'react-icons/hi'
 import { AiFillTrophy } from 'react-icons/ai'
 import styled, { keyframes } from 'styled-components'
 
@@ -30,6 +30,10 @@ export const LogoContainer = styled.div`
 
   @media (max-width: 760px) {
     margin-top: 13px;
+  }
+
+  @media (max-width: 390px) {
+    display: none;
   }
 `
 
@@ -129,7 +133,7 @@ export const SignInUpHover2 = styled.div`
   z-index: -1;
   ${SignInUp}:hover & {
     animation-name: ${(props) =>
-    props.theme.theme === 'dark' ? DarkfillButton2 : LightfillButton2};
+      props.theme.theme === 'dark' ? DarkfillButton2 : LightfillButton2};
     animation-duration: 200ms;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -207,8 +211,8 @@ export const SettingsPopUpRow = styled.div`
 
 export const SearchIcon = styled(AiFillTrophy)`
   position: relative;
-  top:0.5px;
-  right:2px;
+  top: 0.5px;
+  right: 2px;
   z-index: 1;
 `
 
@@ -234,7 +238,7 @@ export const NavIconWrapper = styled.div`
   height: '100%';
   top: 4px;
   cursor: pointer;
-  margin-right:1px;
+  margin-right: 1px;
 `
 
 export const IconContainer = styled.div`
@@ -252,7 +256,7 @@ export const SearchHover = styled.div`
     animation-name: ${fillSetting};
     animation-duration: 300ms;
     animation-iteration-count: 1;
-    background-color: #E7E7E7;
+    background-color: #e7e7e7;
   }
   ${IconContainer}:hover & {
     width: 45px;
@@ -265,7 +269,7 @@ export const SearchHover = styled.div`
     animation-name: ${fillSetting2};
     animation-duration: 300ms;
     animation-iteration-count: 1;
-    background-color: #E7E7E7;
+    background-color: #e7e7e7;
   }
 `
 
@@ -281,7 +285,7 @@ export const SearchHoverDark = styled.div`
     animation-name: ${fillSetting};
     animation-duration: 300ms;
     animation-iteration-count: 1;
-    background-color: #4A4A4A;
+    background-color: #4a4a4a;
   }
   ${IconContainer}:hover & {
     width: 45px;
@@ -294,7 +298,7 @@ export const SearchHoverDark = styled.div`
     animation-name: ${fillSetting2};
     animation-duration: 300ms;
     animation-iteration-count: 1;
-    background-color: #4A4A4A;
+    background-color: #4a4a4a;
   }
 `
 
@@ -307,7 +311,7 @@ export const SettingsHover = styled.div`
     border-radius: 50%;
     position: absolute;
     z-index: 0;
-    background-color: #E7E7E7;
+    background-color: #e7e7e7;
     animation-name: ${fillSetting};
     animation-duration: 300ms;
     animation-iteration-count: 1;
@@ -323,7 +327,7 @@ export const SettingsHover = styled.div`
     animation-name: ${fillSetting2};
     animation-duration: 300ms;
     animation-iteration-count: 1;
-    background-color: #E7E7E7;
+    background-color: #e7e7e7;
   }
 `
 
@@ -336,7 +340,7 @@ export const SettingsHoverDark = styled.div`
     border-radius: 50%;
     position: absolute;
     z-index: 0;
-    background-color: #4A4A4A;
+    background-color: #4a4a4a;
     animation-name: ${fillSetting};
     animation-duration: 300ms;
     animation-iteration-count: 1;
@@ -352,7 +356,7 @@ export const SettingsHoverDark = styled.div`
     animation-name: ${fillSetting2};
     animation-duration: 300ms;
     animation-iteration-count: 1;
-    background-color:  #4A4A4A;
+    background-color: #4a4a4a;
   }
 `
 
@@ -463,7 +467,7 @@ export const SignInUpHoverDark = styled.div`
     top: -5.75px;
     left: -16px;
     border-radius: 20px;
-    background-color: #4A4A4A;
+    background-color: #4a4a4a;
     position: absolute;
     z-index: -1;
     animation-name: ${fillButton};
@@ -472,7 +476,7 @@ export const SignInUpHoverDark = styled.div`
   }
   ${SignOutButton}:hover & {
     position: absolute;
-    background-color: #4A4A4A;
+    background-color: #4a4a4a;
     animation-name: ${fillButton2};
     animation-duration: 300ms;
     animation-iteration-count: 1;
@@ -480,7 +484,7 @@ export const SignInUpHoverDark = styled.div`
   }
   ${DisplayName}:hover & {
     position: absolute;
-    background-color: #4A4A4A;
+    background-color: #4a4a4a;
     animation-name: ${fillButton3};
     animation-duration: 300ms;
     animation-iteration-count: 1;
@@ -488,7 +492,7 @@ export const SignInUpHoverDark = styled.div`
   }
 `
 
-export const MenuIcon = styled(CgMenuRightAlt)`
+export const MenuIcon = styled(HiMenu)`
   margin-top: 10px;
   margin-right: 7px;
 `
