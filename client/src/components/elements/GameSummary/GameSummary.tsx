@@ -34,7 +34,6 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
       return (
         <>
           <Styled.LoseIcon size={160} />
-          <Styled.IconDiv />
         </>
       )
       //  if they did not lose by incorrect choice, the last video
@@ -43,14 +42,12 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
       return (
         <>
           <Styled.TimeIcon size={132} />
-          <Styled.IconDiv />
         </>
       )
     } else {
       return (
         <>
           <Styled.WinIcon size={160} />
-          <Styled.IconDiv />
         </>
       )
     }

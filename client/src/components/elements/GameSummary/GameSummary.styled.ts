@@ -298,6 +298,7 @@ export const LoseIcon = styled(MdCancel)`
   position: absolute;
   z-index: 5;
   top:60px;
+  filter: drop-shadow(0px 0px 19px #222222);
 
   @media (max-width: 760px) {
     top: -10px;
@@ -310,6 +311,7 @@ export const WinIcon = styled(IoIosCheckmarkCircle)`
   position: absolute;
   z-index: 5;
   top:60px;
+  filter: drop-shadow(0px 0px 19px #222222);
 
   @media (max-width: 760px) {
     top: -10px;
@@ -323,6 +325,7 @@ export const TimeIcon = styled(MdTimerOff)`
   position: absolute;
   z-index: 5;
   top:60px;
+  filter: drop-shadow(0px 0px 19px #222222);
 
   @media (max-width: 760px) {
     top: -10px;
