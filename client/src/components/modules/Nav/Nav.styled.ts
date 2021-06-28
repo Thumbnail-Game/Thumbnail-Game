@@ -252,7 +252,7 @@ export const SearchHover = styled.div`
     animation-name: ${fillSetting};
     animation-duration: 300ms;
     animation-iteration-count: 1;
-    background-color: ${(props) => props.theme.button};
+    background-color: #E7E7E7;
   }
   ${IconContainer}:hover & {
     width: 45px;
@@ -265,7 +265,36 @@ export const SearchHover = styled.div`
     animation-name: ${fillSetting2};
     animation-duration: 300ms;
     animation-iteration-count: 1;
-    background-color: ${(props) => props.theme.button};
+    background-color: #E7E7E7;
+  }
+`
+
+export const SearchHoverDark = styled.div`
+  ${NavIconWrapper}:hover & {
+    width: 45px;
+    height: 45px;
+    top: -8.7px;
+    left: -10.8px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 0;
+    animation-name: ${fillSetting};
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+    background-color: #4A4A4A;
+  }
+  ${IconContainer}:hover & {
+    width: 45px;
+    height: 45px;
+    top: -2.7px;
+    left: -9.4px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 0;
+    animation-name: ${fillSetting2};
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+    background-color: #4A4A4A;
   }
 `
 
@@ -278,10 +307,10 @@ export const SettingsHover = styled.div`
     border-radius: 50%;
     position: absolute;
     z-index: 0;
+    background-color: #E7E7E7;
     animation-name: ${fillSetting};
     animation-duration: 300ms;
     animation-iteration-count: 1;
-    background-color: ${(props) => props.theme.button};
   }
   ${IconContainer}:hover & {
     width: 45px;
@@ -294,7 +323,36 @@ export const SettingsHover = styled.div`
     animation-name: ${fillSetting2};
     animation-duration: 300ms;
     animation-iteration-count: 1;
-    background-color: ${(props) => props.theme.button};
+    background-color: #E7E7E7;
+  }
+`
+
+export const SettingsHoverDark = styled.div`
+  ${NavIconWrapper}:hover & {
+    width: 45px;
+    height: 45px;
+    top: -8.7px;
+    left: -8.8px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 0;
+    background-color: #4A4A4A;
+    animation-name: ${fillSetting};
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+  }
+  ${IconContainer}:hover & {
+    width: 45px;
+    height: 45px;
+    top: -2.7px;
+    left: -7.4px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 0;
+    animation-name: ${fillSetting2};
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+    background-color:  #4A4A4A;
   }
 `
 
@@ -391,6 +449,38 @@ export const SignInUpHover = styled.div`
   ${DisplayName}:hover & {
     position: absolute;
     background-color: ${(props) => props.theme.button};
+    animation-name: ${fillButton3};
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+`
+
+export const SignInUpHoverDark = styled.div`
+  ${SignInUp}:hover & {
+    width: 87px;
+    height: 38px;
+    top: -5.75px;
+    left: -16px;
+    border-radius: 20px;
+    background-color: #4A4A4A;
+    position: absolute;
+    z-index: -1;
+    animation-name: ${fillButton};
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+  }
+  ${SignOutButton}:hover & {
+    position: absolute;
+    background-color: #4A4A4A;
+    animation-name: ${fillButton2};
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  ${DisplayName}:hover & {
+    position: absolute;
+    background-color: #4A4A4A;
     animation-name: ${fillButton3};
     animation-duration: 300ms;
     animation-iteration-count: 1;

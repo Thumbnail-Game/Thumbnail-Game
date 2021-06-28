@@ -56,7 +56,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
                     fontSize={27}
                     color={themeMode === 'light' ? '#282828' : 'white'}
                   />
-                  <Styled.SearchHover />
+                  {themeMode === 'light' ? <Styled.SearchHover /> : <Styled.SearchHoverDark />}
                 </Styled.NavIconWrapper>
                 <Styled.NavIconWrapper
                   onClick={() =>
@@ -67,7 +67,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
                     fontSize={27}
                     color={themeMode === 'light' ? '#282828' : 'white'}
                   />
-                  <Styled.SettingsHover />
+                  {themeMode === 'light' ? <Styled.SettingsHover /> : <Styled.SettingsHoverDark />}
                 </Styled.NavIconWrapper>
                 {!signedIn ? (
                   <>
@@ -77,7 +77,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
                       }
                     >
                       Log In
-                      <Styled.SignInUpHover />
+                      {themeMode === "light" ? <Styled.SignInUpHover /> : <Styled.SignInUpHoverDark />}
                     </Styled.SignInUp>
                     <Styled.SignInUp
                       style={{ color: 'white' }}
@@ -104,7 +104,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
                           )
                         }
                       ></Styled.PersonIcon>
-                      <Styled.SettingsHover />
+                      {themeMode === 'light' ? <Styled.SettingsHover /> : <Styled.SettingsHoverDark />}
                     </Styled.IconContainer>
                     <Styled.SignOutButton
                       style={{ zIndex: 2 }}
