@@ -255,8 +255,10 @@ const fillButton = keyframes`
   background-color: #daf2e6;
  }
  100% {
-  width: 90px;
-  height: 90px;
+   top: -2px;
+   left: -2px;
+  width: 94px;
+  height: 94px;
   border-radius: 50%;
  }
 `
@@ -325,12 +327,12 @@ export const Button = styled.button`
   }
 `
 export const Filler = styled.div`
-  width: 91px;
-  height: 91px;
+  width: 94px;
+  height: 94px;
   border-radius: 50%;
   position: absolute;
-  top: -0.5px;
-  left: -0.5px;
+  top: -2px;
+  left: -2px;
   right: 0;
   bottom: 0;
   z-index: 0;
