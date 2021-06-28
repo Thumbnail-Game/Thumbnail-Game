@@ -11,10 +11,10 @@ export const LoseIcon = styled(MdCancel)`
 export const TimeIcon = styled(MdTimerOff)`
   background-color: #fa6565;
   border-radius: 50%;
-  padding:20px;
+  padding: 20px;
   filter: drop-shadow(0px 0px 25px #222222);
   color: ${(props) => props.theme.background};
-  margin:auto;
+  margin: auto;
 `
 
 export const WinIcon = styled(IoIosCheckmarkCircle)`
@@ -66,10 +66,9 @@ export const IconWrapper = styled.div`
   transform: translate(-50%, -50%);
   z-index: 2;
 
-  
-  @media (max-width: 760px) {
-    top:10px;
-    left:30px;
+  @media (max-width: 900px) {
+    top: 10px;
+    left: 30px;
     width: 150px;
     height: 150px;
     animation-name: ${buttonAnimationMobile};

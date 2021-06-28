@@ -120,7 +120,7 @@ export const RegisterForm: React.FC = () => {
 
             if (res?.error) return setFieldError('email', res.error)
 
-            router.push('/play')
+            router.push('/login')
           }}
           validate={(values) => {
             const errors: Record<string, string> = {}

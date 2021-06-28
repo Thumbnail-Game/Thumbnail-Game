@@ -53,7 +53,6 @@ export const LoginForm: React.FC = () => {
             console.log(error)
           })
 
-          console.log('signing user out')
           auth.signOut()
         }
       })
