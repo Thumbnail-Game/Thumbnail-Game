@@ -15,6 +15,7 @@ TODO
 11. FIX IN FIREBOX
 12. Loading Animation
 13. Just fetch 100 videos instead of fetching each time
+14. Sign in bug without email verification
 
 DONE
 8. Remove broken users from database

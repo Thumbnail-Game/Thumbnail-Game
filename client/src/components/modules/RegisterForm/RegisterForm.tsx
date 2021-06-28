@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { useRouter } from 'next/router'
 import { Formik, Form } from 'formik'
-import LazyLoad from 'react-lazyload';
+import LazyLoad from 'react-lazyload'
 
 import { auth } from '../../../config/firebaseConfig'
 import {
@@ -189,9 +189,9 @@ export const RegisterForm: React.FC = () => {
                     Sign Up
                   </Styled.RegisterButton>
                 </div>
-                <Styled.Redirect
-                  onClick={() => router.push('/register')}
-                >Have an account? Log in here</Styled.Redirect>
+                <Styled.Redirect onClick={() => router.push('/login')}>
+                  Have an account? Log in here
+                </Styled.Redirect>
               </FormContainer>
             </Form>
           )}
