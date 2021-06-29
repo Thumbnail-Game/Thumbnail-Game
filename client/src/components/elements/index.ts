@@ -12,4 +12,3 @@ export { TestThumbnailsExists } from './TestThumbnailExists/TestThumbnailsExists
 export { Search } from './Search/Search'
 export { SelectGamemode } from './SelectGamemode/SelectGamemode'
 export { Timer } from './Timer/Timer'
-export { Drawer } from './Drawer/Drawer'

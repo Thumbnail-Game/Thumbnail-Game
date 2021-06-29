@@ -496,3 +496,9 @@ export const MenuIcon = styled(HiMenu)`
   margin-top: 10px;
   margin-right: 7px;
 `
+
+export const DrawerWrapper = styled.div`
+    width: 250px;
+    height:100%;
+    background-color:gray;
+`
