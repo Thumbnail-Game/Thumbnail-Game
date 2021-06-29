@@ -500,5 +500,5 @@ export const MenuIcon = styled(HiMenu)`
 export const DrawerWrapper = styled.div`
     width: 250px;
     height:100%;
-    background-color:gray;
+    background-color:#303030;
 `
