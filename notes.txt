@@ -1,8 +1,4 @@
 TODO
-1. Fix jitter when switching theme
 2. Complete mobile support (sandwich, bugs)
-6. Theme color bug?
-8. Look more into copyright stuff
-9. Remove all jittery things ex. refresh on profile page
 11. FIX IN FIREBOX
 13. Just fetch 100 videos instead of fetching each time
