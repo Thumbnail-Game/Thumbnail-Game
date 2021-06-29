@@ -60,7 +60,6 @@ export class GamesResolver {
       console.log(err)
       return null
     }
-    console.log(games)
 
     return games
   }
