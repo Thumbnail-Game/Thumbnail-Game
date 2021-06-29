@@ -13,7 +13,7 @@ import { AnimatedViewText, GameSummary, Timer } from '../../elements/index'
 import { LoseWinAnimation } from '../../elements/LoseWinAnimation/LoseWinAnimation'
 import { HeaderText } from '../../../styles/constantStyles'
 import { PlayIcon } from '../../elements/PlayIcon/PlayIcon'
-import * as Styled from './Thumbnail.styles'
+import * as Styled from './Thumbnail.styled'
 
 export interface SeenVideos {
   [index: number]: {
