@@ -6,4 +6,10 @@ export const CountdownWrapper = styled.div`
   font-size: 20px;
   right: 25px;
   bottom: 25px;
+
+  @media (max-width: 390px) {
+    top: 10px;
+    right: 10px;
+    z-index: 5;
+  }
 `

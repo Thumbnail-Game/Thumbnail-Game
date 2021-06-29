@@ -40,6 +40,10 @@ export const TotalWrapper = styled.div<TotalWrapperProps>`
   @media (max-width: 760px) {
     height: 100%;
   }
+
+  @media (max-width: 380px) {
+    zoom: 0.9;
+  }
 `
 
 export const VideoText = styled.div`

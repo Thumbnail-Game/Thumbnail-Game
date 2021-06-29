@@ -20,6 +20,10 @@ export const Wrapper = styled.div`
     flex-direction: column;
     width: 500px;
   }
+
+  @media (max-height: 570px) {
+    zoom: 0.8;
+  }
 `
 
 export const GamemodeContainerAnimation = keyframes`

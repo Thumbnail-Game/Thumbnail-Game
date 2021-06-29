@@ -14,7 +14,7 @@ import { LoseWinAnimation } from '../../elements/LoseWinAnimation/LoseWinAnimati
 import { HeaderText } from '../../../styles/constantStyles'
 import { PlayIcon } from '../../elements/PlayIcon/PlayIcon'
 import { useMediaQuery } from '../../../hooks/useMediaQuery'
-import * as Styled from './Thumbnail.styles'
+import * as Styled from './Thumbnail.styled'
 
 export interface SeenVideos {
   [index: number]: {
@@ -75,10 +75,6 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
   const [, addGame] = useAddGameMutation()
 
   useEffect(() => {
-    if (supportedWidth) {
-      setVideoWidth(591)
-      setVideoHeight(332)
-    }
     //  invalidate upon load incase user clicks off and reloads, need to refetch to prevent cheating
     invalidateVideos()
   }, [])
