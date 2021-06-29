@@ -13,6 +13,7 @@ import { AnimatedViewText, GameSummary, Timer } from '../../elements/index'
 import { LoseWinAnimation } from '../../elements/LoseWinAnimation/LoseWinAnimation'
 import { HeaderText } from '../../../styles/constantStyles'
 import { PlayIcon } from '../../elements/PlayIcon/PlayIcon'
+import { useMediaQuery } from '../../../hooks/useMediaQuery'
 import * as Styled from './Thumbnail.styles'
 
 export interface SeenVideos {
@@ -44,6 +45,10 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
   const [hiddenViews, setHiddenViews] = useState<boolean>(true)
   const [updatedVideos, setUpdatedVideos] = useState<GetTwoVideosQuery>()
   const [mostViewed, setMostViewed] = useState<string>()
+  const [videoWidth, setVideoWidth] = useState<number>(672)
+  const [videoHeight, setVideoHeight] = useState<number>(378)
+
+  const supportedWidth = useMediaQuery('(min-width: 360px)')
 
   //  keep track of videos already seen, do not want repeat, necessary for game end screen
   const [seenVideos, setSeenVideos] = useState<SeenVideos>([])
@@ -70,6 +75,10 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
   const [, addGame] = useAddGameMutation()
 
   useEffect(() => {
+    if (supportedWidth) {
+      setVideoWidth(591)
+      setVideoHeight(332)
+    }
     //  invalidate upon load incase user clicks off and reloads, need to refetch to prevent cheating
     invalidateVideos()
   }, [])
@@ -244,8 +253,8 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
                   <Styled.VideoImage
                     src={video.thumbnail}
                     alt={`thumbnail-image-${i}`}
-                    width={672}
-                    height={378}
+                    width={videoWidth}
+                    height={videoHeight}
                     onError={() => invalidateAndFetch()}
                     onClick={() => {
                       if (!hasPicked) handleThumbnailClick(i)
