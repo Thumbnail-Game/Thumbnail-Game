@@ -23,10 +23,10 @@ export const ProfileChart: React.FC<ProfileChartProps> = ({
       gamesData.getGamesByUser.forEach((game) => {
         if (game.gamemode === gamemode) tempScores.push(game.score)
       })
-      setScores(tempScores)
+      setScores(tempScores.reverse())
 
       const tempLabels = new Array(tempScores.length).fill('')
-      setLabels(tempLabels)
+      setLabels(tempLabels.reverse())
     }
   }, [gamemode, gamesData])
 
