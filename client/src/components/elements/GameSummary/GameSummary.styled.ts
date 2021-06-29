@@ -29,6 +29,15 @@ export const GameSummaryWrapper = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
+
+  @media (max-width: 770px) {
+    zoom:0.89;
+  }
+
+  @media (max-width: 700px) {
+    zoom:1;
+  }
+
 `
 
 export const GameSummaryTitle = styled.div`
@@ -283,7 +292,7 @@ export const IconHoverDiv = styled.div`
     animation-fill-mode: forwards;
   }
 
-  @media (max-width: 760px) {
+  @media (max-width: 770px) {
     background-color: transparent;
 
     &:hover {

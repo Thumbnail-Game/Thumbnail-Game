@@ -44,6 +44,7 @@ export const TotalWrapper = styled.div<TotalWrapperProps>`
   @media (max-width: 380px) {
     zoom: 0.9;
   }
+
 `
 
 export const VideoText = styled.div`
@@ -92,6 +93,8 @@ export const VideoContainer = styled.div<VideoContainerProps>`
       animation-duration: 500ms;
       animation-fill-mode: forwards;
     `}
+
+
 `
 
 export const VideoImage = styled(Image)`
@@ -323,7 +326,7 @@ export const Button = styled.button`
   color: ${(props) => props.theme.background};
   background-color: ${(props) => props.theme.nextArrow};
 
-  @media (max-width: 760px) {
+  @media (max-width: 770px) {
     width: 120px;
     height: 120px;
     animation: none;
