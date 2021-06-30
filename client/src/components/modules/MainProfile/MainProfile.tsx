@@ -107,7 +107,7 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
   return (
     <Styled.Wrapper>
       <Styled.Toggle onClick={handleToggleGamemode}>
-        Toggle Gamemode
+        {gamemode === "timed" ? <div>Timed Mode</div> : <div>Casual Mode</div>}
       </Styled.Toggle>
       <Styled.LeftContainer>
         <Styled.Name>{userData?.userByDisplayName?.displayName || <Skeleton variant="text" animation="wave" />}</Styled.Name>
@@ -121,9 +121,6 @@ export const MainProfile: React.FC<ProfileChartProps> = ({
             ).format('MM/DD/YYYY')}
           </Styled.AccountCreatedDate>
         )}
-        <Styled.GamemodeTitle>
-          {gamemode.charAt(0).toUpperCase() + gamemode.slice(1) || <Skeleton variant="text" animation="wave" />}
-        </Styled.GamemodeTitle>
       </Styled.LeftContainer>
       <Styled.MiddleContainer>
         <Styled.Percentile
