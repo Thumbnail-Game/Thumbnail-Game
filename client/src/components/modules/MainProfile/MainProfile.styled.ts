@@ -40,7 +40,7 @@ export const Name = styled.div`
 export const AccountCreatedDate = styled.div`
   font-family: 'Gothic Bold';
   font-size: 20px;
-  margin-bottom: 60px;
+  margin-bottom:125px;
 `
 
 export const MiddleContainer = styled.div`

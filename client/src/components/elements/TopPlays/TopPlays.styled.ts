@@ -22,7 +22,7 @@ export const Title = styled.div`
 `
 
 export const Label = styled.div`
-  width: 300px;
+  width: 290px;
   margin: auto;
   margin-top: 40px;
   display: flex;
@@ -36,7 +36,7 @@ export const Component = styled.div`
 `
 
 export const Divider = styled.div`
-  width: 312px;
+  width: 288px;
   height: 5px;
   background-color: red;
   border-radius: 3px;

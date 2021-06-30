@@ -43,4 +43,6 @@ export const Grid = styled.div`
   grid-template-rows: repeat(10, 1fr);
   width: 100vw;
   height: 100vh;
+  margin-left:-30px;
+  margin-top: -20px;
 `
