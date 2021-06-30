@@ -28,14 +28,14 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
   }
 
   const supportedWidth = useMediaQuery('(min-width: 760px)')
-  const lessThan370px = useMediaQuery('(max-width: 370px)')
+  const lessThan390px = useMediaQuery('(max-width: 390px)')
 
   return (
     <>
       {showLeaderboard && <Leaderboard toggleLeaderboard={toggleLeaderboard} />}
       <Styled.Nav>
         <Styled.Flex>
-          {(router.pathname !== '/play' || !lessThan370px) && (
+          {(router.pathname !== '/play' || !lessThan390px) && (
             <Styled.LogoContainer>
               <Styled.Logo
                 src={`/images/thumbnail-${themeMode}.png`}
