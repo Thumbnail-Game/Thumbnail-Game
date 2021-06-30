@@ -1,3 +1,4 @@
+import { FaPlay } from 'react-icons/fa'
 import { MdSettings } from 'react-icons/md'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { HiMenu } from 'react-icons/hi'
@@ -47,6 +48,14 @@ export const Nav = styled.div`
 
 export const SettingsPopUpRow = styled.div`
   position: relative;
+`
+
+export const PlayIcon = styled(FaPlay)`
+  padding: 15px;
+  position: relative;
+  top: 0.5px;
+  right: 2px;
+  z-index: 1;
 `
 
 export const LeaderboardIcon = styled(AiFillTrophy)`

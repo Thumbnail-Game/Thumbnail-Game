@@ -62,6 +62,12 @@ export const NavMobile: React.FC<NavMobileProps> = ({
         onOpen={toggleDrawer('left', true)}
       >
         <Styled.DrawerWrapper>
+          <Styled.NavIconWrapper onClick={() => router.push('/play')}>
+            <Styled.PlayIcon
+              fontSize={27}
+              color={themeMode === 'light' ? '#282828' : 'white'}
+            />
+          </Styled.NavIconWrapper>
           <Styled.NavIconWrapper
             onClick={() => {
               setDrawerState({

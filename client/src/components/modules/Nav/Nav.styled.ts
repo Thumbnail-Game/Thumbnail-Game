@@ -31,10 +31,6 @@ export const LogoContainer = styled.div`
   @media (max-width: 760px) {
     margin-top: 13px;
   }
-
-  @media (max-width: 390px) {
-    display: none;
-  }
 `
 
 export const SignInUp = styled.div`

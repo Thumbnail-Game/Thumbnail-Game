@@ -28,21 +28,26 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
   }
 
   const supportedWidth = useMediaQuery('(min-width: 760px)')
+  const lessThan370px = useMediaQuery('(max-width: 370px)')
+
+  console.log(router)
 
   return (
     <>
       {showLeaderboard && <Leaderboard toggleLeaderboard={toggleLeaderboard} />}
       <Styled.Nav>
         <Styled.Flex>
-          <Styled.LogoContainer>
-            <Styled.Logo
-              src={`/images/thumbnail-${themeMode}.png`}
-              width={187.2}
-              height={53.456}
-              alt={'nav-logo'}
-              onClick={() => router.push('/')}
-            />
-          </Styled.LogoContainer>
+          {(router.pathname !== '/play' || !lessThan370px) && (
+            <Styled.LogoContainer>
+              <Styled.Logo
+                src={`/images/thumbnail-${themeMode}.png`}
+                width={187.2}
+                height={53.456}
+                alt={'nav-logo'}
+                onClick={() => router.push('/')}
+              />
+            </Styled.LogoContainer>
+          )}
           {supportedWidth ? (
             <Styled.SettingsPopUpRow>
               <Styled.NavWrapper>
@@ -141,17 +146,19 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
               )}
             </Styled.SettingsPopUpRow>
           ) : (
-            <NavMobile
-              showingSettingsState={{
-                showingSettings: showingSettings,
-                setShowSettings: setShowingSettings,
-              }}
-              showLeaderboardState={{
-                showingLeaderboard: showLeaderboard,
-                setShowLeaderboard: setShowLeaderboard,
-              }}
-              signedIn={signedIn}
-            />
+            <>
+              <NavMobile
+                showingSettingsState={{
+                  showingSettings: showingSettings,
+                  setShowSettings: setShowingSettings,
+                }}
+                showLeaderboardState={{
+                  showingLeaderboard: showLeaderboard,
+                  setShowLeaderboard: setShowLeaderboard,
+                }}
+                signedIn={signedIn}
+              />
+            </>
           )}
         </Styled.Flex>
         <Styled.Divider />
