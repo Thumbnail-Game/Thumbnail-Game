@@ -6,4 +6,4 @@ export { RegisterForm } from './RegisterForm/RegisterForm'
 export { HomeDisplay } from './HomeDisplay/HomeDisplay'
 export { MainProfile } from './MainProfile/MainProfile'
 export { Leaderboard } from './Leaderboard/Leaderboard'
-
+export { NavMobile } from './NavMobile/NavMobile'

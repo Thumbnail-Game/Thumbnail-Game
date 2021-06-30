@@ -108,20 +108,6 @@ const LightfillButton2 = keyframes`
  }
 `
 
-export const DisplayName = styled.div`
-  font-family: 'Gothic Bold';
-  font-size: 19.5px;
-  margin-top: 2px;
-  cursor: pointer;
-  color: ${(props) => props.theme.primaryText};
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none;
-`
-
 export const SignInUpHover2 = styled.div`
   width: 87px;
   height: 38px;
@@ -450,14 +436,6 @@ export const SignInUpHover = styled.div`
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
   }
-  ${DisplayName}:hover & {
-    position: absolute;
-    background-color: ${(props) => props.theme.button};
-    animation-name: ${fillButton3};
-    animation-duration: 300ms;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-  }
 `
 
 export const SignInUpHoverDark = styled.div`
@@ -482,14 +460,6 @@ export const SignInUpHoverDark = styled.div`
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
   }
-  ${DisplayName}:hover & {
-    position: absolute;
-    background-color: #4a4a4a;
-    animation-name: ${fillButton3};
-    animation-duration: 300ms;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-  }
 `
 
 export const MenuIcon = styled(HiMenu)`
@@ -498,7 +468,10 @@ export const MenuIcon = styled(HiMenu)`
 `
 
 export const DrawerWrapper = styled.div`
-    width: 250px;
-    height:100%;
-    background-color:#303030;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  height: 100%;
+  background-color: ${(props) => props.theme.profileBackground};
 `

@@ -1,9 +1,8 @@
 import { useState, useContext } from 'react'
 import { useRouter } from 'next/router'
-import { SwipeableDrawer } from "@material-ui/core"
 
 import { ThemeContext } from '../../../providers/AppProvider'
-import { SettingsPopup, Leaderboard } from '../../modules/index'
+import { NavMobile, SettingsPopup, Leaderboard } from '../../modules/index'
 import { auth } from '../../../config/firebaseConfig'
 import { useMediaQuery } from '../../../hooks/useMediaQuery'
 import * as Styled from './Nav.styled'
@@ -30,25 +29,6 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
 
   const supportedWidth = useMediaQuery('(min-width: 760px)')
 
-  const [state, setState] = useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  })
-
-  const toggleDrawer = (side: any, open: any) => (event: any) => {
-    if (
-      event &&
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return
-    }
-
-    setState({ ...state, [side]: open })
-  }
-
   return (
     <>
       {showLeaderboard && <Leaderboard toggleLeaderboard={toggleLeaderboard} />}
@@ -67,7 +47,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
             <Styled.SettingsPopUpRow>
               <Styled.NavWrapper>
                 <Styled.NavIconWrapper
-                  style={{ marginRight: "5px" }}
+                  style={{ marginRight: '5px' }}
                   onClick={() =>
                     setShowLeaderboard((oldLeaderboard) => !oldLeaderboard)
                   }
@@ -76,7 +56,11 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
                     fontSize={27}
                     color={themeMode === 'light' ? '#282828' : 'white'}
                   />
-                  {themeMode === 'light' ? <Styled.SearchHover /> : <Styled.SearchHoverDark />}
+                  {themeMode === 'light' ? (
+                    <Styled.SearchHover />
+                  ) : (
+                    <Styled.SearchHoverDark />
+                  )}
                 </Styled.NavIconWrapper>
                 <Styled.NavIconWrapper
                   onClick={() =>
@@ -87,7 +71,11 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
                     fontSize={27}
                     color={themeMode === 'light' ? '#282828' : 'white'}
                   />
-                  {themeMode === 'light' ? <Styled.SettingsHover /> : <Styled.SettingsHoverDark />}
+                  {themeMode === 'light' ? (
+                    <Styled.SettingsHover />
+                  ) : (
+                    <Styled.SettingsHoverDark />
+                  )}
                 </Styled.NavIconWrapper>
                 {!signedIn ? (
                   <>
@@ -97,7 +85,11 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
                       }
                     >
                       Log In
-                      {themeMode === "light" ? <Styled.SignInUpHover /> : <Styled.SignInUpHoverDark />}
+                      {themeMode === 'light' ? (
+                        <Styled.SignInUpHover />
+                      ) : (
+                        <Styled.SignInUpHoverDark />
+                      )}
                     </Styled.SignInUp>
                     <Styled.SignInUp
                       style={{ color: 'white' }}
@@ -124,7 +116,11 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
                           )
                         }
                       ></Styled.PersonIcon>
-                      {themeMode === 'light' ? <Styled.SettingsHover /> : <Styled.SettingsHoverDark />}
+                      {themeMode === 'light' ? (
+                        <Styled.SettingsHover />
+                      ) : (
+                        <Styled.SettingsHoverDark />
+                      )}
                     </Styled.IconContainer>
                     <Styled.SignOutButton
                       style={{ zIndex: 2 }}
@@ -145,93 +141,17 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
               )}
             </Styled.SettingsPopUpRow>
           ) : (
-            <>
-              <Styled.MenuIcon size={60} onClick={toggleDrawer("left", true)} />
-              <SwipeableDrawer
-                open={state.left}
-                onClose={toggleDrawer("left", false)}
-                onOpen={toggleDrawer("left", true)}
-              >
-                <Styled.DrawerWrapper>
-                  <Styled.NavIconWrapper
-                    style={{ marginRight: "5px" }}
-                    onClick={() =>
-                      setShowLeaderboard((oldLeaderboard) => !oldLeaderboard)
-                    }
-                  >
-                    <Styled.SearchIcon
-                      fontSize={27}
-                      color={themeMode === 'light' ? '#282828' : 'white'}
-                    />
-                    {themeMode === 'light' ? <Styled.SearchHover /> : <Styled.SearchHoverDark />}
-                  </Styled.NavIconWrapper>
-                  <Styled.NavIconWrapper
-                    onClick={() =>
-                      setShowingSettings((oldSetting) => !oldSetting)
-                    }
-                  >
-                    <Styled.SettingsIcon
-                      fontSize={27}
-                      color={themeMode === 'light' ? '#282828' : 'white'}
-                    />
-                    {themeMode === 'light' ? <Styled.SettingsHover /> : <Styled.SettingsHoverDark />}
-                  </Styled.NavIconWrapper>
-                  {!signedIn ? (
-                    <>
-                      <Styled.SignInUp
-                        onClick={() =>
-                          router.replace('/login', undefined, { shallow: true })
-                        }
-                      >
-                        Log In
-                        {themeMode === "light" ? <Styled.SignInUpHover /> : <Styled.SignInUpHoverDark />}
-                      </Styled.SignInUp>
-                      <Styled.SignInUp
-                        style={{ color: 'white' }}
-                        onClick={() =>
-                          router.replace('/register', undefined, {
-                            shallow: true,
-                          })
-                        }
-                      >
-                        Sign Up
-                        <Styled.SignInUpHover2 />
-                      </Styled.SignInUp>
-                    </>
-                  ) : (
-                    <>
-                      <Styled.IconContainer>
-                        <Styled.PersonIcon
-                          size={30}
-                          onClick={() =>
-                            router.replace(
-                              `/user/${auth.currentUser?.displayName}`,
-                              undefined,
-                              { shallow: true }
-                            )
-                          }
-                        ></Styled.PersonIcon>
-                        {themeMode === 'light' ? <Styled.SettingsHover /> : <Styled.SettingsHoverDark />}
-                      </Styled.IconContainer>
-                      <Styled.SignOutButton
-                        style={{ zIndex: 2 }}
-                        onClick={() => {
-                          auth.signOut().catch((error) => {
-                            console.log(error)
-                          })
-                        }}
-                      >
-                        Sign Out
-                        <Styled.SignInUpHover />
-                      </Styled.SignOutButton>
-                    </>
-                  )}
-                </Styled.DrawerWrapper>
-              </SwipeableDrawer>
-              {showingSettings && (
-                <SettingsPopup toggleShowingSettings={toggleShowSettings} />
-              )}
-            </>
+            <NavMobile
+              showingSettingsState={{
+                showingSettings: showingSettings,
+                setShowSettings: setShowingSettings,
+              }}
+              showLeaderboardState={{
+                showingLeaderboard: showLeaderboard,
+                setShowLeaderboard: setShowLeaderboard,
+              }}
+              signedIn={signedIn}
+            />
           )}
         </Styled.Flex>
         <Styled.Divider />
