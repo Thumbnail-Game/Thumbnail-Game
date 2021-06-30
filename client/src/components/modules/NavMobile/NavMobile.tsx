@@ -86,12 +86,6 @@ export const NavMobile: React.FC<NavMobileProps> = ({
               color={themeMode === 'light' ? '#282828' : 'white'}
             />
           </Styled.NavIconWrapper>
-          <Styled.NavIconWrapper onClick={toggleShowSettings}>
-            <Styled.SettingsIcon
-              fontSize={36}
-              color={themeMode === 'light' ? '#282828' : 'white'}
-            />
-          </Styled.NavIconWrapper>
           {!signedIn ? (
             <>
               <Styled.SignInUp
