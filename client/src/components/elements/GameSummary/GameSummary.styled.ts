@@ -343,6 +343,7 @@ export const TimeIcon = styled(MdTimerOff)`
   z-index: 5;
   top: 60px;
   filter: drop-shadow(0px 0px 19px #222222);
+  color: ${(props) => props.theme.background};
 
   @media (max-width: 760px) {
     top: -10px;
@@ -352,7 +353,6 @@ export const TimeIcon = styled(MdTimerOff)`
     margin-right: auto;
     filter: none;
   }
-  color: ${(props) => props.theme.background};
 `
 
 export const IconDiv = styled.div`
