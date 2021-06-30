@@ -42,26 +42,24 @@ const User: React.FC = () => {
   return (
     <div id="userProfile">
       <Nav signedIn={signedIn} />
-      {userData?.userByDisplayName ? (
+      {userData?.userByDisplayName && gamesData ? (
         <div style={{ position: 'relative' }}>
-          {gamesData && (
-            <Wrapper>
-              <LeftComponent>
-                <MainProfile
-                  userData={userData}
-                  gamesData={gamesData}
-                  gamemode={gamemode}
-                  handleToggleGamemode={handleToggleGamemode}
-                />
-                <ProfileChart gamesData={gamesData} gamemode={gamemode} />
-              </LeftComponent>
-              <TopPlays gamesData={gamesData} gamemode={gamemode} />
-            </Wrapper>
-          )}
+          <Wrapper>
+            <LeftComponent>
+              <MainProfile
+                userData={userData}
+                gamesData={gamesData}
+                gamemode={gamemode}
+                handleToggleGamemode={handleToggleGamemode}
+              />
+              <ProfileChart gamesData={gamesData} gamemode={gamemode} />
+            </LeftComponent>
+            <TopPlays gamesData={gamesData} gamemode={gamemode} />
+          </Wrapper>
         </div>
       ) : (
         <DoesNotExistContainer>
-          {!user.fetching && (
+          {!user.fetching && !games.fetching && (
             <div>
               <DoesNotExistText>User does not exist!</DoesNotExistText>
               <BackButton
