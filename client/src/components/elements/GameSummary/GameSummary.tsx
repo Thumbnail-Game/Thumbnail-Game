@@ -4,6 +4,7 @@ import { Carousel } from 'react-responsive-carousel'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
+import { useMediaQuery } from '../../../hooks/useMediaQuery'
 import { ThemeContext } from '../../../providers/AppProvider'
 import { HeaderText } from '../../../styles/constantStyles'
 import { PlayIcon } from '../PlayIcon/PlayIcon'
@@ -31,27 +32,17 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
 
   const renderIcon = (videoObj: any, index: number) => {
     if (videoObj?.video1.isLoss || videoObj?.video2.isLoss) {
-      return (
-        <>
-          <Styled.LoseIcon size={160} />
-        </>
-      )
+      return <Styled.LoseIcon size={160} />
       //  if they did not lose by incorrect choice, the last video
       //  has to be lost on time
     } else if (index === indexArr.length - 1) {
-      return (
-        <>
-          <Styled.TimeIcon size={132} />
-        </>
-      )
+      return <Styled.TimeIcon size={132} />
     } else {
-      return (
-        <>
-          <Styled.WinIcon size={160} />
-        </>
-      )
+      return <Styled.WinIcon size={160} />
     }
   }
+
+  let isMobile = useMediaQuery('max-width:760px')
 
   return (
     <Styled.GameSummaryWrapper>
@@ -149,7 +140,7 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                     <Styled.ViewSpan>views</Styled.ViewSpan>
                   </Styled.VideoViews>
                 </Styled.VideoColumnContainer>
-                <Styled.Dots className=".control-dots"></Styled.Dots>
+                {!isMobile && <Styled.Dots className=".control-dots" />}
                 <Styled.VideoColumnContainer>
                   <Styled.Videos>
                     <Link href={videoObj?.video2?.url}>
@@ -175,6 +166,11 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                     <Styled.ViewSpan>views</Styled.ViewSpan>
                   </Styled.VideoViews>
                 </Styled.VideoColumnContainer>
+                {/* {isMobile && (
+                  <Styled.Dots className=".control-dots"></Styled.Dots>
+                )} */}
+
+                <Styled.Dots className=".control-dots"></Styled.Dots>
               </Styled.VideoContainer>
             ))}
         </Carousel>

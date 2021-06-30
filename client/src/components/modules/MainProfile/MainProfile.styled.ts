@@ -10,6 +10,10 @@ export const Wrapper = styled.div`
   border-radius: 15px;
   box-shadow: 0px 0px 12px #181818;
   background-color: ${(props) => props.theme.profileBackground};
+
+  @media (max-width: 510px) {
+    width: 96%;
+  }
 `
 
 export const LeftContainer = styled.div`
@@ -47,6 +51,10 @@ export const MiddleContainer = styled.div`
   justify-content: space-between;
   margin: auto;
   margin-top: 85px;
+
+  @media (max-width: 510px) {
+    display: none;
+  }
 `
 
 export const PercentileTitle = styled.div`
@@ -157,8 +165,8 @@ export const Toggle = styled.div`
 `
 
 export const GamemodeTitle = styled.div`
-  font-size:40px;
-  font-family:"Gothic Bold";
+  font-size: 40px;
+  font-family: 'Gothic Bold';
   text-decoration: overline;
   text-decoration-color: red;
   text-decoration-thickness: 5px;

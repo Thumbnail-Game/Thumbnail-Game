@@ -25,14 +25,14 @@ export const ProfileChart: React.FC<ProfileChartProps> = ({
       })
 
       if (tempScores.length >= 30) {
-        setScores(tempScores.slice((tempScores.length - 30), tempScores.length))
+        setScores(tempScores.slice(tempScores.length - 30, tempScores.length))
       } else {
         setScores(tempScores)
       }
 
       const tempLabels = new Array(tempScores.length).fill('')
       if (tempLabels.length >= 30) {
-        setLabels(tempLabels.slice((tempLabels.length - 30), tempLabels.length))
+        setLabels(tempLabels.slice(tempLabels.length - 30, tempLabels.length))
       } else {
         setLabels(tempLabels)
       }

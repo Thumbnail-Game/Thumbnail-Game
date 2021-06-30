@@ -31,13 +31,12 @@ export const GameSummaryWrapper = styled.div`
   }
 
   @media (max-width: 770px) {
-    zoom:0.89;
+    zoom: 0.89;
   }
 
   @media (max-width: 700px) {
-    zoom:1;
+    zoom: 1;
   }
-
 `
 
 export const GameSummaryTitle = styled.div`
@@ -47,11 +46,11 @@ export const GameSummaryTitle = styled.div`
 
 export const CarouselContainer = styled.div`
   margin: auto;
-  margin-top: 100px;
+  margin-top: 50px;
   width: 1700px;
 
   @media (max-width: 760px) {
-    width:100%;
+    width: 100%;
   }
 `
 
@@ -68,9 +67,9 @@ export const VideoContainer = styled.div`
   user-select: none;
 
   @media (max-width: 760px) {
-    display:block;
-    width:604.8px;
-    margin:auto;
+    display: block;
+    width: 604.8px;
+    margin: auto;
   }
 `
 
@@ -85,7 +84,7 @@ export const Dots = styled.p`
   margin-top: 520px;
 
   @media (max-width: 760px) {
-    margin-top: 40px;
+    margin-top: 70px;
   }
 `
 
@@ -199,7 +198,7 @@ export const PlayAgainButton = styled.button`
   font-size: 25px;
   font-family: 'Gothic Bold';
   padding-bottom: 4px;
-  margin-bottom:-30px;
+  margin-bottom: -30px;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -226,48 +225,49 @@ export const ButtonContainer = styled.div`
   margin-bottom: 25px;
 
   @media (max-width: 760px) {
-    margin-top: 100px;
-    transform:scale(1.2);
+    margin-top: 25px;
+    margin-bottom: 30px;
+    transform: scale(1.2);
   }
 `
 
 export const RightButton = styled.button`
-  position:absolute;
-  margin-top:auto;
-  margin-bottom:auto;
-  top:0;
-  bottom:180px;
-  right:70px;
-  z-index:2;
-  background-color:transparent;
+  position: absolute;
+  margin-top: auto;
+  margin-bottom: auto;
+  top: 0;
+  bottom: 180px;
+  right: 70px;
+  z-index: 2;
+  background-color: transparent;
   background-repeat: no-repeat;
   border: none;
-  cursor:pointer;
-  overflow:hidden;
-  outline:none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
 
   @media (max-width: 760px) {
-    right:-10px;
+    right: -10px;
   }
 `
 
 export const LeftButton = styled.button`
-  position:absolute;
-  margin-top:auto;
-  margin-bottom:auto;
-  top:0;
-  bottom:180px;
-  left:70px;
-  z-index:2;
-  background-color:transparent;
+  position: absolute;
+  margin-top: auto;
+  margin-bottom: auto;
+  top: 0;
+  bottom: 180px;
+  left: 70px;
+  z-index: 2;
+  background-color: transparent;
   background-repeat: no-repeat;
   border: none;
-  cursor:pointer;
-  overflow:hidden;
-  outline:none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
 
   @media (max-width: 760px) {
-    left:-10px;
+    left: -10px;
   }
 `
 
@@ -297,7 +297,7 @@ export const IconHoverDiv = styled.div`
 
     &:hover {
       background-color: transparent;
-      animation:none;
+      animation: none;
     }
   }
 `
@@ -306,12 +306,16 @@ export const LoseIcon = styled(MdCancel)`
   color: #fa6565;
   position: absolute;
   z-index: 5;
-  top:60px;
+  top: 60px;
   filter: drop-shadow(0px 0px 19px #222222);
 
   @media (max-width: 760px) {
     top: -10px;
-    left:0px;
+    left: 0px;
+    right: 610px;
+    margin-left: auto;
+    margin-right: auto;
+    filter: none;
   }
 `
 
@@ -319,12 +323,16 @@ export const WinIcon = styled(IoIosCheckmarkCircle)`
   color: #6edba3;
   position: absolute;
   z-index: 5;
-  top:60px;
+  top: 60px;
   filter: drop-shadow(0px 0px 19px #222222);
 
   @media (max-width: 760px) {
     top: -10px;
-    left:0px;
+    left: 0px;
+    right: 610px;
+    margin-left: auto;
+    margin-right: auto;
+    filter: none;
   }
 `
 
@@ -333,14 +341,18 @@ export const TimeIcon = styled(MdTimerOff)`
   border-radius: 50%;
   position: absolute;
   z-index: 5;
-  top:60px;
+  top: 60px;
   filter: drop-shadow(0px 0px 19px #222222);
+  color: ${(props) => props.theme.background};
 
   @media (max-width: 760px) {
     top: -10px;
-    left:0px;
+    left: 0px;
+    right: 610px;
+    margin-left: auto;
+    margin-right: auto;
+    filter: none;
   }
-  color: ${(props) => props.theme.background};
 `
 
 export const IconDiv = styled.div`
@@ -349,7 +361,7 @@ export const IconDiv = styled.div`
   border-radius: 50%;
   position: absolute;
   background-color: #282828;
-  z-index: 4; 
+  z-index: 4;
   top: 10px;
-  left:14px;
+  left: 14px;
 `

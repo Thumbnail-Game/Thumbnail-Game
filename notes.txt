@@ -1,4 +1,3 @@
 TODO
-2. Complete mobile support (sandwich, bugs)
-11. FIX IN FIREBOX
 13. Just fetch 100 videos instead of fetching each time
+1. videos not updating view count at midnight 

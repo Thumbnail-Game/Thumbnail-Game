@@ -7,6 +7,23 @@ export const SearchContainer = styled.div`
   font-family: 'Gothic Bold';
   margin: auto;
   height: 100%;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme.toggleButton};
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #ff0000;
+  }
+  &::-webkit-scrollbar-track {
+    background: none;
+    border-radius: 10px;
+  }
 `
 
 export const Input = styled.input`
@@ -24,8 +41,8 @@ export const Input = styled.input`
   background-color: ${(props) => props.theme.scoreBackground};
 
   ::-webkit-search-cancel-button {
-    margin-right:25px;
-    cursor:pointer;
+    margin-right: 25px;
+    cursor: pointer;
   }
 `
 
@@ -49,6 +66,7 @@ export const Wrapper = styled.div`
   height: 93%;
   margin: auto;
   overflow: hidden;
+  text-align: left;
 `
 
 export const LabelContainer = styled.div`

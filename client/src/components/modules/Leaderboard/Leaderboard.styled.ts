@@ -11,6 +11,8 @@ const LeaderboardIntro = keyframes`
 
 export const Wrapper = styled.div`
   position: absolute;
+  display: flex;
+  justify-content: space-around;
   margin: auto;
   top: 20px;
   bottom: 0;
@@ -19,14 +21,24 @@ export const Wrapper = styled.div`
   z-index: 5;
   width: 1120px;
   height: 700px;
-  display: flex;
-  justify-content: space-around;
   border-radius: 15px;
   background-color: ${(props) => props.theme.profileBackground};
 
   animation-name: ${LeaderboardIntro};
   animation-duration: 300ms;
   animation-fill-mode: forwards;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    width: 700px;
+    height: 1000px;
+  }
+
+  @media (max-width: 370px) {
+    flex-direction: column;
+    width: 98%;
+    height: 800px;
+  }
 `
 
 export const Background = styled.div`
@@ -45,27 +57,42 @@ export const Leaderboard = styled.div`
   width: 650px;
   height: 93%;
   border-radius: 9px;
+
+  @media (max-width: 370px) {
+    width: 98%;
+  }
 `
 
 export const InfoWrapper = styled.div`
   width: 650px;
   height: 530px;
-  overflow-y:scroll;
+  overflow-y: scroll;
+
   &::-webkit-scrollbar {
     width: 9px;
     height: 9px;
-   }
-   &::-webkit-scrollbar-thumb {
+  }
+  &::-webkit-scrollbar-thumb {
     background: ${(props) => props.theme.toggleButton};
     border-radius: 10px;
-   }
-   &::-webkit-scrollbar-thumb:hover{
+  }
+  &::-webkit-scrollbar-thumb:hover {
     background: #ff0000;
-   }
-   &::-webkit-scrollbar-track{
+  }
+  &::-webkit-scrollbar-track {
     background: none;
     border-radius: 10px;
-   }
+  }
+
+  @media (max-width: 600px) {
+    height: 450px;
+    margin-bottom: 15px;
+  }
+
+  @media (max-width: 370px) {
+    width: 100%;
+    overflow-x: hidden;
+  }
 `
 
 export const PlayerInfo = styled.div`
@@ -82,6 +109,10 @@ export const PlayerInfo = styled.div`
   font-size: 17px;
   font-family: 'Gothic Bold';
   background-color: ${(props) => props.theme.scoreBackground};
+
+  @media (max-width: 370px) {
+    width: 98%;
+  }
 `
 
 export const Username = styled.div`

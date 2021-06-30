@@ -77,7 +77,7 @@ const User: React.FC = () => {
 }
 
 export const LeftComponent = styled.div`
-  width: 1000px;
+  width: 100%;
 `
 
 export const Wrapper = styled.div`
@@ -88,6 +88,11 @@ export const Wrapper = styled.div`
   margin: auto;
   margin-top: 20px;
   overflow: visible;
+
+  @media (max-width: 710px) {
+    justify-content: center;
+    width: 100%;
+  }
 `
 
 export const DoesNotExistContainer = styled.div`
