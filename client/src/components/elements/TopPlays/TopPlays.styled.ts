@@ -7,6 +7,10 @@ export const Wrapper = styled.div`
   border-radius: 15px;
   box-shadow: 0px 0px 12px #181818;
   background-color: ${(props) => props.theme.profileBackground};
+
+  @media (max-width: 710px) {
+    display: none;
+  }
 `
 
 export const Title = styled.div`

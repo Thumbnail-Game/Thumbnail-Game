@@ -172,19 +172,3 @@ body::-webkit-scrollbar {
     -moz-transform: scale(0.5);
   }
 }
-
-@media screen and (max-width: 790px) {
-  #userProfile {
-    zoom: 0.4;
-
-    -moz-transform: scale(0.4);
-  }
-}
-
-@media screen and (max-width: 640px) {
-  #userProfile {
-    zoom: 0.3;
-
-    -moz-transform: scale(0.4);
-  }
-}

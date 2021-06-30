@@ -9,7 +9,6 @@ import {
 } from '../../../generated/graphql'
 import { Search } from '../../../components/elements/index'
 import * as Styled from './Leaderboard.styled'
-import { useTransition } from 'react-spring'
 
 interface LeaderboardUsers {
   [index: number]: LeaderboardUser
