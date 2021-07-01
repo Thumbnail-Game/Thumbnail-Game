@@ -8,6 +8,7 @@ import { useMediaQuery } from '../../../hooks/useMediaQuery'
 import { ThemeContext } from '../../../providers/AppProvider'
 import { HeaderText } from '../../../styles/constantStyles'
 import { PlayIcon } from '../PlayIcon/PlayIcon'
+import { FeedbackFooter } from '../index'
 import * as Styled from './GameSummary.styled'
 
 interface GameSummaryProps {
@@ -45,6 +46,7 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
   let isMobile = useMediaQuery('max-width:760px')
 
   return (
+    <>
     <Styled.GameSummaryWrapper>
       <HeaderText>Game Summary</HeaderText>
       <Styled.CarouselContainer>
@@ -188,5 +190,7 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
         </Styled.PlayAgainButton>
       </Styled.ButtonContainer>
     </Styled.GameSummaryWrapper>
+    <FeedbackFooter/>
+    </>
   )
 }
