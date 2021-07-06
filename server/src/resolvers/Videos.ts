@@ -22,16 +22,40 @@ export class VideoResolver {
       if (i !== videoIds.length - 1) tempSql += 'and'
     }
 
-    let videos
+    let videos = []
     try {
       if (videoIds.length > 0) {
-        videos = await getConnection().query(
-          `select * from videos where ${tempSql} order by random() limit 2;`
+        const video = await getConnection().query(
+          `select * from videos where ${tempSql} order by random() limit 1;`
         )
+        tempSql += ` and id != ${video[0].id} `
+        videos.push(video[0])
+        console.log(video[0].id)
+
+        //  query for videos that are more than 200,000 views apart
+        const video2 = await getConnection().query(
+          `select * from videos where ${tempSql} 
+          and views < ${parseInt(video[0].views) - 200000} or views > ${
+            parseInt(video[0].views) + 200000
+          }
+          order by random() limit 1;`
+        )
+        videos.push(video2[0])
       } else {
-        videos = await getConnection().query(
+        const video = await getConnection().query(
           `select * from videos order by random() limit 2;`
         )
+        videos.push(video[0])
+
+        //  query for videos that are more than 200,000 views apart
+        const video2 = await getConnection().query(
+          `select * from videos 
+          where id != ${video[0].id} and views < ${
+            parseInt(video[0].views) - 200000
+          } or views > ${parseInt(video[0].views) + 200000}
+          order by random() limit 1;`
+        )
+        videos.push(video2[0])
       }
     } catch (err) {
       //  TODO: return field error instead
@@ -39,8 +63,9 @@ export class VideoResolver {
       return null
     }
 
-    if (!videos) return null
+    if (videos.length === 0) return null
 
+    console.log(videos)
     return videos
   }
 
