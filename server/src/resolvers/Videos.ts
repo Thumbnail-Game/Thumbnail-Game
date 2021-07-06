@@ -30,7 +30,6 @@ export class VideoResolver {
         )
         tempSql += ` and id != ${video[0].id} `
         videos.push(video[0])
-        console.log(video[0].id)
 
         //  query for videos that are more than 200,000 views apart
         const video2 = await getConnection().query(
