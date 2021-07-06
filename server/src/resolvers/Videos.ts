@@ -64,7 +64,6 @@ export class VideoResolver {
 
     if (videos.length === 0) return null
 
-    console.log(videos)
     return videos
   }
 
