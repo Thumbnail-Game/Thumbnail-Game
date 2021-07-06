@@ -62,6 +62,7 @@ export type Query = {
   twoVideos?: Maybe<Array<Videos>>;
   getVideos?: Maybe<Array<Videos>>;
   games?: Maybe<Array<Games>>;
+  getTotalGames?: Maybe<Scalars['Int']>;
   getGamesByUser?: Maybe<Array<Games>>;
   getUserHighscores?: Maybe<Array<UserHighscoreResponse>>;
 };
@@ -216,6 +217,14 @@ export type GetGamesByUserQuery = (
   )>> }
 );
 
+export type GetTotalGamesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetTotalGamesQuery = (
+  { __typename?: 'Query' }
+  & Pick<Query, 'getTotalGames'>
+);
+
 export type GetTwoVideosQueryVariables = Exact<{
   videoIds: Array<Scalars['Int']> | Scalars['Int'];
 }>;
@@ -368,6 +377,15 @@ export const GetGamesByUserDocument = gql`
 
 export function useGetGamesByUserQuery(options: Omit<Urql.UseQueryArgs<GetGamesByUserQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<GetGamesByUserQuery>({ query: GetGamesByUserDocument, ...options });
+};
+export const GetTotalGamesDocument = gql`
+    query getTotalGames {
+  getTotalGames
+}
+    `;
+
+export function useGetTotalGamesQuery(options: Omit<Urql.UseQueryArgs<GetTotalGamesQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetTotalGamesQuery>({ query: GetTotalGamesDocument, ...options });
 };
 export const GetTwoVideosDocument = gql`
     query getTwoVideos($videoIds: [Int!]!) {

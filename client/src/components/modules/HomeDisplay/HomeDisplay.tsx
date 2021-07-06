@@ -1,5 +1,5 @@
 import * as Styled from './HomeDisplay.styled'
-import { HomeVideoThumbnail } from '../../elements/index'
+import { HomeVideoThumbnail, TotalGamesHeading } from '../../elements/index'
 import { useGetVideosQuery } from '../../../generated/graphql'
 
 interface HomeDisplayProps {
@@ -16,14 +16,22 @@ export const HomeDisplay: React.FC<HomeDisplayProps> = ({ showLogo }) => {
   const videoData = videos && videos.data
 
   return (
-    <Styled.Parent>
-      {showLogo && <Styled.Logo src={'/images/thumbnail-dark.png'} alt={'home-display-logo'} />}
-      <Styled.Grid>
-        {videoData &&
-          videoData.getVideos?.map((video, i: number) => (
-            <HomeVideoThumbnail key={i} video={video} />
-          ))}
-      </Styled.Grid>
-    </Styled.Parent>
+    <>
+      <Styled.Parent>
+        {showLogo && (
+          <Styled.Logo
+            src={'/images/thumbnail-dark.png'}
+            alt={'home-display-logo'}
+          />
+        )}
+        <Styled.Grid>
+          {videoData &&
+            videoData.getVideos?.map((video, i: number) => (
+              <HomeVideoThumbnail key={i} video={video} />
+            ))}
+        </Styled.Grid>
+      </Styled.Parent>
+      {/* <TotalGamesHeading /> */}
+    </>
   )
 }

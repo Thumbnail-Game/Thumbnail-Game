@@ -7,6 +7,7 @@ import {
   ObjectType,
   Field,
 } from 'type-graphql'
+import { getConnection } from 'typeorm'
 
 import { Games } from '../entities/index'
 
@@ -29,6 +30,20 @@ export class GamesResolver {
     if (!games) return null
 
     return games
+  }
+
+  @Query(() => Int, { nullable: true })
+  async getTotalGames() {
+    let numGames
+    try {
+      const numGamesObj = await getConnection().query(
+        'SELECT COUNT(*) from games'
+      )
+      numGames = numGamesObj[0].count
+    } catch (err) {
+      console.log(err)
+    }
+    return numGames
   }
 
   @Mutation(() => Games, { nullable: true })
