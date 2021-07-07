@@ -8,7 +8,7 @@
 - Styled-Components
 - TypeGraphQL
 - URQL
-- ApolloServer(express)
+- ApolloServer
 - TypeORM
 - PostgresSQL
 - Node.js
