@@ -41,7 +41,6 @@
     "react-switch": "^6.0.0",
     "react-three-fiber": "^0.0.0-deprecated",
     "styled-components": "^5.3.0",
-    "three": "^0.129.0",
     "urql": "^2.0.3"
   },
   "devDependencies": {
