@@ -1,1 +1,1 @@
-TRY VIM FOR 1 WEEK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+![Homepage Image](client/public/images/homepage.png)
