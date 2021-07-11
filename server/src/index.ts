@@ -14,11 +14,11 @@ import { GamesResolver, UserResolver, VideoResolver } from './resolvers/index'
 import { updateAllVideoViews } from './utils/updateAllVideoViews'
 
 const main = async () => {
-  console.log(process.env.DATABASE_URL)
+  console.log(process.env.HEROKU_POSTGRESQL_PURPLE_URL)
 
   const conn = await createConnection({
     type: 'postgres',
-    url: process.env.DATABASE_URL,
+    url: process.env.HEROKU_POSTGRESQL_PURPLE_URL,
     logging: true,
     synchronize: true,
     entities: [UserAccount, Videos, Games],
