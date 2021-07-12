@@ -29,20 +29,19 @@ const Play: NextPage = () => {
     }
   }
 
-  // const supportedWidth = useMediaQuery('(min-width: 760px)')
-  // if (!supportedWidth) return <MobileNotSupported />
-
   return (
     <div id="playContainer">
       <Nav signedIn={signedIn} />
-      <Score score={score} />
       {gamemode ? (
-        <Thumbnail
-          gamemode={gamemode}
-          score={score}
-          updateScore={updateScore}
-          setGamemode={setGamemode}
-        />
+        <>
+          <Score score={score} />
+          <Thumbnail
+            gamemode={gamemode}
+            score={score}
+            updateScore={updateScore}
+            setGamemode={setGamemode}
+          />
+        </>
       ) : (
         <SelectGamemode setGamemode={setGamemode} />
       )}

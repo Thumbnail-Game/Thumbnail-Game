@@ -1,12 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 
 import { GetUsersQuery } from '../../../generated/graphql'
 import * as Styled from './Search.styled'
 
-interface Users {
-  [index: number]: User
-}
+type Users = User[]
 
 interface User {
   uid: string
@@ -19,8 +17,8 @@ interface SearchProps {
 }
 
 export const Search: React.FC<SearchProps> = ({ users }) => {
-  const [matchingUsers, setMatchingUsers] = useState<Users | undefined | null>(
-    {}
+  const [matchingUsers, setMatchingUsers] = useState<Users | null | undefined>(
+    null
   )
 
   const router = useRouter()
@@ -38,7 +36,7 @@ export const Search: React.FC<SearchProps> = ({ users }) => {
         )
       )
     } else {
-      setMatchingUsers({})
+      setMatchingUsers(null)
     }
   }
 
@@ -53,7 +51,6 @@ export const Search: React.FC<SearchProps> = ({ users }) => {
       />
       <Styled.SearchContainer>
         {matchingUsers &&
-          Array.isArray(matchingUsers) &&
           matchingUsers.map((user: User, i) => (
             <Styled.UserContainer
               key={i}

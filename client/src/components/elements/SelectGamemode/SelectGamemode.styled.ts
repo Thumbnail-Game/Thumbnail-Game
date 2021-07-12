@@ -53,7 +53,7 @@ export const GamemodeContainer = styled.div`
   height: 500px;
   border-radius: 15px;
   cursor: pointer;
-  box-shadow: 0px 0px 12px #181818;
+  box-shadow: 0px 0px 7px #181818;
   animation-name: ${GamemodeContainerAnimationOut};
   animation-duration: 300ms;
   animation-fill-mode: forwards;

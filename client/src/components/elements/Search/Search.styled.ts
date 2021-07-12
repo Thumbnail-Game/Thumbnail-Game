@@ -49,10 +49,10 @@ export const Input = styled.input`
 export const UserContainer = styled.div`
   display: flex;
   align-items: center;
-  padding-left: 10px;
+  padding-left: 20px;
   padding-right: 10px;
   width: 90%;
-  height: 60px;
+  height: 55px;
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;

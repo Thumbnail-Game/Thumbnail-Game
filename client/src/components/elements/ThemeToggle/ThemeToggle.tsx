@@ -44,7 +44,7 @@ export const ThemeToggle: React.FC = () => {
               fontSize: 18,
               paddingLeft: 14,
             }}
-            color={themeMode === 'dark' ? 'yellow' : 'blue'}
+            color={themeMode === 'dark' ? 'yellow' : 'grey'}
           />
         }
         onChange={handleThemeChange}

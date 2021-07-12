@@ -6,15 +6,15 @@ Thanks for the comment u/PunchThatDonkey
 Some thoughts:
 ✔️ - Put a transparent overlay/background behind the logo/play button on the homepage. Hard to read/accessibility isn't great.
 ✔️ - Why are the thumbnails interactive on the homepage? Can't click them. Maybe just a smaller scale size (way more subtle?)
-- The initial homepage load/flash/transition was really bad. The logo was practically full screen and one of the thumbnails was around 80% of the page. Consider using lazy loading and a null element (or loader).
-- I think the game options would look better vertically centered in their container (https://puu.sh/HVrRl/2e6957a4af.png)
-- Why do you show score/highscore even when I'm not playing. Does it persist?
+❓ - The initial homepage load/flash/transition was really bad. The logo was practically full screen and one of the thumbnails was around 80% of the page. Consider using lazy loading and a null element (or loader).
+❌ - I think the game options would look better vertically centered in their container (https://puu.sh/HVrRl/2e6957a4af.png)
+✔️ - Why do you show score/highscore even when I'm not playing. Does it persist?
 - Maybe it's because of my retina display but I feel like everything is too "big". Text, elements etc.
-- Consider a softer box shadow in these elements in light mode -- https://puu.sh/HVrSi/516181e2c4.png
+✔️- Consider a softer box shadow in these elements in light mode -- https://puu.sh/HVrSi/516181e2c4.png
 - When I hit settings/trophy sometimes the whole header moves/shakes or individual icons. Changing between light/dark mode also triggers a really weird effect on the header.
-- The dark mode toggle moon icon goes blue when toggling but very briefly (weird flash)
+✔️- The dark mode toggle moon icon goes blue when toggling but very briefly (weird flash)
 - What's the point in going back to a placeholder play page when clicking the logo in the top left? There's no content there. I feel like you should set a storage flag when they click play for the first time and skip the placeholder homepage with a redirect (it's not needed after first landing)
-- Think about some more left/right padding on the search results (https://puu.sh/HVrTL/ff64804965.png)
+✔️- Think about some more left/right padding on the search results (https://puu.sh/HVrTL/ff64804965.png)
 - Why are the grey element bars different heights/sizes? Consistency is king. Also consider them starting from the same position instead of weirdly offset (https://puu.sh/HVrTL/ff64804965.png)
 - All of your text feels like headers (too much font weight). Consider dialling some of it back (https://puu.sh/HVrUG/126ccd8b8c.png) .
 - It's hard to distinguish between video title and number of views. Again, consider weights, colours and additional spacing (https://puu.sh/HVrVA/597c7023c8.png)
