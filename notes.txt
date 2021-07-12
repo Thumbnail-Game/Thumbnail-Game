@@ -18,7 +18,7 @@ Some thoughts:
 ✔️- Why are the grey element bars different heights/sizes? Consistency is king. Also consider them starting from the same position instead of weirdly offset (https://puu.sh/HVrTL/ff64804965.png)
 ✔️- All of your text feels like headers (too much font weight). Consider dialling some of it back (https://puu.sh/HVrUG/126ccd8b8c.png) .
 ✔️- It's hard to distinguish between video title and number of views. Again, consider weights, colours and additional spacing (https://puu.sh/HVrVA/597c7023c8.png)
-- The timer isn't clear enough, I didn't even notice it. Maybe make it bigger and red? Maybe it could pulse when it gets to 1/2 seconds
+✔️- The timer isn't clear enough, I didn't even notice it. Maybe make it bigger and red? Maybe it could pulse when it gets to 1/2 seconds
 - I wouldn't use the youtube favicon. I bet it's copyrighted. I'd also put a disclaimer somewhere about all property belonging to youtube/copyright infringement.
 ✔️- Similar to above, all your box shadows feel too harsh (https://puu.sh/HVrVJ/b723de2c62.png) -- this website is awesome to find a perfect box shadow -- https://getcssscan.com/css-box-shadow-examples (personally i love #11)
 ✔️- These buttons seem to be primary but don't follow the normal red/white colours. (https://puu.sh/HVrWs/1b76c3e935.png ) . Maybe "back" is secondary, but play again should be primary. Also consider making your secondary a white button with red outline and text for consistency with your primary button.
@@ -30,3 +30,5 @@ Anyway, just my two cents. See if any of this is helpful :)"
 
 - As comment mentions above, should probably have a first time user 
 flag to conditionally render the landing page
+- Still need to add a timer popup animation at 3 seconds?
+- Fix all jittery things
