@@ -21,8 +21,11 @@ export const Flex = styled.div`
 
 export const Logo = styled(Image)``
 
-export const LogoContainer = styled.div`
-  cursor: pointer;
+interface LogoContainerProps {
+  isOnPlayPage: boolean
+}
+export const LogoContainer = styled.div<LogoContainerProps>`
+  cursor: ${(props) => (props.isOnPlayPage ? 'inherit' : 'pointer')};
   height: 49px;
   overflow: hidden;
   z-index: 1;

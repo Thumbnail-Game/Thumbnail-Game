@@ -21,8 +21,7 @@ export const Timer: React.FC<TimerProps> = ({ handleLoseAnimation }) => {
         duration={7}
         strokeWidth={mobileShift ? 18 : 16}
         trailColor={themeMode === 'dark' ? '#282828' : '#FFFFFF'}
-        // colors={themeMode === 'dark' ? '#FFFFFF' : '#282828'}
-        colors={'#FF0000'}
+        colors={themeMode === 'dark' ? '#fa6565' : '#FF0000'}
         onComplete={() => handleLoseAnimation('time')}
       >
         {({ remainingTime }) => remainingTime}

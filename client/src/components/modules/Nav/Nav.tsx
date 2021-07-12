@@ -36,13 +36,13 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
       <Styled.Nav>
         <Styled.Flex>
           {(router.pathname !== '/play' || !lessThan390px) && (
-            <Styled.LogoContainer>
+            <Styled.LogoContainer isOnPlayPage={router.pathname === '/play'}>
               <Styled.Logo
                 src={`/images/thumbnail-${themeMode}.png`}
                 width={187.2}
                 height={53.456}
                 alt={'nav-logo'}
-                onClick={() => router.push('/')}
+                onClick={() => router.push('/play')}
               />
             </Styled.LogoContainer>
           )}
