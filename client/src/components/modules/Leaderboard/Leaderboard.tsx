@@ -10,9 +10,7 @@ import {
 import { Search } from '../../../components/elements/index'
 import * as Styled from './Leaderboard.styled'
 
-interface LeaderboardUsers {
-  [index: number]: LeaderboardUser
-}
+type LeaderboardUsers = LeaderboardUser[]
 
 interface LeaderboardUser {
   displayName?: string
@@ -74,18 +72,15 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
         tempLeaderboardUser.topScore = matchingUser.highScore
         tempLeaderboardUser.scoreDate = matchingUser.date
 
-        Array.isArray(tempLeaderboardUsers) &&
-          tempLeaderboardUsers.push(tempLeaderboardUser)
+        tempLeaderboardUsers.push(tempLeaderboardUser)
       }
 
       //  sort and take the top 100
-      if (Array.isArray(tempLeaderboardUsers)) {
-        tempLeaderboardUsers = tempLeaderboardUsers
-          .sort((a: any, b: any) => {
-            return b.topScore - a.topScore
-          })
-          .slice(0, 99)
-      }
+      tempLeaderboardUsers = tempLeaderboardUsers
+        .sort((a: any, b: any) => {
+          return b.topScore - a.topScore
+        })
+        .slice(0, 99)
       setLeaderboardUsers(tempLeaderboardUsers)
     }
   }, [usersData, highscoresData])
@@ -125,9 +120,7 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
             </Styled.ColumnNamesContainer>
           </Styled.LabelContainer>
           <Styled.InfoWrapper>
-            {!users.fetching &&
-            leaderboardUsers &&
-            Array.isArray(leaderboardUsers)
+            {!users.fetching && leaderboardUsers
               ? leaderboardUsers.map((user: LeaderboardUser, i) => (
                   <Styled.PlayerInfo
                     onClick={() => router.push(`/user/${user.displayName}`)}

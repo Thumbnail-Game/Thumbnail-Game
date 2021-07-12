@@ -1,6 +1,8 @@
-import * as Styled from './HomeDisplay.styled'
+import Skeleton from '@material-ui/lab/Skeleton'
+
 import { HomeVideoThumbnail, TotalGamesHeading } from '../../elements/index'
 import { useGetVideosQuery } from '../../../generated/graphql'
+import * as Styled from './HomeDisplay.styled'
 
 interface HomeDisplayProps {
   showLogo: boolean
@@ -12,25 +14,40 @@ export const HomeDisplay: React.FC<HomeDisplayProps> = ({ showLogo }) => {
       numVideos: 100,
     },
   })
-
   const videoData = videos && videos.data
 
   return (
     <>
-      <Styled.Parent>
+      <Styled.HomeWrapper>
         {showLogo && (
-          <Styled.Logo
-            src={'/images/thumbnail-dark.png'}
-            alt={'home-display-logo'}
-          />
+          <Styled.LogoContainer>
+            <Styled.Logo
+              src={'/images/thumbnail-dark.png'}
+              alt={'home-display-logo'}
+            />
+          </Styled.LogoContainer>
         )}
         <Styled.Grid>
-          {videoData &&
-            videoData.getVideos?.map((video, i: number) => (
-              <HomeVideoThumbnail key={i} video={video} />
-            ))}
+          {false ||
+            (!videos.fetching &&
+              videoData &&
+              videoData.getVideos?.map((video, i) => (
+                <HomeVideoThumbnail key={i} video={video} />
+              )))}
+
+          {true && (
+            <Skeleton
+              style={{
+                borderRadius: '5',
+              }}
+              variant="rect"
+              width={320}
+              height={180}
+              animation="wave"
+            />
+          )}
         </Styled.Grid>
-      </Styled.Parent>
+      </Styled.HomeWrapper>
       {/* <TotalGamesHeading /> */}
     </>
   )

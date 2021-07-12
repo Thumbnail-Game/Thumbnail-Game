@@ -1,23 +1,49 @@
 import styled from 'styled-components'
 
-export const Parent = styled.div`
-  background-color: ${(props) => props.theme.background};
+export const HomeWrapper = styled.div`
+  position: absolute;
   height: 100vh;
   width: 100%;
   overflow: hidden;
-  position: absolute;
   top: 0;
+  background-color: ${(props) => props.theme.background};
 `
 
-export const Logo = styled.img`
+export const LogoContainer = styled.div`
   position: absolute;
-  width: 70%;
+  width: 100%;
+  height: 35vh;
   margin: auto;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  filter: drop-shadow(15px 15px 16px black);
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  @media (max-width: 1100px) {
+    height: 30vh;
+  }
+
+  @media (max-width: 650px) {
+    height: 20vh;
+  }
+
+  @media (max-height: 685px) {
+    bottom: 250px;
+    width: 90%;
+  }
+`
+
+export const Logo = styled.img`
+  position: absolute;
+  width: 70%;
+  max-height: 100%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
   z-index: 2;
 
   @media (max-width: 900px) {
