@@ -28,21 +28,20 @@ export const HomeDisplay: React.FC<HomeDisplayProps> = ({ showLogo }) => {
           </Styled.LogoContainer>
         )}
         <Styled.Grid>
-          {false ||
-            (!videos.fetching &&
-              videoData &&
-              videoData.getVideos?.map((video, i) => (
-                <HomeVideoThumbnail key={i} video={video} />
-              )))}
-
-          {true && (
+          {videoData &&
+            videoData?.getVideos?.map((video, i) => (
+              <HomeVideoThumbnail key={i} video={video} />
+            ))}
+          {videos.fetching && (
             <Skeleton
               style={{
-                borderRadius: '5',
+                position: 'absolute',
+                top: 0,
+                left: 0,
               }}
               variant="rect"
-              width={320}
-              height={180}
+              width="100%"
+              height="100vh"
               animation="wave"
             />
           )}

@@ -53,7 +53,7 @@ export const Logo = styled.img`
 
 export const Grid = styled.div`
   display: grid;
-  border-style: solid;
+  border-style: none;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
   width: 100vw;

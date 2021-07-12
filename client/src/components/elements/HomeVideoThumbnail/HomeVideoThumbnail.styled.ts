@@ -21,13 +21,13 @@ const VideoHoverOut = keyframes`
 export const VideoWrapper = styled.div`
   width: 330px;
   height: 190px;
-  background-color: ${(props) => props.theme.background};
   position: relative;
   z-index: 0;
+  border-radius: 5px;
   animation-name: ${VideoHoverOut};
   animation-duration: 300ms;
   animation-fill-mode: forwards;
-  border-radius: 5px;
+  background-color: ${(props) => props.theme.background};
 
   &:hover {
     animation-name: ${VideoHover};
