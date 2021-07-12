@@ -17,4 +17,8 @@ export const FooterText = styled.a`
   &:hover {
     text-decoration: underline;
   }
+
+  @media (max-height: 800px) {
+    display: none;
+  }
 `
