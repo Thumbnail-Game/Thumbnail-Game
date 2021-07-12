@@ -47,8 +47,8 @@ export const TopPlays: React.FC<ProfileChartProps> = React.memo(
       <Styled.Wrapper>
         <Styled.Title>Top Plays</Styled.Title>
         <Styled.Label>
-          <Styled.Component>Date</Styled.Component>
-          <Styled.Component>Score</Styled.Component>
+          <Styled.DateScoreHeading>Date</Styled.DateScoreHeading>
+          <Styled.DateScoreHeading>Score</Styled.DateScoreHeading>
         </Styled.Label>
         <Styled.Divider />
         {gameData &&

@@ -53,7 +53,8 @@ export const GamemodeContainer = styled.div`
   height: 500px;
   border-radius: 15px;
   cursor: pointer;
-  box-shadow: 0px 0px 7px #181818;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   animation-name: ${GamemodeContainerAnimationOut};
   animation-duration: 300ms;
   animation-fill-mode: forwards;
@@ -92,6 +93,6 @@ export const Title = styled.div`
 
 export const Description = styled.div`
   font-size: 20px;
-  font-family: 'Gothic Bold';
+  font-family: 'Helvetica';
   padding-bottom: 15px;
 `

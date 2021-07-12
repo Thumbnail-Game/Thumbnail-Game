@@ -15,14 +15,14 @@ Some thoughts:
 ✔️- The dark mode toggle moon icon goes blue when toggling but very briefly (weird flash)
 - What's the point in going back to a placeholder play page when clicking the logo in the top left? There's no content there. I feel like you should set a storage flag when they click play for the first time and skip the placeholder homepage with a redirect (it's not needed after first landing)
 ✔️- Think about some more left/right padding on the search results (https://puu.sh/HVrTL/ff64804965.png)
-- Why are the grey element bars different heights/sizes? Consistency is king. Also consider them starting from the same position instead of weirdly offset (https://puu.sh/HVrTL/ff64804965.png)
-- All of your text feels like headers (too much font weight). Consider dialling some of it back (https://puu.sh/HVrUG/126ccd8b8c.png) .
+✔️- Why are the grey element bars different heights/sizes? Consistency is king. Also consider them starting from the same position instead of weirdly offset (https://puu.sh/HVrTL/ff64804965.png)
+✔️- All of your text feels like headers (too much font weight). Consider dialling some of it back (https://puu.sh/HVrUG/126ccd8b8c.png) .
 - It's hard to distinguish between video title and number of views. Again, consider weights, colours and additional spacing (https://puu.sh/HVrVA/597c7023c8.png)
 - The timer isn't clear enough, I didn't even notice it. Maybe make it bigger and red? Maybe it could pulse when it gets to 1/2 seconds
 - I wouldn't use the youtube favicon. I bet it's copyrighted. I'd also put a disclaimer somewhere about all property belonging to youtube/copyright infringement.
-- Similar to above, all your box shadows feel too harsh (https://puu.sh/HVrVJ/b723de2c62.png) -- this website is awesome to find a perfect box shadow -- https://getcssscan.com/css-box-shadow-examples (personally i love #11)
+✔️- Similar to above, all your box shadows feel too harsh (https://puu.sh/HVrVJ/b723de2c62.png) -- this website is awesome to find a perfect box shadow -- https://getcssscan.com/css-box-shadow-examples (personally i love #11)
 - These buttons seem to be primary but don't follow the normal red/white colours. (https://puu.sh/HVrWs/1b76c3e935.png ) . Maybe "back" is secondary, but play again should be primary. Also consider making your secondary a white button with red outline and text for consistency with your primary button.
-- This icon desperately needs padding -- https://puu.sh/HVrXh/c100462e84.png
+✔️- This icon desperately needs padding -- https://puu.sh/HVrXh/c100462e84.png
 - I think the tick should be filled white for clarity -- https://puu.sh/HVrXz/dc18641acf.png
 ✔️ - A bunch of your promo videos seems to have a weird yellow overlay/filter. Doesn't really fit the aesthetic imo -- https://puu.sh/HVrZT/53d38aa84d.png
 

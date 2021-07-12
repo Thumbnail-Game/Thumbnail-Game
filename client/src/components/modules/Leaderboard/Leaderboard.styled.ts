@@ -85,7 +85,7 @@ export const InfoWrapper = styled.div`
   }
 
   @media (max-width: 600px) {
-    height: 450px;
+    height: 870px;
     margin-bottom: 15px;
   }
 

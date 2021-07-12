@@ -8,7 +8,8 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   margin: auto;
   border-radius: 15px;
-  box-shadow: 0px 0px 12px #181818;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   background-color: ${(props) => props.theme.profileBackground};
 
   @media (max-width: 510px) {
@@ -38,9 +39,9 @@ export const Name = styled.div`
 `
 
 export const AccountCreatedDate = styled.div`
-  font-family: 'Gothic Bold';
+  font-family: 'Helvetica';
   font-size: 20px;
-  margin-bottom:125px;
+  margin-bottom: 125px;
 `
 
 export const MiddleContainer = styled.div`
@@ -57,11 +58,6 @@ export const MiddleContainer = styled.div`
   }
 `
 
-export const PercentileTitle = styled.div`
-  font-family: Gothic Bold;
-  font-size: 20px;
-`
-
 interface PercentileProps {
   isAbove50: boolean
 }
@@ -73,8 +69,9 @@ export const Percentile = styled.div<PercentileProps>`
 `
 
 export const PercentileLabel = styled.div`
-  font-family: Gothic Bold;
-  font-size: 20px;
+  font-family: 'Helvetica';
+  font-size: 22px;
+  margin-left: 2px;
 `
 
 export const RightContainer = styled.div`
@@ -95,7 +92,7 @@ export const LevelText = styled.div`
 export const PercentText = styled.div`
   align-self: flex-end;
   margin-top: 5px;
-  font-family: 'Gothic Bold';
+  font-family: Gothic Bold;
 `
 
 export const LevelContainer = styled.div`

@@ -134,17 +134,16 @@ export const VideoTitle = styled.div`
 `
 
 export const VideoViews = styled.div`
-  margin-top: 10px;
   text-align: left;
-  font-family: 'Gothic Bold';
-  font-size: 33px;
+  font-family: 'Helvetica';
+  font-size: 32px;
 `
 
 export const ViewSpan = styled.span`
   margin-top: 12px;
   text-align: left;
-  font-family: 'Gothic Bold';
-  font-size: 28px;
+  font-family: 'Helvetica';
+  font-size: 32px;
 `
 
 export const PlayButtonHoverOut = keyframes`
@@ -340,6 +339,7 @@ export const TimeIcon = styled(MdTimerOff)`
   background-color: #fa6565;
   border-radius: 50%;
   position: absolute;
+  padding: 5px;
   z-index: 5;
   top: 60px;
   filter: drop-shadow(0px 0px 19px #222222);

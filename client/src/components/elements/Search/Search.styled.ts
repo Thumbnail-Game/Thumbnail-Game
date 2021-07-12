@@ -8,6 +8,7 @@ export const SearchContainer = styled.div`
   margin: auto;
   height: 100%;
   overflow-y: scroll;
+  margin-top: 31px;
 
   &::-webkit-scrollbar {
     width: 9px;
@@ -24,9 +25,14 @@ export const SearchContainer = styled.div`
     background: none;
     border-radius: 10px;
   }
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 `
 
 export const Input = styled.input`
+  margin-top: 20px;
   padding-top: 14px;
   padding-bottom: 17px;
   padding-left: 25px;
@@ -36,7 +42,6 @@ export const Input = styled.input`
   border-radius: 39px;
   font-family: 'Gothic Bold';
   font-size: 16px;
-  margin: auto;
   color: ${(props) => props.theme.primaryText};
   background-color: ${(props) => props.theme.scoreBackground};
 
@@ -44,18 +49,21 @@ export const Input = styled.input`
     margin-right: 25px;
     cursor: pointer;
   }
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 `
 
 export const UserContainer = styled.div`
   display: flex;
   align-items: center;
-  padding-left: 20px;
-  padding-right: 10px;
-  width: 90%;
-  height: 55px;
+  padding-left: 5%;
+  padding-right: 3%;
+  width: 91%;
+  height: 50px;
   margin: auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
   border-radius: 10px;
   cursor: pointer;
   background-color: ${(props) => props.theme.scoreBackground};

@@ -5,7 +5,8 @@ export const Wrapper = styled.div`
   height: 540px;
   text-align: left;
   border-radius: 15px;
-  box-shadow: 0px 0px 12px #181818;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   background-color: ${(props) => props.theme.profileBackground};
 
   @media (max-width: 710px) {
@@ -30,7 +31,7 @@ export const Label = styled.div`
   justify-content: space-between;
 `
 
-export const Component = styled.div`
+export const DateScoreHeading = styled.div`
   font-family: 'Gothic Bold';
   font-size: 20px;
 `
@@ -60,13 +61,13 @@ export const DateScoreContainer = styled.div`
 `
 
 export const DateString = styled.div`
-  font-family: 'Gothic Bold';
+  font-family: 'Helvetica';
   font-size: 20px;
   margin-left: 22px;
 `
 
 export const EachPlay = styled.div`
-  font-family: 'Gothic Bold';
+  font-family: 'Helvetica';
   font-size: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
