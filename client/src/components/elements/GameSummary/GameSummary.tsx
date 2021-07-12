@@ -174,9 +174,9 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
           </Carousel>
         </Styled.CarouselContainer>
         <Styled.ButtonContainer>
-          <Styled.PlayAgainButton onClick={() => reset(true)}>
+          <Styled.BackToMenuButton onClick={() => reset(true)}>
             Back to menu
-          </Styled.PlayAgainButton>
+          </Styled.BackToMenuButton>
           <Styled.PlayAgainButton
             onClick={() => {
               reset(false)

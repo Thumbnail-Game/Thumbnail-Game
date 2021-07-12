@@ -9,7 +9,7 @@ Some thoughts:
 ❓ - The initial homepage load/flash/transition was really bad. The logo was practically full screen and one of the thumbnails was around 80% of the page. Consider using lazy loading and a null element (or loader).
 ❌ - I think the game options would look better vertically centered in their container (https://puu.sh/HVrRl/2e6957a4af.png)
 ✔️ - Why do you show score/highscore even when I'm not playing. Does it persist?
-- Maybe it's because of my retina display but I feel like everything is too "big". Text, elements etc.
+❌- Maybe it's because of my retina display but I feel like everything is too "big". Text, elements etc.
 ✔️- Consider a softer box shadow in these elements in light mode -- https://puu.sh/HVrSi/516181e2c4.png
 - When I hit settings/trophy sometimes the whole header moves/shakes or individual icons. Changing between light/dark mode also triggers a really weird effect on the header.
 ✔️- The dark mode toggle moon icon goes blue when toggling but very briefly (weird flash)

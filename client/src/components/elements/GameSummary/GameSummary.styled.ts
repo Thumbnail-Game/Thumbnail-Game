@@ -147,43 +147,40 @@ export const ViewSpan = styled.span`
   font-size: 32px;
 `
 
-export const PlayButtonHoverOut = keyframes`
+export const PlayButtonOut = keyframes`
     0%{
-      background-color:transparent;
-      color: white;
       transform:scale(1);
     } 
     100%{
-      background-color: white;
-      color: #282828;
-      transform:scale(1.07);
-    }
-`
-export const DarkPlayButtonOut = keyframes`
-    0%{
-      background-color:transparent;
-      color: white;
-      transform:scale(1);
-    } 
-    100%{
-      background-color: white;
-      color: #282828;
       transform:scale(1.07);
     }
 `
 
-export const LightPlayButtonOut = keyframes`
-    0%{
-      background-color:transparent;
-      color: #282828;
-      transform:scale(1);
-    } 
+export const BackToMenuButton = styled.button`
+  position: relative;
+  padding-bottom: 4px;
+  margin-bottom: -30px;
+  border: 3.5px solid red;
+  width: 200px;
+  height: 60px;
+  border-radius: 10px;
+  font-size: 25px;
+  font-family: 'Gothic Bold';
+  user-select: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  color: ${(props) => (props.theme.theme === 'light' ? 'red' : 'white')};
+  background-color: ${(props) => props.theme.background};
 
-    100%{
-      background-color:#282828;
-      color: white;
-      transform:scale(1.07);
-    }
+  &:hover {
+    animation-name: ${PlayButtonOut};
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
 `
 
 export const PlayAgainButton = styled.button`
@@ -192,9 +189,9 @@ export const PlayAgainButton = styled.button`
   width: 200px;
   height: 60px;
   border-radius: 10px;
-  border: 3.5px solid ${(props) => props.theme.primaryText};
-  background-color: transparent;
-  color: ${(props) => props.theme.primaryText};
+  border: 3.5px solid red;
+  background-color: red;
+  color: white;
   font-size: 25px;
   font-family: 'Gothic Bold';
   padding-bottom: 4px;
@@ -207,8 +204,7 @@ export const PlayAgainButton = styled.button`
   user-select: none;
 
   &:hover {
-    animation-name: ${(props) =>
-      props.theme.theme === 'dark' ? DarkPlayButtonOut : LightPlayButtonOut};
+    animation-name: ${PlayButtonOut};
     animation-duration: 300ms;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
