@@ -1,9 +1,13 @@
 import styled from 'styled-components'
 
-export const CountdownWrapper = styled.div`
+interface CountdownWrapperProps {
+  mobileShift: boolean
+}
+
+export const CountdownWrapper = styled.div<CountdownWrapperProps>`
   position: absolute;
   font-family: 'Gothic Bold';
-  font-size: 20px;
+  font-size: ${(props) => (props.mobileShift ? '36px' : '28px')};
   right: 25px;
   bottom: 25px;
 

@@ -128,7 +128,7 @@ export const VideoTitle = styled.div`
   margin-top: 12px;
   text-align: left;
   font-family: 'Gothic Bold';
-  font-size: 27px;
+  font-size: 25px;
   height: 66px;
   overflow: hidden;
 `
@@ -137,6 +137,7 @@ export const VideoViews = styled.div`
   text-align: left;
   font-family: 'Helvetica';
   font-size: 32px;
+  margin-top: 10px;
 `
 
 export const ViewSpan = styled.span`
