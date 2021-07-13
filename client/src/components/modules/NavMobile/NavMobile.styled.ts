@@ -21,6 +21,7 @@ export const SignInUp = styled.div`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  color: ${(props) => props.theme.primaryText};
 `
 
 export const SignInUpHover2 = styled.div`
@@ -37,9 +38,9 @@ export const SignInUpHover2 = styled.div`
 export const Nav = styled.div`
   width: 100%;
   height: 110px;
-  background-color: ${(props) => props.theme.navBackground};
   position: relative;
   z-index: 2;
+  background-color: ${(props) => props.theme.navBackground};
 
   @media (max-width: 760px) {
     height: 140px;
@@ -97,6 +98,7 @@ export const IconContainer = styled.div`
   position: relative;
 `
 export const SignOutButton = styled.div`
+  zIndex 2;
   font-family: 'Gothic Bold';
   font-size: 20px;
   margin-top: -2px;
@@ -108,6 +110,7 @@ export const SignOutButton = styled.div`
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
+color: ${(props) => props.theme.primaryText};
 `
 
 export const DrawerWrapper = styled.div`

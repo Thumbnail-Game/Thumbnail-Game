@@ -111,6 +111,7 @@ export const NavMobile: React.FC<NavMobileProps> = ({
             <>
               <Styled.IconContainer>
                 <Styled.PersonIcon
+                  color={themeMode === 'light' ? '#282828' : 'white'}
                   size={30}
                   onClick={() =>
                     router.replace(
@@ -122,7 +123,6 @@ export const NavMobile: React.FC<NavMobileProps> = ({
                 />
               </Styled.IconContainer>
               <Styled.SignOutButton
-                style={{ zIndex: 2 }}
                 onClick={() => {
                   auth.signOut().catch((error) => {
                     console.log(error)
