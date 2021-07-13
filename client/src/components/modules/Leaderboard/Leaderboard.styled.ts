@@ -1,15 +1,7 @@
 import styled, { keyframes } from 'styled-components'
+import { PopupIntro } from '../../../styles/constantStyles'
 
-const LeaderboardIntro = keyframes`
-  0%{
-    top:-1000px;
-  }
-  100%{
-    top:20px;
-  }
-`
-
-export const Wrapper = styled.div`
+export const LeaderboardWrapper = styled.div`
   position: absolute;
   display: flex;
   justify-content: space-around;
@@ -24,7 +16,7 @@ export const Wrapper = styled.div`
   border-radius: 15px;
   background-color: ${(props) => props.theme.profileBackground};
 
-  animation-name: ${LeaderboardIntro};
+  animation-name: ${PopupIntro};
   animation-duration: 300ms;
   animation-fill-mode: forwards;
 
@@ -39,17 +31,6 @@ export const Wrapper = styled.div`
     width: 98%;
     height: 800px;
   }
-`
-
-export const Background = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
-  opacity: 0.6;
-  background-color: #111111;
 `
 
 export const Leaderboard = styled.div`

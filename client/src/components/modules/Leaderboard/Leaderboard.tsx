@@ -4,6 +4,10 @@ import Moment from 'react-moment'
 import Skeleton from '@material-ui/lab/Skeleton'
 
 import {
+  PopupBackground,
+  PopupTransparentBackground,
+} from '../../../styles/constantStyles'
+import {
   useGetUsersQuery,
   useGetUserHighscoresQuery,
 } from '../../../generated/graphql'
@@ -109,7 +113,7 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
 
   return (
     <>
-      <Styled.Wrapper>
+      <Styled.LeaderboardWrapper>
         <Styled.Leaderboard>
           <Styled.LabelContainer>
             <Styled.Label>Leaderboard</Styled.Label>
@@ -158,8 +162,8 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
             animation="wave"
           />
         )}
-      </Styled.Wrapper>
-      <Styled.Background onClick={toggleLeaderboard} />
+      </Styled.LeaderboardWrapper>
+      <PopupTransparentBackground onClick={toggleLeaderboard} />
     </>
   )
 }

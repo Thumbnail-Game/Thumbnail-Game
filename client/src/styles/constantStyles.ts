@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import Image from 'next/image'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import { Grid } from '@material-ui/core'
@@ -94,7 +94,7 @@ export const FormContainer = styled.div`
 
 export const BackButton = styled(IoMdArrowRoundBack)`
   position: absolute;
-  padding:16px;
+  padding: 16px;
   margin: auto;
   bottom: -180px;
   left: 0;
@@ -127,3 +127,43 @@ export const BackButton = styled(IoMdArrowRoundBack)`
 `
 
 export const Logo = styled(Image)``
+
+export const PopupIntro = keyframes`
+  0%{
+    top:-1000px;
+  }
+  100%{
+    top:20px;
+  }
+`
+
+export const PopupBackground = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  top: 20px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  width: 1120px;
+  height: 700px;
+  border-radius: 15px;
+  background-color: ${(props) => props.theme.profileBackground};
+
+  animation-name: ${PopupIntro};
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+`
+
+export const PopupTransparentBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  opacity: 0.6;
+  background-color: #111111;
+`
