@@ -8,7 +8,7 @@ import { useMediaQuery } from '../../../hooks/useMediaQuery'
 import { ThemeContext } from '../../../providers/AppProvider'
 import { HeaderText } from '../../../styles/constantStyles'
 import { PlayIcon } from '../PlayIcon/PlayIcon'
-import { FeedbackFooter } from '../index'
+import { Footer } from '../index'
 import * as Styled from './GameSummary.styled'
 
 interface GameSummaryProps {
@@ -186,7 +186,7 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
           </Styled.PlayAgainButton>
         </Styled.ButtonContainer>
       </Styled.GameSummaryWrapper>
-      <FeedbackFooter />
+      <Footer />
     </>
   )
 }

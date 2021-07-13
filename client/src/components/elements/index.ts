@@ -12,5 +12,5 @@ export { TestThumbnailsExists } from './TestThumbnailExists/TestThumbnailsExists
 export { Search } from './Search/Search'
 export { SelectGamemode } from './SelectGamemode/SelectGamemode'
 export { Timer } from './Timer/Timer'
-export { FeedbackFooter } from './FeedbackFooter/FeedbackFooter'
+export { Footer } from './Footer/Footer'
 export { TotalGamesHeading } from './TotalGamesHeading/TotalGamesHeading'

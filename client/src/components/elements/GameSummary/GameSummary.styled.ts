@@ -225,6 +225,10 @@ export const ButtonContainer = styled.div`
     margin-bottom: 30px;
     transform: scale(1.2);
   }
+
+  @media (max-height: 975px) {
+    margin-top: 10px;
+  }
 `
 
 export const RightButton = styled.button`

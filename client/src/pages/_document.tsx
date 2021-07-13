@@ -16,12 +16,6 @@ export default class MyDocument extends Document {
             name="description"
             content="Play with your friends and pick which thumbnail has more views!"
           />
-          <link
-            rel="preload"
-            href="/fonts/gothicb.ttf"
-            as="font"
-            crossOrigin=""
-          />
         </Head>
         <body>
           <Main />

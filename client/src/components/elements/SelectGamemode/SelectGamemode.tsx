@@ -1,7 +1,7 @@
 import { useContext, Dispatch, SetStateAction } from 'react'
 
 import { ThemeContext } from '../../../providers/AppProvider'
-import { FeedbackFooter } from '../index'
+import { Footer } from '../index'
 import * as Styled from './SelectGamemode.styled'
 
 interface SelectGamemodeProps {
@@ -31,7 +31,7 @@ export const SelectGamemode: React.FC<SelectGamemodeProps> = ({
           </Styled.Description>
         </Styled.GamemodeContainer>
       </Styled.Wrapper>
-      <FeedbackFooter />
+      <Footer />
     </>
   )
 }
