@@ -155,6 +155,10 @@ export const PopupBackground = styled.div`
   animation-name: ${PopupIntro};
   animation-duration: 300ms;
   animation-fill-mode: forwards;
+
+  @media (max-width: 580px) {
+    width: 98%;
+  }
 `
 
 export const PopupTransparentBackground = styled.div`
