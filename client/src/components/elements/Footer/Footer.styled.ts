@@ -43,7 +43,15 @@ export const FooterContainer = styled.div`
     display: none;
   }
 
-  @media (max-height: 570px) and (min-width: 1240px) {
+  @media (max-height: 570px) and (min-width: 1195px) {
+    display: none;
+  }
+
+  @media (max-height: 470px) and (max-width: 1000px) {
+    display: none;
+  }
+
+  @media (max-width: 760px) {
     display: none;
   }
 `
