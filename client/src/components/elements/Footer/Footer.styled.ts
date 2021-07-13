@@ -47,7 +47,7 @@ export const FooterContainer = styled.div`
     display: none;
   }
 
-  @media (max-height: 470px) and (max-width: 1000px) {
+  @media (max-height: 570px) and (max-width: 1195px) {
     display: none;
   }
 
