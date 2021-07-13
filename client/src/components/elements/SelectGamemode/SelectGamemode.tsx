@@ -1,7 +1,7 @@
 import { useContext, Dispatch, SetStateAction } from 'react'
 
 import { ThemeContext } from '../../../providers/AppProvider'
-import { Footer } from '../index'
+import { Footer } from '../../modules/index'
 import * as Styled from './SelectGamemode.styled'
 
 interface SelectGamemodeProps {

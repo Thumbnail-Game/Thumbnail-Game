@@ -3,7 +3,10 @@ import { IoIosCheckmarkCircle } from 'react-icons/io'
 import { MdCancel, MdTimerOff } from 'react-icons/md'
 import styled, { keyframes } from 'styled-components'
 
-import { PlayIcon, PlayIconAnimation } from '../PlayIcon/PlayIcon.styled'
+import {
+  PlayIcon,
+  PlayIconAnimation,
+} from '../../elements/PlayIcon/PlayIcon.styled'
 
 export const SummaryAnimation = keyframes`
     0% {

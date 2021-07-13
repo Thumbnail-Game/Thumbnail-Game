@@ -63,6 +63,11 @@ export const FooterLinks = styled.div`
   width: 33%;
 `
 
+export const LinkText = styled.a`
+  text-decoration: none;
+  color: ${(props) => props.theme.primaryText};
+`
+
 export const FooterIconContainer = styled.div`
   display: flex;
   padding: 15px;

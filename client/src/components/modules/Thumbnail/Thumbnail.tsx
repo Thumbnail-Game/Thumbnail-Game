@@ -9,10 +9,14 @@ import {
   useInvalidateMutation,
   useAddGameMutation,
 } from '../../../generated/graphql'
-import { AnimatedViewText, GameSummary, Timer } from '../../elements/index'
-import { LoseWinAnimation } from '../../elements/LoseWinAnimation/LoseWinAnimation'
+import {
+  PlayIcon,
+  AnimatedViewText,
+  Timer,
+  LoseWinAnimation,
+} from '../../elements/index'
+import { GameSummary } from '../index'
 import { HeaderText } from '../../../styles/constantStyles'
-import { PlayIcon } from '../../elements/PlayIcon/PlayIcon'
 import { useMediaQuery } from '../../../hooks/useMediaQuery'
 import * as Styled from './Thumbnail.styled'
 

@@ -7,7 +7,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { useMediaQuery } from '../../../hooks/useMediaQuery'
 import { ThemeContext } from '../../../providers/AppProvider'
 import { HeaderText } from '../../../styles/constantStyles'
-import { PlayIcon } from '../PlayIcon/PlayIcon'
+import { PlayIcon } from '../../elements/index'
 import { Footer } from '../index'
 import * as Styled from './GameSummary.styled'
 
