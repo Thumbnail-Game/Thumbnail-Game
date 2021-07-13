@@ -32,4 +32,3 @@ Anyway, just my two cents. See if any of this is helpful :)"
 flag to conditionally render the landing page
 - Still need to add a timer popup animation at 3 seconds?
 - Fix all jittery things
--Fix colors on mobile
