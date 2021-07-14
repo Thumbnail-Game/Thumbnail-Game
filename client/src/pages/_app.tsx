@@ -1,11 +1,8 @@
-import Head from 'next/head'
-import { NextPage } from 'next'
 import { useEffect } from 'react'
+import Head from 'next/head'
 import type { AppProps } from 'next/app'
-import { withUrqlClient } from 'next-urql'
 
 import { AppProvider } from '../providers/AppProvider'
-import { createUrqlClient } from '../util'
 import { analytics } from '../config/firebaseConfig'
 
 import './bodyStyle.css'
@@ -30,7 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>The Youtube Thumbnail Game</title>
+        <title>The YouTube Thumbnail Game</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
