@@ -82,11 +82,18 @@ export const PlayerInfoContainer = styled.div`
 `
 
 export const Rank = styled.div`
-  width: 35px;
+  position: absolute;
+  left: 0;
+  z-index: 20;
+  width: 50px;
+  margin-top: 15px;
+  text-align: center;
 `
 
 export const PlayerInfo = styled.div`
   display: flex;
+  position: relative;
+  left: 10px;
   align-items: center;
   height: 50px;
   margin: auto;
@@ -123,7 +130,7 @@ export const Date = styled.div`
 `
 
 export const LabelContainer = styled.div`
-  width: 97%;
+  width: 95%;
   margin: auto;
   margin-top: 15px;
 `
