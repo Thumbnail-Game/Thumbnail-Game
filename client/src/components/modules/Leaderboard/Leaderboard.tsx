@@ -126,24 +126,27 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
           <Styled.InfoWrapper>
             {!users.fetching && leaderboardUsers
               ? leaderboardUsers.map((user: LeaderboardUser, i) => (
-                  <Styled.PlayerInfo
-                    onClick={() => router.push(`/user/${user.displayName}`)}
-                    key={i}
-                  >
-                    {user.displayName && (
-                      <Styled.Username>
-                        {user.displayName.length > 18
-                          ? user.displayName.slice(0, 18) + '...'
-                          : user.displayName}
-                      </Styled.Username>
-                    )}
-                    <Styled.Highscore>{user.topScore}</Styled.Highscore>
-                    <Styled.Date>
-                      <Moment format="MM/DD/YYYY" interval={0}>
-                        {user.scoreDate}
-                      </Moment>
-                    </Styled.Date>
-                  </Styled.PlayerInfo>
+                  <Styled.PlayerInfoContainer>
+                    <Styled.Rank>#{i + 1}</Styled.Rank>
+                    <Styled.PlayerInfo
+                      onClick={() => router.push(`/user/${user.displayName}`)}
+                      key={i}
+                    >
+                      {user.displayName && (
+                        <Styled.Username>
+                          {user.displayName.length > 18
+                            ? user.displayName.slice(0, 18) + '...'
+                            : user.displayName}
+                        </Styled.Username>
+                      )}
+                      <Styled.Highscore>{user.topScore}</Styled.Highscore>
+                      <Styled.Date>
+                        <Moment format="MM/DD/YYYY" interval={0}>
+                          {user.scoreDate}
+                        </Moment>
+                      </Styled.Date>
+                    </Styled.PlayerInfo>
+                  </Styled.PlayerInfoContainer>
                 ))
               : renderSkeletonLoaders()}
           </Styled.InfoWrapper>

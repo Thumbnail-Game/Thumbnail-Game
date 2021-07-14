@@ -76,6 +76,15 @@ export const InfoWrapper = styled.div`
   }
 `
 
+export const PlayerInfoContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+export const Rank = styled.div`
+  width: 35px;
+`
+
 export const PlayerInfo = styled.div`
   display: flex;
   align-items: center;
@@ -125,11 +134,13 @@ export const Label = styled.div`
 `
 
 export const ColumnNamesContainer = styled.div`
+  display: flex;
+  position: relative;
+  left: 10px;
   width: 95%;
   margin: auto;
   margin-top: 20px;
   height: 30px;
-  display: flex;
   justify-content: space-between;
   margin-bottom: -5px;
 `
