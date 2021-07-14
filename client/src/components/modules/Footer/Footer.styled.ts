@@ -85,8 +85,11 @@ export const FooterIconLabel = styled.span`
   font-size: 18px,
 `
 
-export const FeedbackText = styled.a`
+export const FeedbackTextContainer = styled.div`
   width: 33%;
+`
+
+export const FeedbackText = styled.a`
   font-size: 20px;
   font-weight: 500;
   text-decoration: none;
@@ -97,11 +100,30 @@ export const FeedbackText = styled.a`
   }
 `
 
-export const GithubVersion = styled.div`
+export const FooterVersionContainer = styled.div`
   display: flex;
   align-items: flex-start;
   width: 33%;
+`
+
+export const PrivacyPolicy = styled.a`
+  position: relative;
+  font-family: 'Helvetica'
+  font-size: 18px,
+  background-color: red;
+  padding: 15px;
   cursor: pointer;
+  text-decoration: none;
+  color: ${(props) => props.theme.primaryText};
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
+export const GithubVersion = styled.div`
+  cursor: pointer;
+  padding: 15px;
 
   &:hover {
     text-decoration: underline;

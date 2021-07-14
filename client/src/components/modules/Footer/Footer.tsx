@@ -35,16 +35,23 @@ export const Footer: React.FC = () => {
             </Styled.FooterIconContainer>
           </Styled.LinkText>
         </Styled.FooterLinks>
-        <Styled.FeedbackText
-          aria-label="form-link"
-          target="_blank"
-          href="https://docs.google.com/forms/d/e/1FAIpQLSf09pSMgbuJQfzOEDVXcvrQt3Z4W1xnpl38rqBRG01_qoWwYw/viewform?usp=sf_link"
-        >
-          Give us your feedback!
-        </Styled.FeedbackText>
-        <Styled.GithubVersion onClick={toggleShowingVersionLog}>
-          Version 1.0
-        </Styled.GithubVersion>
+        <Styled.FeedbackTextContainer>
+          <Styled.FeedbackText
+            aria-label="form-link"
+            target="_blank"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSf09pSMgbuJQfzOEDVXcvrQt3Z4W1xnpl38rqBRG01_qoWwYw/viewform?usp=sf_link"
+          >
+            Give us your feedback!
+          </Styled.FeedbackText>
+        </Styled.FeedbackTextContainer>
+        <Styled.FooterVersionContainer>
+          <Styled.PrivacyPolicy href="/privacyPolicy" target="_blank">
+            Privacy Policy
+          </Styled.PrivacyPolicy>
+          <Styled.GithubVersion onClick={toggleShowingVersionLog}>
+            Version 1.0
+          </Styled.GithubVersion>
+        </Styled.FooterVersionContainer>
       </Styled.FooterContainer>
       {showingVersionLog && (
         <VersionLog toggleShowingVersionLog={toggleShowingVersionLog} />

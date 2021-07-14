@@ -13,6 +13,12 @@ export const VersionTitle = styled.div`
   font-family: 'Gothic Bold';
 `
 
+export const VersionDate = styled.div`
+  font-family: 'Helvetica';
+  margin-top: 5px;
+  margin-left: 2px;
+`
+
 export const VersionDescription = styled.p`
   font-family: 'Helvetica';
   font-size: 20px;
