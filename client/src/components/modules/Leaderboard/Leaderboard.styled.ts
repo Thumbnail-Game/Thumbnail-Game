@@ -82,10 +82,8 @@ export const PlayerInfoContainer = styled.div`
 `
 
 export const Rank = styled.div`
-  position: absolute;
+  position: relative;
   left: 0;
-  z-index: 20;
-  width: 50px;
   margin-top: 12px;
   text-align: center;
 `
@@ -99,7 +97,7 @@ export const PlayerInfo = styled.div`
   margin: auto;
   margin-top: 10px;
   cursor: pointer;
-  width: 91%;
+  width: 85%;
   padding-left: 3%;
   padding-right: 3%;
   border-radius: 6px;
@@ -136,6 +134,8 @@ export const LabelContainer = styled.div`
 `
 
 export const Label = styled.div`
+  position: relative;
+  left: 42px;
   font-size: 35px;
   font-family: 'Gothic Bold';
 `
@@ -143,8 +143,8 @@ export const Label = styled.div`
 export const ColumnNamesContainer = styled.div`
   display: flex;
   position: relative;
-  left: 0px;
-  width: 95%;
+  left: 17px;
+  width: 91%;
   margin: auto;
   margin-top: 20px;
   height: 30px;
