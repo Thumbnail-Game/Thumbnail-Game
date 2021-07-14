@@ -143,7 +143,7 @@ export const Label = styled.div`
 export const ColumnNamesContainer = styled.div`
   display: flex;
   position: relative;
-  left: 10px;
+  left: 0px;
   width: 95%;
   margin: auto;
   margin-top: 20px;
