@@ -86,7 +86,7 @@ export const Rank = styled.div`
   left: 0;
   z-index: 20;
   width: 50px;
-  margin-top: 15px;
+  margin-top: 12px;
   text-align: center;
 `
 
