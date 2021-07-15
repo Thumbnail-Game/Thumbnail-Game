@@ -49,10 +49,6 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
   const [hiddenViews, setHiddenViews] = useState<boolean>(true)
   const [updatedVideos, setUpdatedVideos] = useState<GetTwoVideosQuery>()
   const [mostViewed, setMostViewed] = useState<string>()
-  const [videoWidth, setVideoWidth] = useState<number>(672)
-  const [videoHeight, setVideoHeight] = useState<number>(378)
-
-  const supportedWidth = useMediaQuery('(min-width: 360px)')
 
   //  keep track of videos already seen, do not want repeat, necessary for game end screen
   const [seenVideos, setSeenVideos] = useState<SeenVideos>([])
@@ -77,6 +73,9 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
   //  this mutation will invalidate the cache and cause useGetTwoVideosQuery to refetch
   const [, invalidateVideos] = useInvalidateMutation()
   const [, addGame] = useAddGameMutation()
+
+  const videoWidth = 672
+  const videoHeight = 378
 
   useEffect(() => {
     //  invalidate upon load incase user clicks off and reloads, need to refetch to prevent cheating
