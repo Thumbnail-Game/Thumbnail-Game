@@ -3,10 +3,7 @@ import { useRouter } from 'next/router'
 import Moment from 'react-moment'
 import Skeleton from '@material-ui/lab/Skeleton'
 
-import {
-  PopupBackground,
-  PopupTransparentBackground,
-} from '../../../styles/constantStyles'
+import { PopupTransparentBackground } from '../../../styles/constantStyles'
 import {
   useGetUsersQuery,
   useGetUserHighscoresQuery,
