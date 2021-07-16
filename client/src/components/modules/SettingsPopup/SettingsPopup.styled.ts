@@ -19,9 +19,10 @@ interface SettingsContainerProps {
 
 export const SettingsContainer = styled.div<SettingsContainerProps>`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   position: absolute;
-  height: 50px;
+  height: 90px;
   right: ${(props) => (props.signedIn ? '160px' : '185px')};
   top: 60px;
   width: 200px;
@@ -40,9 +41,15 @@ export const SettingsContainer = styled.div<SettingsContainerProps>`
       : 'drop-shadow(1px 1px 3px #444444);'};
 `
 
+export const ToggleContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+`
+
 export const ThemeLabel = styled.div`
   font-size: 18px;
-  margin: 13px 14px 0px 0px;
+  margin: 13px 14px 0px 15px;
   font-family: 'Gothic Bold';
   color: ${(props) => props.theme.primaryText};
 `

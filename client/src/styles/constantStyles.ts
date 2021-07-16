@@ -171,3 +171,10 @@ export const PopupTransparentBackground = styled.div`
   opacity: 0.6;
   background-color: #111111;
 `
+
+export const ToggleSwitchContainer = styled.div`
+  position: relative;
+  top: 12.5px;
+  left: 14px;
+  z-index: 1;
+`

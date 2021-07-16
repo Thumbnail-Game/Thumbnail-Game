@@ -5,6 +5,13 @@ import { GlobalStyles, theme } from '../styles/index'
 import { auth } from '../config/firebaseConfig'
 import { EmailVerificationAlert } from '../components/elements/EmailVerificationAlert/EmailVerificationAlert'
 
+export const SoundContext = createContext({
+  sound: 'false',
+  toggleSound: () => {
+    return
+  },
+})
+
 export const ThemeContext = createContext({
   themeMode: 'dark',
   toggleTheme: () => {
@@ -25,7 +32,10 @@ export const AppProvider: React.FC = ({ children }) => {
   const [themeMode, setThemeMode] = useState<string>('dark')
   const currentTheme = (theme as any)[themeMode]
 
+  const [sound, setSound] = useState<string>('false')
+
   const [signedIn, setSignedIn] = useState<boolean>(false)
+
   const [showEmailVerificationMessage, setShowEmailVerificationMessage] =
     useState<boolean>(false)
 
@@ -36,6 +46,14 @@ export const AppProvider: React.FC = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('theme', themeMode)
   }, [themeMode])
+
+  useEffect(() => {
+    setSound(localStorage.getItem('sound') || 'false')
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('sound', sound)
+  }, [sound])
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged((response: UserCallback) => {
@@ -78,20 +96,30 @@ export const AppProvider: React.FC = ({ children }) => {
     })
   }
 
+  const toggleSound = () => {
+    setSound((oldSound) => {
+      if (oldSound === 'true') return 'false'
+      else return 'true'
+    })
+  }
+
   //  combine into one object for global ThemeContext state
   const themeValue = useMemo(() => ({ themeMode, toggleTheme }), [themeMode])
+  const soundValue = useMemo(() => ({ sound, toggleSound }), [sound])
   const signedInValue = useMemo(() => ({ signedIn }), [signedIn])
   return (
     <ThemeContext.Provider value={themeValue}>
       <ThemeProvider theme={currentTheme}>
-        <SignedInContext.Provider value={signedInValue}>
-          <GlobalStyles />
-          {children}
-          <EmailVerificationAlert
-            showEmailVerificationMessage={showEmailVerificationMessage}
-            setShowEmailVerificationMessage={setShowVerificationMessage}
-          />
-        </SignedInContext.Provider>
+        <SoundContext.Provider value={soundValue}>
+          <SignedInContext.Provider value={signedInValue}>
+            <GlobalStyles />
+            {children}
+            <EmailVerificationAlert
+              showEmailVerificationMessage={showEmailVerificationMessage}
+              setShowEmailVerificationMessage={setShowVerificationMessage}
+            />
+          </SignedInContext.Provider>
+        </SoundContext.Provider>
       </ThemeProvider>
     </ThemeContext.Provider>
   )

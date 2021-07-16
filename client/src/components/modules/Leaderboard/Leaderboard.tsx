@@ -123,7 +123,7 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
           <Styled.InfoWrapper>
             {!users.fetching && leaderboardUsers
               ? leaderboardUsers.map((user: LeaderboardUser, i) => (
-                  <Styled.PlayerInfoContainer>
+                  <Styled.PlayerInfoContainer key={i}>
                     <Styled.Rank>#{i + 1}</Styled.Rank>
                     <Styled.PlayerInfo
                       onClick={() => router.push(`/user/${user.displayName}`)}

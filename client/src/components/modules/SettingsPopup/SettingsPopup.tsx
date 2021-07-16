@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 
 import { SignedInContext } from '../../../providers/AppProvider'
-import { ThemeToggle } from '../../elements/index'
+import { ThemeToggle, SoundToggle } from '../../elements/index'
 import * as Styled from './SettingsPopup.styled'
 
 interface SettingsPopupProps {
@@ -18,8 +18,14 @@ export const SettingsPopup: React.FC<SettingsPopupProps> = ({
       <Styled.TransparentBackground onClick={toggleShowingSettings} />
       <Styled.TriangleIcon size={50} signedIn={signedIn} />
       <Styled.SettingsContainer signedIn={signedIn}>
-        <ThemeToggle />
-        <Styled.ThemeLabel>Dark Mode</Styled.ThemeLabel>
+        <Styled.ToggleContainer>
+          <ThemeToggle />
+          <Styled.ThemeLabel>Dark Mode</Styled.ThemeLabel>
+        </Styled.ToggleContainer>
+        <Styled.ToggleContainer>
+          <SoundToggle />
+          <Styled.ThemeLabel>Sound On</Styled.ThemeLabel>
+        </Styled.ToggleContainer>
       </Styled.SettingsContainer>
     </>
   )

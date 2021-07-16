@@ -1,49 +1,49 @@
 import { useContext } from 'react'
-import { FaMoon, FaSun } from 'react-icons/fa'
+import { GoMute, GoUnmute } from 'react-icons/go'
 import Switch from 'react-switch'
 
-import { ThemeContext } from '../../../providers/AppProvider'
+import { SoundContext } from '../../../providers/AppProvider'
 import { ToggleSwitchContainer } from '../../../styles/constantStyles'
 
-export const ThemeToggle: React.FC = () => {
-  const { toggleTheme, themeMode } = useContext(ThemeContext)
+export const SoundToggle: React.FC = () => {
+  const { toggleSound, sound } = useContext(SoundContext)
 
   return (
     <ToggleSwitchContainer>
       <Switch
-        checked={themeMode === 'light' ? true : false}
+        checked={sound === 'true' ? true : false}
         height={25}
         width={60}
         handleDiameter={10}
         onColor={'#222222'}
         offColor={'#222222'}
         checkedIcon={
-          <FaSun
+          <GoMute
             style={{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
               height: '100%',
-              fontSize: 18,
+              fontSize: 20,
               paddingLeft: 5,
             }}
-            color={themeMode === 'light' ? '#ef8e38' : 'gray'}
+            color={'gray'}
           />
         }
         uncheckedIcon={
-          <FaMoon
+          <GoUnmute
             style={{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
               height: '100%',
-              fontSize: 18,
+              fontSize: 20,
               paddingLeft: 14,
             }}
-            color={themeMode === 'dark' ? 'yellow' : 'gray'}
+            color={'gray'}
           />
         }
-        onChange={toggleTheme}
+        onChange={toggleSound}
       />
     </ToggleSwitchContainer>
   )

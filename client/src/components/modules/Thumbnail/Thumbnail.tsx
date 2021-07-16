@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { Dispatch, SetStateAction } from 'react'
 
 import { auth } from '../../../config/firebaseConfig'
@@ -17,7 +17,8 @@ import {
 } from '../../elements/index'
 import { GameSummary } from '../index'
 import { HeaderText } from '../../../styles/constantStyles'
-import { useMediaQuery } from '../../../hooks/useMediaQuery'
+import { SoundContext } from '../../../providers/AppProvider'
+import { useAudio } from '../../../hooks/useAudio'
 import * as Styled from './Thumbnail.styled'
 
 export interface SeenVideos {
@@ -44,6 +45,9 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
   updateScore,
   setGamemode,
 }) => {
+  const { sound } = useContext(SoundContext)
+  const [, toggleAudio] = useAudio('/audio/correct.wav')
+
   const [isPlaying, setIsPlaying] = useState<boolean>(true)
   const [hasPicked, setHasPicked] = useState<boolean>(false)
   const [hiddenViews, setHiddenViews] = useState<boolean>(true)
@@ -183,11 +187,17 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
   }
 
   const handleThumbnailClick = async (index: number) => {
+    //  correct answer
     if (
       (index === 0 && mostViewed === 'video1') ||
       (index === 1 && mostViewed === 'video2')
     ) {
+      if (sound === 'true') {
+        toggleAudio()
+      }
       updateScore('increment')
+
+      //  wrong answer
     } else {
       if (Array.isArray(seenVideos)) {
         seenVideos[seenVideos.length - 1].isLoss = true
