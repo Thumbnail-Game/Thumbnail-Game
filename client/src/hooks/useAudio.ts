@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 
 export const useAudio = (url: string) => {
   const [audio] = useState(new Audio(url))
+  audio.crossOrigin = 'anonymous'
+
   const [playing, setPlaying] = useState(false)
 
   useEffect(() => {
