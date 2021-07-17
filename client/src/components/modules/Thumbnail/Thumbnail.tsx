@@ -290,6 +290,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
                 </Styled.ArrowHover>
                 <Styled.Filler />
               </Styled.Button>
+              <Styled.FillerDiv />
             </div>
           )}
         </Styled.TotalWrapper>

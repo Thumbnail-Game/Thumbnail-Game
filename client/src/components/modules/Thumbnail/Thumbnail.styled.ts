@@ -44,7 +44,6 @@ export const TotalWrapper = styled.div<TotalWrapperProps>`
   @media (max-width: 380px) {
     zoom: 0.9;
   }
-
 `
 
 export const VideoText = styled.div`
@@ -93,8 +92,6 @@ export const VideoContainer = styled.div<VideoContainerProps>`
       animation-duration: 500ms;
       animation-fill-mode: forwards;
     `}
-
-
 `
 
 export const VideoImage = styled(Image)`
@@ -336,6 +333,7 @@ export const Button = styled.button`
 export const Filler = styled.div`
   width: 94px;
   height: 94px;
+  z-index: 5;
   border-radius: 50%;
   position: absolute;
   top: -2px;
@@ -364,6 +362,7 @@ export const Filler = styled.div`
 export const RightArrow = styled(BiRightArrowAlt)`
   margin-top: 2px;
   margin-left: -1.5px;
+  z-index: 2;
 `
 
 export const LoseIcon = styled(MdCancel)`
@@ -458,3 +457,8 @@ export const ShadeOut2 = styled.div`
 `
 
 export const LinearLoader = styled(LinearProgress)``
+
+//  fixes the issue with cutoff arrow
+export const FillerDiv = styled.div`
+  height: 5px;
+`
