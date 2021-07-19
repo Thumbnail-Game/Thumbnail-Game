@@ -13,7 +13,7 @@ export const HomeVideoThumbnail: React.FC<Home3DProps> = ({ video }) => {
   return (
     <Styled.VideoWrapper>
       <Styled.VideoThumbnail>
-        <Image
+        <img
           src={video.thumbnail}
           alt={video.title}
           width={320}
