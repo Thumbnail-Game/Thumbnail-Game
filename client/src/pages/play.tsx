@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react'
 import { NextPage } from 'next'
-import { Head } from 'next/document'
+import { Html, Head } from 'next/document'
 import { withUrqlClient } from 'next-urql'
 
 import { SignedInContext } from '../providers/AppProvider'
@@ -33,17 +33,6 @@ const Play: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta
-          httpEquiv="Content-Security-Policy"
-          content="upgrade-insecure-requests"
-        />
-        <meta
-          name="description"
-          content="Play with your friends and pick which thumbnail has more views!"
-        />
-      </Head>
       <div id="playContainer">
         <Nav signedIn={signedIn} />
         {gamemode ? (
