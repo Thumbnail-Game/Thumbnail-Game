@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react'
 import { NextPage } from 'next'
+import { Head } from 'next/document'
 import { withUrqlClient } from 'next-urql'
 
 import { SignedInContext } from '../providers/AppProvider'
@@ -11,6 +12,7 @@ import {
   // MobileNotSupported,
   // TestThumbnailsExists,
 } from '../components/elements/index'
+import React from 'react'
 
 const Play: NextPage = () => {
   const [gamemode, setGamemode] = useState<string | null>()
@@ -30,23 +32,36 @@ const Play: NextPage = () => {
   }
 
   return (
-    <div id="playContainer">
-      <Nav signedIn={signedIn} />
-      {gamemode ? (
-        <>
-          <Score score={score} />
-          <Thumbnail
-            gamemode={gamemode}
-            score={score}
-            updateScore={updateScore}
-            setGamemode={setGamemode}
-          />
-        </>
-      ) : (
-        <SelectGamemode setGamemode={setGamemode} />
-      )}
-      {/* <TestThumbnailsExists /> */}
-    </div>
+    <>
+      <Head>
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        />
+        <meta
+          name="description"
+          content="Play with your friends and pick which thumbnail has more views!"
+        />
+      </Head>
+      <div id="playContainer">
+        <Nav signedIn={signedIn} />
+        {gamemode ? (
+          <>
+            <Score score={score} />
+            <Thumbnail
+              gamemode={gamemode}
+              score={score}
+              updateScore={updateScore}
+              setGamemode={setGamemode}
+            />
+          </>
+        ) : (
+          <SelectGamemode setGamemode={setGamemode} />
+        )}
+        {/* <TestThumbnailsExists /> */}
+      </div>
+    </>
   )
 }
 
