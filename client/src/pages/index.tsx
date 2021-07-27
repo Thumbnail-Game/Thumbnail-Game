@@ -1,6 +1,7 @@
 import { NextPage } from 'next'
 import { withUrqlClient } from 'next-urql'
 import { useRouter } from 'next/router'
+import { NextSeo } from 'next-seo'
 import styled, { keyframes } from 'styled-components'
 
 import { createUrqlClient } from '../util/index'
@@ -11,6 +12,28 @@ const Home: NextPage = () => {
 
   return (
     <>
+      <NextSeo
+        title="The YouTube Thumbnail Game"
+        description="Play with your friends and pick which thumbnail has more views!"
+        canonical="https://www.thumbnailgame.com/"
+        openGraph={{
+          url: 'https://www.thumbnailgame.com/',
+          title: 'The YouTube Thumbnail Game',
+          description:
+            'Play with your friends and pick which thumbnail has more views!',
+          images: [
+            {
+              url: 'https://storage.googleapis.com/thumbnail-game/homepage.png',
+              alt: 'Play Page Image Alt',
+            },
+          ],
+          site_name: 'The YouTube Thumbnail Game',
+        }}
+        twitter={{
+          handle: '@ThumbnailGame',
+          cardType: 'summary_large_image',
+        }}
+      />
       <HomeDisplay showLogo={true} />
       <PlayButton onClick={() => router.push('/play')}>Play</PlayButton>
     </>
