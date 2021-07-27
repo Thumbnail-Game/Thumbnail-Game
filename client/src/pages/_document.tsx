@@ -7,11 +7,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-          <meta
-            httpEquiv="Content-Security-Policy"
-            content="upgrade-insecure-requests"
-          />
           <meta
             name="description"
             content="Play with your friends and pick which thumbnail has more views!"

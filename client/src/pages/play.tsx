@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 import { NextPage } from 'next'
-import { Html, Head } from 'next/document'
 import { withUrqlClient } from 'next-urql'
+import { NextSeo } from 'next-seo'
 
 import { SignedInContext } from '../providers/AppProvider'
 import { createUrqlClient } from '../util/index'
@@ -33,6 +33,39 @@ const Play: NextPage = () => {
 
   return (
     <>
+      <NextSeo
+        title="The YouTube Thumbnail Game"
+        description="Play with your friends and pick which thumbnail has more views!"
+        canonical="https://www.thumbnailgame.com/"
+        openGraph={{
+          //url: 'https://www.url.ie/a',
+          title: 'The YouTube Thumbnail Game',
+          description:
+            'Play with your friends and pick which thumbnail has more views!',
+          // images: [
+          //   {
+          //     url: 'https://www.example.ie/og-image-01.jpg',
+          //     width: 800,
+          //     height: 600,
+          //     alt: 'Og Image Alt',
+          //   },
+          //   {
+          //     url: 'https://www.example.ie/og-image-02.jpg',
+          //     width: 900,
+          //     height: 800,
+          //     alt: 'Og Image Alt Second',
+          //   },
+          //   { url: 'https://www.example.ie/og-image-03.jpg' },
+          //   { url: 'https://www.example.ie/og-image-04.jpg' },
+          // ],
+          site_name: 'The YouTube Thumbnail Game',
+        }}
+        // twitter={{
+        //   handle: '@handle',
+        //   site: '@site',
+        //   cardType: 'summary_large_image',
+        // }}
+      />
       <div id="playContainer">
         <Nav signedIn={signedIn} />
         {gamemode ? (
