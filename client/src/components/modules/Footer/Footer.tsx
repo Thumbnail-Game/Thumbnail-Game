@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { FaDiscord, FaGithub } from 'react-icons/fa'
+import { FiCoffee } from 'react-icons/fi'
 
 import { VersionLog } from '../../elements/index'
 import * as Styled from './Footer.styled'
@@ -32,6 +33,16 @@ export const Footer: React.FC = () => {
             <Styled.FooterIconContainer>
               <FaGithub size={20} />
               <Styled.FooterIconLabel>GitHub</Styled.FooterIconLabel>
+            </Styled.FooterIconContainer>
+          </Styled.LinkText>
+          <Styled.LinkText
+            href="https://www.buymeacoffee.com/thumbnailgame1"
+            target="_blank"
+            aria-label="buy-me-a-coffee"
+          >
+            <Styled.FooterIconContainer>
+              <FiCoffee size={20} />
+              <Styled.FooterIconLabel>Buy me a coffee</Styled.FooterIconLabel>
             </Styled.FooterIconContainer>
           </Styled.LinkText>
         </Styled.FooterLinks>

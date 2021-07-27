@@ -59,7 +59,6 @@ export const FooterContainer = styled.div`
 export const FooterLinks = styled.div`
   display: flex;
   justify-content: flex-end;
-  text-align: center;
   width: 33%;
 `
 

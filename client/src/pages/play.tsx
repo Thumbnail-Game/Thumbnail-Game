@@ -5,7 +5,7 @@ import { NextSeo } from 'next-seo'
 
 import { SignedInContext } from '../providers/AppProvider'
 import { createUrqlClient } from '../util/index'
-import { SelectGamemode } from '../components/elements/index'
+import { SelectGamemode, AdBanner } from '../components/elements/index'
 import { Nav, Thumbnail } from '../components/modules/index'
 import {
   Score,
@@ -71,6 +71,7 @@ const Play: NextPage = () => {
           <SelectGamemode setGamemode={setGamemode} />
         )}
         {/* <TestThumbnailsExists /> */}
+        {/* <AdBanner /> */}
       </div>
     </>
   )

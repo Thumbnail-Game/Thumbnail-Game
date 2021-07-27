@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 import * as Styled from './HomeVideoThumbnail.styled'
 
 interface Home3DProps {
