@@ -24,7 +24,7 @@ export const AdBanner = () => {
         left: 0,
         zIndex: 5,
       }}
-      data-adtest="on"
+      data-ad-client="ca-pub-6724421299859990"
       data-ad-slot="8296324938"
     />
   )
