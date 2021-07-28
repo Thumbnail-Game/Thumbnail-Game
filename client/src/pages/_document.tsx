@@ -12,6 +12,7 @@ export default class MyDocument extends Document {
             content="Play with your friends and pick which thumbnail has more views!"
           />
           <script
+            data-ad-client="ca-pub-6724421299859990"
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6724421299859990"
           ></script>
