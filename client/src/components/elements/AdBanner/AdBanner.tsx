@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 export const AdBanner = () => {
   useEffect(() => {
     try {
-      ;((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
+      ; ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
         {}
       )
     } catch (err) {
@@ -21,7 +21,7 @@ export const AdBanner = () => {
         left: 0,
         zIndex: 5,
       }}
-      data-ad-client="ca-pub-6724421299859990"
+      data-ad-client="ca-pub-9097293613189817"
       data-ad-slot="8296324938"
     />
   )

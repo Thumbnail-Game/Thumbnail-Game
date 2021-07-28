@@ -30,7 +30,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         type: 'postgres',
         url: process.env.DATABASE_URL,
         logging: true,
-        synchronize: false,
+        synchronize: true,
         entities: [index_1.UserAccount, index_1.Videos, index_1.Games],
         migrations: [path_1.default.join(__dirname, './migrations/*')],
         ssl: {

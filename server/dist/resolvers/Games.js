@@ -23,19 +23,52 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GamesResolver = void 0;
 const type_graphql_1 = require("type-graphql");
+const typeorm_1 = require("typeorm");
 const index_1 = require("../entities/index");
+let UserHighscoreResponse = class UserHighscoreResponse {
+};
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", Number)
+], UserHighscoreResponse.prototype, "userId", void 0);
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", Number)
+], UserHighscoreResponse.prototype, "highScore", void 0);
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", Date)
+], UserHighscoreResponse.prototype, "date", void 0);
+UserHighscoreResponse = __decorate([
+    type_graphql_1.ObjectType()
+], UserHighscoreResponse);
 let GamesResolver = class GamesResolver {
-    videos() {
-        const games = index_1.Games.find();
-        if (!games)
-            return null;
-        return games;
+    games() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const games = yield index_1.Games.find();
+            if (!games)
+                return null;
+            return games;
+        });
     }
-    addGame(userId, score) {
+    getTotalGames() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let numGames;
+            try {
+                const numGamesObj = yield typeorm_1.getConnection().query('SELECT COUNT(*) from games');
+                numGames = numGamesObj[0].count;
+            }
+            catch (err) {
+                console.log(err);
+            }
+            return numGames;
+        });
+    }
+    addGame(score, userId, gamemode) {
         return __awaiter(this, void 0, void 0, function* () {
             let game;
             try {
-                game = yield index_1.Games.create({ score, userId }).save();
+                game = yield index_1.Games.create({ score, userId, gamemode }).save();
             }
             catch (err) {
                 console.log(err);
@@ -54,8 +87,32 @@ let GamesResolver = class GamesResolver {
                 console.log(err);
                 return null;
             }
-            console.log(games);
             return games;
+        });
+    }
+    getUserHighscores(userIds) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const userHighScores = [];
+            for (const userId of userIds) {
+                let games;
+                try {
+                    games = yield index_1.Games.find({ userId });
+                }
+                catch (err) {
+                    console.log(err);
+                    continue;
+                }
+                let highScore = 0;
+                let date;
+                for (const game of games) {
+                    if (game.gamemode === 'timed' && game.score > highScore) {
+                        highScore = game.score;
+                        date = game.createdAt;
+                    }
+                }
+                userHighScores.push({ userId, highScore, date });
+            }
+            return userHighScores;
         });
     }
 };
@@ -63,14 +120,21 @@ __decorate([
     type_graphql_1.Query(() => [index_1.Games], { nullable: true }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], GamesResolver.prototype, "videos", null);
+    __metadata("design:returntype", Promise)
+], GamesResolver.prototype, "games", null);
+__decorate([
+    type_graphql_1.Query(() => type_graphql_1.Int, { nullable: true }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], GamesResolver.prototype, "getTotalGames", null);
 __decorate([
     type_graphql_1.Mutation(() => index_1.Games, { nullable: true }),
-    __param(0, type_graphql_1.Arg('userId', () => type_graphql_1.Int)),
-    __param(1, type_graphql_1.Arg('score', () => type_graphql_1.Int)),
+    __param(0, type_graphql_1.Arg('score', () => type_graphql_1.Int)),
+    __param(1, type_graphql_1.Arg('userId', () => type_graphql_1.Int, { nullable: true })),
+    __param(2, type_graphql_1.Arg('gamemode', () => String, { nullable: true })),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Number]),
+    __metadata("design:paramtypes", [Number, Object, String]),
     __metadata("design:returntype", Promise)
 ], GamesResolver.prototype, "addGame", null);
 __decorate([
@@ -80,6 +144,13 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], GamesResolver.prototype, "getGamesByUser", null);
+__decorate([
+    type_graphql_1.Query(() => [UserHighscoreResponse], { nullable: true }),
+    __param(0, type_graphql_1.Arg('userIds', () => [type_graphql_1.Int])),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Array]),
+    __metadata("design:returntype", Promise)
+], GamesResolver.prototype, "getUserHighscores", null);
 GamesResolver = __decorate([
     type_graphql_1.Resolver()
 ], GamesResolver);

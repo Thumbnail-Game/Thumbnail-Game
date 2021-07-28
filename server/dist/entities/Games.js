@@ -23,7 +23,7 @@ __decorate([
 __decorate([
     type_graphql_1.Field(() => UserAccount_1.UserAccount),
     typeorm_1.Column({ nullable: true }),
-    __metadata("design:type", Number)
+    __metadata("design:type", Object)
 ], Games.prototype, "userId", void 0);
 __decorate([
     type_graphql_1.Field(() => UserAccount_1.UserAccount),
@@ -36,6 +36,11 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", Number)
 ], Games.prototype, "score", void 0);
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    typeorm_1.Column({ nullable: true }),
+    __metadata("design:type", String)
+], Games.prototype, "gamemode", void 0);
 __decorate([
     type_graphql_1.Field(() => String),
     typeorm_1.CreateDateColumn(),

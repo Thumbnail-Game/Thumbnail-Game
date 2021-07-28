@@ -9,17 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.initDB1622442583130 = void 0;
-class initDB1622442583130 {
-    constructor() {
-        this.name = 'initDB1622442583130';
-    }
+exports.AddVideos1624247603040 = void 0;
+class AddVideos1624247603040 {
     up(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryRunner.query(`CREATE TABLE "user_account" ("id" SERIAL NOT NULL, "uid" character varying NOT NULL, "displayName" character varying NOT NULL, "email" character varying NOT NULL, "photoURL" character varying, "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_c090dc128643bf214643228c551" UNIQUE ("uid"), CONSTRAINT "UQ_6e9d316fcf48d0c44ed3d1ff912" UNIQUE ("displayName"), CONSTRAINT "UQ_56a0e4bcec2b5411beafa47ffa5" UNIQUE ("email"), CONSTRAINT "PK_6acfec7285fdf9f463462de3e9f" PRIMARY KEY ("id"))`);
-            yield queryRunner.query(`CREATE TABLE "games" ("id" SERIAL NOT NULL, "userId" integer, "score" integer NOT NULL, "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "PK_c9b16b62917b5595af982d66337" PRIMARY KEY ("id"))`);
-            yield queryRunner.query(`CREATE TABLE "videos" ("id" SERIAL NOT NULL, "title" character varying NOT NULL, "thumbnail" character varying NOT NULL, "views" bigint NOT NULL, "date_published" character varying NOT NULL, "channel_id" character varying NOT NULL, "url" character varying NOT NULL, CONSTRAINT "PK_e4c86c0cf95aff16e9fb8220f6b" PRIMARY KEY ("id"))`);
-            yield queryRunner.query(`ALTER TABLE "games" ADD CONSTRAINT "FK_49dc618f9811c67dec86f0d2049" FOREIGN KEY ("userId") REFERENCES "user_account"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
             yield queryRunner.query(`insert into Videos (title, thumbnail, views, date_published, channel_id,url) values ('Landon Austin-Armor[Lyrics]', 'https://i.ytimg.com/vi/nuL00Sd-ffo/maxresdefault.jpg', 2338244, '2015-12-28', 'UC17DUe-8nOZktPfw-3Jv-yA', 'https://www.youtube.com/watch?v=nuL00Sd-ffo');
     insert into Videos (title, thumbnail, views, date_published, channel_id,url) values ('Armour++Armour++Full Album', 'https://i.ytimg.com/vi/SL1hx6xRCZg/maxresdefault.jpg', 31247, '2013-01-05', 'UCCQ-wJwenqARi8cerD3jo2w', 'https://www.youtube.com/watch?v=SL1hx6xRCZg');
     insert into Videos (title, thumbnail, views, date_published, channel_id,url) values ('Bryce Vine - Drew Barrymore [Official Music Video]', 'https://i.ytimg.com/vi/kudi8OtMu9s/maxresdefault.jpg', 70818976, '2018-02-15', 'UCHQE-c1JX7Io3zcXgXBQKlw', 'https://www.youtube.com/watch?v=kudi8OtMu9s');
@@ -2490,7 +2483,6 @@ class initDB1622442583130 {
     insert into Videos (title, thumbnail, views, date_published, channel_id, url) values ('Using Proper Technique When Lifting Weights', 'https://i.ytimg.com/vi/t4A2o4Ycudw/maxresdefault.jpg', 186820, '2014-10-07', 'UCO6bog3yuveGCYGsKUsa9Hg', 'https://www.youtube.com/watch?v=t4A2o4Ycudw');
     insert into Videos (title, thumbnail, views, date_published, channel_id, url) values ('15 Minute Beginner Weight Training - Easy Exercises - HASfit Beginners Workout Routine - Strength', 'https://i.ytimg.com/vi/U0bhE67HuDY/maxresdefault.jpg', 6375391, '2012-10-07', 'UCXIJ2-RSIGn53HA-x9RDevA', 'https://www.youtube.com/watch?v=U0bhE67HuDY');
     insert into Videos (title, thumbnail, views, date_published, channel_id, url) values ('30 Min FULL BODY DUMBBELL WORKOUT at Home | Muscle Building', 'https://i.ytimg.com/vi/GViX8riaHX4/maxresdefault.jpg', 1717568, '2020-08-03', 'UCpis3RcTw6t47XO0R_KY4WQ', 'https://www.youtube.com/watch?v=GViX8riaHX4');
-    insert into Videos (title, thumbnail, views, date_published, channel_id, url) values ('LUCKY VS UNLUCKY || DIY Funny Crazy Pranks! Rich VS Poor Students Challenge By 123 GO! BOYS', 'https://i.ytimg.com/vi/jZCUBDEp_F4/maxresdefault_live.jpg', 110960, '2021-06-03', 'UCR60_HSQe4sNvH53qbRxTQw', 'https://www.youtube.com/watch?v=jZCUBDEp_F4');
     insert into Videos (title, thumbnail, views, date_published, channel_id, url) values ('Turning Old Into New || Genius Reuse, Recycle And Repurpose DIY Ideas', 'https://i.ytimg.com/vi/UjgtrXO-jf8/maxresdefault.jpg', 4617163, '2020-07-31', 'UC295-Dw_tDNtZXFeAPAW6Aw', 'https://www.youtube.com/watch?v=UjgtrXO-jf8');
     insert into Videos (title, thumbnail, views, date_published, channel_id, url) values ('DIY CRYSTAL Accent Table! New DIY Table IDEA 2021', 'https://i.ytimg.com/vi/lwBfj7x_CmU/maxresdefault.jpg', 6481, '2021-06-03', 'UCjUL-rOK9MA-HTDuinCE7Xg', 'https://www.youtube.com/watch?v=lwBfj7x_CmU');
     insert into Videos (title, thumbnail, views, date_published, channel_id, url) values ('Mixing”Pink VS Mint” Eyeshadow and Makeup,parts,glitter Into Slime!Satisfying Slime Video!★ASMR★', 'https://i.ytimg.com/vi/f8OnrizcSEE/maxresdefault.jpg', 37328, '2021-06-03', 'UCFZwZBF-5Kkw_SCHkb5_hRg', 'https://www.youtube.com/watch?v=f8OnrizcSEE');
@@ -2674,14 +2666,9 @@ class initDB1622442583130 {
     `);
         });
     }
-    down(queryRunner) {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield queryRunner.query(`ALTER TABLE "games" DROP CONSTRAINT "FK_49dc618f9811c67dec86f0d2049"`);
-            yield queryRunner.query(`DROP TABLE "videos"`);
-            yield queryRunner.query(`DROP TABLE "games"`);
-            yield queryRunner.query(`DROP TABLE "user_account"`);
-        });
+    down(_) {
+        return __awaiter(this, void 0, void 0, function* () { });
     }
 }
-exports.initDB1622442583130 = initDB1622442583130;
-//# sourceMappingURL=1622442583130-initDB.js.map
+exports.AddVideos1624247603040 = AddVideos1624247603040;
+//# sourceMappingURL=1624247603040-AddVideos.js.map
