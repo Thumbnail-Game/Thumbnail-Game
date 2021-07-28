@@ -61,6 +61,14 @@ let UserResolver = class UserResolver {
             return user;
         });
     }
+    userByDisplayName(displayName) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = yield index_1.UserAccount.findOne({ where: { displayName } });
+            if (!user)
+                return null;
+            return user;
+        });
+    }
     users() {
         const users = index_1.UserAccount.find();
         if (!users)
@@ -103,11 +111,18 @@ let UserResolver = class UserResolver {
 };
 __decorate([
     type_graphql_1.Query(() => index_1.UserAccount, { nullable: true }),
-    __param(0, type_graphql_1.Arg('uid')),
+    __param(0, type_graphql_1.Arg('uid', () => String, { nullable: true })),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "user", null);
+__decorate([
+    type_graphql_1.Query(() => index_1.UserAccount, { nullable: true }),
+    __param(0, type_graphql_1.Arg('displayName', () => String, { nullable: true })),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "userByDisplayName", null);
 __decorate([
     type_graphql_1.Query(() => [index_1.UserAccount], { nullable: true }),
     __metadata("design:type", Function),

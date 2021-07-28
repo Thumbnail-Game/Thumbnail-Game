@@ -14,8 +14,8 @@ export default class MyDocument extends Document {
           <script
             data-ad-client="ca-pub-6724421299859990"
             async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6724421299859990"
-          ></script>
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9097293613189817"
+            crossOrigin="anonymous"></script>
         </Head>
         <body>
           <Main />

@@ -40,20 +40,31 @@ let VideoResolver = class VideoResolver {
                 if (i !== videoIds.length - 1)
                     tempSql += 'and';
             }
-            let videos;
+            let videos = [];
             try {
                 if (videoIds.length > 0) {
-                    videos = yield typeorm_1.getConnection().query(`select * from videos where ${tempSql} order by random() limit 2;`);
+                    const video = yield typeorm_1.getConnection().query(`select * from videos where ${tempSql} order by random() limit 1;`);
+                    tempSql += ` and id != ${video[0].id} `;
+                    videos.push(video[0]);
+                    const video2 = yield typeorm_1.getConnection().query(`select * from videos where ${tempSql} 
+          and views < ${parseInt(video[0].views) - 200000} or views > ${parseInt(video[0].views) + 200000}
+          order by random() limit 1;`);
+                    videos.push(video2[0]);
                 }
                 else {
-                    videos = yield typeorm_1.getConnection().query(`select * from videos order by random() limit 2;`);
+                    const video = yield typeorm_1.getConnection().query(`select * from videos order by random() limit 2;`);
+                    videos.push(video[0]);
+                    const video2 = yield typeorm_1.getConnection().query(`select * from videos 
+          where id != ${video[0].id} and views < ${parseInt(video[0].views) - 200000} or views > ${parseInt(video[0].views) + 200000}
+          order by random() limit 1;`);
+                    videos.push(video2[0]);
                 }
             }
             catch (err) {
                 console.log(err);
                 return null;
             }
-            if (!videos)
+            if (videos.length === 0)
                 return null;
             return videos;
         });
