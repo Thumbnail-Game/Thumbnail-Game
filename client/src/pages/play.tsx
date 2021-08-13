@@ -71,7 +71,7 @@ const Play: NextPage = () => {
           <SelectGamemode setGamemode={setGamemode} />
         )}
         {/* <TestThumbnailsExists /> */}
-        {/* <AdBanner /> */}
+        <AdBanner />
       </div>
     </>
   )
