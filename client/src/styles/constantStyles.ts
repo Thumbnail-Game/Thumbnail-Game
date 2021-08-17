@@ -125,7 +125,7 @@ export const BackButton = styled(IoMdArrowRoundBack)`
   }
 `
 
-export const Logo = styled(Image)``
+export const Logo = styled.img``
 
 export const PopupIntro = keyframes`
   0%{
