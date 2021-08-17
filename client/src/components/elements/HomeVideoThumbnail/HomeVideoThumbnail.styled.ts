@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components'
-import Image from 'next/image'
 
 const VideoHover = keyframes`
     0%{
@@ -52,7 +51,7 @@ export const VideoThumbnail = styled.div`
   right: 0;
   z-index: 1;
 `
-export const Thumbnail = styled(Image)`
+export const Thumbnail = styled.img`
   border-radius: 5px;
   z-index: 0;
 `

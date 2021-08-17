@@ -1,4 +1,4 @@
-import Image from 'next/image'
+
 import { IoIosCheckmarkCircle } from 'react-icons/io'
 import { MdCancel, MdTimerOff } from 'react-icons/md'
 import styled, { keyframes } from 'styled-components'
@@ -104,7 +104,7 @@ export const VideoHover = keyframes`
     }
 `
 
-export const VideoThumbnail = styled(Image)`
+export const VideoThumbnail = styled.img`
   border-radius: 10px;
 `
 

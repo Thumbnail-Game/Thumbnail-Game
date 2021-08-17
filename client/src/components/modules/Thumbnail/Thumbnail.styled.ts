@@ -1,5 +1,4 @@
 import styled, { css, keyframes } from 'styled-components'
-import Image from 'next/image'
 import { LinearProgress } from '@material-ui/core'
 import { BiRightArrowAlt } from 'react-icons/bi'
 import { MdCancel } from 'react-icons/md'
@@ -94,14 +93,14 @@ export const VideoContainer = styled.div<VideoContainerProps>`
     `}
 `
 
-export const VideoImage = styled(Image)`
+export const VideoImage = styled.img`
   border-radius: 10px;
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
 `
 
-export const VideoImage2 = styled(Image)`
+export const VideoImage2 = styled.img`
   border-radius: 10px;
   -moz-user-select: none;
   -webkit-user-select: none;

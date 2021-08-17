@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { MdSettings } from 'react-icons/md'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { HiMenu } from 'react-icons/hi'
@@ -19,7 +18,7 @@ export const Flex = styled.div`
   }
 `
 
-export const Logo = styled(Image)``
+export const Logo = styled.img``
 
 interface LogoContainerProps {
   isOnPlayPage: boolean

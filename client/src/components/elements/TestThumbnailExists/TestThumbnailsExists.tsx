@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useGetVideosQuery } from '../../../generated/graphql'
-import Image from 'next/image'
+import { ImageContainer } from '../Achievements/Achievements.styled'
 
 //	this components fetches every video and returns the thumbnails that cause an error. These videos will be removed from the database
 export const TestThumbnailsExists: React.FC = () => {
@@ -20,7 +20,7 @@ export const TestThumbnailsExists: React.FC = () => {
       {videoData &&
         Array.isArray(videoData.getVideos) &&
         videoData.getVideos.map((video: any, i: number) => (
-          <Image
+          <img
             src={video.thumbnail}
             alt={`thumbnail-image-${i}`}
             width={50}

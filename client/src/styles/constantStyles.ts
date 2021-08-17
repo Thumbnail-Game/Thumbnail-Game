@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components'
-import Image from 'next/image'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import { Grid } from '@material-ui/core'
 
@@ -72,7 +71,7 @@ export const FormWrapper = styled.div`
   }
 `
 
-export const PreviewImage = styled(Image)``
+export const PreviewImage = styled.img``
 
 export const FormContainer = styled.div`
   margin: auto;
