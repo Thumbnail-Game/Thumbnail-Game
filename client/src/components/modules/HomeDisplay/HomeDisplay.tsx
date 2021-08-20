@@ -22,6 +22,8 @@ export const HomeDisplay: React.FC<HomeDisplayProps> = ({ showLogo }) => {
         {showLogo && (
           <Styled.LogoContainer>
             <Styled.Logo
+              width={1014}
+              height={290}
               src={'/images/thumbnail-dark.png'}
               alt={'home-display-logo'}
             />

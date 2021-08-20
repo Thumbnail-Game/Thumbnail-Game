@@ -37,7 +37,6 @@ export const LogoContainer = styled.div`
 
 export const Logo = styled.img`
   position: absolute;
-  width: 70%;
   max-height: 100%;
   margin: auto;
   top: 0;
