@@ -1,4 +1,12 @@
-import { Resolver, Mutation, Arg, Field, ObjectType, Query } from 'type-graphql'
+import {
+  Resolver,
+  Mutation,
+  Arg,
+  Field,
+  ObjectType,
+  Query,
+  Int,
+} from 'type-graphql'
 import { getConnection } from 'typeorm'
 
 import { UserAccount } from '../entities/index'
@@ -34,7 +42,10 @@ export class UserResolver {
   }
 
   @Query(() => UserAccount, { nullable: true })
-  async userByDisplayName(@Arg('displayName', () => String, { nullable: true }) displayName: string | null) {
+  async userByDisplayName(
+    @Arg('displayName', () => String, { nullable: true })
+    displayName: string | null
+  ) {
     const user = await UserAccount.findOne({ where: { displayName } })
 
     if (!user) return null
@@ -82,5 +93,19 @@ export class UserResolver {
     }
 
     return { user }
+  }
+
+  @Mutation(() => Boolean)
+  updateHighscore(
+    @Arg('uid', () => String) uid: string,
+    @Arg('highscore', () => Int) highscore: number
+  ) {
+    UserAccount.update(
+      { uid },
+      {
+        highscore,
+      }
+    )
+    return true
   }
 }

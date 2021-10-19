@@ -37,6 +37,7 @@ export type Games = {
 export type Mutation = {
   __typename?: 'Mutation';
   createUser: UserResponse;
+  updateHighscore: Scalars['Boolean'];
   invalidateVideos?: Maybe<Array<Videos>>;
   addGame?: Maybe<Games>;
 };
@@ -44,6 +45,12 @@ export type Mutation = {
 
 export type MutationCreateUserArgs = {
   options: UserInput;
+};
+
+
+export type MutationUpdateHighscoreArgs = {
+  highscore: Scalars['Int'];
+  uid: Scalars['String'];
 };
 
 
@@ -105,6 +112,7 @@ export type UserAccount = {
   email: Scalars['String'];
   photoURL: Scalars['String'];
   games: Array<Games>;
+  highscore: Scalars['Float'];
   createdAt: Scalars['String'];
   updatedAt: Scalars['String'];
 };
@@ -180,6 +188,17 @@ export type InvalidateMutation = (
     { __typename?: 'Videos' }
     & Pick<Videos, 'id'>
   )>> }
+);
+
+export type UpdateHighscoreMutationVariables = Exact<{
+  uid: Scalars['String'];
+  highscore: Scalars['Int'];
+}>;
+
+
+export type UpdateHighscoreMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'updateHighscore'>
 );
 
 export type GetDisplayNamesQueryVariables = Exact<{ [key: string]: never; }>;
@@ -337,6 +356,15 @@ export const InvalidateDocument = gql`
 
 export function useInvalidateMutation() {
   return Urql.useMutation<InvalidateMutation, InvalidateMutationVariables>(InvalidateDocument);
+};
+export const UpdateHighscoreDocument = gql`
+    mutation updateHighscore($uid: String!, $highscore: Int!) {
+  updateHighscore(uid: $uid, highscore: $highscore)
+}
+    `;
+
+export function useUpdateHighscoreMutation() {
+  return Urql.useMutation<UpdateHighscoreMutation, UpdateHighscoreMutationVariables>(UpdateHighscoreDocument);
 };
 export const GetDisplayNamesDocument = gql`
     query getDisplayNames {

@@ -37,6 +37,10 @@ export class UserAccount extends BaseEntity {
   @OneToMany(() => Games, (game) => game.userId)
   games: Games[]
 
+  @Field()
+  @Column({ nullable: true })
+  highscore: number
+
   @Field(() => String)
   @CreateDateColumn()
   createdAt: Date

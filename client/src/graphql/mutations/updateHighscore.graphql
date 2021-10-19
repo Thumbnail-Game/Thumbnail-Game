@@ -1,0 +1,3 @@
+mutation updateHighscore($uid: String!, $highscore: Int!) {
+  updateHighscore(uid: $uid, highscore: $highscore)
+}
