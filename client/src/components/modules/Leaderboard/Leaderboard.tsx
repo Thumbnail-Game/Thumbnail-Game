@@ -94,7 +94,7 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
       <Styled.LeaderboardWrapper>
         <Styled.Leaderboard>
           <Styled.LabelContainer>
-            <Styled.Label>Leaderboard</Styled.Label>
+            <Styled.Label>Leaderboard (Timed Mode Only)</Styled.Label>
             <Styled.ColumnNamesContainer>
               <Styled.ColumnNames>Username</Styled.ColumnNames>
               <Styled.ColumnNames>Highscore</Styled.ColumnNames>
