@@ -7,7 +7,7 @@ import {
   ObjectType,
   Field,
 } from 'type-graphql'
-import { getConnection } from 'typeorm'
+import { Any, getConnection, IsNull, Not } from 'typeorm'
 
 import { Games } from '../entities/index'
 
@@ -49,7 +49,7 @@ export class GamesResolver {
   @Mutation(() => Games, { nullable: true })
   async addGame(
     @Arg('score', () => Int) score: number,
-    @Arg('userId', () => Int, { nullable: true }) userId: number | null,
+    @Arg('userId', () => Int, { nullable: true }) userId: number,
     @Arg('gamemode', () => String, { nullable: true }) gamemode: string
   ): Promise<Games | null> {
     let game
@@ -105,5 +105,18 @@ export class GamesResolver {
     }
 
     return userHighScores
+  }
+
+  @Query(() => Any)
+  async getLeaderboardHighscores() {
+    const games = Games.find({
+      where: { userId: Not(IsNull()) },
+      relations: ['user_id'],
+      order: { score: 'DESC' },
+      take: 100,
+    })
+    console.log(games)
+
+    return null
   }
 }
