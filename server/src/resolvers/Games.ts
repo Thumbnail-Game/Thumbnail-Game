@@ -7,9 +7,9 @@ import {
   ObjectType,
   Field,
 } from 'type-graphql'
-import { Any, getConnection, IsNull, Not } from 'typeorm'
+import { getConnection, IsNull, Not } from 'typeorm'
 
-import { Games } from '../entities/index'
+import { Games, LeaderboardGames, UserAccount } from '../entities/index'
 
 @ObjectType()
 class UserHighscoreResponse {
@@ -55,6 +55,17 @@ export class GamesResolver {
     let game
     try {
       game = await Games.create({ score, userId, gamemode }).save()
+
+      if (userId) {
+        const user = await UserAccount.findOne({ id: userId })
+        if (!user) {
+          console.error(
+            'Failed to add game to LeaderboardGames - User does not exists.'
+          )
+          return game
+        }
+        await LeaderboardGames.create({ score, user_id: user, gamemode }).save()
+      }
     } catch (err) {
       console.log(err)
       return null
@@ -107,16 +118,13 @@ export class GamesResolver {
     return userHighScores
   }
 
-  @Query(() => Any)
-  async getLeaderboardHighscores() {
-    const games = Games.find({
-      where: { userId: Not(IsNull()) },
+  @Query(() => [LeaderboardGames])
+  getLeaderboardHighscores() {
+    return LeaderboardGames.find({
+      where: { user_id: Not(IsNull()), gamemode: 'timed' },
       relations: ['user_id'],
       order: { score: 'DESC' },
       take: 100,
     })
-    console.log(games)
-
-    return null
   }
 }

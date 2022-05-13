@@ -41,7 +41,8 @@ export const createUrqlClient = (ssrExchange: any, ctx: any) => {
                   (field) =>
                     field.fieldName === 'getGamesByUser' ||
                     field.fieldName === 'getUserHighscores' ||
-                    field.fieldName === 'getTotalGames'
+                    field.fieldName === 'getTotalGames' ||
+                    field.fieldName === 'getLeaderboardHighscores'
                 )
                 .forEach((field) => {
                   cache.invalidate('Query', field.fieldKey)

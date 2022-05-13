@@ -6,13 +6,9 @@ import { AppProvider } from '../providers/AppProvider'
 import { analytics } from '../config/firebaseConfig'
 
 import './bodyStyle.css'
-import { useRouter } from 'next/router'
-import { GoTag } from 'react-icons/go'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const router = useRouter()
   useEffect(() => {
-
     if (process.env.NODE_ENV === 'production') {
       const logEvent = () => {
         analytics().logEvent('screen_view')
