@@ -29,6 +29,7 @@ export const VersionLog: React.FC<VersionLogProps> = ({
                 textDecoration: 'underline',
                 marginLeft: '5px',
               }}
+              target="_blank"
             >
               setupspawn
             </a>{' '}
