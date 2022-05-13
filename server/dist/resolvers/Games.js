@@ -69,6 +69,14 @@ let GamesResolver = class GamesResolver {
             let game;
             try {
                 game = yield index_1.Games.create({ score, userId, gamemode }).save();
+                if (userId) {
+                    const user = yield index_1.UserAccount.findOne({ id: userId });
+                    if (!user) {
+                        console.error('Failed to add game to LeaderboardGames - User does not exists.');
+                        return game;
+                    }
+                    yield index_1.LeaderboardGames.create({ score, user_id: user, gamemode }).save();
+                }
             }
             catch (err) {
                 console.log(err);
@@ -115,6 +123,14 @@ let GamesResolver = class GamesResolver {
             return userHighScores;
         });
     }
+    getLeaderboardHighscores() {
+        return index_1.LeaderboardGames.find({
+            where: { user_id: typeorm_1.Not(typeorm_1.IsNull()), gamemode: 'timed' },
+            relations: ['user_id'],
+            order: { score: 'DESC' },
+            take: 100,
+        });
+    }
 };
 __decorate([
     type_graphql_1.Query(() => [index_1.Games], { nullable: true }),
@@ -134,7 +150,7 @@ __decorate([
     __param(1, type_graphql_1.Arg('userId', () => type_graphql_1.Int, { nullable: true })),
     __param(2, type_graphql_1.Arg('gamemode', () => String, { nullable: true })),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Object, String]),
+    __metadata("design:paramtypes", [Number, Number, String]),
     __metadata("design:returntype", Promise)
 ], GamesResolver.prototype, "addGame", null);
 __decorate([
@@ -151,6 +167,12 @@ __decorate([
     __metadata("design:paramtypes", [Array]),
     __metadata("design:returntype", Promise)
 ], GamesResolver.prototype, "getUserHighscores", null);
+__decorate([
+    type_graphql_1.Query(() => [index_1.LeaderboardGames]),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], GamesResolver.prototype, "getLeaderboardHighscores", null);
 GamesResolver = __decorate([
     type_graphql_1.Resolver()
 ], GamesResolver);

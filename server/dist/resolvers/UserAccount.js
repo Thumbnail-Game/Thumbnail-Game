@@ -108,6 +108,12 @@ let UserResolver = class UserResolver {
             return { user };
         });
     }
+    updateHighscore(uid, highscore) {
+        index_1.UserAccount.update({ uid }, {
+            highscore,
+        });
+        return true;
+    }
 };
 __decorate([
     type_graphql_1.Query(() => index_1.UserAccount, { nullable: true }),
@@ -136,6 +142,14 @@ __decorate([
     __metadata("design:paramtypes", [userInput_1.UserInput]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "createUser", null);
+__decorate([
+    type_graphql_1.Mutation(() => Boolean),
+    __param(0, type_graphql_1.Arg('uid', () => String)),
+    __param(1, type_graphql_1.Arg('highscore', () => type_graphql_1.Int)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Number]),
+    __metadata("design:returntype", void 0)
+], UserResolver.prototype, "updateHighscore", null);
 UserResolver = __decorate([
     type_graphql_1.Resolver(index_1.UserAccount)
 ], UserResolver);

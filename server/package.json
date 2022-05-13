@@ -30,7 +30,6 @@
   "dependencies": {
     "@types/node-cron": "^2.0.3",
     "apollo-server-express": "^2.16.1",
-    "argon2": "^0.26.2",
     "cors": "^2.8.5",
     "dataloader": "^2.0.0",
     "dotenv-safe": "^8.2.0",
