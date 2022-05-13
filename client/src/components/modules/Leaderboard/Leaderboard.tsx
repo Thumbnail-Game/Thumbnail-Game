@@ -53,6 +53,42 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
     return fields
   }
 
+  const generateLeaderboardHighScores = () => {
+    const set = new Set()
+    const elements = []
+    let rank = 1
+    for (const score of leaderboardHighscores!) {
+      if (set.has(score.user_id.displayName)) continue
+      else set.add(score.user_id.displayName)
+
+      elements.push(
+        <Styled.PlayerInfoContainer key={rank}>
+          <Styled.Rank>#{rank}</Styled.Rank>
+          <Styled.PlayerInfo
+            onClick={() => router.push(`/user/${score.user_id.displayName}`)}
+          >
+            <Styled.Username>
+              {score.user_id.displayName.length > 18
+                ? score.user_id.displayName.slice(0, 18) + '...'
+                : score.user_id.displayName}
+            </Styled.Username>
+            <Styled.Highscore>{score.score}</Styled.Highscore>
+            <Styled.Date>
+              <Moment format="MM/DD/YYYY" interval={0}>
+                {parseInt(score.createdAt)}
+              </Moment>
+            </Styled.Date>
+          </Styled.PlayerInfo>
+        </Styled.PlayerInfoContainer>
+      )
+
+      rank++
+      if (rank === 101) break
+    }
+
+    return elements
+  }
+
   return (
     <>
       <Styled.LeaderboardWrapper>
@@ -67,29 +103,7 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
           </Styled.LabelContainer>
           <Styled.InfoWrapper>
             {leaderboardHighscores
-              ? leaderboardHighscores.map((score, i) => (
-                  <Styled.PlayerInfoContainer key={i}>
-                    <Styled.Rank>#{i + 1}</Styled.Rank>
-                    <Styled.PlayerInfo
-                      onClick={() =>
-                        router.push(`/user/${score.user_id.displayName}`)
-                      }
-                      key={i}
-                    >
-                      <Styled.Username>
-                        {score.user_id.displayName.length > 18
-                          ? score.user_id.displayName.slice(0, 18) + '...'
-                          : score.user_id.displayName}
-                      </Styled.Username>
-                      <Styled.Highscore>{score.score}</Styled.Highscore>
-                      <Styled.Date>
-                        <Moment format="MM/DD/YYYY" interval={0}>
-                          {parseInt(score.createdAt)}
-                        </Moment>
-                      </Styled.Date>
-                    </Styled.PlayerInfo>
-                  </Styled.PlayerInfoContainer>
-                ))
+              ? generateLeaderboardHighScores()
               : renderSkeletonLoaders()}
           </Styled.InfoWrapper>
         </Styled.Leaderboard>

@@ -124,7 +124,7 @@ export class GamesResolver {
       where: { user_id: Not(IsNull()), gamemode: 'timed' },
       relations: ['user_id'],
       order: { score: 'DESC' },
-      take: 100,
+      take: 1000,
     })
   }
 }

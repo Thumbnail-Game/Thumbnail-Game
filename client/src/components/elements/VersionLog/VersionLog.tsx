@@ -22,6 +22,36 @@ export const VersionLog: React.FC<VersionLogProps> = ({
             is playable now. Shoutout to Vov for being the first person to join
             the discord.
           </Styled.VersionDescription>
+          <Styled.VersionTitle>Version 1.1</Styled.VersionTitle>
+          <Styled.VersionDate>May 13th, 2022</Styled.VersionDate>
+          <Styled.VersionDescription>
+            Reset the leaderboard due to a major increase in the number of
+            players causing it to break. This will not happen again. Also, fixed
+            a bug with empty thumbnails being shown on the play page. Huge
+            shoutout to{' '}
+            <a
+              href="https://www.tiktok.com/@setupspawn"
+              style={{
+                textDecoration: 'underline',
+                marginLeft: '5px',
+                color: 'white',
+              }}
+            >
+              setupspawn
+            </a>{' '}
+            for this
+            <a
+              style={{
+                textDecoration: 'underline',
+                marginLeft: '5px',
+                color: 'white',
+              }}
+              href="https://www.tiktok.com/@setupspawn/video/7095756667643612458"
+              target="_blank"
+            >
+              TikTok video
+            </a>
+          </Styled.VersionDescription>
           {/* <Styled.VersionListHeader>TODO</Styled.VersionListHeader>
           <Styled.VersionList>
             <li>Fix jittery animations and initial page load shifts</li>

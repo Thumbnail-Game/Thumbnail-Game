@@ -59,7 +59,7 @@ export const Footer: React.FC = () => {
             Privacy Policy
           </Styled.PrivacyPolicy>
           <Styled.GithubVersion onClick={toggleShowingVersionLog}>
-            Version 1.0
+            Version 1.1
           </Styled.GithubVersion>
         </Styled.FooterVersionContainer>
       </Styled.FooterContainer>
