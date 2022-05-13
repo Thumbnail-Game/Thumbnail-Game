@@ -9,60 +9,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserAccount = void 0;
+exports.LeaderboardGames = void 0;
 const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
-const Games_1 = require("./Games");
-let UserAccount = class UserAccount extends typeorm_1.BaseEntity {
+const UserAccount_1 = require("./UserAccount");
+let LeaderboardGames = class LeaderboardGames extends typeorm_1.BaseEntity {
 };
 __decorate([
     type_graphql_1.Field(),
     typeorm_1.PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
-], UserAccount.prototype, "id", void 0);
+], LeaderboardGames.prototype, "id", void 0);
+__decorate([
+    type_graphql_1.Field(() => UserAccount_1.UserAccount),
+    typeorm_1.ManyToOne(() => UserAccount_1.UserAccount, (user) => user.games),
+    typeorm_1.JoinColumn({ name: 'user_id' }),
+    __metadata("design:type", UserAccount_1.UserAccount)
+], LeaderboardGames.prototype, "user_id", void 0);
 __decorate([
     type_graphql_1.Field(),
-    typeorm_1.Column({ unique: true }),
-    __metadata("design:type", String)
-], UserAccount.prototype, "uid", void 0);
-__decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ unique: true }),
-    __metadata("design:type", String)
-], UserAccount.prototype, "displayName", void 0);
-__decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ unique: true }),
-    __metadata("design:type", String)
-], UserAccount.prototype, "email", void 0);
-__decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ nullable: true }),
-    __metadata("design:type", String)
-], UserAccount.prototype, "photoURL", void 0);
-__decorate([
-    type_graphql_1.Field(() => [Games_1.Games]),
-    typeorm_1.OneToMany(() => Games_1.Games, (game) => game.userId),
-    __metadata("design:type", Array)
-], UserAccount.prototype, "games", void 0);
-__decorate([
-    type_graphql_1.Field(),
-    typeorm_1.Column({ nullable: true }),
+    typeorm_1.Column(),
     __metadata("design:type", Number)
-], UserAccount.prototype, "highscore", void 0);
+], LeaderboardGames.prototype, "score", void 0);
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    typeorm_1.Column({ nullable: true }),
+    __metadata("design:type", String)
+], LeaderboardGames.prototype, "gamemode", void 0);
 __decorate([
     type_graphql_1.Field(() => String),
     typeorm_1.CreateDateColumn(),
     __metadata("design:type", Date)
-], UserAccount.prototype, "createdAt", void 0);
+], LeaderboardGames.prototype, "createdAt", void 0);
 __decorate([
     type_graphql_1.Field(() => String),
     typeorm_1.UpdateDateColumn(),
     __metadata("design:type", Date)
-], UserAccount.prototype, "updatedAt", void 0);
-UserAccount = __decorate([
+], LeaderboardGames.prototype, "updatedAt", void 0);
+LeaderboardGames = __decorate([
     type_graphql_1.ObjectType(),
     typeorm_1.Entity()
-], UserAccount);
-exports.UserAccount = UserAccount;
-//# sourceMappingURL=UserAccount.js.map
+], LeaderboardGames);
+exports.LeaderboardGames = LeaderboardGames;
+//# sourceMappingURL=LeaderboardGames.js.map

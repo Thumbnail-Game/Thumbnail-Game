@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Moment from 'react-moment'
 import Skeleton from '@material-ui/lab/Skeleton'
@@ -6,12 +5,10 @@ import Skeleton from '@material-ui/lab/Skeleton'
 import { PopupTransparentBackground } from '../../../styles/constantStyles'
 import {
   useGetUsersQuery,
-  useGetUserHighscoresQuery,
+  useGetLeaderboardHighScoresQuery,
 } from '../../../generated/graphql'
 import { Search } from '../../../components/elements/index'
 import * as Styled from './Leaderboard.styled'
-
-type LeaderboardUsers = LeaderboardUser[]
 
 interface LeaderboardUser {
   displayName?: string
@@ -26,65 +23,13 @@ interface ShowLeaderboardProps {
 export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
   toggleLeaderboard,
 }) => {
-  const [leaderboardUsers, setLeaderboardUsers] = useState<LeaderboardUsers>([])
-  const [userIds, setUserIds] = useState<number[]>([])
+  const [{ data }] = useGetLeaderboardHighScoresQuery()
+  const leaderboardHighscores = data && data.getLeaderboardHighscores
 
   const [users] = useGetUsersQuery()
   const usersData = users && users.data
 
-  const [highscores] = useGetUserHighscoresQuery({ variables: { userIds } })
-  const highscoresData = highscores && highscores.data
-
   const router = useRouter()
-
-  useEffect(() => {
-    if (usersData && usersData.users) {
-      const tempUserIds: number[] = []
-      for (const user of usersData.users) {
-        tempUserIds.push(user.id)
-      }
-      setUserIds(tempUserIds)
-    }
-  }, [users])
-
-  useEffect(() => {
-    if (
-      usersData &&
-      usersData.users &&
-      highscoresData &&
-      highscoresData.getUserHighscores
-    ) {
-      //    construct a leaderboard user
-      let tempLeaderboardUsers: LeaderboardUsers = []
-
-      for (const user of usersData.users) {
-        const tempLeaderboardUser: LeaderboardUser = {}
-        tempLeaderboardUser.displayName = user.displayName
-
-        //    get the corresponding highscore for the user
-        const matchingUser = highscoresData.getUserHighscores.find(
-          (userObj) => userObj.userId === user.id
-        )
-        if (!matchingUser || !matchingUser?.highScore || !matchingUser?.date) {
-          continue
-        }
-
-        //  append the necessary fields
-        tempLeaderboardUser.topScore = matchingUser.highScore
-        tempLeaderboardUser.scoreDate = matchingUser.date
-
-        tempLeaderboardUsers.push(tempLeaderboardUser)
-      }
-
-      //  sort and take the top 100
-      tempLeaderboardUsers = tempLeaderboardUsers
-        .sort((a: any, b: any) => {
-          return b.topScore - a.topScore
-        })
-        .slice(0, 99)
-      setLeaderboardUsers(tempLeaderboardUsers)
-    }
-  }, [usersData, highscoresData])
 
   const renderSkeletonLoaders = () => {
     const fields: JSX.Element[] = []
@@ -121,25 +66,25 @@ export const Leaderboard: React.FC<ShowLeaderboardProps> = ({
             </Styled.ColumnNamesContainer>
           </Styled.LabelContainer>
           <Styled.InfoWrapper>
-            {!users.fetching && leaderboardUsers
-              ? leaderboardUsers.map((user: LeaderboardUser, i) => (
+            {leaderboardHighscores
+              ? leaderboardHighscores.map((score, i) => (
                   <Styled.PlayerInfoContainer key={i}>
                     <Styled.Rank>#{i + 1}</Styled.Rank>
                     <Styled.PlayerInfo
-                      onClick={() => router.push(`/user/${user.displayName}`)}
+                      onClick={() =>
+                        router.push(`/user/${score.user_id.displayName}`)
+                      }
                       key={i}
                     >
-                      {user.displayName && (
-                        <Styled.Username>
-                          {user.displayName.length > 18
-                            ? user.displayName.slice(0, 18) + '...'
-                            : user.displayName}
-                        </Styled.Username>
-                      )}
-                      <Styled.Highscore>{user.topScore}</Styled.Highscore>
+                      <Styled.Username>
+                        {score.user_id.displayName.length > 18
+                          ? score.user_id.displayName.slice(0, 18) + '...'
+                          : score.user_id.displayName}
+                      </Styled.Username>
+                      <Styled.Highscore>{score.score}</Styled.Highscore>
                       <Styled.Date>
                         <Moment format="MM/DD/YYYY" interval={0}>
-                          {user.scoreDate}
+                          {parseInt(score.createdAt)}
                         </Moment>
                       </Styled.Date>
                     </Styled.PlayerInfo>

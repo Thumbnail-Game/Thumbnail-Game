@@ -31,7 +31,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         url: process.env.DATABASE_URL,
         logging: true,
         synchronize: true,
-        entities: [index_1.UserAccount, index_1.Videos, index_1.Games],
+        entities: [index_1.UserAccount, index_1.Videos, index_1.Games, index_1.LeaderboardGames],
         migrations: [path_1.default.join(__dirname, './migrations/*')],
         ssl: {
             rejectUnauthorized: false,

@@ -68,7 +68,7 @@ export const NavMobile: React.FC<NavMobileProps> = ({
               color={themeMode === 'light' ? '#282828' : 'white'}
             />
           </Styled.NavIconWrapper>
-          {/* <Styled.NavIconWrapper
+          <Styled.NavIconWrapper
             onClick={() => {
               setDrawerState({
                 top: false,
@@ -85,7 +85,7 @@ export const NavMobile: React.FC<NavMobileProps> = ({
               fontSize={36}
               color={themeMode === 'light' ? '#282828' : 'white'}
             />
-          </Styled.NavIconWrapper> */}
+          </Styled.NavIconWrapper>
           {!signedIn ? (
             <>
               <Styled.SignInUp

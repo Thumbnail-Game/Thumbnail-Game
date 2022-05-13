@@ -264,7 +264,14 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
                     alt={`thumbnail-image-${i}`}
                     width={videoWidth}
                     height={videoHeight}
-                    onError={() => invalidateAndFetch()}
+                    onLoad={(e) => {
+                      if (
+                        e.currentTarget.naturalWidth === 120 &&
+                        e.currentTarget.naturalHeight === 90
+                      ) {
+                        invalidateAndFetch()
+                      }
+                    }}
                     onClick={() => {
                       if (!hasPicked) handleThumbnailClick(i)
                     }}

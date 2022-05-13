@@ -9,7 +9,7 @@ import { buildSchema } from 'type-graphql'
 import { createConnection } from 'typeorm'
 
 import { __prod__ } from './config'
-import { Games, UserAccount, Videos } from './entities/index'
+import { Games, UserAccount, Videos, LeaderboardGames } from './entities/index'
 import { GamesResolver, UserResolver, VideoResolver } from './resolvers/index'
 import { updateAllVideoViews } from './utils/updateAllVideoViews'
 
@@ -21,7 +21,7 @@ const main = async () => {
     url: process.env.DATABASE_URL,
     logging: true,
     synchronize: true,
-    entities: [UserAccount, Videos, Games],
+    entities: [UserAccount, Videos, Games, LeaderboardGames],
     migrations: [path.join(__dirname, './migrations/*')],
     ssl: {
       rejectUnauthorized: false,

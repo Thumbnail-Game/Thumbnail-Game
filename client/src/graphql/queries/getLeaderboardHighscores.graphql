@@ -1,0 +1,11 @@
+query getLeaderboardHighScores {
+  getLeaderboardHighscores {
+    id
+    score
+    gamemode
+    createdAt
+    user_id {
+      displayName
+    }
+  }
+}

@@ -10,9 +10,8 @@ import { Nav, Thumbnail } from '../components/modules/index'
 import {
   Score,
   // MobileNotSupported,
-  // TestThumbnailsExists,
+  TestThumbnailsExists,
 } from '../components/elements/index'
-import React from 'react'
 
 const Play: NextPage = () => {
   const [gamemode, setGamemode] = useState<string | null>()
@@ -77,5 +76,4 @@ const Play: NextPage = () => {
   )
 }
 
-//  creates client with server side rendering enabled
-export default withUrqlClient(createUrqlClient, { ssr: true })(Play)
+export default withUrqlClient(createUrqlClient, { ssr: false })(Play)
