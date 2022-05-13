@@ -15,13 +15,6 @@ export const VersionLog: React.FC<VersionLogProps> = ({
     <>
       <PopupBackground>
         <Styled.VersionTextContainer>
-          <Styled.VersionTitle>Version 1.0</Styled.VersionTitle>
-          <Styled.VersionDate>July 12th, 2021</Styled.VersionDate>
-          <Styled.VersionDescription>
-            Inital staging version, still have a lot of work to complete, but it
-            is playable now. Shoutout to Vov for being the first person to join
-            the discord.
-          </Styled.VersionDescription>
           <Styled.VersionTitle>Version 1.1</Styled.VersionTitle>
           <Styled.VersionDate>May 13th, 2022</Styled.VersionDate>
           <Styled.VersionDescription>
@@ -32,9 +25,9 @@ export const VersionLog: React.FC<VersionLogProps> = ({
             <a
               href="https://www.tiktok.com/@setupspawn"
               style={{
+                color: 'inherit',
                 textDecoration: 'underline',
                 marginLeft: '5px',
-                color: 'white',
               }}
             >
               setupspawn
@@ -42,15 +35,22 @@ export const VersionLog: React.FC<VersionLogProps> = ({
             for this
             <a
               style={{
+                color: 'inherit',
                 textDecoration: 'underline',
                 marginLeft: '5px',
-                color: 'white',
               }}
               href="https://www.tiktok.com/@setupspawn/video/7095756667643612458"
               target="_blank"
             >
-              TikTok video
+              TikTok video!
             </a>
+          </Styled.VersionDescription>
+          <Styled.VersionTitle>Version 1.0</Styled.VersionTitle>
+          <Styled.VersionDate>July 12th, 2021</Styled.VersionDate>
+          <Styled.VersionDescription>
+            Inital staging version, still have a lot of work to complete, but it
+            is playable now. Shoutout to Vov for being the first person to join
+            the discord.
           </Styled.VersionDescription>
           {/* <Styled.VersionListHeader>TODO</Styled.VersionListHeader>
           <Styled.VersionList>
