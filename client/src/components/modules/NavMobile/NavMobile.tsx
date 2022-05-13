@@ -68,7 +68,7 @@ export const NavMobile: React.FC<NavMobileProps> = ({
               color={themeMode === 'light' ? '#282828' : 'white'}
             />
           </Styled.NavIconWrapper>
-          <Styled.NavIconWrapper
+          {/* <Styled.NavIconWrapper
             onClick={() => {
               setDrawerState({
                 top: false,
@@ -76,16 +76,16 @@ export const NavMobile: React.FC<NavMobileProps> = ({
                 bottom: false,
                 right: false,
               })
-              showLeaderboardState.setShowLeaderboard(
-                (oldLeaderboard) => !oldLeaderboard
-              )
+              // showLeaderboardState.setShowLeaderboard(
+              //   (oldLeaderboard) => !oldLeaderboard
+              // )
             }}
           >
             <Styled.LeaderboardIcon
               fontSize={36}
               color={themeMode === 'light' ? '#282828' : 'white'}
             />
-          </Styled.NavIconWrapper>
+          </Styled.NavIconWrapper> */}
           {!signedIn ? (
             <>
               <Styled.SignInUp

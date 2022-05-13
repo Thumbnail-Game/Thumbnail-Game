@@ -49,7 +49,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
           {supportedWidth ? (
             <Styled.SettingsPopUpRow>
               <Styled.NavWrapper>
-                <Styled.NavIconWrapper
+                {/* <Styled.NavIconWrapper
                   style={{ marginRight: '5px' }}
                   onClick={() =>
                     setShowLeaderboard((oldLeaderboard) => !oldLeaderboard)
@@ -64,7 +64,7 @@ export const Nav: React.FC<NavProps> = ({ signedIn }) => {
                   ) : (
                     <Styled.SearchHoverDark />
                   )}
-                </Styled.NavIconWrapper>
+                </Styled.NavIconWrapper> */}
                 <Styled.NavIconWrapper
                   onClick={() =>
                     setShowingSettings((oldSetting) => !oldSetting)
