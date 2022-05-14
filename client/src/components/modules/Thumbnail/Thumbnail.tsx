@@ -223,7 +223,6 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
     return <Styled.LinearLoader color="secondary" />
   }
   if (videos.error) {
-    console.log(videos.error.message)
     return <p>There was an error</p>
   }
 

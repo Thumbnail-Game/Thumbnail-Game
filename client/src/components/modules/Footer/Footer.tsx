@@ -55,12 +55,20 @@ export const Footer: React.FC = () => {
           </Styled.FeedbackText>
         </Styled.FeedbackTextContainer>
         <Styled.FooterVersionContainer>
-          <Styled.PrivacyPolicy href="/privacyPolicy" target="_blank">
-            Privacy Policy
-          </Styled.PrivacyPolicy>
-          <Styled.GithubVersion onClick={toggleShowingVersionLog}>
+          <Styled.LinkTag
+            href="mailto:thumbnailgame@gmail.com"
+            aria-label="contact-us"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Styled.FooterText>Contact Us</Styled.FooterText>
+          </Styled.LinkTag>
+          <Styled.LinkTag href="/privacyPolicy" target="_blank">
+            <Styled.FooterText>Privacy Policy</Styled.FooterText>
+          </Styled.LinkTag>
+          <Styled.FooterText onClick={toggleShowingVersionLog}>
             Version 1.1
-          </Styled.GithubVersion>
+          </Styled.FooterText>
         </Styled.FooterVersionContainer>
       </Styled.FooterContainer>
       {showingVersionLog && (
