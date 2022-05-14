@@ -76,9 +76,9 @@ export const NavMobile: React.FC<NavMobileProps> = ({
                 bottom: false,
                 right: false,
               })
-              // showLeaderboardState.setShowLeaderboard(
-              //   (oldLeaderboard) => !oldLeaderboard
-              // )
+              showLeaderboardState.setShowLeaderboard(
+                (oldLeaderboard) => !oldLeaderboard
+              )
             }}
           >
             <Styled.LeaderboardIcon
