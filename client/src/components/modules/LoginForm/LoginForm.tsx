@@ -42,18 +42,20 @@ export const LoginForm: React.FC = () => {
 
     await auth
       .signInWithEmailAndPassword(data.email, data.password)
-      .then(() => {
+      .then(async () => {
         if (!auth.currentUser?.emailVerified) {
           response = {
             error: 'You must verify your email before signing in!',
           }
           setShowResendEmail(true)
 
-          auth.currentUser?.sendEmailVerification().catch((error: any) => {
-            console.log(error)
-          })
+          await auth.currentUser
+            ?.sendEmailVerification()
+            .catch((error: any) => {
+              console.log(error)
+            })
 
-          auth.signOut()
+          await auth.signOut()
         }
       })
       .catch((error) => {

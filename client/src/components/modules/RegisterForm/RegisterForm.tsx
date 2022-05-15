@@ -57,20 +57,20 @@ export const RegisterForm: React.FC = () => {
 
     await auth
       .createUserWithEmailAndPassword(data.email, data.password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         const user = userCredential.user
 
-        user?.updateProfile({
+        await user?.updateProfile({
           displayName: data.displayName,
         })
 
-        user?.sendEmailVerification().catch((error: any) => {
+        await user?.sendEmailVerification().catch((error: any) => {
           return { error: error }
         })
 
         //  create user in database
         if (user?.uid) {
-          createUser({
+          await createUser({
             options: {
               uid: user.uid,
               displayName: data.displayName,
