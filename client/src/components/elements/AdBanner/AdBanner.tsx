@@ -16,7 +16,17 @@ export const AdBanner = () => {
       className="adsbygoogle adbanner-customize"
       data-ad-client="ca-pub-6724421299859990"
       data-ad-slot="8296324938"
-      style={{display:"inline-block", width:"728px", height:"90px"}}
+      style={{
+        display: 'block',
+        position: 'absolute',
+        width: '728px',
+        height: '90px',
+        margin: 'auto',
+        top: '0',
+        bottom: '0',
+        right: '0',
+        left: '0',
+      }}
     />
   )
 }
