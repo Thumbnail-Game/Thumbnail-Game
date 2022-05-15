@@ -3,7 +3,7 @@ import { dedupExchange, fetchExchange } from 'urql'
 
 import { serverURL } from '../config/config'
 
-export const createUrqlClient = (ssrExchange: any, ctx: any) => {
+export const createUrqlClient = (ssrExchange: any, ctx: any): any => {
   return {
     url: serverURL,
     fetchOptions: {
