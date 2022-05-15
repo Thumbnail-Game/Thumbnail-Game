@@ -64,9 +64,9 @@ export const RegisterForm: React.FC = () => {
           displayName: data.displayName,
         })
 
-        await user?.sendEmailVerification().catch((error: any) => {
-          return { error: error }
-        })
+        // await user?.sendEmailVerification().catch((error: any) => {
+        //   return { error: error }
+        // })
 
         //  create user in database
         if (user?.uid) {
@@ -119,8 +119,7 @@ export const RegisterForm: React.FC = () => {
             setSubmitting(false)
 
             if (res?.error) return setFieldError('email', res.error)
-
-            router.push('/login')
+            router.push('/play')
           }}
           validate={(values) => {
             const errors: Record<string, string> = {}

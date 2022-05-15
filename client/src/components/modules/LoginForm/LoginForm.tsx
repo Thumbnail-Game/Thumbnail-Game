@@ -16,8 +16,8 @@ import {
   FormWrapper,
   Divider,
 } from '../../../styles/constantStyles'
-import * as Styled from './LoginForm.styled'
 import { useMediaQuery } from '../../../hooks/useMediaQuery'
+import * as Styled from './LoginForm.styled'
 
 interface FormSubmitData {
   email: string
@@ -40,27 +40,11 @@ export const LoginForm: React.FC = () => {
   ): Promise<errorResponse | null> => {
     let response = null
 
-    await auth
-      .signInWithEmailAndPassword(data.email, data.password)
-      .then(async () => {
-        if (!auth.currentUser?.emailVerified) {
-          response = {
-            error: 'You must verify your email before signing in!',
-          }
-          setShowResendEmail(true)
-
-          await auth.currentUser
-            ?.sendEmailVerification()
-            .catch((error: any) => {
-              console.log(error)
-            })
-
-          await auth.signOut()
-        }
-      })
-      .catch((error) => {
-        response = { error: error.message }
-      })
+    try {
+      await auth.signInWithEmailAndPassword(data.email, data.password)
+    } catch (error: any) {
+      response = { error: error.message }
+    }
 
     return response
   }
@@ -143,7 +127,7 @@ export const LoginForm: React.FC = () => {
                 <Styled.Redirect onClick={() => router.push('/register')}>
                   Don't have an account? Sign up here
                 </Styled.Redirect>
-                <Snackbar
+                {/* <Snackbar
                   open={showResendEmail}
                   onClose={() => setShowResendEmail(false)}
                   autoHideDuration={6000}
@@ -152,7 +136,7 @@ export const LoginForm: React.FC = () => {
                     <AlertTitle>You must verify your email!</AlertTitle>
                     <strong>Resending a verification email</strong>
                   </Alert>
-                </Snackbar>
+                </Snackbar> */}
               </FormContainer>
             </Form>
           )}

@@ -58,14 +58,7 @@ export const AppProvider: React.FC = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged((response: UserCallback) => {
       if (response.signedIn) {
-        if (!response.emailVerified) {
-          //   setShowEmailVerificationMessage(true)
-
-          auth.signOut()
-          setSignedIn(false)
-        } else {
-          setSignedIn(true)
-        }
+        setSignedIn(true)
       } else {
         setSignedIn(false)
       }

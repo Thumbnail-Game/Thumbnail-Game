@@ -1,7 +1,5 @@
 import { useEffect } from 'react'
 
-import { dev } from '../../../config/config'
-
 export const AdBanner = () => {
   // useEffect(() => {
   //   try {
@@ -44,7 +42,6 @@ export const AdBanner = () => {
       className="adsbygoogle adbanner-customize"
       data-ad-client="ca-pub-6724421299859990"
       data-ad-slot="8296324938"
-      data-adtest={dev ? 'on' : 'off'}
       style={{ display: 'block', width: '300px', height: '250px' }}
     />
   )
