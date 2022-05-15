@@ -3,8 +3,8 @@ import { MigrationInterface, QueryRunner } from 'typeorm'
 export class initDB1622442583130 implements MigrationInterface {
   name = 'initDB1622442583130'
 
-  public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(
+  public async up(_: QueryRunner): Promise<void> {
+    /*await queryRunner.query(
       `CREATE TABLE "user_account" ("id" SERIAL NOT NULL, "uid" character varying NOT NULL, "displayName" character varying NOT NULL, "email" character varying NOT NULL, "photoURL" character varying, "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_c090dc128643bf214643228c551" UNIQUE ("uid"), CONSTRAINT "UQ_6e9d316fcf48d0c44ed3d1ff912" UNIQUE ("displayName"), CONSTRAINT "UQ_56a0e4bcec2b5411beafa47ffa5" UNIQUE ("email"), CONSTRAINT "PK_6acfec7285fdf9f463462de3e9f" PRIMARY KEY ("id"))`
     )
     await queryRunner.query(
@@ -2670,14 +2670,17 @@ export class initDB1622442583130 implements MigrationInterface {
     insert into Videos (title, thumbnail, views, date_published, channel_id, url) values ('Chris Stapleton - Millionaire', 'https://i.ytimg.com/vi/CaqzeE41XcA/hqdefault.jpg', 5905443, '2018-02-21', 'UCyemoTZ7dw6jgzsFjy2oq-A', 'https://www.youtube.com/watch?v=CaqzeE41XcA');
     `
     )
+    */
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {
+  public async down(_: QueryRunner): Promise<void> {
+    /*
     await queryRunner.query(
       `ALTER TABLE "games" DROP CONSTRAINT "FK_49dc618f9811c67dec86f0d2049"`
     )
     await queryRunner.query(`DROP TABLE "videos"`)
     await queryRunner.query(`DROP TABLE "games"`)
     await queryRunner.query(`DROP TABLE "user_account"`)
+    */
   }
 }
