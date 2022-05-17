@@ -36,6 +36,7 @@ export const Name = styled.div`
   text-decoration-color: red;
   text-decoration-thickness: 5px;
   text-underline-offset: 10px;
+  white-space: nowrap;
 `
 
 export const AccountCreatedDate = styled.div`
