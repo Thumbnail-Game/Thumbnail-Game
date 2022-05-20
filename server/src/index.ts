@@ -9,8 +9,19 @@ import { buildSchema } from 'type-graphql'
 import { createConnection } from 'typeorm'
 
 import { __prod__ } from './config'
-import { Games, UserAccount, Videos, LeaderboardGames } from './entities/index'
-import { GamesResolver, UserResolver, VideoResolver } from './resolvers/index'
+import {
+  Games,
+  UserAccount,
+  Videos,
+  LeaderboardGames,
+  Impressions,
+} from './entities/index'
+import {
+  GamesResolver,
+  UserResolver,
+  VideoResolver,
+  ImpressionResolver,
+} from './resolvers/index'
 import { updateAllVideoViews } from './utils/updateAllVideoViews'
 
 const main = async () => {
@@ -21,7 +32,7 @@ const main = async () => {
     url: process.env.DATABASE_URL,
     logging: true,
     synchronize: true,
-    entities: [UserAccount, Videos, Games, LeaderboardGames],
+    entities: [UserAccount, Videos, Games, LeaderboardGames, Impressions],
     migrations: [path.join(__dirname, './migrations/*')],
     ssl: {
       rejectUnauthorized: false,
@@ -40,7 +51,12 @@ const main = async () => {
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [UserResolver, VideoResolver, GamesResolver],
+      resolvers: [
+        UserResolver,
+        VideoResolver,
+        GamesResolver,
+        ImpressionResolver,
+      ],
       validate: false,
     }),
     context: ({ req, res }) => ({
@@ -59,7 +75,7 @@ const main = async () => {
     console.log(`server started on localhost:${process.env.PORT!}`)
   })
 
-  //  updateAllVideoViews after every midnight
+  //  every midnight
   cron.schedule('0 0 0 * * *', () => {
     updateAllVideoViews()
   })

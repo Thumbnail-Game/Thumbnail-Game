@@ -1,5 +1,6 @@
-import { Videos } from '../entities/index'
 import { getConnection } from 'typeorm'
+
+import { Videos } from '../entities/index'
 const fetchVideoInfo = require('updated-youtube-info')
 
 export const updateAllVideoViews = async () => {

@@ -25,7 +25,7 @@ class UserHighscoreResponse {
 export class GamesResolver {
   @Query(() => [Games], { nullable: true })
   async games(): Promise<Games[] | null> {
-    const games = await Games.find()
+    const games = await Games.find({ take: 500 })
 
     if (!games) return null
 
