@@ -1,13 +1,21 @@
 import styled from 'styled-components'
 
+export const Wrapper = styled.div`
+  width: 350px;
+  height: 93%;
+  margin: auto;
+  overflow: hidden;
+  text-align: left;
+`
+
 export const SearchContainer = styled.div`
   background-color: none;
   width: 100%;
   border-radius: 12px;
   font-family: 'Gothic Bold';
   margin: auto;
-  height: 100%;
-  overflow-y: scroll;
+  height: 545px;
+  overflow-y: auto;
   margin-top: 31px;
 
   &::-webkit-scrollbar {
@@ -67,14 +75,6 @@ export const UserContainer = styled.div`
   border-radius: 10px;
   cursor: pointer;
   background-color: ${(props) => props.theme.scoreBackground};
-`
-
-export const Wrapper = styled.div`
-  width: 350px;
-  height: 93%;
-  margin: auto;
-  overflow: hidden;
-  text-align: left;
 `
 
 export const LabelContainer = styled.div`
