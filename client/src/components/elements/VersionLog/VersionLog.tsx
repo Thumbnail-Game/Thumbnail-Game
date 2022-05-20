@@ -18,8 +18,8 @@ export const VersionLog: React.FC<VersionLogProps> = ({
           <Styled.VersionTitle>Version 1.2</Styled.VersionTitle>
           <Styled.VersionDate>May 20th, 2022</Styled.VersionDate>
           <Styled.VersionDescription>
-            Added a lot more videos to the database. Added daily gamemode and
-            improved percentile loading.
+            Added a lot more videos to the database. Also added daily gamemode
+            and improved percentile loading.
           </Styled.VersionDescription>
           <Styled.VersionTitle>Version 1.1</Styled.VersionTitle>
           <Styled.VersionDate>May 13th, 2022</Styled.VersionDate>
