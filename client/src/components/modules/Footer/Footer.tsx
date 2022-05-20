@@ -67,7 +67,7 @@ export const Footer: React.FC = () => {
             <Styled.FooterText>Privacy Policy</Styled.FooterText>
           </Styled.LinkTag>
           <Styled.FooterText onClick={toggleShowingVersionLog}>
-            Version 1.1
+            Version 1.2
           </Styled.FooterText>
         </Styled.FooterVersionContainer>
       </Styled.FooterContainer>

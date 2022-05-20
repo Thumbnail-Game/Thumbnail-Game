@@ -10,16 +10,32 @@ import { HeaderText } from '../../../styles/constantStyles'
 import { PlayIcon } from '../../elements/index'
 import { Footer } from '../index'
 import * as Styled from './GameSummary.styled'
+import {
+  useCreateImpressionMutation,
+  useGetUserQuery,
+} from '../../../generated/graphql'
+import { auth } from '../../../config/firebaseConfig'
 
 interface GameSummaryProps {
   videos: any
   reset: (changeGamemode: boolean) => void
+  gamemode: string
 }
 
-export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
+export const GameSummary: React.FC<GameSummaryProps> = ({
+  videos,
+  reset,
+  gamemode,
+}) => {
   const [indexArr, setIndexArr] = useState<any>([])
 
   const { themeMode } = useContext(ThemeContext)
+
+  const [, createImpression] = useCreateImpressionMutation()
+
+  const uid = auth?.currentUser?.uid
+  const [user] = useGetUserQuery({ variables: { uid: uid ? uid : '' } })
+  const userData = user && user.data
 
   useEffect(() => {
     const tempArr = []
@@ -36,7 +52,7 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
       return <Styled.LoseIcon size={160} />
       //  if they did not lose by incorrect choice, the last video
       //  has to be lost on time
-    } else if (index === indexArr.length - 1) {
+    } else if (index === indexArr.length - 1 && gamemode === 'timed') {
       return <Styled.TimeIcon size={132} />
     } else {
       return <Styled.WinIcon size={160} />
@@ -118,22 +134,27 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                 <Styled.VideoContainer key={i}>
                   {renderIcon(videoObj, i)}
                   <Styled.VideoColumnContainer>
-                    <Styled.Videos>
-                      <Link href={videoObj?.video1?.url}>
-                        <>
-                          <a href={videoObj?.video1?.url} target="_blank">
-                            <Styled.VideoThumbnail
-                              width={604.8}
-                              height={340.2}
-                              src={videoObj?.video1?.thumbnail}
-                            />
-                          </a>
-                          <a target="_blank" href={videoObj?.video1?.url}>
-                            <PlayIcon />
-                          </a>
-                        </>
-                      </Link>
-                    </Styled.Videos>
+                    <a
+                      target="_blank"
+                      href={videoObj?.video1?.url}
+                      onClick={() => {
+                        if (!videoObj.video1) return
+                        const user_id = userData?.user?.id
+                        createImpression({
+                          user_id: user_id ? user_id : null,
+                          video_id: videoObj.video1.id,
+                        })
+                      }}
+                    >
+                      <Styled.Videos>
+                        <Styled.VideoThumbnail
+                          width={604.8}
+                          height={340.2}
+                          src={videoObj?.video1?.thumbnail}
+                        />
+                        <PlayIcon />
+                      </Styled.Videos>
+                    </a>
                     <Styled.VideoTitle>
                       {videoObj?.video1?.title}
                     </Styled.VideoTitle>
@@ -144,22 +165,27 @@ export const GameSummary: React.FC<GameSummaryProps> = ({ videos, reset }) => {
                   </Styled.VideoColumnContainer>
                   {!isMobile && <Styled.Dots className=".control-dots" />}
                   <Styled.VideoColumnContainer>
-                    <Styled.Videos>
-                      <Link href={videoObj?.video2?.url}>
-                        <>
-                          <a href={videoObj?.video2?.url} target="_blank">
-                            <Styled.VideoThumbnail
-                              width={604.8}
-                              height={340.2}
-                              src={videoObj?.video2?.thumbnail}
-                            />
-                          </a>
-                          <a target="_blank" href={videoObj?.video2?.url}>
-                            <PlayIcon />
-                          </a>
-                        </>
-                      </Link>
-                    </Styled.Videos>
+                    <a
+                      target="_blank"
+                      href={videoObj?.video2?.url}
+                      onClick={() => {
+                        if (!videoObj.video2) return
+                        const user_id = userData?.user?.id
+                        createImpression({
+                          user_id: user_id ? user_id : null,
+                          video_id: videoObj.video2.id,
+                        })
+                      }}
+                    >
+                      <Styled.Videos>
+                        <Styled.VideoThumbnail
+                          width={604.8}
+                          height={340.2}
+                          src={videoObj?.video2?.thumbnail}
+                        />
+                        <PlayIcon />
+                      </Styled.Videos>
+                    </a>
                     <Styled.VideoTitle>
                       {videoObj?.video2?.title}
                     </Styled.VideoTitle>

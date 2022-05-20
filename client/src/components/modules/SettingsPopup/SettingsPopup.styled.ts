@@ -2,14 +2,14 @@ import styled from 'styled-components'
 import { BsFillTriangleFill } from 'react-icons/bs'
 
 interface TriangleIconProps {
-  signedIn: boolean
+  $signedIn: boolean
 }
 
 export const TriangleIcon = styled(BsFillTriangleFill)<TriangleIconProps>`
   position: absolute;
   width: 50px;
   top: 46px;
-  right: ${(props) => (props.signedIn ? '177px' : '198px')};
+  right: ${(props) => (props.$signedIn ? '177px' : '198px')};
   color: ${(props) => props.theme.settingBackground};
 `
 

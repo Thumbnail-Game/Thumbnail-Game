@@ -8,6 +8,7 @@ import {
   useGetTwoVideosQuery,
   useInvalidateMutation,
   useAddGameMutation,
+  useCreateImpressionMutation,
 } from '../../../generated/graphql'
 import {
   PlayIcon,
@@ -77,6 +78,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
   //  this mutation will invalidate the cache and cause useGetTwoVideosQuery to refetch
   const [, invalidateVideos] = useInvalidateMutation()
   const [, addGame] = useAddGameMutation()
+  const [, createImpression] = useCreateImpressionMutation()
 
   const videoWidth = 672
   const videoHeight = 378
@@ -192,16 +194,24 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
       (index === 0 && mostViewed === 'video1') ||
       (index === 1 && mostViewed === 'video2')
     ) {
-      if (sound === 'true') {
-        toggleAudio()
-      }
+      if (sound === 'true') toggleAudio()
+
       updateScore('increment')
+
+      if (gamemode === 'daily' && score === 9) {
+        addGameToDatabase()
+        setIsLoseAnimation(true)
+        setTimeout(() => {
+          setIsPlaying(false)
+          setIsLoseAnimation(false)
+          setLoseType('none')
+        }, 1500)
+      }
 
       //  wrong answer
     } else {
-      if (Array.isArray(seenVideos)) {
+      if (Array.isArray(seenVideos))
         seenVideos[seenVideos.length - 1].isLoss = true
-      }
 
       handleLoseAnimation('incorrect')
     }
@@ -235,7 +245,11 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
         isPlaying &&
         !isLoseAnimation && <Timer handleLoseAnimation={handleLoseAnimation} />}
       {(!isPlaying || isLoseAnimation) && (
-        <GameSummary videos={seenVideos} reset={handleResetGameFromChild} />
+        <GameSummary
+          videos={seenVideos}
+          reset={handleResetGameFromChild}
+          gamemode={gamemode}
+        />
       )}
       {isPlaying && (
         <Styled.TotalWrapper isLosingAnimation={isLoseAnimation}>
@@ -253,10 +267,19 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
                 )}
                 <Styled.Thumbnail>
                   {hasPicked && (
-                    <>
+                    <div
+                      onClick={() => {
+                        if (!video.id) return
+                        const user_id = userData?.user?.id
+                        createImpression({
+                          user_id: user_id ? user_id : null,
+                          video_id: video.id,
+                        })
+                      }}
+                    >
                       <Styled.VideoLink href={video.url} target="_blank" />
                       <PlayIcon />
-                    </>
+                    </div>
                   )}
                   <Styled.VideoImage
                     src={video.thumbnail}
@@ -264,6 +287,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
                     width={videoWidth}
                     height={videoHeight}
                     onLoad={(e) => {
+                      //  video did not load a valid image
                       if (
                         e.currentTarget.naturalWidth === 120 &&
                         e.currentTarget.naturalHeight === 90

@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components'
 
 export const Wrapper = styled.div`
   width: 1000px;
-  height: 280px;
+  height: 315px;
   display: flex;
   position: relative;
   justify-content: space-between;

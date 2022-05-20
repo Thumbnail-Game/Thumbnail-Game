@@ -55,6 +55,7 @@ export type Mutation = {
   updateHighscore: Scalars['Boolean']
   invalidateVideos?: Maybe<Array<Videos>>
   addGame?: Maybe<Games>
+  createImpression: Scalars['Boolean']
 }
 
 export type MutationCreateUserArgs = {
@@ -70,6 +71,11 @@ export type MutationAddGameArgs = {
   gamemode?: Maybe<Scalars['String']>
   userId?: Maybe<Scalars['Int']>
   score: Scalars['Int']
+}
+
+export type MutationCreateImpressionArgs = {
+  video_id: Scalars['Float']
+  user_id?: Maybe<Scalars['Float']>
 }
 
 export type Query = {
@@ -164,6 +170,16 @@ export type AddGameMutationVariables = Exact<{
 export type AddGameMutation = { __typename?: 'Mutation' } & {
   addGame?: Maybe<{ __typename?: 'Games' } & Pick<Games, 'score'>>
 }
+
+export type CreateImpressionMutationVariables = Exact<{
+  user_id?: Maybe<Scalars['Float']>
+  video_id: Scalars['Float']
+}>
+
+export type CreateImpressionMutation = { __typename?: 'Mutation' } & Pick<
+  Mutation,
+  'createImpression'
+>
 
 export type CreateUserMutationVariables = Exact<{
   options: UserInput
@@ -368,6 +384,18 @@ export function useAddGameMutation() {
   return Urql.useMutation<AddGameMutation, AddGameMutationVariables>(
     AddGameDocument
   )
+}
+export const CreateImpressionDocument = gql`
+  mutation createImpression($user_id: Float, $video_id: Float!) {
+    createImpression(user_id: $user_id, video_id: $video_id)
+  }
+`
+
+export function useCreateImpressionMutation() {
+  return Urql.useMutation<
+    CreateImpressionMutation,
+    CreateImpressionMutationVariables
+  >(CreateImpressionDocument)
 }
 export const CreateUserDocument = gql`
   mutation CreateUser($options: UserInput!) {

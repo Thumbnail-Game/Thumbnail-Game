@@ -16,7 +16,7 @@ export const SettingsPopup: React.FC<SettingsPopupProps> = ({
   return (
     <>
       <Styled.TransparentBackground onClick={toggleShowingSettings} />
-      <Styled.TriangleIcon size={50} signedIn={signedIn} />
+      <Styled.TriangleIcon size={50} $signedIn={signedIn} />
       <Styled.SettingsContainer signedIn={signedIn}>
         <Styled.ToggleContainer>
           <ThemeToggle />

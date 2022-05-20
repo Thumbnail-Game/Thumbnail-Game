@@ -1,0 +1,3 @@
+mutation createImpression($user_id: Float, $video_id: Float!) {
+  createImpression(user_id: $user_id, video_id: $video_id)
+}

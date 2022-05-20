@@ -9,7 +9,7 @@ interface Achievements {
 }
 
 interface Achievement {
-  title: string
+  title?: string
   description: string
   imageURL: string
 }
@@ -33,7 +33,15 @@ export const Achievements: React.FC<AchievementsProps> = ({ gamesData }) => {
         if (game.score > topScore) topScore = game.score
       }
 
-      const tempAchievements = getAchievements(numGames, topScore)
+      const dailyGamesData = gamesData.getGamesByUser.filter(
+        (game) => game.gamemode === 'daily' && game.score >= 10
+      )
+
+      const tempAchievements = getAchievements(
+        numGames,
+        topScore,
+        dailyGamesData.length
+      )
       setAchievements(tempAchievements)
     }
   }, [gamesData])

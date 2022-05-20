@@ -9,12 +9,12 @@ export const AchievementImage = styled.img<AchievementImageProps>`
   width: 47px;
 
   top: ${(props) => (props.isCrownImage ? '-3.5px' : '0px')};
-
 `
 
 export const AchievementContainer = styled.div`
   display: flex;
   margin-top: 10px;
+  flex-wrap: wrap;
 `
 
 export const AchievementPopupContainer = styled.div`
@@ -28,6 +28,7 @@ export const AchievementPopupContainer = styled.div`
   opacity: 0.7;
   margin-top: 5px;
   background-color: ${(props) => props.theme.achievementPopupBackground};
+  z-index: 1;
 `
 
 export const ImageContainer = styled.div`
