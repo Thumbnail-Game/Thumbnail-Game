@@ -6,7 +6,8 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 600,
+  minHeight: 600,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -30,11 +31,16 @@ export const AdPopup: React.FC<AdPopupProps> = ({ showAd, setShowAd }) => {
       aria-describedby="modal-modal-description"
     >
       <Box style={style}>
-        <ins
-          className="adsbygoogle"
-          data-ad-client="ca-pub-6724421299859990"
-          data-ad-slot="8296324938"
-        />
+        <div style={{ backgroundColor: 'white' }}>
+          <ins
+            className="adsbygoogle adbanner-customize"
+            data-ad-client="ca-pub-6724421299859990"
+            data-ad-slot="8296324939"
+            style={{ display: 'block', width: '600px', height: '400px' }}
+            // data-ad-format="auto"
+            // data-full-width-responsive="true"
+          />
+        </div>
       </Box>
     </Modal>
   )
