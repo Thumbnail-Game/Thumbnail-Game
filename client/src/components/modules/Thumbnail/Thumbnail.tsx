@@ -15,6 +15,7 @@ import {
   AnimatedViewText,
   Timer,
   LoseWinAnimation,
+  AdPopup,
 } from '../../elements/index'
 import { GameSummary } from '../index'
 import { HeaderText } from '../../../styles/constantStyles'
@@ -63,6 +64,8 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
   //  whether they have lost on time or incorrect choice
   const [loseType, setLoseType] = useState<string>()
   const [isLoadingVideos, setIsLoadingVideos] = useState<boolean>(false)
+
+  const [showAd, setShowAd] = useState(false)
 
   const [videos] = useGetTwoVideosQuery({
     variables: {
@@ -185,6 +188,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
       setIsPlaying(false)
       setIsLoseAnimation(false)
       setLoseType('none')
+      setShowAd(true)
     }, 1500)
   }
 
@@ -331,6 +335,8 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
       {!hasPicked &&
         isPlaying &&
         (!isLoseAnimation ? <Styled.ShadeOut /> : <Styled.ShadeOut2 />)}
+
+      <AdPopup showAd={showAd} setShowAd={setShowAd} />
     </>
   )
 }
