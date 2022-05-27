@@ -35,8 +35,8 @@ export const AdPopup: React.FC<AdPopupProps> = ({ showAd, setShowAd }) => {
           <ins
             className="adsbygoogle adbanner-customize"
             data-ad-client="ca-pub-6724421299859990"
-            data-ad-slot="8296324938"
-            style={{ display: 'block', width: '600px', height: '600px' }}
+            data-ad-slot="8296324939"
+            style={{ display: 'block', width: '600px', height: '400px' }}
             // data-ad-format="auto"
             // data-full-width-responsive="true"
           />
