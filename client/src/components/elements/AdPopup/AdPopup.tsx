@@ -6,7 +6,8 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 600,
+  minHeight: 600,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -31,9 +32,12 @@ export const AdPopup: React.FC<AdPopupProps> = ({ showAd, setShowAd }) => {
     >
       <Box style={style}>
         <ins
+          style={{ display: 'block' }}
           className="adsbygoogle"
           data-ad-client="ca-pub-6724421299859990"
           data-ad-slot="8296324938"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
         />
       </Box>
     </Modal>
