@@ -74,7 +74,6 @@ const Play: NextPage = () => {
         ) : (
           <>
             <SelectGamemode setGamemode={setGamemode} />
-            <AdPopupGameOver />
           </>
         )}
         {/* <TestThumbnailsExists /> */}

@@ -13,9 +13,10 @@ export const AdPopupGameOver = () => {
   }, [])
 
   return (
-    <Styled.PopupContainer
-    >
+    <Styled.PopupContainer>
       <ins
+        class="adsbygoogle"
+        style={{ display: 'block' }}
         data-ad-client="ca-pub-9097293613189817"
         data-ad-slot="5879611472"
         data-ad-format="auto"
