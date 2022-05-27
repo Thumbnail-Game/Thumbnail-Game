@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import * as Styled from './AdPopup.styled'
 
 export const AdPopupGameOver = () => {
   useEffect(() => {
@@ -12,17 +13,7 @@ export const AdPopupGameOver = () => {
   }, [])
 
   return (
-    <div
-      style={{
-        position: 'absolute',
-        overflow: 'hidden',
-        margin: 'auto',
-        top: '0',
-        bottom: '0',
-        left: '0',
-        right: '0',
-        width: '600px',
-      }}
+    <Styled.PopupContainer
     >
       <ins
         data-ad-client="ca-pub-9097293613189817"
@@ -30,6 +21,6 @@ export const AdPopupGameOver = () => {
         data-ad-format="auto"
         data-full-width-responsive="true"
       ></ins>
-    </div>
+    </Styled.PopupContainer>
   )
 }
