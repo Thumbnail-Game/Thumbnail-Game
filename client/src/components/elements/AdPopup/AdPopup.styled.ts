@@ -9,6 +9,5 @@ export const PopupContainer = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  width: 600px;
   z-index: 10;
 `
