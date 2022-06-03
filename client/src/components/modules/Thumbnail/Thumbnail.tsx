@@ -341,7 +341,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
         isPlaying &&
         (!isLoseAnimation ? <Styled.ShadeOut /> : <Styled.ShadeOut2 />)}
 
-      <AdPopup showAd={showAd} setShowAd={setShowAd} />
+      {/* <AdPopup showAd={showAd} setShowAd={setShowAd} /> */}
     </>
   )
 }
