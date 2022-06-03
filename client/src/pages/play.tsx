@@ -69,7 +69,6 @@ const Play: NextPage = () => {
               updateScore={updateScore}
               setGamemode={setGamemode}
             />
-            <AdPopupGameOver />
           </>
         ) : (
           <>
