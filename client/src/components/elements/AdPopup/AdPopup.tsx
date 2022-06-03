@@ -31,7 +31,7 @@ export const AdPopup: React.FC<AdPopupProps> = ({ showAd, setShowAd }) => {
       aria-describedby="modal-modal-description"
     >
       <Box style={style}>
-        <div style={{ backgroundColor: 'white' }}>
+        <div style={{ backgroundColor: 'black' }}>
           <ins
             className="adsbygoogle adbanner-customize"
             data-ad-client="ca-pub-6724421299859990"

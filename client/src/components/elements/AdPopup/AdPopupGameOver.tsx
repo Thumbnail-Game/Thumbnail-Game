@@ -15,10 +15,9 @@ export const AdPopupGameOver = () => {
   return (
     <Styled.PopupContainer>
       <ins
-        style={{ display: 'block' }}
+        style={{ display: 'block',  width: '600px', height: '600px' }}
         data-ad-client="ca-pub-9097293613189817"
         data-ad-slot="5879611472"
-        data-ad-format="auto"
         data-full-width-responsive="true"
       ></ins>
     </Styled.PopupContainer>
