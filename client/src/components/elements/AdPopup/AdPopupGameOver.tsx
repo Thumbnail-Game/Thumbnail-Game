@@ -20,7 +20,7 @@ export const AdPopupGameOver: React.FC<AdPopupProps> = ({ setShowAd }) => {
   return (
     <>
       <Styled.PopupContainer>
-        <ins
+        {/* <ins
           // style={{ display: 'block', width: '100%', height: '100%' }}
           style={{ display: 'block' }}
           data-ad-format="auto"
@@ -29,6 +29,12 @@ export const AdPopupGameOver: React.FC<AdPopupProps> = ({ setShowAd }) => {
           // className="adsbygoogle adbanner-customize"
           className="adsbygoogle infeed"
           // data-adtest="on"
+        ></ins> */}
+        <ins
+          className="adsbygoogle infeed"
+          style={{ display: 'inline-block', width: '728px', height: '450px' }}
+          data-ad-client="ca-pub-9097293613189817"
+          data-ad-slot="9459516414"
         ></ins>
       </Styled.PopupContainer>
       <Styled.PopUpBackground
