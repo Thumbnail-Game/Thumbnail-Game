@@ -29,6 +29,7 @@ export const AdPopupGameOver: React.FC<AdPopupProps> = ({ setShowAd }) => {
           data-ad-slot="5879611472"
           // className="adsbygoogle adbanner-customize"
           className="adsbygoogle"
+          // data-adtest="on"
         ></ins>
       </Styled.PopupContainer>
       <Styled.PopUpBackground
