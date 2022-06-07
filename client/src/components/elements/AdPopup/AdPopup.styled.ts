@@ -9,7 +9,7 @@ export const PopupContainer = styled.div`
   left: 0;
   right: 0;
   z-index: 10;
-  width: 1024px;
+  /* width: 1024px; */
   height: 768px;
   aspect-ratio: 1/1;
 `
