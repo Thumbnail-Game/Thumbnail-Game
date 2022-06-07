@@ -12,7 +12,7 @@ export const PopupContainer = styled.div`
   z-index: 10;
   height: 650px;
   aspect-ratio: 1/1;
-  background-color:black;
+  background-color:green;
 
   @media(max-width:800px){
     height: 550px;
