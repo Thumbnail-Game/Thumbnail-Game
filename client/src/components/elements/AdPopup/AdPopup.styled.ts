@@ -12,6 +12,14 @@ export const PopupContainer = styled.div`
   z-index: 10;
   height: 650px;
   aspect-ratio: 1/1;
+  background-color:black;
+
+  @media(max-width:800px){
+    height: 550px;
+  }
+  @media(max-width:600px){
+    height: 300px;
+  }
 `
 
 export const PopUpBackground = styled.div`
