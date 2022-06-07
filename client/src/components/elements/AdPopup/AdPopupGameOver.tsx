@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+
 import * as Styled from './AdPopup.styled'
 
 export const AdPopupGameOver = () => {

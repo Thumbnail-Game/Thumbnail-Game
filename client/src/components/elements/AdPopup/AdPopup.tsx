@@ -1,5 +1,6 @@
 import { Modal, Box } from '@material-ui/core'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import * as Styled from './AdPopup.styled'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -30,16 +31,14 @@ export const AdPopup: React.FC<AdPopupProps> = ({ showAd, setShowAd }) => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box style={style}>
-        <div style={{ backgroundColor: 'black' }}>
+      <Styled.PopupContainer>
           <ins
             style={{ display: 'block', width: '100%', height: '100%' }}
             data-ad-client="ca-pub-9097293613189817"
             data-ad-slot="5879611472"
             className="adsbygoogle adbanner-customize"
           ></ins>
-        </div>
-      </Box>
+      </Styled.PopupContainer>
     </Modal>
   )
 }
