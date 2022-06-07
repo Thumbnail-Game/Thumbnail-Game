@@ -20,7 +20,7 @@ export const VerticalPopup = styled.div`
   top: 0;
   bottom: 0;
   margin: auto;
-  left: 3%;
+  left: 1%;
   z-index: 10;
   width: 200px;
   height: 600px;
@@ -35,7 +35,7 @@ export const VerticalPopup2 = styled.div`
   top: 0;
   bottom: 0;
   margin: auto;
-  right: 3%;
+  right: 1%;
   z-index: 10;
   width: 200px;
   height: 600px;

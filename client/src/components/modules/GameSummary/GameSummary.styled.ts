@@ -1,4 +1,3 @@
-
 import { IoIosCheckmarkCircle } from 'react-icons/io'
 import { MdCancel, MdTimerOff } from 'react-icons/md'
 import styled, { keyframes } from 'styled-components'
@@ -240,7 +239,7 @@ export const RightButton = styled.button`
   margin-bottom: auto;
   top: 0;
   bottom: 180px;
-  right: 70px;
+  right: 140px;
   z-index: 2;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -260,7 +259,7 @@ export const LeftButton = styled.button`
   margin-bottom: auto;
   top: 0;
   bottom: 180px;
-  left: 70px;
+  left: 120px;
   z-index: 2;
   background-color: transparent;
   background-repeat: no-repeat;
