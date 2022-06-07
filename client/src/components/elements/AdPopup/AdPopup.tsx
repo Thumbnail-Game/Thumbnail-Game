@@ -23,6 +23,7 @@ interface AdPopupProps {
 export const AdPopup: React.FC<AdPopupProps> = ({ showAd, setShowAd }) => {
   // const handleOpen = () => setOpen(true)
   const handleClose = () => setShowAd(false)
+  
   useEffect(() => {
     try {
       ;((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
@@ -32,7 +33,7 @@ export const AdPopup: React.FC<AdPopupProps> = ({ showAd, setShowAd }) => {
       console.log(err)
     }
   }, [])
-  
+
   return (
     <Modal
       open={showAd}
