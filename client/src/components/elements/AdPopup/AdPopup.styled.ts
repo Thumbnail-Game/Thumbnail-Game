@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { animated } from 'react-spring'
 
 export const PopupContainer = styled.div`
   position: absolute;
@@ -25,6 +24,10 @@ export const VerticalPopup = styled.div`
   z-index: 10;
   width: 200px;
   height: 600px;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 `
 export const VerticalPopup2 = styled.div`
   position: absolute;
@@ -36,7 +39,10 @@ export const VerticalPopup2 = styled.div`
   z-index: 10;
   width: 200px;
   height: 600px;
-  background-color: black;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 `
 export const PopUpBackground = styled.div`
   position: absolute;

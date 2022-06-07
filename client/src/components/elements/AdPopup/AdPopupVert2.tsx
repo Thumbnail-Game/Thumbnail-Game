@@ -12,12 +12,17 @@ export const AdPopupVert2 = () => {
       console.log(err)
     }
   }, [])
+  console.log(window.innerWidth)
 
   return (
     <>
       <Styled.VerticalPopup2>
         <ins
-          style={{ display: 'block', width: '100%', height: '100%' }}
+          style={{
+            display: 'block',
+            width: '100%',
+            height: '100%',
+          }}
           data-ad-client="ca-pub-9097293613189817"
           data-ad-slot="9459516414"
           className="adsbygoogle adbanner-customize"
