@@ -25,20 +25,13 @@ export const AdPopup: React.FC<AdPopupProps> = ({ showAd, setShowAd }) => {
   const handleClose = () => setShowAd(false)
 
   return (
-    <Modal
-      open={showAd}
-      onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
-      <Styled.PopupContainer>
-          <ins
-            style={{ display: 'block', width: '100%', height: '100%' }}
-            data-ad-client="ca-pub-9097293613189817"
-            data-ad-slot="5879611472"
-            className="adsbygoogle adbanner-customize"
-          ></ins>
-      </Styled.PopupContainer>
-    </Modal>
+    <Styled.PopupContainer>
+      <ins
+        style={{ display: 'block', width: '100%', height: '100%' }}
+        data-ad-client="ca-pub-9097293613189817"
+        data-ad-slot="5879611472"
+        className="adsbygoogle adbanner-customize"
+      ></ins>
+    </Styled.PopupContainer>
   )
 }
