@@ -21,11 +21,11 @@ export const AdPopupGameOver: React.FC<AdPopupProps> = ({ setShowAd }) => {
     <>
       <Styled.PopupContainer>
         <ins
-          style={{ display: 'block', width: '100%', height: '100%' }}
+          // style={{ display: 'block', width: '100%', height: '100%' }}
+          style={{ display: 'block', width: '1024px', height: '768px' }}
           data-ad-client="ca-pub-9097293613189817"
           data-ad-slot="5879611472"
           className="adsbygoogle adbanner-customize"
-          // className="adsbygoogle"
         ></ins>
       </Styled.PopupContainer>
       <Styled.PopUpBackground
