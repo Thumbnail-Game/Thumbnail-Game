@@ -27,11 +27,11 @@ export const AdPopupGameOver: React.FC<AdPopupProps> = ({ setShowAd }) => {
           className="adsbygoogle adbanner-customize"
         ></ins>
       </Styled.PopupContainer>
-      <Styled.PopUpBackground
+      {/* <Styled.PopUpBackground
         onClick={() => {
           setShowAd(false)
         }}
-      />
+      /> */}
     </>
   )
 }
