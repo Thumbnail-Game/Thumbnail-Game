@@ -8,7 +8,8 @@ import { createUrqlClient } from '../util/index'
 import {
   SelectGamemode,
   AdBanner,
-  AdPopupGameOver,
+  AdPopupVert1,
+  AdPopupVert2,
 } from '../components/elements/index'
 import { Nav, Thumbnail } from '../components/modules/index'
 import {
@@ -69,6 +70,8 @@ const Play: NextPage = () => {
               updateScore={updateScore}
               setGamemode={setGamemode}
             />
+            <AdPopupVert1 />
+            <AdPopupVert2 />
           </>
         ) : (
           <>

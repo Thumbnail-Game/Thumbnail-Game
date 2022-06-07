@@ -15,7 +15,30 @@ export const PopupContainer = styled.div`
   aspect-ratio: 1/1;
   background-color: black;
 `
-
+export const VerticalPopup = styled.div`
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 3%;
+  z-index: 10;
+  width: 200px;
+  height: 600px;
+  background-color: black;
+`
+export const VerticalPopup2 = styled.div`
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 3%;
+  z-index: 10;
+  width: 200px;
+  height: 600px;
+  background-color: black;
+`
 export const PopUpBackground = styled.div`
   position: absolute;
   margin: auto;
