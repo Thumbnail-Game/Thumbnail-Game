@@ -12,7 +12,6 @@ export const AdPopupVert2 = () => {
       console.log(err)
     }
   }, [])
-  console.log(window.innerWidth)
 
   return (
     <>

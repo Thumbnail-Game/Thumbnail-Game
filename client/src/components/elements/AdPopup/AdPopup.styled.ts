@@ -25,7 +25,7 @@ export const VerticalPopup = styled.div`
   width: 200px;
   height: 600px;
 
-  @media (max-width: 700px) {
+  @media (max-width: 920px) {
     display: none;
   }
 `
@@ -40,7 +40,7 @@ export const VerticalPopup2 = styled.div`
   width: 200px;
   height: 600px;
 
-  @media (max-width: 700px) {
+  @media (max-width: 920px) {
     display: none;
   }
 `
