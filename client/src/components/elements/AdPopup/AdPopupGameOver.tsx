@@ -28,7 +28,6 @@ export const AdPopupGameOver: React.FC<AdPopupProps> = ({ setShowAd }) => {
           data-ad-slot="5879611472"
           // className="adsbygoogle adbanner-customize"
           className="adsbygoogle infeed"
-          // data-adtest="on"
         ></ins> */}
         <ins
           className="adsbygoogle infeed"
