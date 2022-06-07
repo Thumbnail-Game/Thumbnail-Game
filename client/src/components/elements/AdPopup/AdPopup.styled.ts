@@ -12,4 +12,5 @@ export const PopupContainer = styled.div`
   z-index: 10;
   width:400px;
   height:400px;
+  background-color: black;
 `
