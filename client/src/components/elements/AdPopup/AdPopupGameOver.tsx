@@ -19,8 +19,6 @@ export const AdPopupGameOver = () => {
         data-ad-client="ca-pub-9097293613189817"
         data-ad-slot="5879611472"
         className="adsbygoogle adbanner-customize"
-        // data-ad-format="auto"
-        // data-full-width-responsive="true"
       ></ins>
     </Styled.PopupContainer>
   )

@@ -16,7 +16,7 @@ import {
   Timer,
   LoseWinAnimation,
   AdPopup,
-  AdPopupGameOver
+  AdPopupGameOver,
 } from '../../elements/index'
 import { GameSummary } from '../index'
 import { HeaderText } from '../../../styles/constantStyles'
@@ -251,13 +251,13 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
         !isLoseAnimation && <Timer handleLoseAnimation={handleLoseAnimation} />}
       {(!isPlaying || isLoseAnimation) && (
         <>
-        <GameSummary
-          videos={seenVideos}
-          reset={handleResetGameFromChild}
-          gamemode={gamemode}
-        />
-        
-        <AdPopupGameOver />
+          <GameSummary
+            videos={seenVideos}
+            reset={handleResetGameFromChild}
+            gamemode={gamemode}
+          />
+
+          <AdPopup showAd={showAd} setShowAd={setShowAd} />
         </>
       )}
       {isPlaying && (
