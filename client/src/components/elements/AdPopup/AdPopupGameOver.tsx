@@ -1,8 +1,12 @@
-import { useEffect } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 import * as Styled from './AdPopup.styled'
 
-export const AdPopupGameOver = () => {
+interface AdPopupProps {
+  setShowAd: Dispatch<SetStateAction<boolean>>
+}
+
+export const AdPopupGameOver: React.FC<AdPopupProps> = ({ setShowAd }) => {
   useEffect(() => {
     try {
       ;((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
@@ -14,13 +18,20 @@ export const AdPopupGameOver = () => {
   }, [])
 
   return (
-    <Styled.PopupContainer>
-      <ins
-        style={{ display: 'block', width: '100%', height: '100%' }}
-        data-ad-client="ca-pub-9097293613189817"
-        data-ad-slot="5879611472"
-        className="adsbygoogle adbanner-customize"
-      ></ins>
-    </Styled.PopupContainer>
+    <>
+      <Styled.PopupContainer>
+        <ins
+          style={{ display: 'block', width: '100%', height: '100%' }}
+          data-ad-client="ca-pub-9097293613189817"
+          data-ad-slot="5879611472"
+          className="adsbygoogle adbanner-customize"
+        ></ins>
+      </Styled.PopupContainer>
+      <Styled.PopUpBackground
+        onClick={() => {
+          setShowAd(false)
+        }}
+      />
+    </>
   )
 }

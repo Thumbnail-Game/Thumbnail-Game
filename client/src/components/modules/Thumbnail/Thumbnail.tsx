@@ -66,7 +66,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
   const [loseType, setLoseType] = useState<string>()
   const [isLoadingVideos, setIsLoadingVideos] = useState<boolean>(false)
 
-  const [showAd, setShowAd] = useState(false)
+  const [showAd, setShowAd] = useState(true)
 
   const [videos] = useGetTwoVideosQuery({
     variables: {
@@ -257,7 +257,7 @@ export const Thumbnail: React.FC<ThumbnailProps> = ({
             gamemode={gamemode}
           />
 
-          <AdPopupGameOver />
+          {showAd && <AdPopupGameOver setShowAd={setShowAd} />}
         </>
       )}
       {isPlaying && (
