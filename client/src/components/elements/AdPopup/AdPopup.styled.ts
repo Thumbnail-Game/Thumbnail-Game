@@ -25,7 +25,6 @@ export const VerticalPopup = styled.div`
   z-index: 10;
   width: 200px;
   height: 600px;
-  background-color: black;
 `
 export const VerticalPopup2 = styled.div`
   position: absolute;

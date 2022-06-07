@@ -1,8 +1,6 @@
-
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 import * as Styled from './AdPopup.styled'
-
 
 export const AdPopupVert1 = () => {
   useEffect(() => {
