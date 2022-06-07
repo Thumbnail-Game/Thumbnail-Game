@@ -12,10 +12,6 @@ export const PopupContainer = styled.div`
   z-index: 10;
   height: 450px;
   aspect-ratio: 1/1;
-
-  @media(max-width:600px){
-    height: 300px;
-  }
 `
 
 export const PopUpBackground = styled.div`
