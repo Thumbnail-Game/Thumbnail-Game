@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { animated } from 'react-spring'
 
 export const PopupContainer = styled.div`
   position: absolute;
@@ -10,8 +9,8 @@ export const PopupContainer = styled.div`
   left: 0;
   right: 0;
   z-index: 10;
-  width: 600px;
-  height: 300px;
+  width: 1024px;
+  height: 768px;
   aspect-ratio: 1/1;
 `
 
