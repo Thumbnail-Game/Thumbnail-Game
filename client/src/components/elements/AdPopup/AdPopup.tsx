@@ -23,15 +23,31 @@ interface AdPopupProps {
 export const AdPopup: React.FC<AdPopupProps> = ({ showAd, setShowAd }) => {
   // const handleOpen = () => setOpen(true)
   const handleClose = () => setShowAd(false)
-
+  useEffect(() => {
+    try {
+      ;((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
+        {}
+      )
+    } catch (err) {
+      console.log(err)
+    }
+  }, [])
+  
   return (
-    <Styled.PopupContainer>
-      <ins
-        style={{ display: 'block', width: '100%', height: '100%' }}
-        data-ad-client="ca-pub-9097293613189817"
-        data-ad-slot="5879611472"
-        className="adsbygoogle adbanner-customize"
-      ></ins>
-    </Styled.PopupContainer>
+    <Modal
+      open={showAd}
+      onClose={handleClose}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+    >
+      <Styled.PopupContainer>
+          <ins
+            style={{ display: 'block', width: '100%', height: '100%' }}
+            data-ad-client="ca-pub-9097293613189817"
+            data-ad-slot="5879611472"
+            className="adsbygoogle adbanner-customize"
+          ></ins>
+      </Styled.PopupContainer>
+    </Modal>
   )
 }
